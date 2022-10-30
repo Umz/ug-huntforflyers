@@ -15,7 +15,8 @@ var config = {
         parent: 'phaser-game',
     },
     physics: {
-        default: 'arcade'
+        default: 'arcade',
+        arcade: {debug:true}
     },
     
     scene: [

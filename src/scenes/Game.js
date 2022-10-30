@@ -9,19 +9,12 @@ class Game extends Phaser.Scene {
     }
 
     preload() {
-        // Used for preloading assets into your scene, such as
-        // • images
-        // • sounds
-
-        this.load.setBaseURL('/assets/');
-
-        this.load.image('logo', 'logo.png');
     }
 
     create(data) {
         // Used to add objects to your game
 
-        var logo = this.add.image(400, 150, 'logo');
+        var logo = this.add.image(400, 150, 'tester');
 
         this.tweens.add({
             targets: logo,

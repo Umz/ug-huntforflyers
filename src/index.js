@@ -1,6 +1,7 @@
 import 'phaser';
 import Boot from './scenes/Boot';
 import Game from './scenes/Game';
+import Preload from './scenes/Preload';
 
 var config = {
 
@@ -19,6 +20,7 @@ var config = {
     
     scene: [
         Boot,
+        Preload,
         Game
     ]
 };

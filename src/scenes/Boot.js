@@ -17,7 +17,7 @@ class Boot extends Phaser.Scene {
     create(data) {
         // Used to add objects to your game
 
-        this.scene.start('Game');
+        this.scene.start('Preload');
     } 
 
     update(time, delta) {

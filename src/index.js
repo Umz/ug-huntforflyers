@@ -6,17 +6,18 @@ import Preload from './scenes/Preload';
 var config = {
 
     type: Phaser.AUTO,
+    pixelArt: true,
 
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 800,
-        height: 400,
+        width: 640,
+        height: 320,
         parent: 'phaser-game',
     },
     physics: {
         default: 'arcade',
-        arcade: {debug:true}
+        arcade: {debug: false}
     },
     
     scene: [

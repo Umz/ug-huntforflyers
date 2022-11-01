@@ -1,7 +1,7 @@
 import SpriteGenerator from "../components/SpriteBuilder";
 import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
-import WorldConsts from "../WorldConsts";
+import Prey from "../prey/Prey";
 
 class Game extends Phaser.Scene {
 
@@ -35,68 +35,23 @@ class Game extends Phaser.Scene {
 
         this.addPlayerToScene(); // Extract-
 
-        let amt = 20;
+        let amt = 10;
         for (let i=0;i<amt;i++)
-            this.addPreyToScene();  // Extract inner
+            this.addPreyObject();  // Extract inner
     }
 
-    addPreyToScene() {
+    addPreyObject() {
 
-        const startX = 400;
-        const space = 60;
-        const zoneLeft = startX - space;
-        const zoneRight = startX + space;
+        let prey = new Prey(this);
+        this.allPrey.add(prey.sprite);
+        SpriteGenerator.addFlightPhysics(prey.sprite);
 
-        const speed = WorldConsts.BASE_MOVE_SPEED * 1.2;
+        prey.init();
 
-        let sprite = SpriteGenerator.spawnFlyingSprite(this, 'fairy1');
-        this.allPrey.add(sprite);
-        SpriteGenerator.addFlightPhysics(sprite);
-
-        sprite.body.setMaxSpeed(speed);
-        sprite.setAccelerationX(speed);
-
-        sprite.setX(sprite.x + Phaser.Math.Between(-50, 50))
-        sprite.setY(sprite.y - Phaser.Math.Between(0, 25))
-
-        const variation = Phaser.Math.Between(-10, 10);
-        const accel = speed * .5;
-
-        let timer = 500;
-        let count = 1;
-
-        sprite.update = function(time, delta) {
-
-            timer -= delta;
-            if (timer <= 0) {
-                count = (count + 1) > 4 ? 1 : (count + 1);
-                timer = 50;
-                this.setTexture(`fairy${count}`);
-            }
-
-            if (this.body.velocity.y > 10)
-                this.setAccelerationY(- (250 + variation))
-            if (this.y < WorldConsts.FLYING_HEIGHT_MID_Y + variation)
-                this.setAccelerationY(0);
-
-            if (this.x > zoneRight)
-                this.setAccelerationX(-accel);
-            if (this.x < zoneRight)
-                this.setAccelerationX(accel);
-            
-        }
-
-        sprite.gameFreeze = function() {
-            this.setAcceleration(0);
-            this.setVelocity(0);
-            this.setTintFill(0xFFFFFF);
-            sprite.setActive(false);
-        }
-        
         this.controlpad.action = ()=>{
             let p = this.allPrey.getFirstAlive();
             if (p)
-                p.gameFreeze();
+                p.freeze();
         }
     }
 

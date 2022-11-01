@@ -24,7 +24,7 @@ class SpriteGenerator {
     }
 
     static addFlightPhysics(sprite) {
-        sprite.setBounce(.2).setCollideWorldBounds(true);
+        sprite.setCollideWorldBounds(true);
         sprite.body.setGravity(0, 150);
     }
 }

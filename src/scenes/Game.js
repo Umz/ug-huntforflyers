@@ -15,53 +15,59 @@ class Game extends Phaser.Scene {
 
         this.physics.world.setBounds(0, 0, camera.width, camera.height);
 
-        this.platforms = this.physics.add.group({immovable:true});
-        this.players = this.physics.add.group();
-        this.allPrey = this.physics.add.group({
-            runChildUpdate: true
-        });
+        this.platforms = this.physics.add.group({ immovable: true });
+        this.allUpdaters = this.add.group({ runChildUpdate: true });
 
-        this.physics.add.collider(this.platforms, this.players);
-        this.physics.add.collider(this.platforms, this.allPrey);
+        this.collisionGroupPlayers = this.physics.add.group();
+        this.collisionGroupEnemies = this.physics.add.group();
+
+        this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
+        this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
-        
-        this.addGround();   // Extract
-
-        let image = this.add.image(150, 260, 'house').setOrigin(.5, 1);
-
-        //  Add Playable characters
-
-        this.addPlayerToScene(); // Extract-
-
-        let amt = 10;
-        for (let i=0;i<amt;i++)
-            this.addPreyObject();  // Extract inner
-    }
-
-    addPreyObject() {
-
-        let prey = new Prey(this);
-        this.allPrey.add(prey.sprite);
-        SpriteGenerator.addFlightPhysics(prey.sprite);
-
-        prey.init();
-
         this.controlpad.action = ()=>{
-            let p = this.allPrey.getFirstAlive();
+            let p = this.collisionGroupEnemies.getFirstAlive();
             if (p)
                 p.freeze();
         }
+        
+        this.addGround();   // Extract
+        this.addHouse();    // Extract
+
+        //  Add Playable characters
+
+        this.addPlayerToScene();    // Extract
+        for (let i=0;i<10;i++)
+            this.addPreyToScene();  // Extract inner
+    }
+
+    update(time, delta) {
+        this.controlpad.update(time, delta);
+    }
+
+    addPreyToScene() {
+
+        let prey = new Prey(this);
+        
+        this.allUpdaters.add(prey.sprite);
+        this.collisionGroupEnemies.add(prey.sprite);
+
+        SpriteGenerator.addFlightPhysics(prey.sprite);
+
+        prey.init();
     }
 
     addPlayerToScene() {
 
-        this.player = new Player(this);
-        this.players.add(this.player.sprite);
-        SpriteGenerator.addPhysics(this.player.sprite);
+        let player = new Player(this);
 
-        this.controlpad.addControlTarget(this.player.controller);
+        this.allUpdaters.add(player.sprite);
+        this.collisionGroupPlayers.add(player.sprite);
+
+        SpriteGenerator.addPhysics(player.sprite);
+
+        this.controlpad.addControlTarget(player.controller);
     }
 
     addGround() {
@@ -73,9 +79,8 @@ class Game extends Phaser.Scene {
         this.platforms.add(ground);
     }
 
-    update(time, delta) {
-        this.controlpad.update(time, delta);
+    addHouse() {
+        let image = this.add.image(150, 280, 'house').setOrigin(.5, 1);
     }
-    
 };
 export default Game;

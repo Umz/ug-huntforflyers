@@ -1,10 +1,9 @@
-class Flyerviewer {
+import BaseController from "../classes/BaseController";
+
+class Flyerviewer extends BaseController {
 
     constructor(prey) {
-        
-        this.prey = prey;
-        this.sprite = prey.sprite;
-
+        super(prey);
         this.addFlappingAnimation();
     }
 
@@ -19,7 +18,7 @@ class Flyerviewer {
                 this.setTexture(`fairy${count}`);
             }
         }
-        this.prey.addUpdater(fn.bind(this.sprite));
+        this.addUpdaterBindSprite(fn);
     }
 }   
 export default Flyerviewer;

@@ -1,12 +1,10 @@
+import BaseController from "../classes/BaseController";
 import WorldConsts from "../WorldConsts";
 
-class FlyerController {
+class FlyerController extends BaseController {
 
     constructor(prey) {
-        
-        this.prey = prey;
-        this.sprite = prey.sprite;
-
+        super(prey);
         this.addFlying();
         this.addLocalMovement();
     }
@@ -24,7 +22,8 @@ class FlyerController {
                 this.setAccelerationY(0);
         }
 
-        this.prey.addUpdater(fn.bind(this.sprite));
+        this.addUpdaterBindSprite(fn);
+        
     }
 
     addLocalMovement() {
@@ -35,7 +34,7 @@ class FlyerController {
         const ZONE_R = START_X + DIST_MAX;
 
         const VARY = Phaser.Math.Between(-10, 10);
-        const SPEED = WorldConsts.BASE_MOVE_SPEED * this.prey.stats.speed;
+        const SPEED = WorldConsts.BASE_MOVE_SPEED * this.stats.speed;
 
         const fn = function(time, delta) {
             if (this.x > ZONE_R)
@@ -43,7 +42,7 @@ class FlyerController {
             if (this.x < ZONE_L)
                 this.setAccelerationX(SPEED);
         }
-        this.prey.addUpdater(fn.bind(this.sprite));
+        this.addUpdaterBindSprite(fn);
 
         this.sprite.body.setMaxSpeed(SPEED);
     }

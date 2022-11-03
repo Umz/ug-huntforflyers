@@ -1,12 +1,10 @@
+import BaseController from "../classes/BaseController";
 import WorldConsts from "../WorldConsts";
 
-class PlayerController {
+class PlayerController extends BaseController {
 
     constructor(player) {
-        this.player = player;
-        this.sprite = player.sprite;
-
-        this.stats = this.player.stats;
+        super(player);
     }
 
     moveLeft() {
@@ -21,6 +19,6 @@ class PlayerController {
         console.log('Player Controller Action')
     }
 
-    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.player.stats.speed }
+    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.speed }
 }
 export default PlayerController;

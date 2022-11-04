@@ -2,6 +2,7 @@ import SpriteGenerator from "../components/SpriteBuilder";
 import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
 import Prey from "../prey/Prey";
+import WorldConsts from "../WorldConsts";
 
 class Game extends Phaser.Scene {
 
@@ -31,10 +32,9 @@ class Game extends Phaser.Scene {
             if (p)
                 p.freeze();
         }
-        
-        this.addGround();   // Extract
-        this.addHouse();    // Extract
 
+        this.addBackground();
+        
         //  Add Playable characters
 
         this.addPlayerToScene();    // Extract
@@ -70,13 +70,34 @@ class Game extends Phaser.Scene {
         this.controlpad.addControlTarget(player.controller);
     }
 
-    addGround() {
-        const camera = this.cameras.main;
-        let x = camera.width * .5;
-        let y = camera.height - (20);
-        let ground = this.add.rectangle(x, y, camera.width, 40, 0x444444);
+    addBackground() {
+
+        const width = WorldConsts.WIDTH;
+        const height = WorldConsts.HEIGHT;
+
+        //  ADD the background layers
+
+        for (let i=0; i<5; i++)
+            this.add.tileSprite(0, 0, width, height, `bg_layer_${i}`).setOrigin(0);
+
+        //  ADD the ground
+
+        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, width, 10, 0x000000).setOrigin(0);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
+
+        this.add.tileSprite(0, WorldConsts.GROUND_Y, width, 64, `bg_ground_0`).setOrigin(0);
+
+        //  Add buildings
+
+        let house = this.add.image(200, WorldConsts.GROUND_Y, 'house').setOrigin(.5, 1);
+        let pump = this.add.image(250, WorldConsts.GROUND_Y, 'pump').setOrigin(.5, 1);
+        let table = this.add.image(150, WorldConsts.GROUND_Y, 'labTable').setOrigin(.5, 1);
+
+        let bush = this.add.image(400, WorldConsts.GROUND_Y, 'bush').setOrigin(.5, 1);
+        let tree1 = this.add.image(380, WorldConsts.GROUND_Y, 'tree1').setOrigin(.5, 1);
+        let tree2 = this.add.image(420, WorldConsts.GROUND_Y, 'tree2').setOrigin(.5, 1);
+        let tree3 = this.add.image(450, WorldConsts.GROUND_Y, 'tree2').setOrigin(.5, 1).setFlipX(true);
     }
 
     addHouse() {

@@ -2,6 +2,7 @@ import 'phaser';
 import Boot from './scenes/Boot';
 import Game from './scenes/Game';
 import Preload from './scenes/Preload';
+import WorldConsts from './WorldConsts';
 
 var config = {
 
@@ -12,8 +13,8 @@ var config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 640,
-        height: 320,
+        width: WorldConsts.WIDTH,
+        height: WorldConsts.HEIGHT,
         parent: 'phaser-game',
     },
     physics: {

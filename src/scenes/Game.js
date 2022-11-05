@@ -3,6 +3,8 @@ import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
 import Prey from "../prey/Prey";
 import WorldConsts from "../WorldConsts";
+import BackroundBuilder from "../background/BackgroundBuilder";
+import BackgroundBuilder from "../background/BackgroundBuilder";
 
 class Game extends Phaser.Scene {
 
@@ -38,7 +40,7 @@ class Game extends Phaser.Scene {
         //  Add Playable characters
 
         this.addPlayerToScene();    // Extract
-        for (let i=0;i<10;i++)
+        for (let i=0;i<20;i++)
             this.addPreyToScene();  // Extract inner
     }
 
@@ -72,36 +74,21 @@ class Game extends Phaser.Scene {
 
     addBackground() {
 
-        const width = WorldConsts.WIDTH;
-        const height = WorldConsts.HEIGHT;
+        //  Level builder will have where the forests are
+        //  Where the buildings are
+        //  Stores all the co-ordinates
 
-        //  ADD the background layers
-
-        for (let i=0; i<5; i++)
-            this.add.tileSprite(0, 0, width, height, `bg_layer_${i}`).setOrigin(0);
-
+        BackgroundBuilder.addBackgroundScene(this);
+        BackgroundBuilder.addGround(this);
+        BackgroundBuilder.addPlayerBase(this);
+        BackgroundBuilder.addPump(this);
+        BackgroundBuilder.addForest(this, 350, 5);
+        
         //  ADD the ground
 
-        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, width, 10, 0x000000).setOrigin(0);
+        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
-
-        this.add.tileSprite(0, WorldConsts.GROUND_Y, width, 64, `bg_ground_0`).setOrigin(0);
-
-        //  Add buildings
-
-        let house = this.add.image(200, WorldConsts.GROUND_Y, 'house').setOrigin(.5, 1);
-        let pump = this.add.image(250, WorldConsts.GROUND_Y, 'pump').setOrigin(.5, 1);
-        let table = this.add.image(150, WorldConsts.GROUND_Y, 'labTable').setOrigin(.5, 1);
-
-        let bush = this.add.image(400, WorldConsts.GROUND_Y, 'bush').setOrigin(.5, 1);
-        let tree1 = this.add.image(380, WorldConsts.GROUND_Y, 'tree1').setOrigin(.5, 1);
-        let tree2 = this.add.image(420, WorldConsts.GROUND_Y, 'tree2').setOrigin(.5, 1);
-        let tree3 = this.add.image(450, WorldConsts.GROUND_Y, 'tree2').setOrigin(.5, 1).setFlipX(true);
-    }
-
-    addHouse() {
-        let image = this.add.image(150, 280, 'house').setOrigin(.5, 1);
     }
 };
 export default Game;

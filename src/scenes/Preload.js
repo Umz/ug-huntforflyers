@@ -16,7 +16,7 @@ class Preload extends Phaser.Scene {
         for (let i=1; i<5; i++)
             this.load.image(`fairy${i}`, `test/fairy${i}.png`);
 
-        for (let i=1; i<6; i++)
+        for (let i=1; i<7; i++)
             this.load.image(`bird${i}`, `test/b${i}.png`);
 
         //  Background

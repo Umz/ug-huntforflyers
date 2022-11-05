@@ -5,6 +5,7 @@ class Flyerviewer extends BaseController {
     constructor(prey) {
         super(prey);
         this.addFlappingAnimation();
+        this.addDirectionTracking();
     }
 
     addFlappingAnimation() {
@@ -13,11 +14,19 @@ class Flyerviewer extends BaseController {
         const fn = function(time, delta) {
             timer -= delta;
             if (timer <= 0) {
-                count = (count + 1) > 4 ? 1 : (count + 1);
+                count = (count + 1) > 6 ? 1 : (count + 1);
                 timer = 60;
-                this.setTexture(`fairy${count}`);
+                this.setTexture(`bird${count}`);
             }
         }
+        this.addUpdaterBindSprite(fn);
+    }
+
+    addDirectionTracking() {
+        const fn = function(time, delta) {
+            let flipX = (this.body.velocity.x > 0);
+            this.setFlipX(flipX);
+        };
         this.addUpdaterBindSprite(fn);
     }
 }   

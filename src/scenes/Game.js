@@ -90,5 +90,5 @@ class Game extends Phaser.Scene {
         this.physics.add.existing(ground);
         this.platforms.add(ground);
     }
-};
+}
 export default Game;

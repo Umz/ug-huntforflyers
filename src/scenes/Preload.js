@@ -37,7 +37,7 @@ class Preload extends Phaser.Scene {
     }
 
     create(data) {
-        this.scene.start('Game');
+        this.scene.start('MenuScene');
     } 
 
     update(time, delta) {

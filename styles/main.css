@@ -26,6 +26,8 @@ body {
     height: 100%;
     overflow: hidden;
     z-index: 11;
+
+    visibility: hidden;
 }
 .ui-area {
     padding: 20px;
@@ -55,12 +57,48 @@ body {
 }
 
 #game-logo {
-    display: none;
+    display: block;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 12;
 }
 #game-logo img {
     width: 256px;
+}
+
+#game-title-menu {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -40px);
+    z-index: 13;
+}
+.title-menu-list {
+    width: 100%;
+    text-align: center;
+}
+.title-menu-item {
+    display: inline-block;
+    min-width: 80px;
+}
+.main-item {
+    min-width: 130px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.bounce-5 {
+    animation-name: bounce-5;
+    animation-timing-function: ease;
+}
+@keyframes bounce-5 {
+    0%   { transform: scale(1,1)    translateY(0); }
+    10%  { transform: scale(1.1,.9) translateY(0); }
+    30%  { transform: scale(.9,1.1) translateY(-50px); }
+    50%  { transform: scale(1,1)    translateY(0); }
+    57%  { transform: scale(1,1)    translateY(-7px); }
+    64%  { transform: scale(1,1)    translateY(0); }
+    100% { transform: scale(1,1)    translateY(0); }
 }

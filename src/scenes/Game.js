@@ -82,7 +82,7 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addGround(this);
         BackgroundBuilder.addPlayerBase(this);
         BackgroundBuilder.addPump(this);
-        BackgroundBuilder.addForest(this, 350, 5);
+        BackgroundBuilder.addForest(this, 350, 15);
         
         //  ADD the ground
 

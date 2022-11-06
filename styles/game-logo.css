@@ -1,0 +1,11 @@
+#game-logo {
+    width: 100%;
+    top: 45%;
+    transform: translate(0, -50%);
+    z-index: 12;
+}
+#game-logo img {
+    display: block;
+    width: 256px;
+    margin: auto;
+}

@@ -13,44 +13,44 @@
      </head>
      <body>
 
-        <div id="game-ui">
-            <div id="top-left-ui" class="ui-area">
+        <div id="game-ui" class="game-overlay">
+            <div id="gui-top-left" class="gui-area">
                 <table>
                     <tr>
-                        <td class="stat-col-image"><img class="ui-stat-image" src="assets/ui/stat_rank.png" alt="Ranking" /></td>
-                        <td class="stat-col-text">Lv. 1</td>
+                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_rank.png" alt="Ranking" /></td>
+                        <td id="gui-tl-level" class="gui-tl-tbl-col-text">Lv. 1</td>
                     </tr>
                     <tr>
-                        <td class="stat-col-image"><img class="ui-stat-image" src="assets/ui/stat_star.png" alt="Life Force" /></td>
-                        <td class="stat-col-text">209</td>
+                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_star.png" alt="Life Force" /></td>
+                        <td id="gui-tl-lifeforce" class="gui-tl-tbl-col-text">209</td>
                     </tr>
                     <tr>
-                        <td class="stat-col-image"><img class="ui-stat-image" src="assets/ui/stat_person.png" alt="Lives" /></td>
-                        <td class="stat-col-text">3</td>
+                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_person.png" alt="Lives" /></td>
+                        <td id="gui-tl-lives" class="gui-tl-tbl-col-text">3</td>
                     </tr>
                 </table>
             </div>
-            <div id="top-right-ui" class="ui-area">
-                <img class="ui-image" src="assets/ui/pause.png" alt="Pause" />
+            <div id="gui-top-right" class="gui-area">
+                <img class="gui-tr-image" src="assets/ui/pause.png" alt="Pause" />
             </div>
         </div>
 
-        <div id="game-logo">
+        <div id="game-logo" class="game-overlay">
             <img src="assets/test/phaser-logo.png" alt="Logo" />
         </div>
 
-        <div id="game-title-menu">
-            <ul class="title-menu-list">
-                <li class="title-menu-item"><img class="" src="assets/ui/info.png" alt="How To" /></li>
-                <li class="title-menu-item"><img class="" src="assets/ui/locked.png" alt="Locked" /></li>
-                <li id="menu-play" class="title-menu-item main-item bounce-5"><img class="" src="assets/ui/play_160.png" alt="Play" /></li>
-                <li class="title-menu-item"><img class="" src="assets/ui/speaker_on.png" alt="Sound On" /></li>
-                <li class="title-menu-item"><img class="" src="assets/ui/question.png" alt="Info" /></li>
+        <div id="game-title-menu" class="game-overlay">
+            <ul class="gtm-menu-list">
+                <li class="gtm-ml-item"><img class="" src="assets/ui/info.png" alt="How To" /></li>
+                <li class="gtm-ml-item"><img class="" src="assets/ui/locked.png" alt="Locked" /></li>
+                <li id="menu-play" class="gtm-ml-item gtm-ml-main bounce-5"><img class="" src="assets/ui/play_160.png" alt="Play" /></li>
+                <li class="gtm-ml-item"><img class="" src="assets/ui/speaker_on.png" alt="Sound On" /></li>
+                <li class="gtm-ml-item"><img class="" src="assets/ui/question.png" alt="Info" /></li>
             </ul>
         </div>
 
         <div id="phaser-game"></div>
+        
         <script src="build/project.bundle.js" charset="utf-8"></script>
-
      </body>
  </html>

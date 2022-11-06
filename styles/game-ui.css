@@ -1,0 +1,38 @@
+#game-ui {
+    left: 0;
+    top: 0;
+    width: 100%;
+    
+    z-index: 11;
+    visibility: hidden;
+}
+.gui-area {
+    padding: 20px;
+}
+
+/* LEFT - PLAYER Stats */
+#gui-top-left {
+    float: left;
+}
+
+.gui-tl-tbl-col-image {
+    text-align: center;
+    min-width: 42px;
+}
+.gui-tl-tbl-col-text {
+    font-family: 'Kanit', sans-serif;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+}
+
+.gui-tl-stat-image {
+    display: inline-block;
+}
+
+/* RIGHT - Pause */
+#gui-top-right {
+    float: right;
+}
+.gui-tr-image {
+    min-height: 32px;
+}

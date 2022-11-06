@@ -5,6 +5,13 @@ import MenuScene from './scenes/MenuScene';
 import Preload from './scenes/Preload';
 import WorldConsts from './WorldConsts';
 
+//  Screen width fix (stretch if shorter)
+const width = innerWidth;
+const height = innerHeight;
+const ratio = width / height;
+const newWidth = Math.ceil(WorldConsts.HEIGHT * ratio);
+WorldConsts.WIDTH = (ratio > 2) ? newWidth : WorldConsts.WIDTH;
+
 var config = {
 
     type: Phaser.AUTO,

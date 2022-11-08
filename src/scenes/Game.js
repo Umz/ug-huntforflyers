@@ -63,6 +63,7 @@ class Game extends Phaser.Scene {
     addPlayerToScene() {
 
         let player = new Player(this);
+        player.init();
 
         this.allUpdaters.add(player.sprite);
         this.collisionGroupPlayers.add(player.sprite);

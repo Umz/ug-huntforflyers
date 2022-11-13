@@ -1,6 +1,9 @@
+@import url('common.css');
 @import url('game-ui.css');
 @import url('game-logo.css');
 @import url('game-title-menu.css');
+@import url('game-pause-menu.css');
+@import url('game-result-menu.css');
 
 * {
     padding:0;
@@ -13,6 +16,10 @@ html, body {
 body {
     background-color: #3e1e00;
     background-image: linear-gradient(#5d9ce8 50%, #3e1e00 50%);
+
+    font-family: 'Kanit', sans-serif;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
 }
 
 #phaser-game {
@@ -22,4 +29,11 @@ body {
 .game-overlay {
     position: absolute;
     overflow: hidden;
+}
+
+#game-menu-bg-cover {
+    background: #000000;
+    opacity: .4;
+    z-index: 11;
+    top: 0;
 }

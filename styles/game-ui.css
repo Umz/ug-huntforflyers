@@ -19,11 +19,6 @@
     text-align: center;
     min-width: 42px;
 }
-.gui-tl-tbl-col-text {
-    font-family: 'Kanit', sans-serif;
-    text-shadow: 1px 1px 1px #000;
-    color: #fff;
-}
 
 .gui-tl-stat-image {
     display: inline-block;

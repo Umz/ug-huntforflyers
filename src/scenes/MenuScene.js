@@ -1,5 +1,6 @@
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
+import Consts from "../Consts";
 
 class MenuScene extends Phaser.Scene {
 
@@ -13,10 +14,12 @@ class MenuScene extends Phaser.Scene {
         BackgroundBuilder.addGround(this);
         BackgroundBuilder.addForest(this, 220, 6);
 
-        const domPlay = document.getElementById('menu-play');
-        domPlay.addEventListener('click', ()=>{
-            DomHandler.HideMainMenu();
-            DomHandler.ShowGameUI();
+        DomHandler.AddClick(Consts.MAIN_PLAY_BUTTON, ()=> {
+            DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, false);
+            DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, false);
+            DomHandler.SetDomIdDisplay(Consts.UI, true);
+            DomHandler.ResetClick(Consts.MAIN_PLAY_BUTTON);
+
             this.scene.start('Game');
         });
     }

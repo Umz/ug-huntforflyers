@@ -32,8 +32,10 @@ body {
 }
 
 #game-menu-bg-cover {
-    background: #000000;
-    opacity: .4;
-    z-index: 11;
+    display: none;
     top: 0;
+    z-index: 11;
+
+    opacity: .4;
+    background: #000000;
 }

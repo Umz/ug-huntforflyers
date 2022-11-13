@@ -1,10 +1,10 @@
 #game-ui {
+    display: none;
     left: 0;
     top: 0;
     width: 100%;
     
     z-index: 11;
-    visibility: hidden;
 }
 .gui-area {
     padding: 20px;

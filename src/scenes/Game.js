@@ -5,6 +5,8 @@ import Prey from "../prey/Prey";
 import WorldConsts from "../WorldConsts";
 import BackroundBuilder from "../background/BackgroundBuilder";
 import BackgroundBuilder from "../background/BackgroundBuilder";
+import DomHandler from "../components/DomHandler";
+import Consts from "../Consts";
 
 class Game extends Phaser.Scene {
 
@@ -34,6 +36,8 @@ class Game extends Phaser.Scene {
             if (p)
                 p.freeze();
         }
+
+        this.addDOMControl();
 
         this.addBackground();
         
@@ -90,6 +94,56 @@ class Game extends Phaser.Scene {
         let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
+    }
+
+    addDOMControl() {
+
+        //  GUI
+
+        DomHandler.AddClick(Consts.UI_PAUSE_BUTTON, ()=> {
+            DomHandler.SetDomIdDisplay(Consts.UI, false);
+            DomHandler.SetDomIdDisplay(Consts.MENU_BG, true);
+            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, true);
+            this.scene.pause();
+        });
+
+        //  PAUSE MENU
+
+        DomHandler.AddClick(Consts.PAUSE_PLAY_BUTTON, ()=> {
+            DomHandler.SetDomIdDisplay(Consts.UI, true);
+            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
+            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
+            this.scene.resume();
+        });
+
+        DomHandler.AddClick(Consts.PAUSE_HOME_BUTTON, ()=> {
+            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
+            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
+            DomHandler.ResetClicks(Consts.SC_GAME_BUTTONS);
+
+            DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
+            DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
+
+            this.scene.start('MenuScene');
+        });
+
+        DomHandler.AddClick(Consts.PAUSE_SOUND_BUTTON, ()=> {
+            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
+            DomHandler.SetDomIdDisplay(Consts.RESULTS_MENU, true);
+        });
+
+        //  RESULTS / GAME OVER
+
+        DomHandler.AddClick(Consts.RESULTS_HOME_BUTTON, ()=>{
+            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
+            DomHandler.SetDomIdDisplay(Consts.RESULTS_MENU, false);
+            DomHandler.ResetClicks(Consts.SC_GAME_BUTTONS);
+
+            DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
+            DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
+
+            this.scene.start('MenuScene');
+        });
     }
 }
 export default Game;

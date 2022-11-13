@@ -1,17 +1,23 @@
 class DomHandler {
 
-    static HideMainMenu() {
+    static SetDomIdDisplay(id, visible) {
+        const display = (visible) ? 'block' : 'none';
+        document.getElementById(id).style.display = display;
+    }
 
-        document.getElementById('game-logo').style.visibility = "hidden";
-        document.getElementById('game-title-menu').style.visibility = "hidden";
-        
-        let old_element = document.getElementById("menu-play");
+    static AddClick(elementId, fn) {
+        document.getElementById(elementId).addEventListener('click', fn);
+    }
+
+    static ResetClick(elementId) {
+        let old_element = document.getElementById(elementId);
         let new_element = old_element.cloneNode(true);
         old_element.parentNode.replaceChild(new_element, old_element);
     }
 
-    static ShowGameUI() {
-        document.getElementById('game-ui').style.visibility = "visible";
+    static ResetClicks(ids) {
+        for (let id of ids)
+            DomHandler.ResetClick(id);
     }
 }
 export default DomHandler;

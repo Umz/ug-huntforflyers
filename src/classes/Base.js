@@ -1,7 +1,10 @@
+import States from "./States";
+
 class Base {
 
     constructor(scene) {
         this.updaters = [];
+        this.state = States.NORMAL;
     }
 
     init() {
@@ -9,6 +12,7 @@ class Base {
             for (let fn of this.updaters)
                 fn(time, delta);
         }
+        this.sprite.parent = this;
     }
 
     addUpdater(fn) {

@@ -1,4 +1,5 @@
 import Base from "../classes/Base";
+import States from "../classes/States";
 import SpriteGenerator from "../components/SpriteBuilder";
 import FlyerController from "./FlyerController";
 import Flyerviewer from "./FlyerViewer";
@@ -28,6 +29,8 @@ class Prey extends Base {
         this.setVelocity(0);
         this.setTintFill(0xFFFFFF);
         this.setActive(false);
+
+        this.parent.state = States.FROZEN;
     }
 }
 export default Prey;

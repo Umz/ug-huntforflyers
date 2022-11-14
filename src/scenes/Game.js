@@ -7,6 +7,7 @@ import BackroundBuilder from "../background/BackgroundBuilder";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
 import Consts from "../Consts";
+import States from "../classes/States";
 
 class Game extends Phaser.Scene {
 
@@ -29,6 +30,8 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
 
+        this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey);
+
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
         this.controlpad.action = ()=>{
@@ -44,12 +47,19 @@ class Game extends Phaser.Scene {
         //  Add Playable characters
 
         this.addPlayerToScene();    // Extract
+
         for (let i=0;i<20;i++)
             this.addPreyToScene();  // Extract inner
     }
 
     update(time, delta) {
         this.controlpad.update(time, delta);
+    }
+
+    overlapPlayerPrey(player, prey) {
+        let preyState = prey.parent.state;
+        if (preyState == States.FROZEN)
+            prey.setActive(false).setVisible(false);
     }
 
     addPreyToScene() {

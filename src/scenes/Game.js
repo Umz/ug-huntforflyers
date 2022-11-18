@@ -30,7 +30,7 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
 
-        this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey);
+        this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
@@ -61,10 +61,11 @@ class Game extends Phaser.Scene {
         if (preyState == States.FROZEN) {
 
             let points = 1;
-            GameSave.incScore(points);
-            console.log(GameSave.getScore())
+            GameSave.IncScore(points);
+            DomHandler.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
 
             prey.setActive(false).setVisible(false);
+            this.collisionGroupEnemies.remove(prey);
         }
     }
 

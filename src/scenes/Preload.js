@@ -29,7 +29,7 @@ class Preload extends Phaser.Scene {
     }
 
     create(data) {
-        GameSave.init();
+        GameSave.Init();
         this.scene.start('MenuScene');
     } 
 

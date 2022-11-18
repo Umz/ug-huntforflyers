@@ -19,5 +19,9 @@ class DomHandler {
         for (let id of ids)
             DomHandler.ResetClick(id);
     }
+
+    static SetDomText(id, txt) {
+        document.getElementById(id).innerText = txt;
+    }
 }
 export default DomHandler;

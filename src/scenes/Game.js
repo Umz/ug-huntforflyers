@@ -3,11 +3,11 @@ import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
 import Prey from "../prey/Prey";
 import WorldConsts from "../WorldConsts";
-import BackroundBuilder from "../background/BackgroundBuilder";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
 import Consts from "../Consts";
 import States from "../classes/States";
+import GameSave from "../components/GameSave";
 
 class Game extends Phaser.Scene {
 
@@ -58,8 +58,14 @@ class Game extends Phaser.Scene {
 
     overlapPlayerPrey(player, prey) {
         let preyState = prey.parent.state;
-        if (preyState == States.FROZEN)
+        if (preyState == States.FROZEN) {
+
+            let points = 1;
+            GameSave.incScore(points);
+            console.log(GameSave.getScore())
+
             prey.setActive(false).setVisible(false);
+        }
     }
 
     addPreyToScene() {

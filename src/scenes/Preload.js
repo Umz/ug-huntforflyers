@@ -1,3 +1,5 @@
+import GameSave from "../components/GameSave";
+
 class Preload extends Phaser.Scene {
 
     constructor() {
@@ -27,6 +29,7 @@ class Preload extends Phaser.Scene {
     }
 
     create(data) {
+        GameSave.init();
         this.scene.start('MenuScene');
     } 
 

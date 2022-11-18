@@ -1,5 +1,6 @@
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
+import GameSave from "../components/GameSave";
 import Consts from "../Consts";
 
 class MenuScene extends Phaser.Scene {
@@ -9,6 +10,10 @@ class MenuScene extends Phaser.Scene {
     }
 
     create(data) {
+
+        GameSave.SetScore(0);
+
+        DomHandler.SetDomText(Consts.UI_SCORE_TEXT, 0);
 
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);

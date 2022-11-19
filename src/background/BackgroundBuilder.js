@@ -1,11 +1,7 @@
-import WorldConsts from "../WorldConsts";
+import WorldConsts from "../consts/WorldConsts";
+import TextureRegistry from "../registry/TextureRegistry";
 
 class BackgroundBuilder {
-
-    static addHomeBase(scene, atlas) {
-        let sprite = scene.physics.add.sprite(200, 200, atlas);
-        return sprite;
-    }
 
     static addBackgroundScene(scene) {
         for (let i=0; i<6; i++)
@@ -17,14 +13,15 @@ class BackgroundBuilder {
         scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0);
     }
 
-    static addPlayerBase(scene) {
-        scene.add.image(200, WorldConsts.GROUND_Y, 'background', 'building_main').setOrigin(.5, 1);
-        scene.add.image(150, WorldConsts.GROUND_Y, 'background', 'decor_lab_table').setOrigin(.5, 1);
+    /**
+     * @param {*} building LevelBuldingData
+     */
+    static addBuilding(scene, building) {
+        let atlas = TextureRegistry.atlas.get(building.type);
+        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1);
     }
 
-    static addPump(scene) {
-        return scene.add.image(250, WorldConsts.GROUND_Y, 'background', 'building_pump').setOrigin(.5, 1);
-    }
+    //  Special case for water pump - add animated?
 
     static addForest(scene, startX, trees) {
 

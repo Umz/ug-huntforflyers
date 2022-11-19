@@ -1,5 +1,5 @@
 import BaseController from "../classes/BaseController";
-import WorldConsts from "../WorldConsts";
+import WorldConsts from "../consts/WorldConsts";
 
 class PlayerController extends BaseController {
 

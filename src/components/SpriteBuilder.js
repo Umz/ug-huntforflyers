@@ -1,4 +1,4 @@
-class SpriteGenerator {
+class SpriteBuilder {
 
     constructor(scene) {
         this.scene = scene;
@@ -10,7 +10,7 @@ class SpriteGenerator {
     }
 
     static spawnFlyingSprite(scene, atlas) {
-        let sprite = scene.physics.add.sprite(400, 200, atlas);
+        let sprite = scene.physics.add.sprite(450, 200, atlas);
         return sprite;
     }
 
@@ -28,4 +28,4 @@ class SpriteGenerator {
         sprite.body.setGravity(0, 150);
     }
 }
-export default SpriteGenerator;
+export default SpriteBuilder;

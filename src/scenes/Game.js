@@ -2,12 +2,14 @@ import SpriteGenerator from "../components/SpriteBuilder";
 import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
 import Prey from "../prey/Prey";
-import WorldConsts from "../WorldConsts";
+import WorldConsts from "../consts/WorldConsts";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
-import Consts from "../Consts";
+import Consts from "../consts/Consts";
 import States from "../classes/States";
 import GameSave from "../components/GameSave";
+import LevelRegistry from "../registry/LevelRegistry";
+import Levels from "../consts/Levels";
 
 class Game extends Phaser.Scene {
 
@@ -17,9 +19,11 @@ class Game extends Phaser.Scene {
 
     create(data) {
 
-        const camera = this.cameras.main;
+        const CURRENT_LEVEL = Levels.HOME_1;
 
-        this.physics.world.setBounds(0, 0, camera.width, camera.height);
+        this.levelData = LevelRegistry.GetLevelData(CURRENT_LEVEL);
+
+        this.physics.world.setBounds(0, 0, this.levelData.width, WorldConsts.HEIGHT);
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.allUpdaters = this.add.group({ runChildUpdate: true });
@@ -96,19 +100,18 @@ class Game extends Phaser.Scene {
 
     addBackground() {
 
-        //  Level builder will have where the forests are
-        //  Where the buildings are
-        //  Stores all the co-ordinates
-
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
-        BackgroundBuilder.addPlayerBase(this);
-        BackgroundBuilder.addPump(this);
-        BackgroundBuilder.addForest(this, 350, 15);
-        
-        //  ADD the ground
 
-        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 10, 0x000000).setOrigin(0).setVisible(false);
+        for (let building of this.levelData.buildings)
+            BackgroundBuilder.addBuilding(this, building);
+        
+        for (let forest of this.levelData.forests)
+            BackgroundBuilder.addForest(this, forest.worldX, forest.size);
+        
+        //  ADD the ground - physics
+
+        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, this.levelData.width, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
     }

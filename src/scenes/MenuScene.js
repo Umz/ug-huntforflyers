@@ -1,7 +1,7 @@
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
 import GameSave from "../components/GameSave";
-import Consts from "../Consts";
+import Consts from "../consts/Consts";
 
 class MenuScene extends Phaser.Scene {
 

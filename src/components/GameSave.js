@@ -1,4 +1,4 @@
-import Consts from "../Consts";
+import Consts from "../consts/Consts";
 
 class GameSave {
 

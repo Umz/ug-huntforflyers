@@ -1,5 +1,5 @@
 import WorldConsts from "../consts/WorldConsts";
-import TextureRegistry from "../registry/TextureRegistry";
+import TextureMapper from "../components/TextureMapper";
 
 class BackgroundBuilder {
 
@@ -17,7 +17,7 @@ class BackgroundBuilder {
      * @param {*} building LevelBuldingData
      */
     static addBuilding(scene, building) {
-        let atlas = TextureRegistry.atlas.get(building.type);
+        let atlas = TextureMapper.getAtlas(building.type);
         scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1);
     }
 

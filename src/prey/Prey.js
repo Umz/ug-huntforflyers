@@ -11,7 +11,7 @@ class Prey extends Base {
         super(scene);
 
         this.config = prey_config;
-        this.sprite = SpriteGenerator.spawnFlyingSprite(scene, 'bird1');
+        this.sprite = SpriteGenerator.SpawnFlyingEnemySprite(scene, 'bird1');
         this.controller = new FlyerController(this);
         this.view = new Flyerviewer(this);
     }

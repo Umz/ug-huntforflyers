@@ -1,5 +1,7 @@
 import Buildings from "../consts/Buildings.";
+import Depths from "../consts/Depths";
 import Flora from "../consts/Flora";
+import Building from "./Building";
 
 const HomeLevelModel = {
 
@@ -7,10 +9,9 @@ const HomeLevelModel = {
     TILES: 20,      //  How many tiles in 1 length
     
     BUILDINGS: [
-        //  Create LevelBuilding (Type) ? TypeScript style-
-        {type:Buildings.LAB_TABLE, tile:5},
-        {type:Buildings.PLAYER_HOUSE, tile:7},
-        {type:Buildings.WATER_PUMP, tile:8},
+        new Building({type:Buildings.LAB_TABLE, tile:4, depth:Depths.BUILDINGS_BG}),
+        new Building({type:Buildings.PLAYER_HOUSE, tile:6, depth:Depths.BUILDINGS_BG}),
+        new Building({type:Buildings.WATER_PUMP, tile:8, depth:Depths.BUILDINGS_FG})
     ],
 
     FORESTS: [

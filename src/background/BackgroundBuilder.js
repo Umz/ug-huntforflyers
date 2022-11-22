@@ -18,7 +18,7 @@ class BackgroundBuilder {
      */
     static addBuilding(scene, building) {
         let atlas = TextureMapper.getAtlas(building.type);
-        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1);
+        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth);
     }
 
     //  Special case for water pump - add animated?

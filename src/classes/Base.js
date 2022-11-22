@@ -13,6 +13,7 @@ class Base {
                 fn(time, delta);
         }
         this.sprite.parent = this;
+        return this;
     }
 
     addUpdater(fn) {

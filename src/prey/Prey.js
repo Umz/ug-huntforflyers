@@ -1,6 +1,6 @@
 import Base from "../classes/Base";
 import States from "../classes/States";
-import SpriteGenerator from "../components/SpriteBuilder";
+import SpriteBuilder from "../components/SpriteBuilder";
 import FlyerController from "./FlyerController";
 import Flyerviewer from "./FlyerViewer";
 import prey_config from "./prey-config";
@@ -11,7 +11,7 @@ class Prey extends Base {
         super(scene);
 
         this.config = prey_config;
-        this.sprite = SpriteGenerator.SpawnFlyingEnemySprite(scene, 'bird1');
+        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, 'bird1');
         this.controller = new FlyerController(this);
         this.view = new Flyerviewer(this);
     }

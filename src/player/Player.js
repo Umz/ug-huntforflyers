@@ -10,14 +10,11 @@ class Player extends Base {
     constructor(scene) {
         super(scene);
         this.config = config;
-        this.sprite = SpriteGenerator.SpawnPlayerSprite(scene, config.texture);
+        this.sprite = SpriteGenerator.GetPlayerSprite(scene, config.texture);
         this.controller = new PlayerController(this);
         this.viewer = new Playerviewer(this);
     }
 
-    init() {
-        super.init();
-        this.sprite.setPosition(200, WorldConsts.GROUND_Y - 32);
-    }
+    setPosition(x, y) { this.sprite.setPosition(x,y) }
 }
 export default Player;

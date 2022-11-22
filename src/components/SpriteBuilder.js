@@ -2,12 +2,12 @@ import Depths from "../consts/Depths";
 
 class SpriteBuilder {
 
-    static SpawnPlayerSprite(scene, atlas) {
+    static GetPlayerSprite(scene, atlas) {
         let sprite = scene.physics.add.sprite(-100, -100, atlas).setDepth(Depths.PLAYERS);
         return sprite;
     }
 
-    static SpawnFlyingEnemySprite(scene, atlas) {
+    static GetFlyingEnemySprite(scene, atlas) {
         let sprite = scene.physics.add.sprite(-100, -100, atlas).setDepth(Depths.ENEMIES_SPAWNED);
         return sprite;
     }

@@ -87,8 +87,10 @@ class Game extends Phaser.Scene {
 
     addPlayerToScene() {
 
-        let player = new Player(this);
-        player.init();
+        let playerHome = this.levelData.buildings[0];
+
+        let player = new Player(this).init();
+        player.setPosition(playerHome.worldX, WorldConsts.GROUND_Y - 32);
 
         this.allUpdaters.add(player.sprite);
         this.collisionGroupPlayers.add(player.sprite);

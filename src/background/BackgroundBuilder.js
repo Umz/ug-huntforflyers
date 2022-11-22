@@ -13,9 +13,6 @@ class BackgroundBuilder {
         scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0);
     }
 
-    /**
-     * @param {*} building LevelBuldingData
-     */
     static addBuilding(scene, building) {
         let atlas = TextureMapper.getAtlas(building.type);
         scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth);

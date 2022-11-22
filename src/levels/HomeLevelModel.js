@@ -1,7 +1,7 @@
 import Buildings from "../consts/Buildings.";
 import Depths from "../consts/Depths";
 import Flora from "../consts/Flora";
-import Building from "./Building";
+import Building from "../classes/Building";
 
 const HomeLevelModel = {
 

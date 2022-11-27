@@ -1,5 +1,6 @@
 import WorldConsts from "../consts/WorldConsts";
 import TextureMapper from "../components/TextureMapper";
+import ForestLayer from "../classes/ForestLayer";
 
 class BackgroundBuilder {
 
@@ -18,10 +19,12 @@ class BackgroundBuilder {
         scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth);
     }
 
-    //  Special case for water pump - add animated?
+    //  HOW to Split for Depths?
+    static addForestUnit(scene, startX, trees) {
 
-    static addForest(scene, startX, trees) {
-
+        //let forestLayer = {tint, alpha, depth, PlantTypes};
+        
+        //  Add Layer - addTrees(scene, layer);
         BackgroundBuilder.addTrees(scene, startX + 45, trees - 2, 0x000000, .5);
         BackgroundBuilder.addTrees(scene, startX + 15, trees - 2, 0x000000, .7);
         BackgroundBuilder.addTrees(scene, startX, trees);
@@ -31,7 +34,6 @@ class BackgroundBuilder {
             let frame = Phaser.Math.RND.pick(['decor_bush', 'flower1', 'flower2', 'flower3']);
             scene.add.image(startX + (i * gap), WorldConsts.GROUND_Y, 'background', frame).setOrigin(.5, 1).setDepth(Phaser.Math.Between(0, 1));
         }
-
     }
 
     static addTrees(scene, startX, amt, tint, alpha) {
@@ -48,6 +50,26 @@ class BackgroundBuilder {
                 tree.setTintFill(tint).setAlpha(alpha);
         }
     }
-    
+
+    static addForest(scene, forest) {
+        for(let layer of forest.layers)
+            BackgroundBuilder.addForestLayer(scene, layer);
+    }
+
+    static addForestLayer(scene, layer) {
+
+        const PY = WorldConsts.GROUND_Y;
+        
+        for (let i=0; i<layer.size; i++) {
+            
+            let posX = layer.worldX + (i * Phaser.Math.Between(30, 50));
+            let flip = Math.random() > .5;
+            let tree = scene.add.image(posX, PY, layer.atlas, layer.getRandomFrame()).setOrigin(.5, 1).setDepth(layer.depth).setAlpha(layer.alpha).setFlipX(flip);
+
+            if (layer.hasTint)
+                tree.setTintFill(0x000000);
+        }
+    }
+
 }
 export default BackgroundBuilder;

@@ -23,7 +23,9 @@ class Game extends Phaser.Scene {
 
         this.levelData = LevelRegistry.GetLevelData(CURRENT_LEVEL);
 
-        this.physics.world.setBounds(0, 0, this.levelData.width, WorldConsts.HEIGHT);
+        const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
+
+        this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.allUpdaters = this.add.group({ runChildUpdate: true });
@@ -87,7 +89,7 @@ class Game extends Phaser.Scene {
 
     addPlayerToScene() {
 
-        let building = this.levelData.buildings[0];     //  CLEAN -
+        let building = this.levelData.BUILDINGS[0];     //  CLEAN -
         let player = new Player(this).init();
         player.setPosition(building.worldX, WorldConsts.GROUND_Y - 32);
 
@@ -104,15 +106,17 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
 
-        for (let building of this.levelData.buildings)
+        for (let building of this.levelData.BUILDINGS)
             BackgroundBuilder.addBuilding(this, building);
         
-        for (let forest of this.levelData.forests)
-            BackgroundBuilder.addForest(this, forest.worldX, forest.size);
+        for (let forest of this.levelData.FORESTS)
+            BackgroundBuilder.addForest(this, forest);
         
         //  ADD the ground - physics
 
-        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, this.levelData.width, 10, 0x000000).setOrigin(0).setVisible(false);
+        let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
+
+        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
     }

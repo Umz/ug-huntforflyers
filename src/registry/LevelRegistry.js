@@ -9,24 +9,8 @@ class LevelRegistry {
         const MAP = new Map();
         MAP.set(Levels.HOME_1, HomeLevelModel);
 
-        const MODEL = MAP.get(levelID) ? MAP.get(levelID) : HomeLevelModel;
-        const SCREEN_WIDTH = WorldConsts.WIDTH;
-        const TILEWIDTH = Math.ceil(SCREEN_WIDTH / MODEL.TILES);
-
-        let transformArray = (typeArray) => {
-            typeArray.forEach(element => {
-                element.worldX = (element.tile * TILEWIDTH);
-            });
-            return typeArray;
-        }
-
-        let data = {
-            width: (MODEL.LENGTHS * SCREEN_WIDTH),
-            buildings: transformArray(MODEL.BUILDINGS),
-            forests: transformArray(MODEL.FORESTS),
-        }
-
-        return data;
+        let model = MAP.get(levelID) ? MAP.get(levelID) : HomeLevelModel;
+        return model;
     }
 }
 export default LevelRegistry;

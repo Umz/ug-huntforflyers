@@ -11,6 +11,7 @@ const height = innerHeight;
 const ratio = width / height;
 const newWidth = Math.ceil(WorldConsts.HEIGHT * ratio);
 WorldConsts.WIDTH = (ratio > 2) ? newWidth : WorldConsts.WIDTH;
+WorldConsts.TILE_WIDTH = (WorldConsts.WIDTH / WorldConsts.TILES);
 
 var config = {
 

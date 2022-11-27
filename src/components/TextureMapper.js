@@ -1,4 +1,4 @@
-import Buildings from "../consts/Buildings.";
+import Buildings from "../consts/Buildings";
 
 const TextureRegistry = {
     atlas: new Map(),

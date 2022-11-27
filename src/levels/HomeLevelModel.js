@@ -1,7 +1,8 @@
-import Buildings from "../consts/Buildings.";
+import Buildings from "../consts/Buildings";
 import Depths from "../consts/Depths";
-import Flora from "../consts/Flora";
 import Building from "../classes/Building";
+import PlantType from "../consts/PlantType";
+import Forest from "../classes/Forest";
 
 const HomeLevelModel = {
 
@@ -9,13 +10,18 @@ const HomeLevelModel = {
     TILES: 20,      //  How many tiles in 1 length
     
     BUILDINGS: [
-        new Building({type:Buildings.LAB_TABLE, tile:4, depth:Depths.BUILDINGS_BG}),
-        new Building({type:Buildings.PLAYER_HOUSE, tile:6, depth:Depths.BUILDINGS_BG}),
-        new Building({type:Buildings.WATER_PUMP, tile:8, depth:Depths.BUILDINGS_FG})
+        Building.New(Buildings.LAB_TABLE).setTileX(4).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(6).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.WATER_PUMP).setTileX(8).setDepth(Depths.BUILDINGS_FG)
     ],
 
     FORESTS: [
-        {type: Flora.SIMPLE_FOREST, tile:14, size:4}
+        Forest.New().setTileX(14).setSize(4)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1)
+            .addLayer([PlantType.BUSH, PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3], Depths.FOREST_FG2)
     ]
 }
 export default HomeLevelModel;

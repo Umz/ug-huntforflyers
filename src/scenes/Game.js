@@ -1,7 +1,6 @@
-import SpriteGenerator from "../components/SpriteBuilder";
+import SpriteBuilder from "../components/SpriteBuilder";
 import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
-import Prey from "../prey/Prey";
 import WorldConsts from "../consts/WorldConsts";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
@@ -10,6 +9,8 @@ import States from "../classes/States";
 import GameSave from "../components/GameSave";
 import LevelRegistry from "../registry/LevelRegistry";
 import Levels from "../consts/Levels";
+import BirdSpawner from "../spawner/BirdSpawner";
+import UpdateRunner from "../components/UpdateRunner";
 
 class Game extends Phaser.Scene {
 
@@ -25,10 +26,12 @@ class Game extends Phaser.Scene {
 
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
 
+        this.updateRunner = new UpdateRunner();
+
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
         this.platforms = this.physics.add.group({ immovable: true });
-        this.allUpdaters = this.add.group({ runChildUpdate: true });
+        this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
 
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
@@ -45,21 +48,20 @@ class Game extends Phaser.Scene {
             if (p)
                 p.freeze();
         }
+        this.updateRunner.add(this.controlpad);
 
         this.addDOMControl();
-
         this.addBackground();
         
         //  Add Playable characters
-
         this.addPlayerToScene();    // Extract
 
-        for (let i=0;i<20;i++)
-            this.addPreyToScene();  // Extract inner
+        this.birdSpawner = new BirdSpawner(this);
+        this.updateRunner.add(this.birdSpawner);
     }
 
     update(time, delta) {
-        this.controlpad.update(time, delta);
+        this.updateRunner.update(time, delta);
     }
 
     overlapPlayerPrey(player, prey) {
@@ -75,16 +77,10 @@ class Game extends Phaser.Scene {
         }
     }
 
-    addPreyToScene() {
-
-        let prey = new Prey(this);
-        
-        this.allUpdaters.add(prey.sprite);
-        this.collisionGroupEnemies.add(prey.sprite);
-
-        SpriteGenerator.addFlightPhysics(prey.sprite);
-
-        prey.init();
+    addBirdToGroups(sprite) {
+        this.spriteUpdateGroup.add(sprite);
+        this.collisionGroupEnemies.add(sprite);
+        SpriteBuilder.addFlightPhysics(sprite);
     }
 
     addPlayerToScene() {
@@ -93,10 +89,10 @@ class Game extends Phaser.Scene {
         let player = new Player(this).init();
         player.setPosition(building.worldX, WorldConsts.GROUND_Y - 32);
 
-        this.allUpdaters.add(player.sprite);
+        this.spriteUpdateGroup.add(player.sprite);
         this.collisionGroupPlayers.add(player.sprite);
 
-        SpriteGenerator.addPhysics(player.sprite);
+        SpriteBuilder.addPhysics(player.sprite);
 
         this.controlpad.addControlTarget(player.controller);
     }
@@ -111,11 +107,10 @@ class Game extends Phaser.Scene {
         
         for (let forest of this.levelData.FORESTS)
             BackgroundBuilder.addForest(this, forest);
-        
-        //  ADD the ground - physics
-
+                    
         let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
-
+            
+            //  ADD the ground - physics
         let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);

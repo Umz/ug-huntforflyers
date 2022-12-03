@@ -20,6 +20,8 @@ class Base {
         this.updaters.push(fn);
     }
 
+    getSprite() { return this.sprite }
+
     get stats() {
         return {
             speed: this.config.speed

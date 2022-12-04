@@ -10,20 +10,7 @@ class Flyerviewer extends BaseController {
     }
 
     addFlappingAnimation() {
-
         this.sprite.anims.play(this.model.animation);
-
-        let timer = 500;
-        let count = 1;
-        const fn = function(time, delta) {
-            timer -= delta;
-            if (timer <= 0) {
-                count = (count + 1) > 6 ? 1 : (count + 1);
-                timer = 60;
-                this.setTexture(`bird${count}`);
-            }
-        }
-        //this.addUpdaterBindSprite(fn);
     }
 
     addDirectionTracking() {

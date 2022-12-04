@@ -34,7 +34,7 @@ class FlyerController extends BaseController {
         const ZONE_R = START_X + DIST_MAX;
 
         const VARY = Phaser.Math.Between(-10, 10);
-        const SPEED = WorldConsts.BASE_MOVE_SPEED * this.stats.speed;
+        const SPEED = WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed;
 
         const fn = function(time, delta) {
             if (this.x > ZONE_R)

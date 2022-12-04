@@ -107,6 +107,10 @@ class Game extends Phaser.Scene {
         this.controlpad.addControlTarget(player.controller);
     }
 
+    getLiveBirdsCount() {
+        return this.collisionGroupEnemies.countActive();
+    }
+
     addBackground() {
 
         BackgroundBuilder.addBackgroundScene(this);

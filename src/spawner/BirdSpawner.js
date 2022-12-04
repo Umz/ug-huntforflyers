@@ -13,6 +13,7 @@ class BirdSpawner {
     constructor(scene) {
         this.scene = scene;
         
+        this.spawnMax = 10;
         this.spawnX = 0;
         this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
 
@@ -21,7 +22,8 @@ class BirdSpawner {
 
     update(time, delta) {
 
-        this.counter.update(time, delta);
+        if (this.scene.getLiveBirdsCount() < this.spawnMax)
+            this.counter.update(time, delta);
 
         if (this.counter.isComplete())
             this.spawnBirdInScene();

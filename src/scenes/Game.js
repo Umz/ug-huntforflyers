@@ -11,6 +11,7 @@ import LevelRegistry from "../registry/LevelRegistry";
 import Levels from "../consts/Levels";
 import BirdSpawner from "../spawner/BirdSpawner";
 import UpdateRunner from "../components/UpdateRunner";
+import Depths from "../consts/Depths";
 
 class Game extends Phaser.Scene {
 
@@ -52,7 +53,10 @@ class Game extends Phaser.Scene {
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
         this.controlpad.action = ()=>{
-            this.fireBullet();
+            if (this.player.isStateEquals(States.NORMAL)) {
+                this.player.fireBullet();
+                this.fireBullet();
+            }
         }
         this.updateRunner.add(this.controlpad);
 
@@ -132,7 +136,7 @@ class Game extends Phaser.Scene {
                 if (!this.scene.cameras.main.worldView.contains(this.x, this.y))
                     this.setActive(false).setVisible(false);
             }
-            bullet.setActive(true).setVisible(true);
+            bullet.setActive(true).setVisible(true).setDepth(Depths.PLAYER_BULLETS);
             bullet.setSize(8, 8).refreshBody();
             this.collisionGroupBullets.add(bullet);
         }

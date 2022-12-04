@@ -3,6 +3,7 @@ import States from "../consts/States";
 class Base {
 
     constructor(scene, model) {
+        this.scene = scene;
         this.model = model;
         this.updateFunctions = new Map();
         this.state = States.NORMAL;

@@ -7,6 +7,7 @@ const Depths = {
     ENEMIES_SPAWNED: 9,
 
     PLAYERS: 15,
+    PLAYER_BULLETS: 16,
 
     BUILDINGS_BG: 10,
     BUILDINGS_FG: 25,

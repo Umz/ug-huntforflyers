@@ -1,4 +1,7 @@
 import BaseController from "../classes/BaseController";
+import Depths from "../consts/Depths";
+import FnNames from "../consts/FnNames";
+import States from "../consts/States";
 
 class Flyerviewer extends BaseController {
 
@@ -7,6 +10,7 @@ class Flyerviewer extends BaseController {
         this.model = prey.model;
         this.addFlappingAnimation();
         this.addDirectionTracking();
+        this.addSpawnStateChange();
     }
 
     addFlappingAnimation() {
@@ -19,6 +23,15 @@ class Flyerviewer extends BaseController {
             this.setFlipX(flipX);
         };
         this.addUpdateFnAndBindToSprite('directionView', fn);
+    }
+
+    addSpawnStateChange() {
+        this.addUpdateFnAndBindToTarget(FnNames.VIEW_SPAWN_TO_NORMAL_DEPTH, function(time, delta) {
+            if (this.isStateEquals(States.NORMAL)) {
+                this.setDepth(Depths.ENEMIES);
+                this.removeUpdateFn(FnNames.VIEW_SPAWN_TO_NORMAL_DEPTH);
+            }
+        });
     }
 }   
 export default Flyerviewer;

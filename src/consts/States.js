@@ -1,7 +1,8 @@
 const States = {
     
     IDLE: 0,
-    NORMAL: 1,
+    JUST_SPAWNED: 1,
+    NORMAL: 2,
 
     FROZEN: 10,
 }

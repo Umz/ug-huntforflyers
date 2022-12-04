@@ -1,5 +1,5 @@
 import Base from "../classes/Base";
-import States from "../classes/States";
+import States from "../consts/States";
 import SpriteBuilder from "../components/SpriteBuilder";
 import FlyerController from "./FlyerController";
 import Flyerviewer from "./FlyerViewer";
@@ -17,10 +17,13 @@ class Prey extends Base {
 
     init() {
         super.init();
+
         this.sprite.setAccelerationX(Phaser.Math.Between(100, 200));
         this.sprite.setX(this.sprite.x + Phaser.Math.Between(-50, 50))
         this.sprite.setY(this.sprite.y - Phaser.Math.Between(0, 25))
         this.sprite.freeze = this.freeze;
+
+        this.setState(States.JUST_SPAWNED);
     }
 
     freeze() {
@@ -28,17 +31,16 @@ class Prey extends Base {
         this.setVelocity(0);
         this.setTintFill(0xFFFFFF);
         this.setActive(false);
-
-        this.parent.state = States.FROZEN;
+        this.parent.setState(States.FROZEN);
     }
 
     setHomePoint(x, y) {
         this.setPosition(x, y);
-        this.homeX = x;
+        this.homePoint = new Phaser.Geom.Point(x, y);
     }
 
     getHomeX() {
-        return this.homeX;
+        return this.homePoint.x;
     }
 }
 export default Prey;

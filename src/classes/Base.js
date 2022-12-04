@@ -1,4 +1,4 @@
-import States from "./States";
+import States from "../consts/States";
 
 class Base {
 
@@ -25,12 +25,28 @@ class Base {
         this.updateFunctions.delete(key);
     }
 
+    isStateEquals(state) {
+        return this.state === state;
+    }
+
     setPosition(x, y) {
         this.sprite.setPosition(x, y);
     }
 
+    setDepth(depth) {
+        this.sprite.setDepth(depth);
+    }
+
+    setState(state) {
+        this.state = state;
+    }
+    
     getSprite() {
         return this.sprite
+    }
+    
+    getState() {
+        return this.state;
     }
 
     get stats() {

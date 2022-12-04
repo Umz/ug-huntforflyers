@@ -7,7 +7,8 @@ class BaseController {
     }
 
     addUpdateFn(key, fn) {
-        this.target.addUpdateFn(key, fn);
+        let boundFn = fn.bind(this);
+        this.target.addUpdateFn(key, boundFn);
     }
 
     addUpdateFnAndBindToSprite(key, fn) {
@@ -15,8 +16,9 @@ class BaseController {
         this.target.addUpdateFn(key, boundFn);
     }
 
-    addUpdaterBindSprite(fn) {
-        this.target.addUpdater(fn.bind(this.sprite));
+    addUpdateFnAndBindToTarget(key, fn) {
+        let boundFn = fn.bind(this.target);
+        this.target.addUpdateFn(key, boundFn);
     }
 }
 export default BaseController;

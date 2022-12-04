@@ -1,4 +1,6 @@
 import BaseController from "../classes/BaseController";
+import FnNames from "../consts/FnNames";
+import States from "../consts/States";
 import WorldConsts from "../consts/WorldConsts";
 
 class FlyerController extends BaseController {
@@ -6,17 +8,20 @@ class FlyerController extends BaseController {
     constructor(prey) {
         super(prey);
 
-        //  Initial launch - remove this contrller
+        this.addInitialSpawnStateChange();
 
-        this.addStateController();
         this.addFlying();
         this.addLocalMovement();
     }
 
-    addStateController() {
-        let fn = function(time, delta) {
-        }
-        this.addUpdateFn('state', fn);
+    addInitialSpawnStateChange() {
+        this.addUpdateFnAndBindToTarget(FnNames.CTRL_SPAWN_TO_NORMAL_STATE, function(time, delta) {
+            let sprite = this.getSprite();
+            if (sprite.y <= WorldConsts.FLYING_HEIGHT_MID_Y + 10 && this.isStateEquals(States.JUST_SPAWNED)) {
+                this.setState(States.NORMAL);
+                this.removeUpdateFn(FnNames.CTRL_SPAWN_TO_NORMAL_STATE);
+            }
+        });
     }
 
     addFlying() {

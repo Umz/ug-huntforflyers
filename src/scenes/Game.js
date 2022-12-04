@@ -5,7 +5,7 @@ import WorldConsts from "../consts/WorldConsts";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import DomHandler from "../components/DomHandler";
 import Consts from "../consts/Consts";
-import States from "../classes/States";
+import States from "../consts/States";
 import GameSave from "../components/GameSave";
 import LevelRegistry from "../registry/LevelRegistry";
 import Levels from "../consts/Levels";

@@ -28,7 +28,8 @@ class Base {
 
     get stats() {
         return {
-            speed: this.config.speed
+            speed: this.config.speed,
+            relativeSpeed: this.config.relativeSpeed,
         }
     }
 }

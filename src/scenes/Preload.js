@@ -1,3 +1,4 @@
+import Animations from "../consts/Animations";
 import GameSave from "../components/GameSave";
 
 class Preload extends Phaser.Scene {
@@ -16,24 +17,30 @@ class Preload extends Phaser.Scene {
         //https://umzgames.com/demo/farb2/
 
         this.load.atlas('background', 'background.png', 'background.json');
+        this.load.atlas('flyers', 'flyers.png', 'flyers.json');
 
         //  TESTER graphics
-        
         this.load.image('tester', 'test/spr_tank.png');
-
-        for (let i=1; i<5; i++)
-            this.load.image(`fairy${i}`, `test/fairy${i}.png`);
-
-        for (let i=1; i<7; i++)
-            this.load.image(`bird${i}`, `test/b${i}.png`);
     }
 
     create(data) {
         GameSave.Init();
+        this.createBirdAnimations();
         this.scene.start('MenuScene');
     } 
 
     update(time, delta) {
+    }
+
+    createBirdAnimations() {
+
+        let blueBird = { key: Animations.BLUE_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'bluebird', end: 6}), frameRate: 12, repeat: -1 };
+        let redBird = { key: Animations.RED_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'redbird', end: 4}), frameRate: 8, repeat: -1 };
+        let fairy = { key: Animations.FAIRY , frames: this.anims.generateFrameNames('flyers', { prefix: 'fairy', end: 4}), frameRate: 8, repeat: -1 };
+
+        this.anims.create(blueBird);
+        this.anims.create(redBird);
+        this.anims.create(fairy);
     }
     
 };

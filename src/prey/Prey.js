@@ -3,15 +3,14 @@ import States from "../classes/States";
 import SpriteBuilder from "../components/SpriteBuilder";
 import FlyerController from "./FlyerController";
 import Flyerviewer from "./FlyerViewer";
-import prey_config from "./prey-config";
 
 class Prey extends Base {
 
-    constructor(scene) {
+    constructor(scene, config) {
         super(scene);
 
-        this.config = prey_config;
-        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, 'bird1');
+        this.config = config;
+        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, config);
         this.controller = new FlyerController(this);
         this.view = new Flyerviewer(this);
     }

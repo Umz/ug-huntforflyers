@@ -4,11 +4,15 @@ class Flyerviewer extends BaseController {
 
     constructor(prey) {
         super(prey);
+        this.config = prey.config;
         this.addFlappingAnimation();
         this.addDirectionTracking();
     }
 
     addFlappingAnimation() {
+
+        this.sprite.anims.play(this.config.animation);
+
         let timer = 500;
         let count = 1;
         const fn = function(time, delta) {
@@ -19,7 +23,7 @@ class Flyerviewer extends BaseController {
                 this.setTexture(`bird${count}`);
             }
         }
-        this.addUpdaterBindSprite(fn);
+        //this.addUpdaterBindSprite(fn);
     }
 
     addDirectionTracking() {

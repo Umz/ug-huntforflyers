@@ -7,8 +7,8 @@ class SpriteBuilder {
         return sprite;
     }
 
-    static GetFlyingEnemySprite(scene, atlas) {
-        let sprite = scene.physics.add.sprite(-100, -100, atlas).setDepth(Depths.ENEMIES_SPAWNED);
+    static GetFlyingEnemySprite(scene, config) {
+        let sprite = scene.physics.add.sprite(-100, -100, config.atlas, config.frame).setDepth(Depths.ENEMIES_SPAWNED);
         return sprite;
     }
 

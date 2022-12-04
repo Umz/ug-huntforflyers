@@ -1,6 +1,7 @@
 import Counter from "../components/Counter";
 import SpriteBuilder from "../components/SpriteBuilder";
 import WorldConsts from "../consts/WorldConsts";
+import BlueBirdModel from "../prey/BlueBirdModel";
 import Prey from "../prey/Prey";
 
 class BirdSpawner {
@@ -27,7 +28,9 @@ class BirdSpawner {
 
     spawnBirdInScene() {
 
-        let bird = new Prey(this.scene);
+        let type = BlueBirdModel;
+
+        let bird = new Prey(this.scene, type);
         bird.init();
         bird.setPosition(this.spawnX, this.spawnY);
 

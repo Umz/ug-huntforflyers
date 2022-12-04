@@ -55,5 +55,13 @@ class Base {
             relativeSpeed: this.model.relativeSpeed,
         }
     }
+
+    get x() {
+        return this.sprite.x;
+    }
+
+    get y() {
+        return this.sprite.y;
+    }
 }
 export default Base;

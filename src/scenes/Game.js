@@ -32,21 +32,27 @@ class Game extends Phaser.Scene {
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
-
+        this.bulletGroup = this.physics.add.group({
+            defaultKey: 'bullet',
+            runChildUpdate: true,
+            maxSize: 5
+        });
+        this.liveBirdGroup = this.add.group();
+        
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
+        this.collisionGroupBullets = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
 
         this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey, null, this);
+        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletEnemy, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
         this.controlpad.action = ()=>{
-            let p = this.collisionGroupEnemies.getFirstAlive();
-            if (p)
-                p.freeze();
+            this.fireBullet();
         }
         this.updateRunner.add(this.controlpad);
 
@@ -58,9 +64,9 @@ class Game extends Phaser.Scene {
 
         let forest = this.levelData.FORESTS[0];
 
-        this.birdSpawner = new BirdSpawner(this);
-        this.birdSpawner.setX(forest.getCenterX());
-        this.updateRunner.add(this.birdSpawner);
+        let birdSpawner = new BirdSpawner(this);
+        birdSpawner.setX(forest.getCenterX());
+        this.updateRunner.add(birdSpawner);
     }
 
     update(time, delta) {
@@ -68,15 +74,20 @@ class Game extends Phaser.Scene {
     }
 
     overlapPlayerPrey(player, prey) {
-        let preyState = prey.parent.state;
-        if (preyState == States.FROZEN) {
-
-            let points = 1;
-            GameSave.IncScore(points);
+        if (prey.parent.isStateEquals(States.FROZEN)) {
+            GameSave.IncScore(1);
             DomHandler.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
-
             prey.setActive(false).setVisible(false);
             this.collisionGroupEnemies.remove(prey);
+        }
+    }
+
+    overlapBulletEnemy(bullet, enemy) {
+        if (enemy.parent.isStateEquals(States.NORMAL)) {
+            this.collisionGroupBullets.remove(bullet);
+            this.liveBirdGroup.remove(enemy);
+            bullet.setActive(false).setVisible(false);
+            enemy.freeze();
         }
     }
 
@@ -85,6 +96,7 @@ class Game extends Phaser.Scene {
     }
 
     addBirdToGroups(sprite) {
+        this.liveBirdGroup.add(sprite);
         this.spriteUpdateGroup.add(sprite);
         this.collisionGroupEnemies.add(sprite);
     }
@@ -98,6 +110,7 @@ class Game extends Phaser.Scene {
         let building = this.levelData.BUILDINGS[0];     //  CLEAN -
         let player = new Player(this).init();
         player.setPosition(building.worldX, WorldConsts.GROUND_Y - 32);
+        this.player = player;
 
         this.spriteUpdateGroup.add(player.sprite);
         this.collisionGroupPlayers.add(player.sprite);
@@ -105,6 +118,27 @@ class Game extends Phaser.Scene {
         SpriteBuilder.addPhysics(player.sprite);
 
         this.controlpad.addControlTarget(player.controller);
+    }
+
+    fireBullet() {
+        
+        let target = this.physics.closest(this.player, this.liveBirdGroup.getChildren()) || new Phaser.Geom.Point(this.player.x, this.player.y - 32);
+        let angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, target.x, target.y);
+        let bullet = this.bulletGroup.get(this.player.x, this.player.y);
+        if (bullet) {
+            bullet.update = function(time, delta) {
+                if (this.body.velocity.y === 0)
+                    this.scene.physics.velocityFromRotation(angle, WorldConsts.HEIGHT, this.body.velocity);
+                if (!this.scene.cameras.main.worldView.contains(this.x, this.y))
+                    this.setActive(false).setVisible(false);
+            }
+            bullet.setActive(true).setVisible(true);
+            bullet.setSize(8, 8).refreshBody();
+            this.collisionGroupBullets.add(bullet);
+        }
+    }
+
+    getClosestBird() {
     }
 
     getLiveBirdsCount() {

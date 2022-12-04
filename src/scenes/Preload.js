@@ -21,6 +21,7 @@ class Preload extends Phaser.Scene {
 
         //  TESTER graphics
         this.load.image('tester', 'test/spr_tank.png');
+        this.load.image('bullet', 'test/fg_star.png');
     }
 
     create(data) {
@@ -42,6 +43,5 @@ class Preload extends Phaser.Scene {
         this.anims.create(redBird);
         this.anims.create(fairy);
     }
-    
 };
 export default Preload;

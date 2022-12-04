@@ -4,21 +4,25 @@ class Base {
 
     constructor(scene, model) {
         this.model = model;
-        this.updaters = [];
+        this.updateFunctions = new Map();
         this.state = States.NORMAL;
     }
 
     init() {
         this.sprite.update = (time, delta) => {
-            for (let fn of this.updaters)
+            for (let fn of this.updateFunctions.values())
                 fn(time, delta);
         }
         this.sprite.parent = this;
         return this;
     }
 
-    addUpdater(fn) {
-        this.updaters.push(fn);
+    addUpdateFn(key, fn) {
+        this.updateFunctions.set(key, fn);
+    }
+
+    removeUpdateFn(key) {
+        this.updateFunctions.delete(key);
     }
 
     setPosition(x, y) {

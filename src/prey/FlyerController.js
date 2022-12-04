@@ -5,8 +5,18 @@ class FlyerController extends BaseController {
 
     constructor(prey) {
         super(prey);
+
+        //  Initial launch - remove this contrller
+
+        this.addStateController();
         this.addFlying();
         this.addLocalMovement();
+    }
+
+    addStateController() {
+        let fn = function(time, delta) {
+        }
+        this.addUpdateFn('state', fn);
     }
 
     addFlying() {
@@ -21,8 +31,7 @@ class FlyerController extends BaseController {
             if (this.y < WorldConsts.FLYING_HEIGHT_MID_Y + VARIATION)
                 this.setAccelerationY(0);
         }
-
-        this.addUpdaterBindSprite(fn);
+        this.addUpdateFnAndBindToSprite('flying', fn);
     }
 
     addLocalMovement() {
@@ -30,6 +39,8 @@ class FlyerController extends BaseController {
         const SPEED = WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed;
         const INIT = SPEED * (Math.random() > .5 ? 1 : -1);
         const DIST_MAX = Phaser.Math.Between(24, 42);
+
+        this.sprite.body.setMaxSpeed(SPEED);
 
         const fn = function(time, delta) {
 
@@ -44,9 +55,7 @@ class FlyerController extends BaseController {
             if (this.body.velocity.x === 0 && this.body.acceleration.x === 0)
                 this.setAccelerationX(INIT);
         }
-        this.addUpdaterBindSprite(fn);
-
-        this.sprite.body.setMaxSpeed(SPEED);
+        this.addUpdateFnAndBindToSprite('localX', fn);
     }
 }
 export default FlyerController;

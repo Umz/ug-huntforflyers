@@ -15,10 +15,6 @@ class PlayerController extends BaseController {
         this.sprite.setVelocityX(this.velocityX);
     }
 
-    doAction() {
-        console.log('Player Controller Action')
-    }
-
     get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.speed }
 }
 export default PlayerController;

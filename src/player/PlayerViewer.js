@@ -12,7 +12,7 @@ class Playerviewer extends BaseController {
             let flipX = (this.body.velocity.x > 0);
             this.setFlipX(flipX);
         };
-        this.addUpdaterBindSprite(fn);
+        this.addUpdateFnAndBindToSprite('directionView', fn);
     }
 }   
 export default Playerviewer;

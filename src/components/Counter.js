@@ -8,13 +8,18 @@ class Counter {
 
     static New() { return new Counter() }
 
+    update(time, delta) {
+        this.counter += delta;
+    }
+
     setRepeating(bool) {
         this.isRepeating = bool;
         return this;
     }
 
-    update(time, delta) {
-        this.counter += delta;
+    setMaxCount(max) {
+        this.counterMax = max;
+        return this;
     }
 
     isComplete() {

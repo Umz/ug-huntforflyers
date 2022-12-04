@@ -22,6 +22,10 @@ class Base {
 
     getSprite() { return this.sprite }
 
+    setPosition(x, y) {
+        this.sprite.setPosition(x, y);
+    }
+
     get stats() {
         return {
             speed: this.config.speed

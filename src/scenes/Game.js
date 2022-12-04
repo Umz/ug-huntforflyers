@@ -56,7 +56,10 @@ class Game extends Phaser.Scene {
         //  Add Playable characters
         this.addPlayerToScene();    // Extract
 
+        let forest = this.levelData.FORESTS[0];
+
         this.birdSpawner = new BirdSpawner(this);
+        this.birdSpawner.setX(forest.getCenterX());
         this.updateRunner.add(this.birdSpawner);
     }
 
@@ -77,9 +80,16 @@ class Game extends Phaser.Scene {
         }
     }
 
+    setupLevel() {
+        // Forests, spawners, difficulties
+    }
+
     addBirdToGroups(sprite) {
         this.spriteUpdateGroup.add(sprite);
         this.collisionGroupEnemies.add(sprite);
+    }
+    
+    addFlightPhysics(sprite) {
         SpriteBuilder.addFlightPhysics(sprite);
     }
 

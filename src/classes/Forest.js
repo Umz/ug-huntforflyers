@@ -1,4 +1,3 @@
-import Depths from "../consts/Depths";
 import WorldConsts from "../consts/WorldConsts";
 import ForestLayer from "./ForestLayer";
 
@@ -36,6 +35,10 @@ class Forest {
     setWorldX(x) {
         // Offset the forest manually
         return this;
+    }
+
+    getCenterX() {
+        return (this.tile + Math.floor(this.size * .5)) * WorldConsts.TILE_WIDTH;
     }
 
 }

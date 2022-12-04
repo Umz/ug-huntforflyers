@@ -1,16 +1,20 @@
 import Counter from "../components/Counter";
+import SpriteBuilder from "../components/SpriteBuilder";
+import WorldConsts from "../consts/WorldConsts";
 import Prey from "../prey/Prey";
 
 class BirdSpawner {
 
-    //  How often to spawn a bird ()
     //  What type of bird to spawn (level data)
-    //  Where to spawn the bird (level data)
     //  Max amount of birds to spawn (?)
 
     constructor(scene) {
         this.scene = scene;
-        this.counter = Counter.New().setRepeating(true);
+        
+        this.spawnX = 0;
+        this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
+
+        this.counter = Counter.New().setRepeating(true).setMaxCount(2000);
     }
 
     update(time, delta) {
@@ -18,14 +22,25 @@ class BirdSpawner {
         this.counter.update(time, delta);
 
         if (this.counter.isComplete())
-            this.addBirdToScene();
+            this.spawnBirdInScene();
     }
 
-    addBirdToScene() {
+    spawnBirdInScene() {
+
         let bird = new Prey(this.scene);
         bird.init();
+        bird.setPosition(this.spawnX, this.spawnY);
 
         this.scene.addBirdToGroups(bird.getSprite());
+        this.scene.addFlightPhysics(bird.getSprite());
+    }
+
+    setX(x) {
+        this.spawnX = x;
+    }
+
+    setFrequencyInMillis(millis) {
+        this.counter.setMaxCount(millis);
     }
 }
 export default BirdSpawner;

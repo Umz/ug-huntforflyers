@@ -54,6 +54,7 @@ class Base {
         return {
             speed: this.model.speed,
             relativeSpeed: this.model.relativeSpeed,
+            value: this.model.value,
         }
     }
 

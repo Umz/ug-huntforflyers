@@ -79,7 +79,7 @@ class Game extends Phaser.Scene {
 
     overlapPlayerPrey(player, prey) {
         if (prey.parent.isStateEquals(States.FROZEN)) {
-            GameSave.IncScore(1);
+            GameSave.IncScore(prey.parent.getValue());
             DomHandler.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             prey.setActive(false).setVisible(false);
             this.collisionGroupEnemies.remove(prey);
@@ -132,7 +132,7 @@ class Game extends Phaser.Scene {
         if (bullet) {
             bullet.update = function(time, delta) {
                 if (this.body.velocity.y === 0)
-                    this.scene.physics.velocityFromRotation(angle, WorldConsts.HEIGHT, this.body.velocity);
+                    this.scene.physics.velocityFromRotation(angle, WorldConsts.HEIGHT * 1.5, this.body.velocity);
                 if (!this.scene.cameras.main.worldView.contains(this.x, this.y))
                     this.setActive(false).setVisible(false);
             }

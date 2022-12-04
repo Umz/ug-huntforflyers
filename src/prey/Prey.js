@@ -42,5 +42,9 @@ class Prey extends Base {
     getHomeX() {
         return this.homePoint.x;
     }
+
+    getValue() {
+        return this.stats.value;
+    }
 }
 export default Prey;

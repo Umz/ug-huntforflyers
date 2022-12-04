@@ -31,5 +31,14 @@ class Prey extends Base {
 
         this.parent.state = States.FROZEN;
     }
+
+    setHomePoint(x, y) {
+        this.setPosition(x, y);
+        this.homeX = x;
+    }
+
+    getHomeX() {
+        return this.homeX;
+    }
 }
 export default Prey;

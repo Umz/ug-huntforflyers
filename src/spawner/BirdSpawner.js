@@ -29,11 +29,12 @@ class BirdSpawner {
 
     spawnBirdInScene() {
 
-        let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel]);
+        //let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel]);
+        let type = RedBirdModel;
 
         let bird = new Prey(this.scene, type);
         bird.init();
-        bird.setPosition(this.spawnX, this.spawnY);
+        bird.setHomePoint(this.spawnX, this.spawnY);
 
         this.scene.addBirdToGroups(bird.getSprite());
         this.scene.addFlightPhysics(bird.getSprite());

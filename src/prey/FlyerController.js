@@ -23,24 +23,26 @@ class FlyerController extends BaseController {
         }
 
         this.addUpdaterBindSprite(fn);
-        
     }
 
     addLocalMovement() {
         
-        const START_X = this.sprite.x;
-        const DIST_MAX = 24;
-        const ZONE_L = START_X - DIST_MAX;
-        const ZONE_R = START_X + DIST_MAX;
-
-        const VARY = Phaser.Math.Between(-10, 10);
         const SPEED = WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed;
+        const INIT = SPEED * (Math.random() > .5 ? 1 : -1);
+        const DIST_MAX = Phaser.Math.Between(24, 42);
 
         const fn = function(time, delta) {
+
+            const HOME_X = this.parent.getHomeX();
+            const ZONE_L = HOME_X - DIST_MAX;
+            const ZONE_R = HOME_X + DIST_MAX;
+    
             if (this.x > ZONE_R)
                 this.setAccelerationX(-SPEED);
             if (this.x < ZONE_L)
                 this.setAccelerationX(SPEED);
+            if (this.body.velocity.x === 0 && this.body.acceleration.x === 0)
+                this.setAccelerationX(INIT);
         }
         this.addUpdaterBindSprite(fn);
 

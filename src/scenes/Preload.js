@@ -34,9 +34,9 @@ class Preload extends Phaser.Scene {
 
     createBirdAnimations() {
 
-        let blueBird = { key: Animations.BLUE_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'bluebird', end: 6}), frameRate: 12, repeat: -1 };
-        let redBird = { key: Animations.RED_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'redbird', end: 4}), frameRate: 8, repeat: -1 };
-        let fairy = { key: Animations.FAIRY , frames: this.anims.generateFrameNames('flyers', { prefix: 'fairy', end: 4}), frameRate: 8, repeat: -1 };
+        let blueBird = { key: Animations.BLUE_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'bluebird', start:1, end: 6}), frameRate: 12, repeat: -1 };
+        let redBird = { key: Animations.RED_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'redbird', start:1, end: 4}), frameRate: 8, repeat: -1 };
+        let fairy = { key: Animations.FAIRY , frames: this.anims.generateFrameNames('flyers', { prefix: 'fairy', start:1, end: 4}), frameRate: 8, repeat: -1 };
 
         this.anims.create(blueBird);
         this.anims.create(redBird);

@@ -6,11 +6,11 @@ import Flyerviewer from "./FlyerViewer";
 
 class Prey extends Base {
 
-    constructor(scene, config) {
+    constructor(scene, model) {
         super(scene);
 
-        this.config = config;
-        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, config);
+        this.model = model;
+        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, model);
         this.controller = new FlyerController(this);
         this.view = new Flyerviewer(this);
     }

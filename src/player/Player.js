@@ -1,16 +1,14 @@
 import Base from "../classes/Base";
 import SpriteGenerator from "../components/SpriteBuilder";
-import WorldConsts from "../consts/WorldConsts";
-import config from "./player-config";
 import PlayerController from "./PlayerController";
+import PlayerModel from "../models/PlayerModel";
 import Playerviewer from "./PlayerViewer";
 
 class Player extends Base {
 
     constructor(scene) {
-        super(scene);
-        this.config = config;
-        this.sprite = SpriteGenerator.GetPlayerSprite(scene, config.texture);
+        super(scene, PlayerModel);
+        this.sprite = SpriteGenerator.GetPlayerSprite(scene, PlayerModel);
         this.controller = new PlayerController(this);
         this.viewer = new Playerviewer(this);
     }

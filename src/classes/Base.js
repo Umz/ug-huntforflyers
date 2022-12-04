@@ -2,7 +2,8 @@ import States from "./States";
 
 class Base {
 
-    constructor(scene) {
+    constructor(scene, model) {
+        this.model = model;
         this.updaters = [];
         this.state = States.NORMAL;
     }
@@ -20,16 +21,18 @@ class Base {
         this.updaters.push(fn);
     }
 
-    getSprite() { return this.sprite }
-
     setPosition(x, y) {
         this.sprite.setPosition(x, y);
     }
 
+    getSprite() {
+        return this.sprite
+    }
+
     get stats() {
         return {
-            speed: this.config.speed,
-            relativeSpeed: this.config.relativeSpeed,
+            speed: this.model.speed,
+            relativeSpeed: this.model.relativeSpeed,
         }
     }
 }

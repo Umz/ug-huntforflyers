@@ -4,14 +4,14 @@ class Flyerviewer extends BaseController {
 
     constructor(prey) {
         super(prey);
-        this.config = prey.config;
+        this.model = prey.model;
         this.addFlappingAnimation();
         this.addDirectionTracking();
     }
 
     addFlappingAnimation() {
 
-        this.sprite.anims.play(this.config.animation);
+        this.sprite.anims.play(this.model.animation);
 
         let timer = 500;
         let count = 1;

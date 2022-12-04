@@ -1,6 +1,5 @@
 import Levels from "../consts/Levels";
-import WorldConsts from "../consts/WorldConsts";
-import HomeLevelModel from "../levels/HomeLevelModel";
+import HomeLevelModel from "../models/HomeLevelModel";
 
 class LevelRegistry {
 

@@ -1,7 +1,7 @@
 import Counter from "../components/Counter";
 import SpriteBuilder from "../components/SpriteBuilder";
 import WorldConsts from "../consts/WorldConsts";
-import BlueBirdModel from "../prey/BlueBirdModel";
+import BlueBirdModel from "../models/BlueBirdModel";
 import Prey from "../prey/Prey";
 
 class BirdSpawner {

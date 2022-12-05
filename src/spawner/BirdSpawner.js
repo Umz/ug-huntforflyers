@@ -1,5 +1,6 @@
 import Counter from "../components/Counter";
 import WorldConsts from "../consts/WorldConsts";
+import BatModel from "../models/BatModel";
 import BeeModel from "../models/BeeModel";
 import BlueBirdModel from "../models/BlueBirdModel";
 import FairyModel from "../models/FairyModel";
@@ -32,8 +33,8 @@ class BirdSpawner {
 
     spawnBirdInScene() {
 
-        //let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel]);
-        let type = BeeModel;
+        let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel, BeeModel, BatModel]);
+        //let type = BatModel;
 
         let bird = new Prey(this.scene, type);
         bird.init();

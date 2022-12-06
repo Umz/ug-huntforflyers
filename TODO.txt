@@ -1,0 +1,19 @@
+Design levels with different bugs
+level size > 1
+camera follow player
+
+add collection as push to pump
+add pump animation
+add collision between pump and collectables
+
+create pools
+
+Add game effects
+Hit effects
+Fire effects 
+Collect effects 
+
+Fill in the game over screen
+
+Fill in the info screen button (Story)
+Fill in the question button (controls)

@@ -30,6 +30,7 @@ class Game extends Phaser.Scene {
         this.updateRunner = new UpdateRunner();
 
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
+        this.cameras.main.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
@@ -66,10 +67,7 @@ class Game extends Phaser.Scene {
         //  Add Playable characters
         this.addPlayerToScene();    // Extract
 
-        //let forest = this.levelData.FORESTS[0];
-
         for (let forest of this.levelData.FORESTS) {
-
             let birdSpawner = new BirdSpawner(this);
             birdSpawner.setX(forest.getCenterX());
             birdSpawner.setBirdType(this.levelData.BIRD_MAIN)
@@ -128,6 +126,9 @@ class Game extends Phaser.Scene {
         SpriteBuilder.addPhysics(player.sprite);
 
         this.controlpad.addControlTarget(player.controller);
+
+        let camera = this.cameras.main;
+        camera.startFollow(player.getSprite());
     }
 
     fireBullet() {

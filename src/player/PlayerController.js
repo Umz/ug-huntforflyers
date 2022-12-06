@@ -20,7 +20,7 @@ class PlayerController extends BaseController {
 
     moveRecoil() {
         this.sprite.y -= 2;
-        this.sprite.setVelocityY(-32);
+        this.sprite.setVelocityY(-20);
     }
 
     addGroundListener() {
@@ -30,6 +30,6 @@ class PlayerController extends BaseController {
         });
     }
 
-    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.speed }
+    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed }
 }
 export default PlayerController;

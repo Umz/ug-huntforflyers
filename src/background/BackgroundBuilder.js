@@ -5,13 +5,32 @@ import ForestLayer from "../classes/ForestLayer";
 class BackgroundBuilder {
 
     static addBackgroundScene(scene) {
-        for (let i=0; i<6; i++)
-            scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', `bg${i}`).setOrigin(0);
-            // Scroll factor and add updater-
+        for (let i=0; i<6; i++) {
+
+            let bg = scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', `bg${i}`).setOrigin(0).setScrollFactor(0);
+            bg.sf = (i * .15);
+            bg.of = 0;
+
+            bg.update = function(time, delta) {
+                let camera = this.scene.cameras.main;
+                this.tilePositionX = camera.scrollX * this.sf + this.of;
+
+                if (i == 1)
+                    this.of += 8 * .001 * delta;
+            }
+            if (scene.updateRunner)
+                scene.updateRunner.add(bg);
+        }
     }
 
     static addGround(scene) {
-        scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0);
+        let gr = scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0).setScrollFactor(0);
+        gr.update = function(time, delta) {
+            let camera = this.scene.cameras.main;
+            this.tilePositionX = camera.scrollX;
+        }
+        if (scene.updateRunner)
+            scene.updateRunner.add(gr);
     }
 
     static addBuilding(scene, building) {

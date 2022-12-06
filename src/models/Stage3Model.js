@@ -5,7 +5,7 @@ import BlueBirdModel from "./BlueBirdModel";
 
 const Stage3Model = {
 
-    LENGTHS: 1,
+    LENGTHS: 2,
     TILES: 20,
 
     BIRD_MAIN: BlueBirdModel,
@@ -22,7 +22,7 @@ const Stage3Model = {
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1)
             .addLayer([PlantType.BUSH, PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3], Depths.FOREST_FG2),
 
-        Forest.New().setTileX(12).setSize(3)
+        Forest.New().setTileX(15).setSize(3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)

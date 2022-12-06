@@ -17,3 +17,5 @@ Fill in the game over screen
 
 Fill in the info screen button (Story)
 Fill in the question button (controls)
+
+Scrollfactor and background refactoring

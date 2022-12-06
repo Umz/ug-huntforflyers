@@ -1,9 +1,10 @@
 const Animations = {
 
-    BLUE_BIRD: 'bluebird',
-    RED_BIRD: 'redbird',
-    FAIRY: 'fairy',
+    BAT: 'bat',
     BEE: 'bee',
-    BAT: 'bat'
+    BLUE_BIRD: 'bluebird',
+    BUG: 'bug',
+    FAIRY: 'fairy',
+    RED_BIRD: 'redbird'
 }
 export default Animations;

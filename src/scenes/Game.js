@@ -21,7 +21,7 @@ class Game extends Phaser.Scene {
 
     create(data) {
 
-        const CURRENT_LEVEL = Levels.HOME_1;
+        const CURRENT_LEVEL = Levels.STAGE3;
 
         this.levelData = LevelRegistry.GetLevelData(CURRENT_LEVEL);
 
@@ -66,11 +66,15 @@ class Game extends Phaser.Scene {
         //  Add Playable characters
         this.addPlayerToScene();    // Extract
 
-        let forest = this.levelData.FORESTS[0];
+        //let forest = this.levelData.FORESTS[0];
 
-        let birdSpawner = new BirdSpawner(this);
-        birdSpawner.setX(forest.getCenterX());
-        this.updateRunner.add(birdSpawner);
+        for (let forest of this.levelData.FORESTS) {
+
+            let birdSpawner = new BirdSpawner(this);
+            birdSpawner.setX(forest.getCenterX());
+            birdSpawner.setBirdType(this.levelData.BIRD_MAIN)
+            this.updateRunner.add(birdSpawner);
+        }
     }
 
     update(time, delta) {
@@ -113,7 +117,9 @@ class Game extends Phaser.Scene {
 
         let building = this.levelData.BUILDINGS[0];     //  CLEAN -
         let player = new Player(this).init();
-        player.setPosition(building.worldX, WorldConsts.GROUND_Y - 32);
+
+        let pos = building || {worldX: 120};
+        player.setPosition(pos.worldX, WorldConsts.GROUND_Y - 32);
         this.player = player;
 
         this.spriteUpdateGroup.add(player.sprite);

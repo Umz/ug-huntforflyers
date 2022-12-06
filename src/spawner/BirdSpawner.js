@@ -10,12 +10,16 @@ import Prey from "../prey/Prey";
 
 class BirdSpawner {
 
-    //  What type of bird to spawn (level data)
     //  Max amount of birds to spawn (?)
 
     constructor(scene) {
         this.scene = scene;
+
+        this.mainBirdType = BeeModel;
         
+        this.spawned = 0;
+        this.spawnLimit = 30;
+
         this.spawnMax = 10;
         this.spawnX = 0;
         this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
@@ -25,7 +29,7 @@ class BirdSpawner {
 
     update(time, delta) {
 
-        if (this.scene.getLiveBirdsCount() < this.spawnMax)
+        if (this.scene.getLiveBirdsCount() < this.spawnMax && this.spawnLimit > this.spawned)
             this.counter.update(time, delta);
 
         if (this.counter.isComplete())
@@ -37,16 +41,22 @@ class BirdSpawner {
         //let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel, BeeModel, BatModel, BugModel]);
         let type = BeeModel;
 
-        let bird = new Prey(this.scene, type);
+        let bird = new Prey(this.scene, this.mainBirdType);
         bird.init();
         bird.setHomePoint(this.spawnX, this.spawnY);
 
         this.scene.addBirdToGroups(bird.getSprite());
         this.scene.addFlightPhysics(bird.getSprite());
+
+        this.spawned ++;
     }
 
     setX(x) {
         this.spawnX = x;
+    }
+
+    setBirdType(type) {
+        this.mainBirdType = type;
     }
 
     setFrequencyInMillis(millis) {

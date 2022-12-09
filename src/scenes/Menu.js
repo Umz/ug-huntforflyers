@@ -6,10 +6,10 @@ import Forest from "../classes/Forest";
 import PlantType from "../consts/PlantType";
 import Depths from "../consts/Depths";
 
-class MenuScene extends Phaser.Scene {
+class Menu extends Phaser.Scene {
 
     constructor() {
-        super('MenuScene');
+        super(Consts.MENU_SCENE);
     }
 
     create(data) {
@@ -34,8 +34,8 @@ class MenuScene extends Phaser.Scene {
             DomHandler.SetDomIdDisplay(Consts.UI, true);
             DomHandler.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
-            this.scene.start('Game');
+            this.scene.start(Consts.GAME_SCENE);
         });
     }
 }
-export default MenuScene;
+export default Menu;

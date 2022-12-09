@@ -16,14 +16,14 @@ import Depths from "../consts/Depths";
 class Game extends Phaser.Scene {
 
     constructor() {
-        super('Game');
+        super(Consts.GAME_SCENE);
     }
 
     create(data) {
 
-        const CURRENT_LEVEL = Levels.STAGE3;
+        const CURRENT_STAGE = GameSave.GetStage();
 
-        this.levelData = LevelRegistry.GetLevelData(CURRENT_LEVEL);
+        this.levelData = LevelRegistry.GetLevelData(CURRENT_STAGE);
 
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
 

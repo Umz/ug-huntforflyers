@@ -1,7 +1,9 @@
+import Consts from "../consts/Consts";
+
 class Boot extends Phaser.Scene {
 
     constructor() {
-        super('Boot');
+        super(Consts.BOOT_SCENE);
     }
 
     init() {
@@ -16,8 +18,7 @@ class Boot extends Phaser.Scene {
 
     create(data) {
         // Used to add objects to your game
-
-        this.scene.start('Preload');
+        this.scene.start(Consts.PRELOAD_SCENE);
     } 
 
     update(time, delta) {

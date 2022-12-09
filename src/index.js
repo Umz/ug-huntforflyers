@@ -1,7 +1,7 @@
 import 'phaser';
 import Boot from './scenes/Boot';
 import Game from './scenes/Game';
-import MenuScene from './scenes/MenuScene';
+import Menu from './scenes/Menu';
 import Preload from './scenes/Preload';
 import Load from './scenes/Load';
 import WorldConsts from './consts/WorldConsts';
@@ -35,7 +35,7 @@ var config = {
     scene: [
         Boot,
         Preload,
-        MenuScene,
+        Menu,
         Game,
         Load
     ]

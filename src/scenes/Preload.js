@@ -1,10 +1,12 @@
 import Animations from "../consts/Animations";
 import GameSave from "../components/GameSave";
+import Textures from "../consts/Textures";
+import Consts from "../consts/Consts";
 
 class Preload extends Phaser.Scene {
 
     constructor() {
-        super('Preload');
+        super(Consts.PRELOAD_SCENE);
     }
 
     init() {
@@ -26,8 +28,9 @@ class Preload extends Phaser.Scene {
 
     create(data) {
         GameSave.Init();
+        this.createGraphics();
         this.createBirdAnimations();
-        this.scene.start('MenuScene');
+        this.scene.start(Consts.MENU_SCENE);
     } 
 
     update(time, delta) {
@@ -48,6 +51,18 @@ class Preload extends Phaser.Scene {
         this.anims.create(bee);
         this.anims.create(bat);
         this.anims.create(bug);
+    }
+
+    createGraphics() {
+        let graphics = this.add.graphics();
+
+        CreateBlankSquare: {
+            graphics.fillStyle(0x000000, 1);
+            graphics.fillRect(0, 0, 2, 2);
+            graphics.generateTexture(Textures.BLACK_SQUARE, 2, 2);
+        };
+
+        graphics.destroy();
     }
 };
 export default Preload;

@@ -3,6 +3,7 @@ import Boot from './scenes/Boot';
 import Game from './scenes/Game';
 import MenuScene from './scenes/MenuScene';
 import Preload from './scenes/Preload';
+import Load from './scenes/Load';
 import WorldConsts from './consts/WorldConsts';
 
 //  Screen width fix (stretch if shorter)
@@ -35,7 +36,8 @@ var config = {
         Boot,
         Preload,
         MenuScene,
-        Game
+        Game,
+        Load
     ]
 };
 

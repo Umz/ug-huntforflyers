@@ -138,8 +138,10 @@ class Game extends Phaser.Scene {
         let bullet = this.bulletGroup.get(this.player.x, this.player.y);
         if (bullet) {
             bullet.update = function(time, delta) {
-                if (this.body.velocity.y === 0)
+                if (this.body.velocity.y === 0) {
                     this.scene.physics.velocityFromRotation(angle, WorldConsts.HEIGHT * 1.5, this.body.velocity);
+                    this.setAngularVelocity(360)
+                }
                 if (!this.scene.cameras.main.worldView.contains(this.x, this.y))
                     this.setActive(false).setVisible(false);
             }

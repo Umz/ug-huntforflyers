@@ -2,6 +2,9 @@ import Levels from "../consts/Levels";
 import Stage1Model from "../models/Stage1Model";
 import Stage2Model from "../models/Stage2Model";
 import Stage3Model from "../models/Stage3Model";
+import Stage4Model from "../models/Stage4Model";
+import Stage5Model from "../models/Stage5Model";
+import Stage6Model from "../models/Stage6Model";
 
 class LevelRegistry {
 

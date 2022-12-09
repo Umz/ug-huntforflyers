@@ -19,3 +19,5 @@ Fill in the info screen button (Story)
 Fill in the question button (controls)
 
 Scrollfactor and background refactoring
+
+Sounds to Menu screen

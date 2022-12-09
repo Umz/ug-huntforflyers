@@ -3,7 +3,7 @@ import Animations from "../consts/Animations";
 
 const BlueBirdModel = Object.assign({}, BaseModel);
 
-BlueBirdModel.speed = .6;
+BlueBirdModel.value = 3;
 BlueBirdModel.relativeSpeed = .6;
 BlueBirdModel.atlas = 'flyers';
 BlueBirdModel.frame = 'bluebird1';

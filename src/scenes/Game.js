@@ -8,7 +8,6 @@ import Consts from "../consts/Consts";
 import States from "../consts/States";
 import GameSave from "../components/GameSave";
 import LevelRegistry from "../registry/LevelRegistry";
-import Levels from "../consts/Levels";
 import BirdSpawner from "../spawner/BirdSpawner";
 import UpdateRunner from "../components/UpdateRunner";
 import Depths from "../consts/Depths";

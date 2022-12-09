@@ -1,8 +1,8 @@
 import GameSave from "../components/GameSave";
 import Consts from "../consts/Consts";
+import DomHandler from "../components/DomHandler";
 import Levels from "../consts/Levels";
 import Textures from "../consts/Textures";
-import WorldConsts from "../consts/WorldConsts";
 
 class Load extends Phaser.Scene {
 
@@ -12,17 +12,22 @@ class Load extends Phaser.Scene {
 
     create(data) {
 
-        let cover = this.add.image(0, 0, Textures.BLACK_SQUARE).setDisplaySize(WorldConsts.WIDTH, WorldConsts.HEIGHT).setOrigin(0);
+        let cover = this.add.image(0, 0, Textures.BLACK_SQUARE).setVisible(false);
         let nextScene = data.nextScene || Consts.GAME_SCENE;
         let fromScene = data.fromScene || Consts.GAME_SCENE;
+        let stageData = data.stageData || Levels.STAGE1;
 
-        DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
+        DomHandler.SetDomIdOpacity(Consts.MENU_BG, 0);
+        DomHandler.SetDomIdDisplay(Consts.MENU_BG, true);
 
         let timeline = this.tweens.createTimeline();
         timeline.add({
             targets: cover,
             alpha: {start: 0, from:0, to:1},
             duration: 500,
+            onUpdate: ()=>{
+                DomHandler.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+            },
             onComplete: ()=>{
                 this.scene.stop(fromScene);
             }
@@ -32,7 +37,7 @@ class Load extends Phaser.Scene {
             alpha: {from:1, to:1},
             duration: 500,
             onComplete: ()=>{
-                GameSave.SetStage(Levels.STAGE2);
+                GameSave.SetStage(stageData);
                 this.scene.launch(nextScene);
             }
         });
@@ -40,11 +45,14 @@ class Load extends Phaser.Scene {
             targets: cover,
             alpha: {from:1, to:0},
             duration: 500,
+            onUpdate: ()=>{
+                DomHandler.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+            },
             onComplete: ()=>{
+                DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
+                DomHandler.SetDomIdOpacity(Consts.MENU_BG, .4);
                 this.scene.stop();
             }
-            //var element = document.getElementById("myElement");
-            //element.style.opacity = "0.2";
         });
         timeline.play();
 

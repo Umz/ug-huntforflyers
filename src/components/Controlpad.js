@@ -1,3 +1,5 @@
+import Consts from "../consts/Consts";
+
 /** Class that configures any input device to the Player control */
 class Controlpad {
 
@@ -24,6 +26,10 @@ class Controlpad {
         scene.input.keyboard.on('keydown-D', (event) => { this.RIGHT = true });
         scene.input.keyboard.on('keyup-D', (event) => { this.RIGHT = false });
         scene.input.keyboard.on('keydown-S', (event) => { this.action() });
+
+        scene.input.keyboard.on('keydown-Q', (event) => {
+            scene.scene.launch(Consts.LOAD_SCENE)
+        });
     }
 
     action() {

@@ -5,6 +5,10 @@ class DomHandler {
         document.getElementById(id).style.display = display;
     }
 
+    static SetDomIdOpacity(id, opacity) {
+        document.getElementById(id).style.opacity = opacity;
+    }
+
     static AddClick(elementId, fn) {
         document.getElementById(elementId).addEventListener('click', fn);
     }

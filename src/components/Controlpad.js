@@ -1,4 +1,5 @@
 import Consts from "../consts/Consts";
+import Levels from "../consts/Levels";
 
 /** Class that configures any input device to the Player control */
 class Controlpad {
@@ -27,9 +28,12 @@ class Controlpad {
         scene.input.keyboard.on('keyup-D', (event) => { this.RIGHT = false });
         scene.input.keyboard.on('keydown-S', (event) => { this.action() });
 
-        scene.input.keyboard.on('keydown-Q', (event) => {
-            scene.scene.launch(Consts.LOAD_SCENE)
-        });
+        scene.input.keyboard.on('keydown-ONE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE1 }) });
+        scene.input.keyboard.on('keydown-TWO', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE2 }) });
+        scene.input.keyboard.on('keydown-THREE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE3 }) });
+        scene.input.keyboard.on('keydown-FOUR', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE4 }) });
+        scene.input.keyboard.on('keydown-FIVE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE5 }) });
+        scene.input.keyboard.on('keydown-SIX', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE6 }) });
     }
 
     action() {

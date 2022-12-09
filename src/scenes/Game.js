@@ -204,7 +204,7 @@ class Game extends Phaser.Scene {
             DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
             DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
 
-            this.scene.start('MenuScene');
+            this.scene.start(Consts.MENU_SCENE);
         });
 
         DomHandler.AddClick(Consts.PAUSE_SOUND_BUTTON, ()=> {
@@ -222,7 +222,7 @@ class Game extends Phaser.Scene {
             DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
             DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
 
-            this.scene.start('MenuScene');
+            this.scene.start(Consts.MENU_SCENE);
         });
     }
 }

@@ -7,9 +7,7 @@ import BeeModel from "./BeeModel";
 
 const Stage1Model = {
 
-    LENGTHS: 1,     //  1 Length is 1 screen
-    TILES: 20,      //  How many tiles in 1 length
-
+    LENGTHS: 1,
     ENEMIES: [],
     
     BUILDINGS: [

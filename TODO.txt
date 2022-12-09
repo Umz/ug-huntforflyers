@@ -1,7 +1,3 @@
-Design levels with different bugs
-level size > 1
-camera follow player
-
 add collection as push to pump
 add pump animation
 add collision between pump and collectables
@@ -21,3 +17,8 @@ Fill in the question button (controls)
 Scrollfactor and background refactoring
 
 Sounds to Menu screen
+
+Conversations
+Signage
+Background birds
+Background animals

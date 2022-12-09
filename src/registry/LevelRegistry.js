@@ -11,6 +11,9 @@ class LevelRegistry {
         MAP.set(Levels.STAGE1, Stage1Model);
         MAP.set(Levels.STAGE2, Stage2Model);
         MAP.set(Levels.STAGE3, Stage3Model);
+        MAP.set(Levels.STAGE4, Stage4Model);
+        MAP.set(Levels.STAGE5, Stage5Model);
+        MAP.set(Levels.STAGE6, Stage6Model);
 
         let model = MAP.get(levelID) ? MAP.get(levelID) : Stage1Model;
         return model;

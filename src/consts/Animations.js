@@ -1,5 +1,4 @@
 const Animations = {
-
     BAT: 'bat',
     BEE: 'bee',
     BLUE_BIRD: 'bluebird',

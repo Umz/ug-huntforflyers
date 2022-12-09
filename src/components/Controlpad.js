@@ -1,5 +1,6 @@
 import Consts from "../consts/Consts";
 import Levels from "../consts/Levels";
+import WorldConsts from "../consts/WorldConsts";
 
 /** Class that configures any input device to the Player control */
 class Controlpad {
@@ -27,6 +28,12 @@ class Controlpad {
         scene.input.keyboard.on('keydown-D', (event) => { this.RIGHT = true });
         scene.input.keyboard.on('keyup-D', (event) => { this.RIGHT = false });
         scene.input.keyboard.on('keydown-S', (event) => { this.action() });
+
+        scene.input.keyboard.on('keydown-W', (event) => {
+            const target = this.controlTarget.target;
+            const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
+            console.log(tileX);
+        });
 
         scene.input.keyboard.on('keydown-ONE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE1 }) });
         scene.input.keyboard.on('keydown-TWO', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE2 }) });

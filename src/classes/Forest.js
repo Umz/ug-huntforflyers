@@ -46,6 +46,10 @@ class Forest {
         return this.enemyType;
     }
 
+    hasEnemies() {
+        return this.enemyType !== undefined;
+    }
+
     getCenterX() {
         return (this.tile + Math.floor(this.size * .5)) * WorldConsts.TILE_WIDTH;
     }

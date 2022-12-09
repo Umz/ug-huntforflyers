@@ -11,6 +11,7 @@ const Depths = {
 
     BUILDINGS_BG: 10,
     BUILDINGS_FG: 25,
+    DECOR_FG: 35,
 
     FOREST_BG1: 10,
     FOREST_BG2: 11,

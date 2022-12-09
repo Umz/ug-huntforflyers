@@ -10,8 +10,6 @@ const Stage1Model = {
     LENGTHS: 1,     //  1 Length is 1 screen
     TILES: 20,      //  How many tiles in 1 length
 
-    BIRD_MAIN: BeeModel,
-    BIRD_OTHERS: [],
     ENEMIES: [],
     
     BUILDINGS: [
@@ -21,7 +19,7 @@ const Stage1Model = {
     ],
 
     FORESTS: [
-        Forest.New().setTileX(14).setSize(4)
+        Forest.New().setTileX(14).setSize(4).setEnemy(BeeModel)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)

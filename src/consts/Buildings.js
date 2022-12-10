@@ -9,8 +9,17 @@ const Buildings = {
     TENT3: "building_tent3",
 
     HUT: "building_hut",
+    FARMHUT: "building_farmhut",
     HOUSE1: "building_house1",
+    HOUSE2: "building_house2",
 
+    MOSQUE: "building_mosque",
+
+    SHOP: "building_shop",
+    STORE: "building_store",
+    RESTAURANT: "building_restaurant",
+
+    RANCH: "building_ranch",
     WINDMILL: "building_windmill"
 }
 export default Buildings;

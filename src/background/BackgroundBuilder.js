@@ -1,6 +1,5 @@
 import WorldConsts from "../consts/WorldConsts";
-import TextureMapper from "../components/TextureMapper";
-import ForestLayer from "../classes/ForestLayer";
+import TextureMapper from "../mappers/TextureMapper";
 
 class BackgroundBuilder {
 
@@ -35,7 +34,7 @@ class BackgroundBuilder {
 
     static addBuilding(scene, building) {
         let atlas = TextureMapper.getAtlas(building.type);
-        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth);
+        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
     }
 
     //  HOW to Split for Depths?

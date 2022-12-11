@@ -6,7 +6,7 @@ import Stage4Model from "../models/Stage4Model";
 import Stage5Model from "../models/Stage5Model";
 import Stage6Model from "../models/Stage6Model";
 
-class LevelRegistry {
+class LevelMapper {
 
     static GetLevelData(levelID) {
 
@@ -22,4 +22,4 @@ class LevelRegistry {
         return model;
     }
 }
-export default LevelRegistry;
+export default LevelMapper;

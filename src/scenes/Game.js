@@ -7,7 +7,7 @@ import DomHandler from "../components/DomHandler";
 import Consts from "../consts/Consts";
 import States from "../consts/States";
 import GameSave from "../components/GameSave";
-import LevelRegistry from "../registry/LevelRegistry";
+import LevelMapper from "../mappers/LevelMapper";
 import BirdSpawner from "../spawner/BirdSpawner";
 import UpdateRunner from "../components/UpdateRunner";
 import Depths from "../consts/Depths";
@@ -22,7 +22,7 @@ class Game extends Phaser.Scene {
 
         const CURRENT_STAGE = GameSave.GetStage();
 
-        this.levelData = LevelRegistry.GetLevelData(CURRENT_STAGE);
+        this.levelData = LevelMapper.GetLevelData(CURRENT_STAGE);
 
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
 

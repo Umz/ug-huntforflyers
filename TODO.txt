@@ -2,6 +2,13 @@ add collection as push to pump
 add pump animation
 add collision between pump and collectables
 
+Add collectors
+Add enemies
+
+Add background characters
+Background birds
+Background animals
+
 create pools
 
 Add game effects
@@ -20,5 +27,3 @@ Sounds to Menu screen
 
 Conversations
 Signage
-Background birds
-Background animals

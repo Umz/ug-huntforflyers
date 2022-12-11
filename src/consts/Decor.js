@@ -10,6 +10,7 @@ const Decor = {
     BBQ: "decor_bbq",
     HANGING_SIGN: "decor_sign2",
     POT: "decor_pot",
-    POD: "decor_pod"
+    POD: "decor_pod",
+    WATER: "decor_water_jug"
 }
 export default Decor;

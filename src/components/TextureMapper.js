@@ -1,5 +1,6 @@
 import Buildings from "../consts/Buildings";
 import Decor from "../consts/Decor";
+import PlantType from "../consts/PlantType";
 
 const TextureRegistry = {
     atlas: new Map(),
@@ -11,5 +12,8 @@ for (let building in Buildings)
 
 for (let decor in Decor)
     TextureRegistry.atlas.set(Decor[decor], 'background');
+
+for (plant in PlantType)
+    TextureRegistry.atlas.set(PlantType[plant], 'background');
 
 export default TextureRegistry;

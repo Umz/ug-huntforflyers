@@ -160,13 +160,15 @@ class Game extends Phaser.Scene {
 
     addCollectorToScene() {
 
-        let col = new Collector(this);
+        let col = new Collector(this).init();
         col.setPosition(this.player.x, WorldConsts.GROUND_Y - 32);
 
         this.spriteUpdateGroup.add(col.getSprite());
         this.collisionGroupCollectors.add(col.getSprite());
 
         SpriteBuilder.addPhysics(col.getSprite());
+
+        col.setTrackedSprite(this.player.getSprite())
     }
 
     fireBullet() {

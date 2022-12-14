@@ -12,5 +12,12 @@ class Collector extends Base {
         this.controller = new CollectorCtrl(this);
         this.view = new CollectorView(this);
     }
+
+    setTrackedSprite(sprite) {
+        this.trackedSprite = sprite;
+    }
+    getTrackedSprite() {
+        return this.trackedSprite;
+    }
 }
 export default Collector;

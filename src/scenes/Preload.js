@@ -16,10 +16,10 @@ class Preload extends Phaser.Scene {
     preload() {
 
         this.load.setBaseURL('./assets/');
-        //https://umzgames.com/demo/farb2/
 
         this.load.atlas('background', 'background.png', 'background.json');
         this.load.atlas('flyers', 'flyers.png', 'flyers.json');
+        this.load.atlas('sprites', 'sprites.png', 'sprites.json');
 
         //  TESTER graphics
         this.load.image('tester', 'test/spr_tank.png');
@@ -30,6 +30,7 @@ class Preload extends Phaser.Scene {
         GameSave.Init();
         this.createGraphics();
         this.createBirdAnimations();
+        this.createSpriteAnimations();
         this.scene.start(Consts.MENU_SCENE);
     } 
 
@@ -57,7 +58,21 @@ class Preload extends Phaser.Scene {
         this.anims.create(pumpSlow);
     }
 
+    createSpriteAnimations() {
+
+        const sheet = 'sprites';
+
+        let ck_idle = { key: Animations.CK_IDLE , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_idle', start:1, end:4}), frameRate: 16, repeat: -1 };
+        let ck_hold = { key: Animations.CK_HOLD , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_hold', start:1, end:4}), frameRate: 16, repeat: -1 }
+        let ck_run = { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 16, repeat: -1 }
+        let ck_carry = { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 16, repeat: -1 }
+
+        for (let anim of [ck_idle, ck_hold, ck_run, ck_carry])
+            this.anims.create(anim);
+    }
+
     createGraphics() {
+
         let graphics = this.add.graphics();
 
         CreateBlankSquare: {

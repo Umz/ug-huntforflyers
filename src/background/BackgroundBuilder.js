@@ -34,7 +34,8 @@ class BackgroundBuilder {
 
     static addBuilding(scene, building) {
         let atlas = TextureMapper.getAtlas(building.type);
-        scene.add.image(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
+        let b = scene.add.sprite(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
+        return b;
     }
 
     //  HOW to Split for Depths?

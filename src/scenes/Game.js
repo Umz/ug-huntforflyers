@@ -11,6 +11,8 @@ import LevelMapper from "../mappers/LevelMapper";
 import BirdSpawner from "../spawner/BirdSpawner";
 import UpdateRunner from "../components/UpdateRunner";
 import Depths from "../consts/Depths";
+import Buildings from "../consts/Buildings";
+import Animations from "../consts/Animations";
 
 class Game extends Phaser.Scene {
 
@@ -23,11 +25,10 @@ class Game extends Phaser.Scene {
         const CURRENT_STAGE = GameSave.GetStage();
 
         this.levelData = LevelMapper.GetLevelData(CURRENT_STAGE);
-
-        const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
-
+        this.buildings = new Map();
         this.updateRunner = new UpdateRunner();
-
+        
+        const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
         this.cameras.main.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
@@ -43,12 +44,15 @@ class Game extends Phaser.Scene {
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
         this.collisionGroupBullets = this.physics.add.group();
+        this.collisionGroupWaterPump = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
+        this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey, null, this);
-        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletEnemy, null, this);
+        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
+        this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
@@ -81,7 +85,26 @@ class Game extends Phaser.Scene {
     }
 
     overlapPlayerPrey(player, prey) {
+        if (prey.parent.isStateEquals(States.NORMAL)) {
+        }
+    }
+
+    overlapBulletPrey(bullet, enemy) {
+        if (enemy.parent.isStateEquals(States.NORMAL)) {
+            
+            this.collisionGroupBullets.remove(bullet);
+            this.liveBirdGroup.remove(enemy);
+            bullet.setActive(false).setVisible(false);
+            enemy.freeze();
+
+            this.setPreyFrozenCollision(enemy);
+        }
+    }
+
+    overlapWaterPump(pump, prey) {
+        pump.anims.play(Animations.WATER_PUMPING);
         if (prey.parent.isStateEquals(States.FROZEN)) {
+            // Absorbtion
             GameSave.IncScore(prey.parent.getValue());
             DomHandler.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             prey.setActive(false).setVisible(false);
@@ -89,13 +112,9 @@ class Game extends Phaser.Scene {
         }
     }
 
-    overlapBulletEnemy(bullet, enemy) {
-        if (enemy.parent.isStateEquals(States.NORMAL)) {
-            this.collisionGroupBullets.remove(bullet);
-            this.liveBirdGroup.remove(enemy);
-            bullet.setActive(false).setVisible(false);
-            enemy.freeze();
-        }
+    collidePlayerPrey(player, prey) {
+        (prey.parent.isStateEquals(States.FROZEN))
+            prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
     }
 
     setupLevel() {
@@ -110,6 +129,7 @@ class Game extends Phaser.Scene {
     
     addFlightPhysics(sprite) {
         SpriteBuilder.addFlightPhysics(sprite);
+        this.setPreyFlyingcollision(sprite);
     }
 
     addPlayerToScene() {
@@ -125,6 +145,7 @@ class Game extends Phaser.Scene {
         this.collisionGroupPlayers.add(player.sprite);
 
         SpriteBuilder.addPhysics(player.sprite);
+        player.sprite.body.checkCollision.up = false;
 
         this.controlpad.addControlTarget(player.controller);
 
@@ -134,7 +155,7 @@ class Game extends Phaser.Scene {
 
     fireBullet() {
         
-        let target = this.physics.closest(this.player, this.liveBirdGroup.getChildren()) || new Phaser.Geom.Point(this.player.x, this.player.y - 32);
+        let target = this.getClosestBirdTarget(this.player);
         let angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, target.x, target.y);
         let bullet = this.bulletGroup.get(this.player.x, this.player.y);
         if (bullet) {
@@ -152,11 +173,35 @@ class Game extends Phaser.Scene {
         }
     }
 
-    getClosestBird() {
+    getClosestBirdTarget(player) {
+
+        let overhead = new Phaser.Geom.Point(this.player.x, this.player.y - 32);
+        let maxDist = WorldConsts.WIDTH * .5;
+        let target = this.physics.closest(player, this.liveBirdGroup.getChildren());
+
+        if (target && Math.abs(target.x - player.x) < maxDist)
+            return target;
+        else
+            return overhead;
     }
 
     getLiveBirdsCount() {
         return this.collisionGroupEnemies.countActive();
+    }
+
+    setPreyFlyingcollision(sprite) {
+        sprite.body.checkCollision.left = false;
+        sprite.body.checkCollision.right = false;
+    }
+
+    setPreyFrozenCollision(sprite) {
+        let waterPump = this.buildings.get(Buildings.WATER_PUMP);
+        let canPushLeft = (waterPump.x < sprite.x);
+        let canPushRight = (waterPump.x > sprite.x);
+        sprite.body.checkCollision.left = canPushRight;
+        sprite.body.checkCollision.right = canPushLeft;
+
+        SpriteBuilder.addGroundDrag(sprite);
     }
 
     addBackground() {
@@ -164,18 +209,29 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
 
-        for (let building of this.levelData.BUILDINGS)
-            BackgroundBuilder.addBuilding(this, building);
-        
+        let mapTypes = [Buildings.WATER_PUMP];
+
+        for (let building of this.levelData.BUILDINGS) {
+            let sprite = BackgroundBuilder.addBuilding(this, building);
+            if (mapTypes.find(type => type === building.type))
+                this.buildings.set(building.type, sprite);
+        }
+
+        this.addBuldingCollisions();
+
         for (let forest of this.levelData.FORESTS)
             BackgroundBuilder.addForest(this, forest);
-                    
-        let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
             
-            //  ADD the ground - physics
+        //  ADD the ground - physics
+        let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
         let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
+    }
+
+    addBuldingCollisions() {
+        let pump = this.buildings.get(Buildings.WATER_PUMP);
+        this.collisionGroupWaterPump.add(pump);
     }
 
     addDOMControl() {

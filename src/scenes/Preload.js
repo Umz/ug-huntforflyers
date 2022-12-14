@@ -45,12 +45,16 @@ class Preload extends Phaser.Scene {
         let bat = { key: Animations.BAT , frames: this.anims.generateFrameNames('flyers', { prefix: 'bat', start:1, end: 4}), frameRate: 12, repeat: -1 };
         let bug = { key: Animations.BUG , frames: this.anims.generateFrameNames('flyers', { prefix: 'bug', start:1, end: 3}), frameRate: 16, repeat: -1 };
 
+        let pumpSlow = { key: Animations.WATER_PUMPING , frames: this.anims.generateFrameNames('background', { prefix: 'pump', start:1, end: 3}), frameRate: 12, repeat: 20 };
+
         this.anims.create(blueBird);
         this.anims.create(redBird);
         this.anims.create(fairy);
         this.anims.create(bee);
         this.anims.create(bat);
         this.anims.create(bug);
+
+        this.anims.create(pumpSlow);
     }
 
     createGraphics() {

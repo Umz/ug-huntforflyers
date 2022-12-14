@@ -17,6 +17,5 @@ class Building {
         this.worldX = tile * WorldConsts.TILE_WIDTH;
         return this;
     }
-    
 }
 export default Building;

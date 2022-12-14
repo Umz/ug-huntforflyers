@@ -29,6 +29,7 @@ class Preload extends Phaser.Scene {
     create(data) {
         GameSave.Init();
         this.createGraphics();
+        this.createBackgroundAnimations();
         this.createBirdAnimations();
         this.createSpriteAnimations();
         this.scene.start(Consts.MENU_SCENE);
@@ -46,29 +47,31 @@ class Preload extends Phaser.Scene {
         let bat = { key: Animations.BAT , frames: this.anims.generateFrameNames('flyers', { prefix: 'bat', start:1, end: 4}), frameRate: 12, repeat: -1 };
         let bug = { key: Animations.BUG , frames: this.anims.generateFrameNames('flyers', { prefix: 'bug', start:1, end: 3}), frameRate: 16, repeat: -1 };
 
-        let pumpSlow = { key: Animations.WATER_PUMPING , frames: this.anims.generateFrameNames('background', { prefix: 'pump', start:1, end: 3}), frameRate: 12, repeat: 20 };
-
         this.anims.create(blueBird);
         this.anims.create(redBird);
         this.anims.create(fairy);
         this.anims.create(bee);
         this.anims.create(bat);
         this.anims.create(bug);
-
-        this.anims.create(pumpSlow);
     }
 
     createSpriteAnimations() {
 
         const sheet = 'sprites';
 
-        let ck_idle = { key: Animations.CK_IDLE , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_idle', start:1, end:4}), frameRate: 16, repeat: -1 };
-        let ck_hold = { key: Animations.CK_HOLD , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_hold', start:1, end:4}), frameRate: 16, repeat: -1 }
-        let ck_run = { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 16, repeat: -1 }
-        let ck_carry = { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 16, repeat: -1 }
+        let ck_idle = { key: Animations.CK_IDLE , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_idle', start:1, end:4}), frameRate: 8, repeat: -1 };
+        let ck_hold = { key: Animations.CK_HOLD , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_hold', start:1, end:4}), frameRate: 8, repeat: -1 }
+        let ck_run = { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 10, repeat: -1 }
+        let ck_carry = { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 10, repeat: -1 }
 
         for (let anim of [ck_idle, ck_hold, ck_run, ck_carry])
             this.anims.create(anim);
+    }
+
+    createBackgroundAnimations() {
+
+        let pumpSlow = { key: Animations.WATER_PUMPING , frames: this.anims.generateFrameNames('background', { prefix: 'pump', start:1, end: 3}), frameRate: 12, repeat: 20 };
+        this.anims.create(pumpSlow);
     }
 
     createGraphics() {

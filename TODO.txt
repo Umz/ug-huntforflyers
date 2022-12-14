@@ -1,8 +1,5 @@
 Add collectors
-- Add collector Sprite
-Merge
-- Collector object, model and controller
-Merge
+
 - Add action to follow player 
 - Add auto collect anything that falls
 Merge
@@ -43,5 +40,7 @@ Smaller bounding box player
 Smaller box water pump
 
 Add sun in background, day and night cycle - reload level?
+
+Create folders for sprites , bg objects, etc.
 
 https://umzgames.com/demo/farb2/

@@ -19,7 +19,5 @@ class Player extends Base {
         this.viewer.showFireAnimation();
         this.setState(States.FIRING);
     }
-
-    setPosition(x, y) { this.sprite.setPosition(x,y) }
 }
 export default Player;

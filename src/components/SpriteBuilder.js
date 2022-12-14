@@ -7,6 +7,11 @@ class SpriteBuilder {
         return sprite;
     }
 
+    static GetCollectorSprite(scene, model) {
+        let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.PLAYER_TEAM);
+        return sprite;
+    }
+
     static GetFlyingEnemySprite(scene, model) {
         let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.ENEMIES_SPAWNED);
         return sprite;

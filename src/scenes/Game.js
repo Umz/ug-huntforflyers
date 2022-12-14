@@ -13,6 +13,7 @@ import UpdateRunner from "../components/UpdateRunner";
 import Depths from "../consts/Depths";
 import Buildings from "../consts/Buildings";
 import Animations from "../consts/Animations";
+import Collector from "../collector/Collector";
 
 class Game extends Phaser.Scene {
 
@@ -45,9 +46,12 @@ class Game extends Phaser.Scene {
         this.collisionGroupEnemies = this.physics.add.group();
         this.collisionGroupBullets = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
+        this.collisionGroupCollectors = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
+        this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
+
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey, null, this);
@@ -69,6 +73,7 @@ class Game extends Phaser.Scene {
         
         //  Add Playable characters
         this.addPlayerToScene();    // Extract
+        this.addCollectorToScene();
 
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
@@ -151,6 +156,17 @@ class Game extends Phaser.Scene {
 
         let camera = this.cameras.main;
         camera.startFollow(player.getSprite());
+    }
+
+    addCollectorToScene() {
+
+        let col = new Collector(this);
+        col.setPosition(this.player.x, WorldConsts.GROUND_Y - 32);
+
+        this.spriteUpdateGroup.add(col.getSprite());
+        this.collisionGroupCollectors.add(col.getSprite());
+
+        SpriteBuilder.addPhysics(col.getSprite());
     }
 
     fireBullet() {

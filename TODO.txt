@@ -1,4 +1,12 @@
 Add collectors
+- Add collector Sprite
+Merge
+- Collector object, model and controller
+Merge
+- Add action to follow player 
+- Add auto collect anything that falls
+Merge
+- Change collision of collected object
 
 Add background characters
 Background birds
@@ -32,3 +40,6 @@ Conversations
 Signage
 
 Smaller bounding box player
+Smaller box water pump
+
+Add sun in background, day and night cycle - reload level?

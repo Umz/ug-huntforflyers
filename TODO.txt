@@ -1,13 +1,13 @@
-add collection as push to pump
-add pump animation
-add collision between pump and collectables
-
 Add collectors
-Add enemies
 
 Add background characters
 Background birds
 Background animals
+
+Add level 5
+Add level 6
+Add level 7
+Add level 8
 
 create pools
 
@@ -15,6 +15,9 @@ Add game effects
 Hit effects
 Fire effects 
 Collect effects 
+
+Add enemies
+Enemy 
 
 Fill in the game over screen
 
@@ -27,3 +30,5 @@ Sounds to Menu screen
 
 Conversations
 Signage
+
+Smaller bounding box player

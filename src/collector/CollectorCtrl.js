@@ -9,6 +9,7 @@ class CollectorCtrl extends BaseController {
     }
 
     addFollowTracked() {
+        const mul = Math.random() * 3 + .5;
         const velX = this.velocityX;
         this.addUpdateFnAndBindToTarget(FnNames.CTRL_FOLLOW_PLAYER, function() {
             if (this.getTrackedSprite()) {
@@ -19,7 +20,7 @@ class CollectorCtrl extends BaseController {
                 let vel = velX * dir;
 
                 let dist = Math.abs(x - toX);
-                if (dist > WorldConsts.TILE_WIDTH * 3)
+                if (dist > WorldConsts.TILE_WIDTH * mul)
                     this.sprite.setVelocityX(vel);
             }
         });

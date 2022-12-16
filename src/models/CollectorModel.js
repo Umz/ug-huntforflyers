@@ -3,7 +3,7 @@ import BaseModel from "../consts/BaseModel";
 
 const CollectorModel = Object.assign({}, BaseModel);
 
-CollectorModel.relativeSpeed = 1.1;
+CollectorModel.relativeSpeed = .7;
 CollectorModel.atlas = 'sprites';
 CollectorModel.frame = 'spr_ck_idle1';
 CollectorModel.animation = Animations.CK_IDLE;

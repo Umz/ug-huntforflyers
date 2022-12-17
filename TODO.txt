@@ -1,13 +1,16 @@
-Add collectors
-
-- Add action to follow player 
-- Add auto collect anything that falls
-Merge
-- Change collision of collected object
-
 Add background characters
 Background birds
 Background animals
+
+Base : Add moveTowards - relativeSpeed, etc.
+
+Refactor Game Scene
+Refactor Preload
+Refactor Menu 
+Refactor Load
+
+Refactor collector controller
+(Proper names, fn sizes, etc.)
 
 Add level 5
 Add level 6

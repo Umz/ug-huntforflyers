@@ -5,6 +5,7 @@ const Depths = {
     ENEMIES: 25,
     ENEMIES_FROZEN: 19,
     ENEMIES_SPAWNED: 9,
+    ENEMIES_CARRIED: 16,
 
     PLAYER_TEAM: 15,
     PLAYERS: 20,

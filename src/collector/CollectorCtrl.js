@@ -42,6 +42,9 @@ class CollectorCtrl extends BaseController {
                 this.getSprite().setVelocityX(0);
                 this.controller.setToCarryHome(target);
                 this.setState(States.CARRYING);
+
+                this.scene.setPreyCarriedCollisions(target.getSprite());
+                this.scene.setPreyCarriedDepth(target.getSprite());
             }
         });
 

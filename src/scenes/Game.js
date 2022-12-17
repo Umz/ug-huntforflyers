@@ -234,6 +234,15 @@ class Game extends Phaser.Scene {
         SpriteBuilder.addGroundDrag(sprite);
     }
 
+    setPreyCarriedCollisions(sprite) {
+        sprite.body.checkCollision.left = false;
+        sprite.body.checkCollision.right = false;
+    }
+
+    setPreyCarriedDepth(sprite) {
+        sprite.setDepth(Depths.ENEMIES_CARRIED);
+    }
+
     addBackground() {
 
         BackgroundBuilder.addBackgroundScene(this);

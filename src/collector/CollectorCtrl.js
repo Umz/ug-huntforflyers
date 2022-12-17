@@ -26,6 +26,22 @@ class CollectorCtrl extends BaseController {
         });
     }
 
-    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed }
+    setToCollect(target) {
+
+        const velX = this.velocityX;
+
+        this.addUpdateFnAndBindToTarget(FnNames.CTRL_TO_COLLECT, function() {
+
+            let dir = target.getSprite().x > this.x ? 1 : -1;
+            let vel = velX * dir;
+            this.getSprite().setVelocityX(vel);
+
+            if (this.getSprite().getBounds().contains(target.x, target.y)) {
+                this.getSprite().setVelocityX(0);
+            }
+        });
+
+        this.target.removeUpdateFn(FnNames.CTRL_FOLLOW_PLAYER);
+    }
 }
 export default CollectorCtrl;

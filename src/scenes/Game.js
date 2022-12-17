@@ -73,6 +73,8 @@ class Game extends Phaser.Scene {
         
         //  Add Playable characters
         this.addPlayerToScene();    // Extract
+
+        for (let i=0; i<5; i++)
         this.addCollectorToScene();
 
         for (let forest of this.levelData.FORESTS) {
@@ -103,6 +105,16 @@ class Game extends Phaser.Scene {
             enemy.freeze();
 
             this.setPreyFrozenCollision(enemy);
+
+            // To collect
+            let all = this.collisionGroupCollectors.getChildren();
+            let available = all.filter(sprite => sprite.parent.isStateEquals(States.NORMAL));
+
+            let collector = this.physics.closest(enemy, available);
+            if (collector) {
+                collector.parent.setToCollect(enemy.parent);
+            }
+
         }
     }
 

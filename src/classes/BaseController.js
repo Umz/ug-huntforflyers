@@ -1,3 +1,5 @@
+import WorldConsts from "../consts/WorldConsts";
+
 class BaseController {
 
     constructor(target) {
@@ -20,5 +22,7 @@ class BaseController {
         let boundFn = fn.bind(this.target);
         this.target.addUpdateFn(key, boundFn);
     }
+
+    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed }
 }
 export default BaseController;

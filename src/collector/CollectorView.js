@@ -1,6 +1,7 @@
 import BaseController from "../classes/BaseController";
 import Animations from "../consts/Animations";
 import FnNames from "../consts/FnNames";
+import States from "../consts/States";
 
 class CollectorView extends BaseController {
     constructor(target) {
@@ -20,13 +21,18 @@ class CollectorView extends BaseController {
     addAnimationListener() {
         const run = this.model.run;
         const idle = this.model.idle;
+        const carry = this.model.carry;
+        const hold = this.model.hold;
         this.addUpdateFnAndBindToSprite(FnNames.VIEw_COLLECTOR_FRAME, function() {
-            // Check state - carrying or not -
+
+            let moving = this.parent.isStateEquals(States.CARRYING) ?  carry : run;
+            let still = this.parent.isStateEquals(States.CARRYING) ?  hold : idle;
+
             let velX = Math.abs(this.body.velocity.x);
             if (velX > 16)
-                this.anims.play(run, true);
+                this.anims.play(moving, true);
             else
-                this.anims.play(idle, true);
+                this.anims.play(still, true);
         });
     }
 }

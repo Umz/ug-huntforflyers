@@ -264,6 +264,11 @@ class Game extends Phaser.Scene {
         this.collisionGroupWaterPump.add(pump);
     }
 
+    getBuilding(type) {
+        let found = this.levelData.BUILDINGS.find(building => building.isTypeEquals(type));
+        return found;
+    }
+
     addDOMControl() {
 
         //  GUI

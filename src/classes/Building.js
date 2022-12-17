@@ -17,5 +17,7 @@ class Building {
         this.worldX = tile * WorldConsts.TILE_WIDTH;
         return this;
     }
+
+    isTypeEquals(type) { return this.type === type }
 }
 export default Building;

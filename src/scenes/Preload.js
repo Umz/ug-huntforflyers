@@ -53,6 +53,9 @@ class Preload extends Phaser.Scene {
         this.anims.create(bee);
         this.anims.create(bat);
         this.anims.create(bug);
+
+        let eagle = { key: Animations.EAGLE , frames: this.anims.generateFrameNames('flyers', { prefix: 'eagle', start:1, end: 7}), frameRate: 8, repeat: -1 };
+        this.anims.create(eagle);
     }
 
     createSpriteAnimations() {

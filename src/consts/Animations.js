@@ -8,6 +8,8 @@ const Animations = {
     RED_BIRD: 'redbird',
     EAGLE: 'eagle',
 
+    TOAD: 'toad',
+
     WATER_PUMPING: 'water_pump_normal',
 
     CK_IDLE: 'carrykin_idle',

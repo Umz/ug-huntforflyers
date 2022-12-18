@@ -31,6 +31,7 @@ class Preload extends Phaser.Scene {
         this.createGraphics();
         this.createBackgroundAnimations();
         this.createBirdAnimations();
+        this.createAnimalAnimations();
         this.createSpriteAnimations();
         this.scene.start(Consts.MENU_SCENE);
     } 
@@ -56,6 +57,15 @@ class Preload extends Phaser.Scene {
 
         let eagle = { key: Animations.EAGLE , frames: this.anims.generateFrameNames('flyers', { prefix: 'eagle', start:1, end: 7}), frameRate: 8, repeat: -1 };
         this.anims.create(eagle);
+    }
+
+    createAnimalAnimations() {
+        let animals = [
+            { key: Animations.TOAD , frames: this.anims.generateFrameNames('sprites', { prefix: 'eagle', start:1, end: 4}), frameRate: 8, repeat: -1 }
+        ];
+
+        for (let animal of animals)
+            this.anims.create(animal);
     }
 
     createSpriteAnimations() {

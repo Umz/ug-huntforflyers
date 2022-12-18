@@ -14,6 +14,7 @@ import Depths from "../consts/Depths";
 import Buildings from "../consts/Buildings";
 import Animations from "../consts/Animations";
 import Collector from "../collector/Collector";
+import BGBirdSpawner from "../spawner/BGBirdSpawner";
 
 class Game extends Phaser.Scene {
 
@@ -41,6 +42,7 @@ class Game extends Phaser.Scene {
             maxSize: 5
         });
         this.liveBirdGroup = this.add.group();
+        this.bgBirdGroup = this.add.group({runChildUpdate:true});
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
@@ -85,6 +87,10 @@ class Game extends Phaser.Scene {
                 this.updateRunner.add(birdSpawner);
             }
         }
+
+        let bgSpawner = new BGBirdSpawner(this, this.bgBirdGroup);
+        this.updateRunner.add(bgSpawner);
+        
     }
 
     update(time, delta) {

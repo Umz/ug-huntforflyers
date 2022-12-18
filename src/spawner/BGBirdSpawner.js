@@ -1,38 +1,48 @@
+import BGBird from "../background/BGBird";
+import Counter from "../components/Counter";
 import Animations from "../consts/Animations";
 import Depths from "../consts/Depths";
+import WorldConsts from "../consts/WorldConsts";
 
 class BGBirdSpawner {
-    constructor(scene) {
+
+    constructor(scene, group) {
+
         this.scene = scene;
-        //  ON timer - push out birds in the background that flap and vanish -
-        //  Tween in- move slightly in the sky 
-        //  Tween out -
+        this.group = group;
 
-        for (let i = 0; i < 30; i++) {
+        let time = 20 * 1000;
+        this.counter = Counter.New().setRepeating(true).setMaxCount(time);
+    }
 
-            let startX = Phaser.Math.Between(140, 340);
-            let startY = Phaser.Math.Between(40, 80);
+    update(time, delta) {
+        this.counter.update(time, delta);
+        if (this.counter.isComplete())
+            this.spawnBirdGroup(23);
+    }
 
-            let sprite = scene.add.sprite(startX, startY, 'flyers', Animations.BAT).setDepth(Depths.BG_ANIMATION);
-            sprite.anims.play(Animations.BAT);
-
-            sprite.setTint(0x555555).setScale(.25);
-            sprite.sf = (4 * .15);
-            sprite.of = startX;
-            const moveX = Phaser.Math.Between(6, 10);
-            //const moveY = Phaser.Math.Between(-2, -4);
-            const moveY = 0;
-
-            sprite.update = function(time, delta) {
-                let camera = this.scene.cameras.main;
-                //this.x = camera.scrollX * this.sf + this.of;
-                this.of += (moveX * .001) * delta;
-                this.x = camera.scrollX * this.sf + this.of;
-                this.y += (moveY * .001) * delta;
-            }
-
-            scene.updateRunner.add(sprite);
+    spawnBirdGroup(amt) {
+        const LEVEL_WIDTH = this.scene.levelData.LENGTHS * WorldConsts.WIDTH;
+        let spawnX = Phaser.Math.Between(0, LEVEL_WIDTH);
+        for (let i = 0; i < amt; i++) {
+            let startX = spawnX + Phaser.Math.Between(-100, 100);
+            let startY = Phaser.Math.Between(170, 200);
+            let bird = this.getSpriteFromGroup();
+            bird.reset(startX, startY);
         }
+    }
+
+    getSpriteFromGroup() {
+        
+        let sprite = this.group.getFirstDead();
+        if (sprite)
+            return sprite;
+
+        let bird = new BGBird(this.scene, 0, 0);
+        this.scene.add.existing(bird);
+        this.group.add(bird);
+
+        return bird;
     }
 }
 export default BGBirdSpawner;

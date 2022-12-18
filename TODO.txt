@@ -1,6 +1,8 @@
-Add background characters
-Background birds
 Background animals
+- Run across the sand -
+- Run around the FG - player scene, fox?
+Add background characters
+
 
 Base : Add moveTowards - relativeSpeed, etc.
 
@@ -12,7 +14,7 @@ Refactor Load
 Refactor collector controller
 (Proper names, fn sizes, etc.)
 
-Add level 5
+Add level 5 / Add crops 
 Add level 6
 Add level 7
 Add level 8
@@ -43,6 +45,8 @@ Smaller bounding box player
 Smaller box water pump
 
 Add sun in background, day and night cycle - reload level?
+BG dust cloud or particles
+BG wind effects 
 
 Create folders for sprites , bg objects, etc.
 

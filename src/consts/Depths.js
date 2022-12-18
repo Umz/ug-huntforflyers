@@ -3,6 +3,7 @@ const Depths = {
     BG_SCENE: 1,
     BG_STAGE: 10,
     BG_ANIMATION: 3,
+    BG_RUNNERS: 5,
 
     ENEMIES: 35,
     ENEMIES_FROZEN: 29,

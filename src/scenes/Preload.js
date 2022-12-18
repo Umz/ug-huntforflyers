@@ -61,7 +61,7 @@ class Preload extends Phaser.Scene {
 
     createAnimalAnimations() {
         let animals = [
-            { key: Animations.TOAD , frames: this.anims.generateFrameNames('sprites', { prefix: 'eagle', start:1, end: 4}), frameRate: 8, repeat: -1 }
+            { key: Animations.TOAD , frames: this.anims.generateFrameNames('sprites', { prefix: 'toad', start:1, end: 4}), frameRate: 6, repeat: -1 }
         ];
 
         for (let animal of animals)

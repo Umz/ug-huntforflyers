@@ -12,6 +12,9 @@ const Animations = {
 
     WATER_PUMPING: 'water_pump_normal',
 
+    MUSLIM_IDLE: 'muslim_idle',
+    MUSLIM_RUN: 'muslim_run',
+
     CK_IDLE: 'carrykin_idle',
     CK_HOLD: 'carrykin_hold',
     CK_RUN: 'carrykin_run',

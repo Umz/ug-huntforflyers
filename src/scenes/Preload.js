@@ -28,11 +28,14 @@ class Preload extends Phaser.Scene {
 
     create(data) {
         GameSave.Init();
+
         this.createGraphics();
         this.createBackgroundAnimations();
         this.createBirdAnimations();
         this.createAnimalAnimations();
         this.createSpriteAnimations();
+        this.createCivilianAnimations();
+
         this.scene.start(Consts.MENU_SCENE);
     } 
 
@@ -79,6 +82,15 @@ class Preload extends Phaser.Scene {
 
         for (let anim of [ck_idle, ck_hold, ck_run, ck_carry])
             this.anims.create(anim);
+    }
+
+    createCivilianAnimations() {
+        let civilians = [
+            { key: Animations.MUSLIM_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.MUSLIM_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_run', start:1, end: 6}), frameRate: 10, repeat: -1 }
+        ];
+        for (let civ of civilians)
+            this.anims.create(civ);
     }
 
     createBackgroundAnimations() {

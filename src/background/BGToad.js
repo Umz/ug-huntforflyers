@@ -1,5 +1,6 @@
 import Animations from "../consts/Animations";
 import Depths from "../consts/Depths";
+import WorldConsts from "../consts/WorldConsts";
 
 class BGToad extends Phaser.GameObjects.Sprite {
 
@@ -8,6 +9,8 @@ class BGToad extends Phaser.GameObjects.Sprite {
 
         this.offsetX = x;
         this.scrollOffset = (4 * .15);
+
+        this.type = Animations.TOAD;
 
         this.setDepth(Depths.BG_RUNNERS);
         this.setTint(0xBBBBBB);
@@ -20,14 +23,14 @@ class BGToad extends Phaser.GameObjects.Sprite {
 
     update(time, delta) {
 
-        let camera = this.scene.cameras.main;
+        const camera = this.scene.cameras.main;
+        const width = this.scene.levelData.LENGTHS * WorldConsts.WIDTH;
 
         this.offsetX += (this.moveX * .001) * delta;
-        //this.x = (camera.scrollX * this.scrollOffset) + this.offsetX;
         this.x += (this.moveX * .001) * delta;
 
-        //if (this.y < 0)
-        //    this.setActive(false).setVisible(false);
+        if (this.x > width)
+            this.setActive(false).setVisible(false);
     }
 
     reset(x, y) {

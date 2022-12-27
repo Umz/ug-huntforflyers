@@ -14,7 +14,7 @@ import Depths from "../consts/Depths";
 import Buildings from "../consts/Buildings";
 import Animations from "../consts/Animations";
 import Collector from "../collector/Collector";
-import BGBirdSpawner from "../spawner/BGBirdSpawner";
+import BGAnimations from "../background/BGAnimations";
 
 class Game extends Phaser.Scene {
 
@@ -86,11 +86,7 @@ class Game extends Phaser.Scene {
                 birdSpawner.setBirdType(forest.getEnemyType());
                 this.updateRunner.add(birdSpawner);
             }
-        }
-
-        let bgSpawner = new BGBirdSpawner(this, this.bgBirdGroup);
-        this.updateRunner.add(bgSpawner);
-        
+        }       
     }
 
     update(time, delta) {
@@ -272,6 +268,9 @@ class Game extends Phaser.Scene {
         let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
+
+        let backgroundAnimations = new BGAnimations(this, this.bgBirdGroup);
+        this.updateRunner.add(backgroundAnimations);
     }
 
     addBuldingCollisions() {

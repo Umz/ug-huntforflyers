@@ -1,8 +1,6 @@
 Background animals
-- Run across the sand -
-- Run around the FG - player scene, fox?
+- Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 Add background characters
-
 
 Base : Add moveTowards - relativeSpeed, etc.
 

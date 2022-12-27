@@ -9,6 +9,8 @@ class BGBird extends Phaser.GameObjects.Sprite {
         this.offsetX = x;
         this.scrollOffset = (4 * .15);
 
+        this.type = Animations.EAGLE;
+
         this.setDepth(Depths.BG_ANIMATION);
         this.setTint(0x555555);
         this.setScale(.25);

@@ -3,6 +3,7 @@ const States = {
     IDLE: 0,
     JUST_SPAWNED: 1,
     NORMAL: 2,
+    GENERAL: 3,
 
     FIRING: 5,
 

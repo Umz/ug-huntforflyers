@@ -86,15 +86,14 @@ class Preload extends Phaser.Scene {
 
     createCivilianAnimations() {
         let civilians = [
-            { key: Animations.MUSLIM_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
-            { key: Animations.MUSLIM_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_run', start:1, end: 6}), frameRate: 10, repeat: -1 }
+            { key: Animations.MUSLIM_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_idle', start:1, end: 4}), frameRate: 5, repeat: -1 },
+            { key: Animations.MUSLIM_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_run', start:1, end: 6}), frameRate: 9, repeat: -1 }
         ];
         for (let civ of civilians)
             this.anims.create(civ);
     }
 
     createBackgroundAnimations() {
-
         let pumpSlow = { key: Animations.WATER_PUMPING , frames: this.anims.generateFrameNames('background', { prefix: 'pump', start:1, end: 3}), frameRate: 12, repeat: 20 };
         this.anims.create(pumpSlow);
     }

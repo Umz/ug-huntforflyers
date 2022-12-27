@@ -1,4 +1,5 @@
 import States from "../consts/States";
+import Action from "./Action";
 
 class Base {
 
@@ -11,8 +12,19 @@ class Base {
 
     init() {
         this.sprite.update = (time, delta) => {
+            let complete = [];
+
             for (let fn of this.updateFunctions.values())
-                fn(time, delta);
+                if (fn instanceof Action) {
+                    fn.update(time, delta);
+                    if (fn.isComplete())
+                        complete.push(fn.name);
+                }
+                else
+                    fn(time, delta);
+
+            for (let actionName of complete)
+                this.removeUpdateFn(actionName);
         }
         this.sprite.parent = this;
         return this;

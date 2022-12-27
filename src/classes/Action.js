@@ -7,14 +7,16 @@ class Action {
     }
 
     update(time, delta) {
+
+        this.subclassUpdate(time, delta);
+
         if (this.isActionComplete) {
             for (let i=this.callbacks.length; --i>=0;) {
                 let fn = this.callbacks.shift();
                 fn();
             }
         }
-        else
-            this.subclassUpdate(time, delta);
+        
     }
 
     subclassUpdate(time, delta) {
@@ -28,6 +30,10 @@ class Action {
 
     setComplete() {
         this.isActionComplete = true;
+    }
+
+    isComplete() {
+        return this.isActionComplete;
     }
 }
 export default Action;

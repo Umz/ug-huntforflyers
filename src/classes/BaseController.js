@@ -8,6 +8,10 @@ class BaseController {
         this.stats = target.stats;
     }
 
+    addAction(action) {
+        this.target.addUpdateFn(action.name, action);
+    }
+
     addUpdateFn(key, fn) {
         let boundFn = fn.bind(this);
         this.target.addUpdateFn(key, boundFn);

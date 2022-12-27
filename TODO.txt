@@ -1,9 +1,3 @@
-Background animals
-- Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
-Add background characters
-
-Base : Add moveTowards - relativeSpeed, etc.
-
 Refactor Game Scene
 Refactor Preload
 Refactor Menu 
@@ -47,5 +41,14 @@ BG dust cloud or particles
 BG wind effects 
 
 Create folders for sprites , bg objects, etc.
+
+Background animals
+- Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
+
+Game needs to be super simple to learn the concept -
+And the development should be seen during the levels progressing
+Things built should stay or remain
+The game must get very difficult
+Dying and retrying is an essential portion of the gameplay fun
 
 https://umzgames.com/demo/farb2/

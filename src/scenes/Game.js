@@ -15,6 +15,7 @@ import Buildings from "../consts/Buildings";
 import Animations from "../consts/Animations";
 import Collector from "../collector/Collector";
 import BGAnimations from "../background/BGAnimations";
+import Civilian from "../civilian/Civilian";
 
 class Game extends Phaser.Scene {
 
@@ -49,10 +50,12 @@ class Game extends Phaser.Scene {
         this.collisionGroupBullets = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
+        this.collisionGroupCivilians = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
+        this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
 
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
@@ -185,6 +188,19 @@ class Game extends Phaser.Scene {
         col.setTrackedSprite(this.player.getSprite())
     }
 
+    addCivilianToScene(building) {
+        
+        let civ = new Civilian(this).init();
+        civ.setPosition(building.worldX, WorldConsts.GROUND_Y - 16);
+
+        this.spriteUpdateGroup.add(civ.getSprite());
+        this.collisionGroupCivilians.add(civ.getSprite());
+
+        SpriteBuilder.addPhysics(civ.getSprite());
+
+        civ.setHome(building);
+    }
+
     fireBullet() {
         
         let target = this.getClosestBirdTarget(this.player);
@@ -251,11 +267,17 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addGround(this);
 
         let mapTypes = [Buildings.WATER_PUMP];
+        let houseTypes = [Buildings.TENT1, Buildings.TENT2, Buildings.TENT3, Buildings.HUT, Buildings.HOUSE1];
 
         for (let building of this.levelData.BUILDINGS) {
+
             let sprite = BackgroundBuilder.addBuilding(this, building);
+
             if (mapTypes.find(type => type === building.type))
                 this.buildings.set(building.type, sprite);
+
+            if (houseTypes.find(type => type === building.type))
+                this.addCivilianToScene(building);
         }
 
         this.addBuldingCollisions();

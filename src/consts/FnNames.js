@@ -17,5 +17,6 @@ const FnNames = {
     VIEw_COLLECTOR_FRAME: "collectorAnimations",
 
     ACT_WAIT: "controlActionWait",
+    ACT_BLANK: "controlActionBlankDoNothing"
 }
 export default FnNames;

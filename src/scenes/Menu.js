@@ -23,7 +23,7 @@ class Menu extends Phaser.Scene {
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1)
-            .addLayer([PlantType.BUSH, PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3], Depths.FOREST_FG2)
+            .addLayer([PlantType.BUSH, PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3, PlantType.SUNFLOWER], Depths.FOREST_FG2)
         );
 
         Dom.SetDomText(Consts.UI_SCORE_TEXT, 0);

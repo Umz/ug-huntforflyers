@@ -9,10 +9,6 @@ class Preload extends Phaser.Scene {
         super(Consts.PRELOAD_SCENE);
     }
 
-    init() {
-        // Fonts prep,
-    }
-
     preload() {
 
         this.load.setBaseURL('./assets/');
@@ -43,44 +39,36 @@ class Preload extends Phaser.Scene {
     }
 
     createBirdAnimations() {
-
-        let blueBird = { key: Animations.BLUE_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'bluebird', start:1, end: 6}), frameRate: 12, repeat: -1 };
-        let redBird = { key: Animations.RED_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'redbird', start:1, end: 4}), frameRate: 8, repeat: -1 };
-        let fairy = { key: Animations.FAIRY , frames: this.anims.generateFrameNames('flyers', { prefix: 'fairy', start:1, end: 4}), frameRate: 8, repeat: -1 };
-        let bee = { key: Animations.BEE , frames: this.anims.generateFrameNames('flyers', { prefix: 'bee', start:1, end: 3}), frameRate: 16, repeat: -1 };
-        let bat = { key: Animations.BAT , frames: this.anims.generateFrameNames('flyers', { prefix: 'bat', start:1, end: 4}), frameRate: 12, repeat: -1 };
-        let bug = { key: Animations.BUG , frames: this.anims.generateFrameNames('flyers', { prefix: 'bug', start:1, end: 3}), frameRate: 16, repeat: -1 };
-
-        this.anims.create(blueBird);
-        this.anims.create(redBird);
-        this.anims.create(fairy);
-        this.anims.create(bee);
-        this.anims.create(bat);
-        this.anims.create(bug);
-
-        let eagle = { key: Animations.EAGLE , frames: this.anims.generateFrameNames('flyers', { prefix: 'eagle', start:1, end: 7}), frameRate: 8, repeat: -1 };
-        this.anims.create(eagle);
+        let birds = [
+            { key: Animations.BLUE_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'bluebird', start:1, end: 6}), frameRate: 12, repeat: -1 },
+            { key: Animations.RED_BIRD , frames: this.anims.generateFrameNames('flyers', { prefix: 'redbird', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.FAIRY , frames: this.anims.generateFrameNames('flyers', { prefix: 'fairy', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.BEE , frames: this.anims.generateFrameNames('flyers', { prefix: 'bee', start:1, end: 3}), frameRate: 16, repeat: -1 },
+            { key: Animations.BAT , frames: this.anims.generateFrameNames('flyers', { prefix: 'bat', start:1, end: 4}), frameRate: 12, repeat: -1 },
+            { key: Animations.BUG , frames: this.anims.generateFrameNames('flyers', { prefix: 'bug', start:1, end: 3}), frameRate: 16, repeat: -1 },
+            { key: Animations.EAGLE , frames: this.anims.generateFrameNames('flyers', { prefix: 'eagle', start:1, end: 7}), frameRate: 8, repeat: -1 }
+        ]
+        for (let bird of birds)
+            this.anims.create(bird);
     }
 
     createAnimalAnimations() {
         let animals = [
             { key: Animations.TOAD , frames: this.anims.generateFrameNames('sprites', { prefix: 'toad', start:1, end: 4}), frameRate: 6, repeat: -1 }
         ];
-
         for (let animal of animals)
             this.anims.create(animal);
     }
 
     createSpriteAnimations() {
-
         const sheet = 'sprites';
-
-        let ck_idle = { key: Animations.CK_IDLE , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_idle', start:1, end:4}), frameRate: 8, repeat: -1 };
-        let ck_hold = { key: Animations.CK_HOLD , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_hold', start:1, end:4}), frameRate: 8, repeat: -1 }
-        let ck_run = { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 10, repeat: -1 }
-        let ck_carry = { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 10, repeat: -1 }
-
-        for (let anim of [ck_idle, ck_hold, ck_run, ck_carry])
+        let sprites = [
+            { key: Animations.CK_IDLE , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_idle', start:1, end:4}), frameRate: 8, repeat: -1 },
+            { key: Animations.CK_HOLD , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_hold', start:1, end:4}), frameRate: 8, repeat: -1 },
+            { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 10, repeat: -1 },
+            { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 10, repeat: -1 },
+        ]
+        for (let anim of sprites)
             this.anims.create(anim);
     }
 

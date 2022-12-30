@@ -7,6 +7,7 @@ const PlantType = {
     FLOWER1: 'plant_flower1',
     FLOWER2: 'plant_flower2',
     FLOWER3: 'plant_flower3',
+    SUNFLOWER: 'plant_sunflower',
 
     DRY_GRASS1: 'plant_dry_grass1',
     DRY_GRASS2: 'plant_dry_grass2',

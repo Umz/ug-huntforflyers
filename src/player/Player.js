@@ -1,5 +1,5 @@
 import Base from "../classes/Base";
-import SpriteGenerator from "../components/SpriteBuilder";
+import SpriteBuilder from "../components/SpriteBuilder";
 import States from "../consts/States";
 import PlayerController from "./PlayerController";
 import PlayerModel from "../models/PlayerModel";
@@ -9,7 +9,7 @@ class Player extends Base {
 
     constructor(scene) {
         super(scene, PlayerModel);
-        this.sprite = SpriteGenerator.GetPlayerSprite(scene, PlayerModel);
+        this.sprite = SpriteBuilder.GetPlayerSprite(scene, PlayerModel);
         this.controller = new PlayerController(this);
         this.viewer = new Playerviewer(this);
     }

@@ -3,7 +3,7 @@ import Controlpad from "../components/Controlpad";
 import Player from "../player/Player";
 import WorldConsts from "../consts/WorldConsts";
 import BackgroundBuilder from "../background/BackgroundBuilder";
-import DomHandler from "../components/DomHandler";
+import Dom from "../components/Dom";
 import Consts from "../consts/Consts";
 import States from "../consts/States";
 import GameSave from "../components/GameSave";
@@ -16,6 +16,10 @@ import Animations from "../consts/Animations";
 import Collector from "../collector/Collector";
 import BGAnimations from "../background/BGAnimations";
 import Civilian from "../civilian/Civilian";
+import DomSceneControl from "../components/DomSceneControl";
+import SpritePhysics from "../components/SpritePhysics";
+import PlayerSpawner from "../spawner/PlayerSpawner";
+import CivilianSpawner from "../spawner/CivilianSpawner";
 
 class Game extends Phaser.Scene {
 
@@ -36,14 +40,14 @@ class Game extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
         this.platforms = this.physics.add.group({ immovable: true });
+        this.liveBirdGroup = this.add.group();
+        this.bgBirdGroup = this.add.group({runChildUpdate:true});
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
         this.bulletGroup = this.physics.add.group({
             defaultKey: 'bullet',
             runChildUpdate: true,
             maxSize: 5
         });
-        this.liveBirdGroup = this.add.group();
-        this.bgBirdGroup = this.add.group({runChildUpdate:true});
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
@@ -59,7 +63,6 @@ class Game extends Phaser.Scene {
 
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
-        this.physics.add.overlap(this.collisionGroupPlayers, this.collisionGroupEnemies, this.overlapPlayerPrey, null, this);
         this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
 
@@ -73,14 +76,16 @@ class Game extends Phaser.Scene {
         }
         this.updateRunner.add(this.controlpad);
 
-        this.addDOMControl();
+        let ps = new PlayerSpawner(this);
+        this.civSpawner = new CivilianSpawner(this);
+
+        DomSceneControl.SetGameSceneControl(this);
+        
         this.addBackground();
         
-        //  Add Playable characters
-        this.addPlayerToScene();    // Extract
-
+        this.player = ps.spawnPlayer();
         for (let i=0; i<5; i++)
-        this.addCollectorToScene();
+            ps.spawnCollector();
 
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
@@ -94,11 +99,6 @@ class Game extends Phaser.Scene {
 
     update(time, delta) {
         this.updateRunner.update(time, delta);
-    }
-
-    overlapPlayerPrey(player, prey) {
-        if (prey.parent.isStateEquals(States.NORMAL)) {
-        }
     }
 
     overlapBulletPrey(bullet, enemy) {
@@ -128,7 +128,7 @@ class Game extends Phaser.Scene {
         if (prey.parent.isStateEquals(States.FROZEN)) {
             // Absorbtion
             GameSave.IncScore(prey.parent.getValue());
-            DomHandler.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             prey.setActive(false).setVisible(false);
             this.collisionGroupEnemies.remove(prey);
         }
@@ -139,8 +139,18 @@ class Game extends Phaser.Scene {
             prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
     }
 
-    setupLevel() {
-        // Forests, spawners, difficulties
+    addPlayerToGroups(sprite) {
+        this.spriteUpdateGroup.add(sprite);
+        this.collisionGroupPlayers.add(sprite);
+    }
+
+    addCollectorToGroups(sprite) {
+        this.spriteUpdateGroup.add(sprite);
+        this.collisionGroupCollectors.add(sprite);
+    }
+
+    addGroundPhysics(sprite) {
+        SpritePhysics.AddPhysics(sprite);
     }
 
     addBirdToGroups(sprite) {
@@ -150,55 +160,21 @@ class Game extends Phaser.Scene {
     }
     
     addFlightPhysics(sprite) {
-        SpriteBuilder.addFlightPhysics(sprite);
+        SpritePhysics.AddFlightPhysics(sprite);
         this.setPreyFlyingcollision(sprite);
     }
 
-    addPlayerToScene() {
+    addPlayerControls(player) {
 
-        let building = this.levelData.BUILDINGS[0];     //  CLEAN -
-        let player = new Player(this).init();
-
-        let pos = building || {worldX: 120};
-        player.setPosition(pos.worldX, WorldConsts.GROUND_Y - 32);
-        this.player = player;
-
-        this.spriteUpdateGroup.add(player.sprite);
-        this.collisionGroupPlayers.add(player.sprite);
-
-        SpriteBuilder.addPhysics(player.sprite);
-        player.sprite.body.checkCollision.up = false;
+        player.getSprite().body.checkCollision.up = false;  //  Refactor
 
         this.controlpad.addControlTarget(player.controller);
-
-        let camera = this.cameras.main;
-        camera.startFollow(player.getSprite());
+        this.cameras.main.startFollow(player.getSprite());
     }
 
-    addCollectorToScene() {
-
-        let col = new Collector(this).init();
-        col.setPosition(this.player.x, WorldConsts.GROUND_Y - 32);
-
-        this.spriteUpdateGroup.add(col.getSprite());
-        this.collisionGroupCollectors.add(col.getSprite());
-
-        SpriteBuilder.addPhysics(col.getSprite());
-
-        col.setTrackedSprite(this.player.getSprite())
-    }
-
-    addCivilianToScene(building) {
-        
-        let civ = new Civilian(this).init();
-        civ.setPosition(building.worldX, WorldConsts.GROUND_Y - 16);
-
-        this.spriteUpdateGroup.add(civ.getSprite());
-        this.collisionGroupCivilians.add(civ.getSprite());
-
-        SpriteBuilder.addPhysics(civ.getSprite());
-
-        civ.setHome(building);
+    addCivilianToGroups(sprite) {
+        this.spriteUpdateGroup.add(sprite);
+        this.collisionGroupCivilians.add(sprite);
     }
 
     fireBullet() {
@@ -249,7 +225,7 @@ class Game extends Phaser.Scene {
         sprite.body.checkCollision.left = canPushRight;
         sprite.body.checkCollision.right = canPushLeft;
 
-        SpriteBuilder.addGroundDrag(sprite);
+        SpritePhysics.AddGroundDrag(sprite);
     }
 
     setPreyCarriedCollisions(sprite) {
@@ -277,7 +253,7 @@ class Game extends Phaser.Scene {
                 this.buildings.set(building.type, sprite);
 
             if (houseTypes.find(type => type === building.type))
-                this.addCivilianToScene(building);
+                this.civSpawner.spawnCivilian(building);
         }
 
         this.addBuldingCollisions();
@@ -305,54 +281,5 @@ class Game extends Phaser.Scene {
         return found;
     }
 
-    addDOMControl() {
-
-        //  GUI
-
-        DomHandler.AddClick(Consts.UI_PAUSE_BUTTON, ()=> {
-            DomHandler.SetDomIdDisplay(Consts.UI, false);
-            DomHandler.SetDomIdDisplay(Consts.MENU_BG, true);
-            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, true);
-            this.scene.pause();
-        });
-
-        //  PAUSE MENU
-
-        DomHandler.AddClick(Consts.PAUSE_PLAY_BUTTON, ()=> {
-            DomHandler.SetDomIdDisplay(Consts.UI, true);
-            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
-            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
-            this.scene.resume();
-        });
-
-        DomHandler.AddClick(Consts.PAUSE_HOME_BUTTON, ()=> {
-            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
-            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
-            DomHandler.ResetClicks(Consts.SC_GAME_BUTTONS);
-
-            DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
-            DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
-
-            this.scene.start(Consts.MENU_SCENE);
-        });
-
-        DomHandler.AddClick(Consts.PAUSE_SOUND_BUTTON, ()=> {
-            DomHandler.SetDomIdDisplay(Consts.PAUSE_MENU, false);
-            DomHandler.SetDomIdDisplay(Consts.RESULTS_MENU, true);
-        });
-
-        //  RESULTS / GAME OVER
-
-        DomHandler.AddClick(Consts.RESULTS_HOME_BUTTON, ()=>{
-            DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
-            DomHandler.SetDomIdDisplay(Consts.RESULTS_MENU, false);
-            DomHandler.ResetClicks(Consts.SC_GAME_BUTTONS);
-
-            DomHandler.SetDomIdDisplay(Consts.MAIN_MENU, true);
-            DomHandler.SetDomIdDisplay(Consts.MAIN_LOGO, true);
-
-            this.scene.start(Consts.MENU_SCENE);
-        });
-    }
 }
 export default Game;

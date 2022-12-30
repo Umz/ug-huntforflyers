@@ -1,6 +1,6 @@
 import GameSave from "../components/GameSave";
 import Consts from "../consts/Consts";
-import DomHandler from "../components/DomHandler";
+import Dom from "../components/Dom";
 import Levels from "../consts/Levels";
 import Textures from "../consts/Textures";
 
@@ -17,8 +17,8 @@ class Load extends Phaser.Scene {
         let fromScene = data.fromScene || Consts.GAME_SCENE;
         let stageData = data.stageData || Levels.STAGE1;
 
-        DomHandler.SetDomIdOpacity(Consts.MENU_BG, 0);
-        DomHandler.SetDomIdDisplay(Consts.MENU_BG, true);
+        Dom.SetDomIdOpacity(Consts.MENU_BG, 0);
+        Dom.SetDomIdDisplay(Consts.MENU_BG, true);
 
         let timeline = this.tweens.createTimeline();
         timeline.add({
@@ -26,7 +26,7 @@ class Load extends Phaser.Scene {
             alpha: {start: 0, from:0, to:1},
             duration: 500,
             onUpdate: ()=>{
-                DomHandler.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+                Dom.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
             },
             onComplete: ()=>{
                 this.scene.stop(fromScene);
@@ -46,11 +46,11 @@ class Load extends Phaser.Scene {
             alpha: {from:1, to:0},
             duration: 500,
             onUpdate: ()=>{
-                DomHandler.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+                Dom.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
             },
             onComplete: ()=>{
-                DomHandler.SetDomIdDisplay(Consts.MENU_BG, false);
-                DomHandler.SetDomIdOpacity(Consts.MENU_BG, .4);
+                Dom.SetDomIdDisplay(Consts.MENU_BG, false);
+                Dom.SetDomIdOpacity(Consts.MENU_BG, .4);
                 this.scene.stop();
             }
         });

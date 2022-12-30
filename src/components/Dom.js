@@ -1,4 +1,4 @@
-class DomHandler {
+class Dom {
 
     static SetDomIdDisplay(id, visible) {
         const display = (visible) ? 'block' : 'none';
@@ -21,11 +21,11 @@ class DomHandler {
 
     static ResetClicks(ids) {
         for (let id of ids)
-            DomHandler.ResetClick(id);
+            Dom.ResetClick(id);
     }
 
     static SetDomText(id, txt) {
         document.getElementById(id).innerText = txt;
     }
 }
-export default DomHandler;
+export default Dom;

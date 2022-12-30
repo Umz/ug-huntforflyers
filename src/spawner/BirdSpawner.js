@@ -1,11 +1,6 @@
 import Counter from "../components/Counter";
 import WorldConsts from "../consts/WorldConsts";
-import BatModel from "../models/BatModel";
 import BeeModel from "../models/BeeModel";
-import BlueBirdModel from "../models/BlueBirdModel";
-import BugModel from "../models/BugModel";
-import FairyModel from "../models/FairyModel";
-import RedBirdModel from "../models/RedBirdModel";
 import Prey from "../prey/Prey";
 
 class BirdSpawner {

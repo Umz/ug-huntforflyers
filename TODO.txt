@@ -1,14 +1,10 @@
-Refactor Preload
-Refactor Menu 
-Refactor Load
-
-Refactor collector controller
-(Proper names, fn sizes, etc.)
-
 Add level 5 / Add crops 
 Add level 6
 Add level 7
 Add level 8
+
+Refactor collector controller
+(Proper names, fn sizes, etc.)
 
 create pools
 

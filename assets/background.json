@@ -493,6 +493,27 @@
 					}
 				},
 				{
+					"filename": "plant_sunflower",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 32
+					},
+					"frame": {
+						"x": 210,
+						"y": 1770,
+						"w": 16,
+						"h": 32
+					}
+				},
+				{
 					"filename": "decor_sign1",
 					"rotated": false,
 					"trimmed": false,
@@ -507,31 +528,10 @@
 						"h": 31
 					},
 					"frame": {
-						"x": 210,
+						"x": 228,
 						"y": 1770,
 						"w": 24,
 						"h": 31
-					}
-				},
-				{
-					"filename": "decor_sign2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 24
-					},
-					"frame": {
-						"x": 236,
-						"y": 1770,
-						"w": 16,
-						"h": 24
 					}
 				},
 				{
@@ -787,6 +787,48 @@
 					}
 				},
 				{
+					"filename": "decor_sign2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 24
+					},
+					"frame": {
+						"x": 456,
+						"y": 1663,
+						"w": 16,
+						"h": 24
+					}
+				},
+				{
+					"filename": "decor_lab_table",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 52,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 52,
+						"h": 20
+					},
+					"frame": {
+						"x": 411,
+						"y": 1689,
+						"w": 52,
+						"h": 20
+					}
+				},
+				{
 					"filename": "decor_fence",
 					"rotated": false,
 					"trimmed": false,
@@ -801,8 +843,8 @@
 						"h": 16
 					},
 					"frame": {
-						"x": 456,
-						"y": 1663,
+						"x": 465,
+						"y": 1689,
 						"w": 16,
 						"h": 16
 					}
@@ -822,8 +864,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 456,
-						"y": 1681,
+						"x": 465,
+						"y": 1707,
 						"w": 16,
 						"h": 15
 					}
@@ -844,7 +886,7 @@
 					},
 					"frame": {
 						"x": 411,
-						"y": 1689,
+						"y": 1711,
 						"w": 36,
 						"h": 40
 					}
@@ -865,30 +907,9 @@
 					},
 					"frame": {
 						"x": 449,
-						"y": 1698,
+						"y": 1724,
 						"w": 32,
 						"h": 40
-					}
-				},
-				{
-					"filename": "building_tent1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 16
-					},
-					"frame": {
-						"x": 411,
-						"y": 1731,
-						"w": 32,
-						"h": 16
 					}
 				},
 				{
@@ -913,24 +934,24 @@
 					}
 				},
 				{
-					"filename": "decor_lab_table",
+					"filename": "building_tent1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 52,
-						"h": 20
+						"w": 32,
+						"h": 16
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 52,
-						"h": 20
+						"w": 32,
+						"h": 16
 					},
 					"frame": {
 						"x": 410,
-						"y": 1749,
-						"w": 52,
-						"h": 20
+						"y": 1753,
+						"w": 32,
+						"h": 16
 					}
 				},
 				{
@@ -976,48 +997,6 @@
 					}
 				},
 				{
-					"filename": "decor_chest_purple",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 15
-					},
-					"frame": {
-						"x": 464,
-						"y": 1740,
-						"w": 16,
-						"h": 15
-					}
-				},
-				{
-					"filename": "plant_dry_grass1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 14
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 14
-					},
-					"frame": {
-						"x": 464,
-						"y": 1757,
-						"w": 16,
-						"h": 14
-					}
-				},
-				{
 					"filename": "decor_pot",
 					"rotated": false,
 					"trimmed": false,
@@ -1054,9 +1033,51 @@
 					},
 					"frame": {
 						"x": 421,
-						"y": 1773,
+						"y": 1771,
 						"w": 14,
 						"h": 17
+					}
+				},
+				{
+					"filename": "decor_chest_purple",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 15
+					},
+					"frame": {
+						"x": 437,
+						"y": 1771,
+						"w": 16,
+						"h": 15
+					}
+				},
+				{
+					"filename": "plant_dry_grass1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 14
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 437,
+						"y": 1788,
+						"w": 16,
+						"h": 14
 					}
 				},
 				{
@@ -1074,8 +1095,8 @@
 						"h": 14
 					},
 					"frame": {
-						"x": 437,
-						"y": 1771,
+						"x": 455,
+						"y": 1766,
 						"w": 16,
 						"h": 14
 					}
@@ -1086,6 +1107,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f05f33a9dd2b387dad898526aab378f8:1a2c7f79fb705615911d3519b34bfa5c:2ba65c328dea799e4d80739630892abf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1fdde689f906260a5818fa26ca5b9130:36427d25cc95716aed1488388a73ac97:2ba65c328dea799e4d80739630892abf$"
 	}
 }

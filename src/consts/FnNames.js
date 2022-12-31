@@ -18,6 +18,8 @@ const FnNames = {
 
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",
-    ACT_MOVETOX: "controlActionMoveToXPoisition"
+    ACT_MOVETOX: "controlActionMoveToXPoisition",
+
+    ACT_FACEDIRECTION: "faceMovementDirection",
 }
 export default FnNames;

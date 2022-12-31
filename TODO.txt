@@ -1,7 +1,11 @@
-Add level 5 / Add crops 
+Enemy attacker ground
+Enemy coin thief
+
 Add level 6
 Add level 7
 Add level 8
+
+Refactor names for all actions (arguements are what they are : Sprite, Prey,)
 
 Refactor collector controller
 (Proper names, fn sizes, etc.)
@@ -12,9 +16,6 @@ Add game effects
 Hit effects
 Fire effects 
 Collect effects 
-
-Add enemies
-Enemy 
 
 Fill in the game over screen
 

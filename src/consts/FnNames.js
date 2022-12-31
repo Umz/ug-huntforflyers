@@ -19,6 +19,13 @@ const FnNames = {
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",
     ACT_MOVETOX: "controlActionMoveToXPoisition",
+    ACT_MOVETOTARGETX: "controlActionMoveToTargetXPosition",
+    ACT_ENEMY_FLY: "controlActionFly",
+    ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
+    ACT_ENEMY_DIVE: "controlActionStealDive",
+    ACT_FOLLOW_TARGET: "controlActionFollowTarget",
+
+    ACT_LISTENFORFROZEN: "controlActionListenToFrozen",
 
     ACT_FACEDIRECTION: "faceMovementDirection",
 }

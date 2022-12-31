@@ -20,6 +20,7 @@ import DomSceneControl from "../components/DomSceneControl";
 import SpritePhysics from "../components/SpritePhysics";
 import PlayerSpawner from "../spawner/PlayerSpawner";
 import CivilianSpawner from "../spawner/CivilianSpawner";
+import EnemySpawner from "../spawner/EnemySpawner";
 
 class Game extends Phaser.Scene {
 
@@ -84,8 +85,12 @@ class Game extends Phaser.Scene {
         this.addBackground();
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<5; i++)
+        for (let i=0; i<0; i++)
             ps.spawnCollector();
+
+        this.enemySpawner = new EnemySpawner(this);
+        for (let i=0; i<6; i++)
+            this.enemySpawner.spawnEnemy(100 + (i * 20), 70);
 
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
@@ -95,6 +100,24 @@ class Game extends Phaser.Scene {
                 this.updateRunner.add(birdSpawner);
             }
         }       
+    }
+
+    countFrozen() {
+        let birds = this.collisionGroupEnemies.getChildren();
+        let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
+            if (sprite.parent.isStateEquals(States.FROZEN))
+                acc ++;
+            return acc;
+        }, 0) : 0;
+        return count;
+    }
+
+    getClosestFrozen(source) {
+
+        let frozen = this.collisionGroupEnemies.getChildren().filter(sprite => sprite.parent.isStateEquals(States.FROZEN));
+        let target = this.physics.closest(source, frozen);
+
+        return target;
     }
 
     update(time, delta) {

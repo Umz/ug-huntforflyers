@@ -12,5 +12,13 @@ class Enemy extends Base {
         this.controller = new ThiefCtrl(this);
         this.view = new ThiefView(this);
     }
+
+    claimCrystal(crystal) {
+        this.crystal = crystal;
+    }
+
+    hasCrystal() {
+        return this.crystal;
+    }
 }
 export default Enemy;

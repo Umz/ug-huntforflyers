@@ -2,13 +2,12 @@ import Action from "../classes/Action";
 import FnNames from "../consts/FnNames";
 import WorldConsts from "../consts/WorldConsts";
 
-class CtrFollowTarget extends Action {
+class CtrMoveToTargetX extends Action {
 
     constructor(sprite, target) {
-        super(FnNames.ACT_FOLLOW_TARGET);
+        super(FnNames.ACT_MOVETOTARGETX);
         this.sprite = sprite;
         this.target = target;
-        this.tiles = 1;
     }
 
     subclassUpdate(time, delta) {
@@ -18,15 +17,10 @@ class CtrFollowTarget extends Action {
         let vel = velX * dir;
 
         let dist = Math.abs(this.sprite.x - this.target.x);
-        if (dist > WorldConsts.TILE_WIDTH * this.tiles)
+        if (dist > this.sprite.width * .25)
             this.sprite.setVelocityX(vel);
         else
-            this.sprite.setVelocityX(this.sprite.body.velocity.x * .95);
-    }
-
-    setDistance(tiles) {
-        this.tiles = tiles;
-        return this;
+            this.setComplete();
     }
 }
-export default CtrFollowTarget;
+export default CtrMoveToTargetX;

@@ -1,4 +1,5 @@
 import States from "../consts/States";
+import WorldConsts from "../consts/WorldConsts";
 import Action from "./Action";
 
 class Base {
@@ -60,6 +61,10 @@ class Base {
     
     getState() {
         return this.state;
+    }
+
+    calcVelocityX() {
+        return this.stats.relativeSpeed * WorldConsts.BASE_MOVE_SPEED;
     }
 
     get stats() {

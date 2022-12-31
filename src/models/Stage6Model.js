@@ -1,17 +1,14 @@
+import Building from "../classes/Building";
+import Buildings from "../consts/Buildings";
+import Decor from "../consts/Decor";
 import Depths from "../consts/Depths";
-import PlantType from "../consts/PlantType";
 import Forest from "../classes/Forest";
-import FairyModel from "./FairyModel";
+import PlantType from "../consts/PlantType";
 
-const Stage3Model = {
+const Stage6Model = {
 
-    LENGTHS: 2,
-    TILES: 20,
-
-    BIRD_MAIN: FairyModel,
-    BIRD_OTHERS: [],
+    LENGTHS: 1,
     ENEMIES: [],
-    
     BUILDINGS: [],
 
     FORESTS: [
@@ -30,4 +27,4 @@ const Stage3Model = {
             .addLayer([PlantType.BUSH, PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3], Depths.FOREST_FG2)
     ]
 }
-export default Stage3Model;
+export default Stage6Model;

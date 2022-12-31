@@ -46,7 +46,7 @@ class CivilianCtrl extends BaseController {
     }
 
     speakAndWait() {
-        console.log('Speaking civilian')
+        //console.log('Speaking civilian')
         this.sprite.setVelocityY(-32);
         this.addAction(new CtrWait(3000).addCallback(()=>{
             this.returnState();

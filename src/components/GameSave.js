@@ -6,7 +6,7 @@ class GameSave {
     static Init() {
         sessionStorage.setItem(Consts.SAVE_NAME, "-");
         sessionStorage.setItem(Consts.SAVE_NAME_SCORE, 0);
-        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE5);
+        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE1);
     }
 
     static SetScore(val) {

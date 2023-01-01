@@ -1,6 +1,7 @@
 import States from "../consts/States";
 import WorldConsts from "../consts/WorldConsts";
 import Action from "./Action";
+import ActionChain from "./ActionChain";
 
 class Base {
 
@@ -16,7 +17,7 @@ class Base {
             let complete = [];
 
             for (let fn of this.updateFunctions.values())
-                if (fn instanceof Action) {
+                if (fn instanceof Action || fn instanceof ActionChain) {
                     fn.update(time, delta);
                     if (fn.isComplete())
                         complete.push(fn.name);

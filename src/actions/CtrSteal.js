@@ -6,24 +6,19 @@ class CtrSteal extends Action {
         super(FnNames.ACT_ENEMY_STEAL);
         this.sprite = sprite;
         this.target = target;
-
-        this.mode = 1;
     }
 
     subclassUpdate(time, delta) {
 
-        if (this.mode == 1) {
-            if (this.sprite.getBounds().contains(this.target.x, this.target.y)) {
-                this.sprite.setVelocity(0, -40);
-                this.sprite.setAcceleration(0);
-                this.mode = 2;
-            }
+        this.sprite.setVelocity(0, -40);
+        this.target.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
+
+        if (this.target.y < -16) {
+            this.target.setVisible(false).setActive(false);
+            this.sprite.setY(-4)
+            this.setComplete();
         }
 
-        else if (this.mode == 2) {
-            this.sprite.setVelocity(0, -40);
-            this.target.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
-        }
     }
 }
 export default CtrSteal;

@@ -19,7 +19,7 @@ class CtrEnemyFly extends Action {
         }
         if (this.sprite.y <= WorldConsts.FLYING_HEIGHT_HIGH_Y + this.variation)
             this.sprite.setAccelerationY(-50);
-        if (this.sprite.y <= 0) {
+        if (this.sprite.y <= 0 && this.body.velocity.y <= 0) {
             this.sprite.setVelocityY(0);
             this.sprite.setAccelerationY(0);
         }

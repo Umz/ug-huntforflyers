@@ -13,12 +13,11 @@ class CtrSteal extends Action {
         this.sprite.setVelocity(0, -40);
         this.target.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
 
-        if (this.target.y < -16) {
+        if (this.target.y < -32) {
             this.target.setVisible(false).setActive(false);
-            this.sprite.setY(-4)
+            this.sprite.setY(-16)
             this.setComplete();
         }
-
     }
 }
 export default CtrSteal;

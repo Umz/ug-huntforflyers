@@ -1,5 +1,6 @@
-Change bullet graphic
-Bullet hit prey effects
+Clean collectors (prey stolen) - Carry stolen
+Refactor collector controller
+(Proper names, fn sizes, etc.)
 
 Enemy attacker ground
 Enemy coin thief
@@ -11,10 +12,6 @@ Add level 7
 Add level 8
 
 Refactor names for all actions (arguements are what they are : Sprite, Prey,)
-
-Clean collectors (prey stolen) - Carry stolen
-Refactor collector controller
-(Proper names, fn sizes, etc.)
 
 Clean dead objects and recycle if available
 

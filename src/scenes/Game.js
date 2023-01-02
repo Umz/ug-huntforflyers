@@ -45,9 +45,16 @@ class Game extends Phaser.Scene {
         this.bgBirdGroup = this.add.group({runChildUpdate:true});
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
         this.bulletGroup = this.physics.add.group({
-            defaultKey: 'bullet',
+            defaultKey: 'background',
+            defaultFrame: 'bullet',
             runChildUpdate: true,
             maxSize: 5
+        });
+
+        this.puffGroup = this.add.group({
+            defaultKey: 'background',
+            defaultFrame: 'puff1',
+            runChildUpdate: true
         });
         
         this.collisionGroupPlayers = this.physics.add.group();
@@ -134,6 +141,7 @@ class Game extends Phaser.Scene {
             enemy.freeze();
 
             this.setPreyFrozenCollision(enemy);
+            this.showPuff(enemy.x, enemy.y);
 
             // To collect
             let all = this.collisionGroupCollectors.getChildren();
@@ -169,6 +177,12 @@ class Game extends Phaser.Scene {
     collidePlayerPrey(player, prey) {
         (prey.parent.isStateEquals(States.FROZEN))
             prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
+    }
+
+    showPuff(x, y) {
+        let puff = this.puffGroup.get(x, y);
+        puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
+        puff.anims.play(Animations.FX_PUFF)
     }
 
     addPlayerToGroups(sprite) {

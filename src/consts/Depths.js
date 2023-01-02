@@ -25,6 +25,8 @@ const Depths = {
     FOREST_BG2: 21,
     FOREST_BG3: 22,
     FOREST_FG1: 45,
-    FOREST_FG2: 50
+    FOREST_FG2: 50,
+
+    FREEZE_FX: 100,
 }
 export default Depths;

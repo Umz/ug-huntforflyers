@@ -19,7 +19,6 @@ class Preload extends Phaser.Scene {
 
         //  TESTER graphics
         this.load.image('tester', 'test/spr_tank.png');
-        this.load.image('bullet', 'test/fg_star.png');
     }
 
     create(data) {
@@ -31,6 +30,7 @@ class Preload extends Phaser.Scene {
         this.createAnimalAnimations();
         this.createSpriteAnimations();
         this.createCivilianAnimations();
+        this.createMiscAnimations();
 
         this.scene.start(Consts.MENU_SCENE);
     } 
@@ -86,6 +86,14 @@ class Preload extends Phaser.Scene {
     createBackgroundAnimations() {
         let pumpSlow = { key: Animations.WATER_PUMPING , frames: this.anims.generateFrameNames('background', { prefix: 'pump', start:1, end: 3}), frameRate: 12, repeat: 20 };
         this.anims.create(pumpSlow);
+    }
+
+    createMiscAnimations() {
+        let fxs = [
+            { key: Animations.FX_PUFF , frames: this.anims.generateFrameNames('background', { prefix: 'puff', start:1, end: 5}), frameRate: 16, repeat: 0, hideOnComplete: true },
+        ];
+        for (let fx of fxs)
+            this.anims.create(fx);
     }
 
     createGraphics() {

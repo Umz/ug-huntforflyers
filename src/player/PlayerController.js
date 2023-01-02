@@ -20,7 +20,7 @@ class PlayerController extends BaseController {
 
     moveRecoil() {
         this.sprite.y -= 2;
-        this.sprite.setVelocityY(-20);
+        this.sprite.setVelocityY(-10);
     }
 
     addGroundListener() {

@@ -1,6 +1,4 @@
-import Civilian from "../civilian/Civilian";
-import SpriteBuilder from "../components/SpriteBuilder";
-import SpritePhysics from "../components/SpritePhysics";
+import Counter from "../components/Counter";
 import WorldConsts from "../consts/WorldConsts";
 import Enemy from "../enemy/Enemy";
 
@@ -8,20 +6,29 @@ class EnemySpawner {
     
     constructor(scene) {
         this.scene = scene;
+        this.maxAlive = 5;
+        this.counter = Counter.New().setRepeating(true).setMaxCount(12 * 1000);
     }
 
-    spawnEnemy(x, y) {
+    update(time, delta) {
+        if (this.scene.getThiefCount() < this.maxAlive)
+            this.counter.update(time, delta);
+
+        if (this.counter.isComplete())
+            this.spawnEnemy();
+    }
+
+    spawnEnemy() {
+
+        let x = Phaser.Math.Between(32, this.scene.getLevelWidth() - 32);
+        let y = -24;
 
         let ene = new Enemy(this.scene);
         ene.init();
         ene.setPosition(x, y);
 
-        this.scene.spriteUpdateGroup.add(ene.getSprite());
-        SpritePhysics.AddFlightPhysicsNoBounds(ene.getSprite());
-        //this.scene.addFlightPhysics(ene.getSprite());
-
-        //this.scene.addCivilianToGroups(civ.getSprite());
-        //this.scene.addGroundPhysics(civ.getSprite());
+        this.scene.addThiefToGroups(ene.getSprite());
+        this.scene.addBoundlessFlightPhysics(ene.getSprite());
     }
 }
 export default EnemySpawner;

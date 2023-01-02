@@ -32,6 +32,11 @@ class Base {
         return this;
     }
 
+    die() {
+        this.updateFunctions.clear();
+        this.setState(States.DEAD);
+    }
+
     addUpdateFn(key, fn) {
         this.updateFunctions.set(key, fn);
     }

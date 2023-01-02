@@ -6,6 +6,7 @@ import CtrSteal from "../actions/CtrSteal";
 import CtrStealDive from "../actions/CtrStealDive";
 import CtrWait from "../actions/CtrWait";
 import BaseController from "../classes/BaseController";
+import Depths from "../consts/Depths";
 import FnNames from "../consts/FnNames";
 import States from "../consts/States";
 
@@ -18,12 +19,12 @@ class ThiefCtrl extends BaseController {
     }
     
     setDefaults() {
-        this.flyNormal();
+        this.addFlying();
         this.followPlayer();
-        this.listenForFrozen();
+        this.listenForFrozenPrey();
     }
 
-    flyNormal() {
+    addFlying() {
         this.addAction(new CtrEnemyFly(this.sprite), false);
     }
 
@@ -33,24 +34,24 @@ class ThiefCtrl extends BaseController {
         this.addAction(new CtrFollowTarget(this.sprite, player).setDistance(distance));
     }
 
-    listenForFrozen() {
+    listenForFrozenPrey() {
         this.addAction(new CtrListenFrozen(this.sprite).addCallback(()=>{
-            this.moveToFrozen();
+            this.moveToFrozenPrey();
         }));
     }
 
-    moveToFrozen() {
+    moveToFrozenPrey() {
         this.target.removeUpdateFn(FnNames.ACT_FOLLOW_TARGET);
-        let crystal = this.scene.getClosestFrozen(this.sprite);
-        this.addAction(new CtrMoveToTargetX(this.sprite, crystal).addCallback(()=>{
-            this.dropToCollect(crystal);
+        let preySprite = this.scene.getClosestFrozen(this.sprite);
+        this.addAction(new CtrMoveToTargetX(this.sprite, preySprite).addCallback(()=>{
+            this.dropToCollect(preySprite);
         }));
     }
 
-    dropToCollect(crystal) {
+    dropToCollect(preySprite) {
         this.target.removeUpdateFn(FnNames.ACT_ENEMY_FLY);
-        this.addAction(new CtrStealDive(this.sprite, crystal).addCallback(()=>{
-            this.attemptToSteal(crystal);
+        this.addAction(new CtrStealDive(this.sprite, preySprite).addCallback(()=>{
+            this.attemptToSteal(preySprite);
         }));
     }
 
@@ -58,6 +59,7 @@ class ThiefCtrl extends BaseController {
         let prey = preySprite.parent;
         if (prey.isStateEquals(States.FROZEN)) {
             prey.setState(States.STOLEN);
+            prey.setDepth(Depths.ENEMIES_STOLEN);
             this.scene.setPreyStolenCollisions(preySprite);
             this.addAction(new CtrSteal(this.sprite, preySprite).addCallback(()=>{
                 this.setDefaults();

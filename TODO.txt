@@ -1,5 +1,10 @@
+Change bullet graphic
+Bullet hit prey effects
+
 Enemy attacker ground
 Enemy coin thief
+
+Attacking and killing enemies
 
 Add level 6
 Add level 7
@@ -7,15 +12,23 @@ Add level 8
 
 Refactor names for all actions (arguements are what they are : Sprite, Prey,)
 
+Clean collectors (prey stolen) - Carry stolen
 Refactor collector controller
 (Proper names, fn sizes, etc.)
 
+Clean dead objects and recycle if available
+
 create pools
+- Prey pool
+- Bullet poool
+- Enemy Pool 
+- collect pool 
 
 Add game effects
 Hit effects
 Fire effects 
 Collect effects 
+Crystal effect on frozen prey (sparkle)
 
 Fill in the game over screen
 

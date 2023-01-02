@@ -21,6 +21,7 @@ class Controlpad {
         scene.input.keyboard.on('keyup-LEFT', (event) => { this.LEFT = false });
         scene.input.keyboard.on('keydown-RIGHT', (event) => { this.RIGHT = true });
         scene.input.keyboard.on('keyup-RIGHT', (event) => { this.RIGHT = false });
+        scene.input.keyboard.on('keydown-ENTER', (event) => { this.action() });
         scene.input.keyboard.on('keydown-Z', (event) => { this.action() });
 
         scene.input.keyboard.on('keydown-A', (event) => { this.LEFT = true; });

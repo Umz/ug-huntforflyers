@@ -21,5 +21,10 @@ class SpriteBuilder {
         let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.ENEMIES_SPAWNED);
         return sprite;
     }
+
+    static GetThiefSprite(scene, model) {
+        let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.ENEMIES);
+        return sprite;
+    }
 }
 export default SpriteBuilder;

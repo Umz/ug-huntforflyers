@@ -87,7 +87,7 @@ class Game extends Phaser.Scene {
         this.addBackground();
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<0; i++)
+        for (let i=0; i<3; i++)
             ps.spawnCollector();
 
         this.enemySpawner = new EnemySpawner(this);

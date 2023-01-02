@@ -28,5 +28,6 @@ const FnNames = {
     ACT_LISTENFORFROZEN: "controlActionListenToFrozen",
 
     ACT_FACEDIRECTION: "faceMovementDirection",
+    ACT_COLLECTOR_ANIMATION: "collectorAnimation",
 }
 export default FnNames;

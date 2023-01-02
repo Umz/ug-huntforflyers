@@ -21,7 +21,7 @@ class CtrCarryPreyHome extends Action {
         this.moveTowardCollectionPoint();
         this.carryPrey();
         
-        if (this.prey.isStateEquals(States.STOLEN) || this.prey.isStateEquals(States.DEAD)) {
+        if (!this.prey.isStateEquals(States.CARRIED)) {
             this.sprite.setVelocity(0);
             this.sprite.parent.setState(States.NORMAL);
             this.setComplete();

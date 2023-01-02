@@ -110,19 +110,25 @@ class Game extends Phaser.Scene {
         }       
     }
 
-    countFrozen() {
+    countFrozen(includeCarried = false) {
         let birds = this.collisionGroupEnemies.getChildren();
         let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
             if (sprite.parent.isStateEquals(States.FROZEN))
+                acc ++;
+            if (includeCarried && sprite.parent.isStateEquals(States.CARRIED))
                 acc ++;
             return acc;
         }, 0) : 0;
         return count;
     }
 
-    getClosestFrozen(source) {
+    getClosestFrozen(source, states = [States.FROZEN]) {
 
-        let frozen = this.collisionGroupEnemies.getChildren().filter(sprite => sprite.parent.isStateEquals(States.FROZEN));
+        let frozen = this.collisionGroupEnemies.getChildren().filter(sprite => {
+            for (let state of states)
+                if (sprite.parent.isStateEquals(state)) return true;
+            return false;
+        });
         let target = this.physics.closest(source, frozen);
 
         return target;
@@ -142,28 +148,18 @@ class Game extends Phaser.Scene {
 
             this.setPreyFrozenCollision(enemy);
             this.showPuff(enemy.x, enemy.y);
-
-            // To collect
-            let all = this.collisionGroupCollectors.getChildren();
-            let available = all.filter(sprite => sprite.parent.isStateEquals(States.NORMAL));
-
-            let collector = this.physics.closest(enemy, available);
-            if (collector) {
-                collector.parent.setToCollect(enemy.parent);
-            }
-
         }
     }
 
     overlapWaterPump(pump, prey) {
         pump.anims.play(Animations.WATER_PUMPING);
-        if (prey.parent.isStateEquals(States.FROZEN)) {
+        if (!prey.parent.isStateEquals(States.DEAD)) {
             // Absorbtion
             GameSave.IncScore(prey.parent.getValue());
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             prey.setActive(false).setVisible(false);
 
-            prey.parent.setState(States.REMOVED);
+            prey.parent.setState(States.DEAD);
             this.collisionGroupEnemies.remove(prey);
         }
     }

@@ -26,7 +26,7 @@ class CtrStealDive extends Action {
             this.setComplete();
         }
 
-        if (!this.target.parent.isStateEquals(States.FROZEN))
+        if (this.target.parent.isStateEquals(States.DEAD))
             this.setComplete();
     }
 }

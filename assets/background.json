@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 482,
-				"h": 1804
+				"h": 1806
 			},
 			"scale": 1,
 			"frames": [
@@ -178,6 +178,69 @@
 					}
 				},
 				{
+					"filename": "decor_bbq",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 11,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 11,
+						"h": 11
+					},
+					"frame": {
+						"x": 1,
+						"y": 1793,
+						"w": 11,
+						"h": 11
+					}
+				},
+				{
+					"filename": "decor_barrel",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 10,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 11
+					},
+					"frame": {
+						"x": 14,
+						"y": 1793,
+						"w": 10,
+						"h": 11
+					}
+				},
+				{
+					"filename": "puff1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 26,
+						"y": 1793,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
 					"filename": "building_mosque",
 					"rotated": false,
 					"trimmed": false,
@@ -199,87 +262,108 @@
 					}
 				},
 				{
-					"filename": "decor_bench",
+					"filename": "decor_chest",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 19,
-						"h": 13
+						"w": 16,
+						"h": 15
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 19,
-						"h": 13
+						"w": 16,
+						"h": 15
 					},
 					"frame": {
 						"x": 50,
 						"y": 1790,
-						"w": 19,
-						"h": 13
+						"w": 16,
+						"h": 15
 					}
 				},
 				{
-					"filename": "plant_dry_grass2",
+					"filename": "decor_chest_purple",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
 						"w": 16,
-						"h": 13
+						"h": 15
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
 						"w": 16,
-						"h": 13
+						"h": 15
 					},
 					"frame": {
-						"x": 71,
+						"x": 68,
 						"y": 1790,
 						"w": 16,
-						"h": 13
+						"h": 15
 					}
 				},
 				{
-					"filename": "decor_bbq",
+					"filename": "plant_dry_grass1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 11,
-						"h": 11
+						"w": 16,
+						"h": 14
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 11,
-						"h": 11
+						"w": 16,
+						"h": 14
 					},
 					"frame": {
-						"x": 89,
+						"x": 86,
 						"y": 1790,
-						"w": 11,
-						"h": 11
+						"w": 16,
+						"h": 14
 					}
 				},
 				{
-					"filename": "decor_barrel",
+					"filename": "plant_dry_grass3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 10,
-						"h": 11
+						"w": 16,
+						"h": 14
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 10,
-						"h": 11
+						"w": 16,
+						"h": 14
 					},
 					"frame": {
-						"x": 102,
+						"x": 104,
 						"y": 1790,
-						"w": 10,
-						"h": 11
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "puff2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 14
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 14
+					},
+					"frame": {
+						"x": 122,
+						"y": 1790,
+						"w": 14,
+						"h": 14
 					}
 				},
 				{
@@ -381,7 +465,7 @@
 						"h": 25
 					},
 					"frame": {
-						"x": 134,
+						"x": 138,
 						"y": 1777,
 						"w": 24,
 						"h": 25
@@ -402,7 +486,7 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 160,
+						"x": 164,
 						"y": 1777,
 						"w": 48,
 						"h": 24
@@ -507,7 +591,7 @@
 						"h": 32
 					},
 					"frame": {
-						"x": 210,
+						"x": 214,
 						"y": 1770,
 						"w": 16,
 						"h": 32
@@ -528,7 +612,7 @@
 						"h": 31
 					},
 					"frame": {
-						"x": 228,
+						"x": 232,
 						"y": 1770,
 						"w": 24,
 						"h": 31
@@ -570,7 +654,7 @@
 						"h": 37
 					},
 					"frame": {
-						"x": 254,
+						"x": 258,
 						"y": 1766,
 						"w": 42,
 						"h": 37
@@ -633,7 +717,7 @@
 						"h": 49
 					},
 					"frame": {
-						"x": 298,
+						"x": 302,
 						"y": 1754,
 						"w": 42,
 						"h": 49
@@ -717,7 +801,7 @@
 						"h": 46
 					},
 					"frame": {
-						"x": 342,
+						"x": 346,
 						"y": 1746,
 						"w": 50,
 						"h": 46
@@ -787,6 +871,27 @@
 					}
 				},
 				{
+					"filename": "decor_bench",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 19,
+						"h": 13
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 19,
+						"h": 13
+					},
+					"frame": {
+						"x": 456,
+						"y": 1663,
+						"w": 19,
+						"h": 13
+					}
+				},
+				{
 					"filename": "decor_sign2",
 					"rotated": false,
 					"trimmed": false,
@@ -802,72 +907,9 @@
 					},
 					"frame": {
 						"x": 456,
-						"y": 1663,
+						"y": 1678,
 						"w": 16,
 						"h": 24
-					}
-				},
-				{
-					"filename": "decor_lab_table",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 52,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 52,
-						"h": 20
-					},
-					"frame": {
-						"x": 411,
-						"y": 1689,
-						"w": 52,
-						"h": 20
-					}
-				},
-				{
-					"filename": "decor_fence",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 465,
-						"y": 1689,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "decor_chest",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 15
-					},
-					"frame": {
-						"x": 465,
-						"y": 1707,
-						"w": 16,
-						"h": 15
 					}
 				},
 				{
@@ -886,7 +928,7 @@
 					},
 					"frame": {
 						"x": 411,
-						"y": 1711,
+						"y": 1689,
 						"w": 36,
 						"h": 40
 					}
@@ -907,30 +949,9 @@
 					},
 					"frame": {
 						"x": 449,
-						"y": 1724,
+						"y": 1704,
 						"w": 32,
 						"h": 40
-					}
-				},
-				{
-					"filename": "plant_flower1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 14,
-						"h": 17
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 14,
-						"h": 17
-					},
-					"frame": {
-						"x": 394,
-						"y": 1741,
-						"w": 14,
-						"h": 17
 					}
 				},
 				{
@@ -948,31 +969,10 @@
 						"h": 16
 					},
 					"frame": {
-						"x": 410,
-						"y": 1753,
+						"x": 411,
+						"y": 1731,
 						"w": 32,
 						"h": 16
-					}
-				},
-				{
-					"filename": "plant_flower2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 14,
-						"h": 17
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 14,
-						"h": 17
-					},
-					"frame": {
-						"x": 394,
-						"y": 1760,
-						"w": 14,
-						"h": 17
 					}
 				},
 				{
@@ -990,10 +990,199 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 394,
-						"y": 1779,
+						"x": 398,
+						"y": 1741,
 						"w": 11,
 						"h": 24
+					}
+				},
+				{
+					"filename": "decor_lab_table",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 52,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 52,
+						"h": 20
+					},
+					"frame": {
+						"x": 398,
+						"y": 1767,
+						"w": 52,
+						"h": 20
+					}
+				},
+				{
+					"filename": "bullet",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 411,
+						"y": 1749,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "decor_fence",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 429,
+						"y": 1749,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "puff3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 398,
+						"y": 1789,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "puff4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 416,
+						"y": 1789,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "puff5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 434,
+						"y": 1789,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "plant_flower1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 17
+					},
+					"frame": {
+						"x": 447,
+						"y": 1746,
+						"w": 14,
+						"h": 17
+					}
+				},
+				{
+					"filename": "plant_dry_grass2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 13
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 13
+					},
+					"frame": {
+						"x": 463,
+						"y": 1746,
+						"w": 16,
+						"h": 13
+					}
+				},
+				{
+					"filename": "plant_flower2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 17
+					},
+					"frame": {
+						"x": 463,
+						"y": 1761,
+						"w": 14,
+						"h": 17
 					}
 				},
 				{
@@ -1011,8 +1200,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 407,
-						"y": 1779,
+						"x": 452,
+						"y": 1780,
 						"w": 12,
 						"h": 20
 					}
@@ -1032,73 +1221,10 @@
 						"h": 17
 					},
 					"frame": {
-						"x": 421,
-						"y": 1771,
+						"x": 466,
+						"y": 1780,
 						"w": 14,
 						"h": 17
-					}
-				},
-				{
-					"filename": "decor_chest_purple",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 15
-					},
-					"frame": {
-						"x": 437,
-						"y": 1771,
-						"w": 16,
-						"h": 15
-					}
-				},
-				{
-					"filename": "plant_dry_grass1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 14
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 14
-					},
-					"frame": {
-						"x": 437,
-						"y": 1788,
-						"w": 16,
-						"h": 14
-					}
-				},
-				{
-					"filename": "plant_dry_grass3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 14
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 14
-					},
-					"frame": {
-						"x": 455,
-						"y": 1766,
-						"w": 16,
-						"h": 14
 					}
 				}
 			]
@@ -1107,6 +1233,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1fdde689f906260a5818fa26ca5b9130:36427d25cc95716aed1488388a73ac97:2ba65c328dea799e4d80739630892abf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c9919a046132f6e9028702f570332f10:8d2adf8f804d74fff30094a92dcaf5e8:2ba65c328dea799e4d80739630892abf$"
 	}
 }

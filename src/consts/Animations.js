@@ -14,6 +14,8 @@ const Animations = {
 
     MUSLIM_IDLE: 'muslim_idle',
     MUSLIM_RUN: 'muslim_run',
+    MUSLIMA_IDLE: 'muslima_idle',
+    MUSLIMA_RUN: 'muslima_run',
 
     THIEF_FLY: 'thief_fly',
 

@@ -29,7 +29,8 @@ class Prey extends Base {
     freeze() {
         this.setAcceleration(0);
         this.setVelocity(0);
-        this.setTintFill(0xFFFFFF);
+        //this.setTintFill(this.parent.getTint());
+        this.setTint(this.parent.getTint());
         this.setActive(false);
         this.parent.setState(States.FROZEN);
     }
@@ -45,6 +46,10 @@ class Prey extends Base {
 
     getValue() {
         return this.stats.value;
+    }
+
+    getTint() {
+        return this.model.tint;
     }
 }
 export default Prey;

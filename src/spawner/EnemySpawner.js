@@ -1,5 +1,4 @@
 import Counter from "../components/Counter";
-import WorldConsts from "../consts/WorldConsts";
 import Enemy from "../enemy/Enemy";
 
 class EnemySpawner {

@@ -8,5 +8,6 @@ BeeModel.value = 1;
 BeeModel.atlas = 'flyers';
 BeeModel.frame = 'bee1';
 BeeModel.animation = Animations.BEE;
+BeeModel.tint = 0xae7914;
 
 export default BeeModel;

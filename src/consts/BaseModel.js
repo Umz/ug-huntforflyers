@@ -4,6 +4,7 @@ const BaseModel = {
     value: 1,
     atlas: '',
     frame: '',
-    animation: ""
+    animation: "",
+    tint: 0xFFFFFF
 }
 export default BaseModel;

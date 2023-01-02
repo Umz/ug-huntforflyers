@@ -8,5 +8,6 @@ BatModel.value = 5;
 BatModel.atlas = 'flyers';
 BatModel.frame = 'bat1';
 BatModel.animation = Animations.BAT;
+BatModel.tint = 0x927965;
 
 export default BatModel;

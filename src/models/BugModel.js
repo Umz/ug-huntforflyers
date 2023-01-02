@@ -8,5 +8,6 @@ BugModel.value = 2;
 BugModel.atlas = 'flyers';
 BugModel.frame = 'bug1';
 BugModel.animation = Animations.BUG;
+BugModel.tint = 0x228c05;
 
 export default BugModel;

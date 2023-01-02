@@ -1,13 +1,15 @@
-Clean collectors (prey stolen) - Carry stolen
-Refactor collector controller
-(Proper names, fn sizes, etc.)
+Menu BGM
+Sounds to Menu screen
+Attacking and killing enemies
+Create folders for sprites , bg objects, etc.
+Smaller bounding box player
+Smaller box water pump
+Coins drop from collection
+Enemy coin thief
+Add level 6
 
 Enemy attacker ground
-Enemy coin thief
 
-Attacking and killing enemies
-
-Add level 6
 Add level 7
 Add level 8
 
@@ -34,19 +36,14 @@ Fill in the question button (controls)
 
 Scrollfactor and background refactoring
 
-Sounds to Menu screen
+Convert all sound files
 
 Conversations
 Signage
 
-Smaller bounding box player
-Smaller box water pump
-
 Add sun in background, day and night cycle - reload level?
 BG dust cloud or particles
 BG wind effects 
-
-Create folders for sprites , bg objects, etc.
 
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )

@@ -24,8 +24,10 @@ const FnNames = {
     ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
     ACT_ENEMY_DIVE: "controlActionStealDive",
     ACT_FOLLOW_TARGET: "controlActionFollowTarget",
-
     ACT_LISTENFORFROZEN: "controlActionListenToFrozen",
+
+    ACT_MOVE_TO_COLLECT: "collectorToPreyX",
+    ACT_CARRY_PREY_HOME: "collectorCarryPreyHome",
 
     ACT_FACEDIRECTION: "faceMovementDirection",
     ACT_COLLECTOR_ANIMATION: "collectorAnimation",

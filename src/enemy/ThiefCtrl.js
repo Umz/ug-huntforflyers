@@ -35,14 +35,14 @@ class ThiefCtrl extends BaseController {
     }
 
     listenForFrozenPrey() {
-        this.addAction(new CtrListenFrozen(this.sprite).addCallback(()=>{
+        this.addAction(new CtrListenFrozen(this.sprite).listenForCarried().addCallback(()=>{
             this.moveToFrozenPrey();
         }));
     }
 
     moveToFrozenPrey() {
         this.target.removeUpdateFn(FnNames.ACT_FOLLOW_TARGET);
-        let preySprite = this.scene.getClosestFrozen(this.sprite);
+        let preySprite = this.scene.getClosestFrozen(this.sprite, [States.FROZEN, States.CARRIED]);
         this.addAction(new CtrMoveToTargetX(this.sprite, preySprite).addCallback(()=>{
             this.dropToCollect(preySprite);
         }));

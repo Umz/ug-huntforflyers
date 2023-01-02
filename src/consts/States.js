@@ -11,6 +11,7 @@ const States = {
 
     FROZEN: 10,
     STOLEN: 11,
+    CARRIED: 12,
 
     TO_COLLECT: 20,
     CARRYING: 21

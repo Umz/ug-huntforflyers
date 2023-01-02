@@ -5,6 +5,7 @@ import Consts from "../consts/Consts";
 import Forest from "../classes/Forest";
 import PlantType from "../consts/PlantType";
 import Depths from "../consts/Depths";
+import Sfx from "../consts/Sfx";
 
 class Menu extends Phaser.Scene {
 
@@ -13,6 +14,9 @@ class Menu extends Phaser.Scene {
     }
 
     create(data) {
+
+        this.music = this.sound.add(Sfx.BGM_MENU);
+        this.music.play({volume:.5});
 
         GameSave.SetScore(0);
 
@@ -35,6 +39,9 @@ class Menu extends Phaser.Scene {
             Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
             this.scene.start(Consts.GAME_SCENE);
+            
+            this.music.stop();
+            this.sound.play(Sfx.MENU_PLAY_BUTTON, {volume: .5});
         });
     }
 }

@@ -2,6 +2,7 @@ import Animations from "../consts/Animations";
 import GameSave from "../components/GameSave";
 import Textures from "../consts/Textures";
 import Consts from "../consts/Consts";
+import Sfx from "../consts/Sfx";
 
 class Preload extends Phaser.Scene {
 
@@ -16,6 +17,10 @@ class Preload extends Phaser.Scene {
         this.load.atlas('background', 'background.png', 'background.json');
         this.load.atlas('flyers', 'flyers.png', 'flyers.json');
         this.load.atlas('sprites', 'sprites.png', 'sprites.json');
+
+        this.load.audio(Sfx.BGM_MENU, `bgm/${Sfx.BGM_MENU}`);
+
+        this.load.audio(Sfx.MENU_PLAY_BUTTON, `sfx/${Sfx.MENU_PLAY_BUTTON}`);
 
         //  TESTER graphics
         this.load.image('tester', 'test/spr_tank.png');

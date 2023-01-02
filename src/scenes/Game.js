@@ -52,6 +52,7 @@ class Game extends Phaser.Scene {
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
+        this.collisionGroupThieves = this.physics.add.group();
         this.collisionGroupBullets = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
@@ -61,7 +62,8 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
-
+        
+        this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
@@ -89,8 +91,7 @@ class Game extends Phaser.Scene {
             ps.spawnCollector();
 
         this.enemySpawner = new EnemySpawner(this);
-        for (let i=0; i<6; i++)
-            this.enemySpawner.spawnEnemy(100 + (i * 20), 70);
+        this.updateRunner.add(this.enemySpawner);
 
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
@@ -153,8 +154,16 @@ class Game extends Phaser.Scene {
             GameSave.IncScore(prey.parent.getValue());
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             prey.setActive(false).setVisible(false);
+
+            prey.parent.setState(States.REMOVED);
             this.collisionGroupEnemies.remove(prey);
         }
+    }
+
+    collidePlatformEnemy(platform, sprite) {
+        sprite.parent.die();
+        sprite.setVisible(false).setActive(false);
+        this.collisionGroupThieves.remove(sprite);
     }
 
     collidePlayerPrey(player, prey) {
@@ -181,9 +190,19 @@ class Game extends Phaser.Scene {
         this.spriteUpdateGroup.add(sprite);
         this.collisionGroupEnemies.add(sprite);
     }
+
+    addThiefToGroups(sprite) {
+        this.collisionGroupThieves.add(sprite);
+        this.spriteUpdateGroup.add(sprite);
+    }
     
     addFlightPhysics(sprite) {
         SpritePhysics.AddFlightPhysics(sprite);
+        this.setPreyFlyingcollision(sprite);
+    }
+
+    addBoundlessFlightPhysics(sprite) {
+        SpritePhysics.AddFlightPhysicsNoBounds(sprite);
         this.setPreyFlyingcollision(sprite);
     }
 
@@ -236,6 +255,10 @@ class Game extends Phaser.Scene {
         return this.collisionGroupEnemies.countActive();
     }
 
+    getThiefCount() {
+        return this.collisionGroupThieves.countActive();
+    }
+
     setPreyFlyingcollision(sprite) {
         sprite.body.checkCollision.left = false;
         sprite.body.checkCollision.right = false;
@@ -254,6 +277,11 @@ class Game extends Phaser.Scene {
     setPreyCarriedCollisions(sprite) {
         sprite.body.checkCollision.left = false;
         sprite.body.checkCollision.right = false;
+    }
+
+    setPreyStolenCollisions(sprite) {
+        this.setPreyCarriedCollisions(sprite);
+        sprite.setCollideWorldBounds(false);
     }
 
     setPreyCarriedDepth(sprite) {
@@ -304,5 +332,8 @@ class Game extends Phaser.Scene {
         return found;
     }
 
+    getLevelWidth() {
+        return this.levelData.LENGTHS * WorldConsts.WIDTH;
+    }
 }
 export default Game;

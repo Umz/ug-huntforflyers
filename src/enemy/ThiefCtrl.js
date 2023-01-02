@@ -54,12 +54,12 @@ class ThiefCtrl extends BaseController {
         }));
     }
 
-    attemptToSteal(crystal) {
-        let prey = crystal.parent;
+    attemptToSteal(preySprite) {
+        let prey = preySprite.parent;
         if (prey.isStateEquals(States.FROZEN)) {
             prey.setState(States.STOLEN);
-            crystal.setCollideWorldBounds(false);
-            this.addAction(new CtrSteal(this.sprite, crystal).addCallback(()=>{
+            this.scene.setPreyStolenCollisions(preySprite);
+            this.addAction(new CtrSteal(this.sprite, preySprite).addCallback(()=>{
                 this.setDefaults();
             }));
         }

@@ -72,5 +72,15 @@ class ThiefCtrl extends BaseController {
             }));
         }
     }
+
+    setToCrash() {
+        this.target.removeUpdateFn(FnNames.ACT_ENEMY_FLY);
+        this.clearAllActions();
+        this.sprite.setAngularVelocity(90);
+        if (this.sprite.body.velocity.y <= 10) {
+            this.sprite.setAccelerationY(10);
+            this.sprite.setVelocityY(10);
+        }
+    }
 }
 export default ThiefCtrl;

@@ -14,6 +14,8 @@ const States = {
     CARRIED: 12,
 
     TO_COLLECT: 20,
-    CARRYING: 21
+    CARRYING: 21,
+
+    CRASHING: 40,
 }
 export default States;

@@ -68,14 +68,15 @@ class Game extends Phaser.Scene {
         this.collisionGroupCivilians = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
-        this.physics.add.collider(this.platforms, this.collisionGroupEnemies);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
         
+        this.physics.add.collider(this.platforms, this.collisionGroupEnemies, this.collidePlatformPrey, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
+        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupThieves, this.overlapBulletThief, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
 
         this.controlpad = new Controlpad(this);
@@ -144,10 +145,8 @@ class Game extends Phaser.Scene {
 
     overlapBulletPrey(bullet, enemy) {
         if (enemy.parent.isStateEquals(States.NORMAL)) {
-            
-            this.collisionGroupBullets.remove(bullet);
+            bullet.setActive(false).setVisible(false).setPosition(0, 0);
             this.liveBirdGroup.remove(enemy);
-            bullet.setActive(false).setVisible(false);
             enemy.freeze();
 
             this.soundManager.play(Sfx.HIT_PREY);
@@ -155,6 +154,13 @@ class Game extends Phaser.Scene {
             this.setPreyFrozenCollision(enemy);
             this.showPuff(enemy.x, enemy.y);
         }
+    }
+
+    overlapBulletThief(bullet, thiefSprite) {
+        let thief = thiefSprite.parent;
+        bullet.setActive(false).setVisible(false).setPosition(0, 0);
+        thief.hit();
+        this.showPuff(thief.x, thief.y);
     }
 
     overlapWaterPump(pump, prey) {
@@ -174,6 +180,14 @@ class Game extends Phaser.Scene {
         sprite.parent.die();
         sprite.setVisible(false).setActive(false);
         this.collisionGroupThieves.remove(sprite);
+    }
+
+    collidePlatformPrey(platform, preySprite) {
+        let prey = preySprite.parent;
+        if (prey.isStateEquals(States.CARRIED) || prey.isStateEquals(States.STOLEN)) {
+            prey.setState(States.FROZEN);
+            this.setPreyFrozenCollision(preySprite);
+        }
     }
 
     collidePlayerPrey(player, prey) {
@@ -219,7 +233,6 @@ class Game extends Phaser.Scene {
 
     addBoundlessFlightPhysics(sprite) {
         SpritePhysics.AddFlightPhysicsNoBounds(sprite);
-        this.setPreyFlyingcollision(sprite);
     }
 
     addPlayerControls(player) {
@@ -237,7 +250,7 @@ class Game extends Phaser.Scene {
 
     fireBullet() {
         
-        let target = this.getClosestBirdTarget(this.player);
+        let target = this.getClosestThiefTarget(this.player) || this.getClosestBirdTarget(this.player);
         let angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, target.x, target.y);
         let bullet = this.bulletGroup.get(this.player.x, this.player.y);
         if (bullet) {
@@ -265,6 +278,19 @@ class Game extends Phaser.Scene {
             return target;
         else
             return overhead;
+    }
+
+    getClosestThiefTarget(player) {
+
+        let all = this.collisionGroupThieves.getChildren();
+        //let valid = all.filter(sprite => sprite.parent.isStateEquals(States.NORMAL));
+        let closest = this.physics.closest(player, all);
+
+        let maxDist = WorldConsts.WIDTH * .5;
+        if (closest && Math.abs(closest.x - player.x) < maxDist)
+            return closest;
+
+        return false;
     }
 
     getLiveBirdsCount() {

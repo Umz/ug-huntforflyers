@@ -21,6 +21,7 @@ class Preload extends Phaser.Scene {
         this.load.audio(Sfx.BGM_MENU, `bgm/${Sfx.BGM_MENU}`);
 
         this.load.audio(Sfx.MENU_PLAY_BUTTON, `sfx/${Sfx.MENU_PLAY_BUTTON}`);
+        this.load.audio(Sfx.HIT_PREY, `sfx/${Sfx.HIT_PREY}`);
 
         //  TESTER graphics
         this.load.image('tester', 'test/spr_tank.png');

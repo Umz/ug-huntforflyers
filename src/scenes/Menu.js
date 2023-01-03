@@ -39,8 +39,9 @@ class Menu extends Phaser.Scene {
             Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
             this.scene.start(Consts.GAME_SCENE);
-            
+
             this.music.stop();
+            this.sound.stopAll();
             this.sound.play(Sfx.MENU_PLAY_BUTTON, {volume: .5});
         });
     }

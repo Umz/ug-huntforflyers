@@ -21,6 +21,7 @@ import SpritePhysics from "../components/SpritePhysics";
 import PlayerSpawner from "../spawner/PlayerSpawner";
 import CivilianSpawner from "../spawner/CivilianSpawner";
 import EnemySpawner from "../spawner/EnemySpawner";
+import Sfx from "../consts/Sfx";
 
 class Game extends Phaser.Scene {
 
@@ -145,6 +146,8 @@ class Game extends Phaser.Scene {
             this.liveBirdGroup.remove(enemy);
             bullet.setActive(false).setVisible(false);
             enemy.freeze();
+
+            this.sound.play(Sfx.HIT_PREY, {volume: .5});
 
             this.setPreyFrozenCollision(enemy);
             this.showPuff(enemy.x, enemy.y);

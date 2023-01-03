@@ -1,5 +1,3 @@
-Menu BGM
-Sounds to Menu screen
 Attacking and killing enemies
 Create folders for sprites , bg objects, etc.
 Smaller bounding box player
@@ -7,6 +5,8 @@ Smaller box water pump
 Coins drop from collection
 Enemy coin thief
 Add level 6
+Split BGM and SFX
+Sound Manager
 
 Enemy attacker ground
 
@@ -55,3 +55,6 @@ The game must get very difficult
 Dying and retrying is an essential portion of the gameplay fun
 
 https://umzgames.com/demo/farb2/
+
+Add Credits:
+Gem Popper - BGM - Mopz - https://opengameart.org/content/gem-popper-piano-tune

@@ -22,6 +22,7 @@ import PlayerSpawner from "../spawner/PlayerSpawner";
 import CivilianSpawner from "../spawner/CivilianSpawner";
 import EnemySpawner from "../spawner/EnemySpawner";
 import Sfx from "../consts/Sfx";
+import SoundManager from "../components/SoundManager";
 
 class Game extends Phaser.Scene {
 
@@ -87,6 +88,8 @@ class Game extends Phaser.Scene {
         }
         this.updateRunner.add(this.controlpad);
 
+        this.soundManager = new SoundManager(this);
+
         let ps = new PlayerSpawner(this);
         this.civSpawner = new CivilianSpawner(this);
 
@@ -147,7 +150,7 @@ class Game extends Phaser.Scene {
             bullet.setActive(false).setVisible(false);
             enemy.freeze();
 
-            this.sound.play(Sfx.HIT_PREY, {volume: .5});
+            this.soundManager.play(Sfx.HIT_PREY);
 
             this.setPreyFrozenCollision(enemy);
             this.showPuff(enemy.x, enemy.y);

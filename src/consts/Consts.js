@@ -15,6 +15,7 @@ const Consts = {
     UI: "game-ui",
     UI_PAUSE_BUTTON: "gui-top-right",
     UI_SCORE_TEXT: "gui-tl-lifeforce",
+    UI_WEAPON_TEXT: "guw-name",
 
     PAUSE_MENU: "game-pause-menu",
     PAUSE_PLAY_BUTTON: "pause-menu-play",

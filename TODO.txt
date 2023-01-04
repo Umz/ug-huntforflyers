@@ -1,4 +1,3 @@
-Attacking and killing enemies
 Create folders for sprites , bg objects, etc.
 Smaller bounding box player
 Smaller box water pump
@@ -6,7 +5,16 @@ Coins drop from collection
 Enemy coin thief
 Add level 6
 Split BGM and SFX
-Sound Manager
+FIX: Carrying bug
+UI Weapon mode select
+
+Controlpad refactor
+setAction()
+setSwap()
+GameController
+
+Bullet group refactor- using 2 groups for bullets
+BG Dialogue
 
 Enemy attacker ground
 

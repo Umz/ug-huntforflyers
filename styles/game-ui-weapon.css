@@ -1,0 +1,12 @@
+#game-ui-weapon {
+    bottom: 0;
+    width: 100%;
+    transform: translate(0, -20px);
+    overflow: visible;
+    z-index: 12;
+}
+
+#guw-name {
+    display: none;
+    text-align: center;
+}

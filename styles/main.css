@@ -4,6 +4,7 @@
 @import url('game-title-menu.css');
 @import url('game-pause-menu.css');
 @import url('game-result-menu.css');
+@import url('game-ui-weapon.css');
 
 * {
     padding:0;

@@ -7,6 +7,7 @@ Add level 6
 Split BGM and SFX
 FIX: Carrying bug
 UI Weapon mode select
+Clean Player Controller
 
 Controlpad refactor
 setAction()

@@ -25,8 +25,8 @@ class PlayerController extends BaseController {
 
     addGroundListener() {
         this.addUpdateFnAndBindToSprite(FnNames.CTRL_IS_ON_GROUND, function(time, delta) {
-            if (this.getBottomCenter().y >= WorldConsts.GROUND_Y && !this.parent.isStateEquals(States.NORMAL))
-                this.parent.setState(States.NORMAL);
+            //if (this.getBottomCenter().y >= WorldConsts.GROUND_Y && !this.parent.isStateEquals(States.HUNTING))
+                //this.parent.setState(States.HUNTING);
         });
     }
 

@@ -17,7 +17,13 @@ class Player extends Base {
     fireBullet() {
         this.controller.moveRecoil();
         this.viewer.showFireAnimation();
-        this.setState(States.FIRING);
+    }
+
+    updateCollision() {
+        let isColliding = this.isStateEquals(States.TO_COLLECT);
+        this.sprite.body.checkCollision.left = isColliding;
+        this.sprite.body.checkCollision.right = isColliding;
+        this.sprite.body.checkCollision.up = false;
     }
 }
 export default Player;

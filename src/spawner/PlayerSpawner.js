@@ -1,5 +1,6 @@
 import Collector from "../collector/Collector";
 import Buildings from "../consts/Buildings";
+import States from "../consts/States";
 import WorldConsts from "../consts/WorldConsts";
 import Player from "../player/Player";
 
@@ -16,6 +17,8 @@ class PlayerSpawner {
         let player = new Player(this.scene)
         player.init();
         player.setPosition(home.worldX, WorldConsts.GROUND_Y - 32);
+        player.setState(States.HUNTING);
+        player.updateCollision();
 
         this.scene.addPlayerToGroups(player.getSprite());
         this.scene.addGroundPhysics(player.getSprite());

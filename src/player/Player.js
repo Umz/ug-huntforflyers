@@ -20,7 +20,7 @@ class Player extends Base {
     }
 
     updateCollision() {
-        let isColliding = this.isStateEquals(States.TO_COLLECT);
+        let isColliding = this.isStateEquals(States.PUSHING);
         this.sprite.body.checkCollision.left = isColliding;
         this.sprite.body.checkCollision.right = isColliding;
         this.sprite.body.checkCollision.up = false;

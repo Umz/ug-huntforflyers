@@ -1,6 +1,6 @@
 import SpriteBuilder from "../components/SpriteBuilder";
 import Controlpad from "../components/Controlpad";
-import Player from "../player/Player";
+import Bullet from "../classes/Bullet";
 import WorldConsts from "../consts/WorldConsts";
 import BackgroundBuilder from "../background/BackgroundBuilder";
 import Dom from "../components/Dom";
@@ -46,11 +46,21 @@ class Game extends Phaser.Scene {
         this.liveBirdGroup = this.add.group();
         this.bgBirdGroup = this.add.group({runChildUpdate:true});
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
-        this.bulletGroup = this.physics.add.group({
+
+        this.huntBulletGroup = this.physics.add.group({
+            classType: Bullet,
             defaultKey: 'background',
             defaultFrame: 'bullet',
             runChildUpdate: true,
             maxSize: 5
+        });
+
+        this.attackBulletGroup = this.physics.add.group({
+            classType: Bullet,
+            defaultKey: 'background',
+            defaultFrame: 'bulletBig',
+            runChildUpdate: true,
+            maxSize: 7
         });
 
         this.puffGroup = this.add.group({
@@ -62,7 +72,6 @@ class Game extends Phaser.Scene {
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
         this.collisionGroupThieves = this.physics.add.group();
-        this.collisionGroupBullets = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
         this.collisionGroupCivilians = this.physics.add.group();
@@ -75,17 +84,21 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
 
-        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
-        this.physics.add.overlap(this.collisionGroupBullets, this.collisionGroupThieves, this.overlapBulletThief, null, this);
+        this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
+        this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupThieves, this.overlapBulletThief, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
         this.controlpad.action = ()=>{
-            if (this.player.isStateEquals(States.NORMAL)) {
+            if (this.player.isStateEquals(States.HUNTING) || this.player.isStateEquals(States.SKY_ATTACK)) {
                 this.player.fireBullet();
                 this.fireBullet();
             }
+        }
+        this.controlpad.weaponSwap = ()=>{
+            //Player swap animation
+            this.swapPlayerMode();
         }
         this.updateRunner.add(this.controlpad);
 
@@ -137,6 +150,33 @@ class Game extends Phaser.Scene {
         let target = this.physics.closest(source, frozen);
 
         return target;
+    }
+
+    swapPlayerMode() {
+
+        let allModes = [States.PUSHING, States.HUNTING, States.SKY_ATTACK];
+        let state = this.player.getState();
+        let index = allModes.findIndex(mode => mode === state);
+
+        let nextIndex = index === allModes.length - 1 ? 0 : index + 1;
+        let nextState = allModes[nextIndex];
+
+        this.player.setState(nextState);
+        this.player.updateCollision();
+        
+        let name = this.getStateDisplayName(nextState);
+
+        Dom.SetDomText(Consts.UI_WEAPON_TEXT, name);
+        Dom.SetDomIdDisplay(Consts.UI_WEAPON_TEXT, true);
+    }
+
+    getStateDisplayName(state) {
+        switch (state) {
+            case States.HUNTING: return "Hunting";
+            case States.SKY_ATTACK: return "Attacking";
+            case States.PUSHING: return "Collecting";
+            default: return "Idle";
+        }
     }
 
     update(time, delta) {
@@ -249,48 +289,41 @@ class Game extends Phaser.Scene {
     }
 
     fireBullet() {
-        
-        let target = this.getClosestThiefTarget(this.player) || this.getClosestBirdTarget(this.player);
+
+        let mode = this.player.getState();
+        let isHunting = (mode === States.HUNTING);
+        let group = (isHunting) ? this.huntBulletGroup : this.attackBulletGroup;
+        let target = (isHunting) ? this.getClosestBirdTarget(this.player) : this.getClosestThiefTarget(this.player);
+
         let angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, target.x, target.y);
-        let bullet = this.bulletGroup.get(this.player.x, this.player.y);
-        if (bullet) {
-            bullet.update = function(time, delta) {
-                if (this.body.velocity.y === 0) {
-                    this.scene.physics.velocityFromRotation(angle, WorldConsts.HEIGHT * 1.5, this.body.velocity);
-                    this.setAngularVelocity(360)
-                }
-                if (!this.scene.cameras.main.worldView.contains(this.x, this.y))
-                    this.setActive(false).setVisible(false);
-            }
-            bullet.setActive(true).setVisible(true).setDepth(Depths.PLAYER_BULLETS);
-            bullet.setSize(8, 8).refreshBody();
-            this.collisionGroupBullets.add(bullet);
-        }
+        let bullet = group.get(this.player.x, this.player.y);
+
+        if (bullet)
+            if (isHunting)
+                bullet.setHuntBullet(angle)
+            else
+                bullet.setAttackBullet(angle);
     }
 
     getClosestBirdTarget(player) {
 
-        let overhead = new Phaser.Geom.Point(this.player.x, this.player.y - 32);
         let maxDist = WorldConsts.WIDTH * .5;
         let target = this.physics.closest(player, this.liveBirdGroup.getChildren());
-
         if (target && Math.abs(target.x - player.x) < maxDist)
             return target;
-        else
-            return overhead;
+
+        return new Phaser.Geom.Point(this.player.x, this.player.y - 32);
     }
 
     getClosestThiefTarget(player) {
 
         let all = this.collisionGroupThieves.getChildren();
-        //let valid = all.filter(sprite => sprite.parent.isStateEquals(States.NORMAL));
         let closest = this.physics.closest(player, all);
-
         let maxDist = WorldConsts.WIDTH * .5;
         if (closest && Math.abs(closest.x - player.x) < maxDist)
             return closest;
 
-        return false;
+        return new Phaser.Geom.Point(this.player.x, this.player.y - 32);
     }
 
     getLiveBirdsCount() {

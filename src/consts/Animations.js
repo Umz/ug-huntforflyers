@@ -18,6 +18,7 @@ const Animations = {
     MUSLIMA_RUN: 'muslima_run',
 
     THIEF_FLY: 'thief_fly',
+    COINER_RUN: 'coiner_run',
 
     CK_IDLE: 'carrykin_idle',
     CK_HOLD: 'carrykin_hold',

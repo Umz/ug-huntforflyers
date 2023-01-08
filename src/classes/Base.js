@@ -32,6 +32,14 @@ class Base {
         return this;
     }
 
+    setController(ctrl) {
+        this.controller = ctrl;
+    }
+
+    setView(view) {
+        this.view = view;
+    }
+
     die() {
         this.updateFunctions.clear();
         this.setState(States.DEAD);

@@ -1,5 +1,5 @@
-import ViewDirection from "../actions/ViewDirection";
-import BaseController from "../classes/BaseController";
+import ViewDirection from "actions/ViewDirection";
+import BaseController from "classes/BaseController";
 
 class ThiefView extends BaseController {
     constructor(target) {

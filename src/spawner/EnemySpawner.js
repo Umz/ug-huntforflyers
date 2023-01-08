@@ -1,5 +1,5 @@
-import Counter from "../components/Counter";
-import Enemy from "../enemy/Enemy";
+import Counter from "components/Counter";
+import Enemy from "characters/enemy/Enemy";
 
 class EnemySpawner {
     

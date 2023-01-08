@@ -1,14 +1,14 @@
-import CtrEnemyFly from "../actions/CtrEnemyFly";
-import CtrFollowTarget from "../actions/CtrFollowTarget";
-import CtrListenFrozen from "../actions/CtrListenFrozen";
-import CtrMoveToTargetX from "../actions/CtrMoveToTargetX";
-import CtrSteal from "../actions/CtrSteal";
-import CtrStealDive from "../actions/CtrStealDive";
-import CtrWait from "../actions/CtrWait";
-import BaseController from "../classes/BaseController";
-import Depths from "../consts/Depths";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import CtrEnemyFly from "actions/CtrEnemyFly";
+import CtrFollowTarget from "actions/CtrFollowTarget";
+import CtrListenFrozen from "actions/CtrListenFrozen";
+import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
+import CtrSteal from "actions/CtrSteal";
+import CtrStealDive from "actions/CtrStealDive";
+import CtrWait from "actions/CtrWait";
+import BaseController from "classes/BaseController";
+import Depths from "consts/Depths";
+import FnNames from "consts/FnNames";
+import States from "consts/States";
 
 class ThiefCtrl extends BaseController {
 

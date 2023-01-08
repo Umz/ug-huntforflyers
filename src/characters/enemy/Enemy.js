@@ -1,7 +1,7 @@
-import Base from "../classes/Base";
-import SpriteBulider from "../components/SpriteBuilder";
-import States from "../consts/States";
-import ThiefModel from "../models/ThiefModel";
+import Base from "classes/Base";
+import SpriteBulider from "components/SpriteBuilder";
+import States from "consts/States";
+import ThiefModel from "models/ThiefModel";
 import ThiefCtrl from "./ThiefCtrl";
 import ThiefView from "./ThiefView";
 

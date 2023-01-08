@@ -13,6 +13,13 @@ module.exports = {
         filename: 'project.bundle.js'
     },
 
+    resolve: {
+        modules: [
+            path.resolve(__dirname + '/src'),
+            "node_modules"
+        ]
+    },
+
     module: {
         rules: [
           {

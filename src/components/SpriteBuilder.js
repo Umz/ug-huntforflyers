@@ -4,6 +4,7 @@ class SpriteBuilder {
 
     static GetPlayerSprite(scene, model) {
         let sprite = scene.physics.add.sprite(-100, -100, model.frame).setDepth(Depths.PLAYERS);
+        sprite.setSize(20, 28);
         return sprite;
     }
 

@@ -1,13 +1,13 @@
-Create folders for sprites , bg objects, etc.
-Smaller bounding box player
-Smaller box water pump
 Coins drop from collection
 Enemy coin thief
 Add level 6
 Split BGM and SFX
 FIX: Carrying bug
+FIX: Stealing bug
+FIX: Invisible collection bug
 UI Weapon mode select
 Clean Player Controller
+Abstract spawner
 
 Controlpad refactor
 setAction()
@@ -18,6 +18,8 @@ Bullet group refactor- using 2 groups for bullets
 BG Dialogue
 
 Enemy attacker ground
+
+Webpack split into vendor and bundle
 
 Add level 7
 Add level 8
@@ -56,6 +58,8 @@ BG wind effects
 
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
+
+Death - Permanent effects going forward
 
 Game needs to be super simple to learn the concept -
 And the development should be seen during the levels progressing

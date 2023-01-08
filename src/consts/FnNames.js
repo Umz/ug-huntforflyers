@@ -26,6 +26,9 @@ const FnNames = {
     ACT_FOLLOW_TARGET: "controlActionFollowTarget",
     ACT_LISTENFORFROZEN: "controlActionListenToFrozen",
 
+    ACT_FIND_COINS: "coinerGoingToStealCoins",
+    ACT_STEAL_COINS: "coinerReturningWithOrWithoutCoins",
+
     ACT_MOVE_TO_COLLECT: "collectorToPreyX",
     ACT_CARRY_PREY_HOME: "collectorCarryPreyHome",
 

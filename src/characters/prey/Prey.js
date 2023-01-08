@@ -1,6 +1,6 @@
-import Base from "../classes/Base";
-import States from "../consts/States";
-import SpriteBuilder from "../components/SpriteBuilder";
+import Base from "classes/Base";
+import States from "consts/States";
+import SpriteBuilder from "components/SpriteBuilder";
 import FlyerController from "./FlyerController";
 import Flyerviewer from "./FlyerViewer";
 

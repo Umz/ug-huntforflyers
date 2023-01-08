@@ -1,7 +1,7 @@
-import Counter from "../components/Counter";
-import WorldConsts from "../consts/WorldConsts";
-import BeeModel from "../models/BeeModel";
-import Prey from "../prey/Prey";
+import Counter from "components/Counter";
+import WorldConsts from "consts/WorldConsts";
+import BeeModel from "models/BeeModel";
+import Prey from "characters/prey/Prey";
 
 class BirdSpawner {
 

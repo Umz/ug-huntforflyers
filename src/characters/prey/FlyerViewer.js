@@ -1,7 +1,7 @@
-import BaseController from "../classes/BaseController";
-import Depths from "../consts/Depths";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import BaseController from "classes/BaseController";
+import Depths from "consts/Depths";
+import FnNames from "consts/FnNames";
+import States from "consts/States";
 
 class Flyerviewer extends BaseController {
 

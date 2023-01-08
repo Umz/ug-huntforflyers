@@ -1,8 +1,6 @@
-import Base from "../classes/Base";
-import SpriteBulider from "../components/SpriteBuilder";
-import States from "../consts/States";
-import CivilianModel from "../models/CivilianModel";
-import CollectorModel from "../models/CollectorModel";
+import Base from "classes/Base";
+import SpriteBulider from "components/SpriteBuilder";
+import CivilianModel from "models/CivilianModel";
 import CivilianCtrl from "./CivilianCtrl";
 import CollectorView from "./CollectorView";
 

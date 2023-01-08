@@ -1,5 +1,5 @@
-import BaseController from "../classes/BaseController";
-import FnNames from "../consts/FnNames";
+import BaseController from "classes/BaseController";
+import FnNames from "consts/FnNames";
 
 class CollectorView extends BaseController {
     constructor(target) {

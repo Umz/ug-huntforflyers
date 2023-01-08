@@ -1,9 +1,8 @@
-import CtrBlank from "../actions/CtrBlank";
-import CtrWait from "../actions/CtrWait";
-import CtrMoveToX from "../actions/CtrMoveToX";
-import BaseController from "../classes/BaseController";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import BaseController from "classes/BaseController";
+import CtrBlank from "actions/CtrBlank";
+import CtrWait from "actions/CtrWait";
+import CtrMoveToX from "actions/CtrMoveToX";
+import States from "consts/States";
 
 class CivilianCtrl extends BaseController {
     constructor(target) {

@@ -1,5 +1,5 @@
-import Civilian from "../civilian/Civilian";
-import WorldConsts from "../consts/WorldConsts";
+import Civilian from "characters/civilian/Civilian";
+import WorldConsts from "consts/WorldConsts";
 
 class CivilianSpawner {
     

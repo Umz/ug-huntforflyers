@@ -11,10 +11,12 @@ class ViewCoiner extends Action {
 
     subclassUpdate(time, delta) {
         let speed = Math.abs(this.velX);
-        if (speed > 4)
-            this.sprite.anims.play(model.run, true);
-        else
+        if (speed > 6)
+            this.sprite.anims.play(this.model.run, true);
+        else {
+            this.sprite.anims.stop();
             this.sprite.setFrame(this.model.frame);
+        }
     }
 
     get velX() { return this.sprite.body.velocity.x }

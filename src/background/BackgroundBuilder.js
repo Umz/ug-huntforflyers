@@ -26,7 +26,7 @@ class BackgroundBuilder {
 
     static addGround(scene) {
         let gr = scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0).setScrollFactor(0);
-        gr.setDepth(Depths.BG_STAGE);
+        gr.setDepth(Depths.BG_GROUND); 
         gr.update = function(time, delta) {
             let camera = this.scene.cameras.main;
             this.tilePositionX = camera.scrollX;

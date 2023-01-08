@@ -19,12 +19,15 @@ class CtrFindCoin extends Action {
 
             let speed = Math.round(this.velY) !== 0 ? 0 : this.coiner.calcVelocityX();
             let dir = this.target.x > this.sprite.x ? 1 : -1;
-            this.sprite.setVelocityX(speed);
+            this.sprite.setVelocityX(speed * dir);
 
             if (this.sprite.getBounds().contains(this.target.x, this.target.y)) {
                 this.sprite.setVelocity(0, -40);
                 this.setComplete();
             }
+
+            if (!this.target.active)
+                this.target = null;
         }
         else {
             this.target = this.scene.getClosestCoin(this.sprite);
@@ -33,7 +36,7 @@ class CtrFindCoin extends Action {
 
         //  Initial Jump
         if (this.init) {
-            this.sprite.setVelocityY(-96);
+            this.sprite.setVelocityY(-48);
             this.init = false;
         }
     }

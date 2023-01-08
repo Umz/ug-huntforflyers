@@ -1,5 +1,5 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
+import Action from "classes/Action";
+import FnNames from "consts/FnNames";
 
 class CtrBlank extends Action {
     constructor() {

@@ -74,6 +74,7 @@ class Game extends Phaser.Scene {
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
         this.collisionGroupThieves = this.physics.add.group();
+        this.collisionGroupCoiners = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
         this.collisionGroupCivilians = this.physics.add.group();
@@ -81,6 +82,7 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
+        this.physics.add.collider(this.platforms, this.collisionGroupCoiners);
         this.physics.add.collider(this.platforms, this.coinGroup);
         
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies, this.collidePlatformPrey, null, this);
@@ -308,6 +310,11 @@ class Game extends Phaser.Scene {
 
     addThiefToGroups(sprite) {
         this.collisionGroupThieves.add(sprite);
+        this.spriteUpdateGroup.add(sprite);
+    }
+
+    addCoinerToGroups(sprite) {
+        this.collisionGroupCoiners.add(sprite);
         this.spriteUpdateGroup.add(sprite);
     }
     

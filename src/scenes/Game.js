@@ -200,16 +200,29 @@ class Game extends Phaser.Scene {
         this.showPuff(thief.x, thief.y);
     }
 
-    overlapWaterPump(pump, prey) {
+    overlapWaterPump(pump, preySprite) {
+        
+        let prey = preySprite.parent;
         pump.anims.play(Animations.WATER_PUMPING);
-        if (!prey.parent.isStateEquals(States.DEAD)) {
-            // Absorbtion
-            GameSave.IncScore(prey.parent.getValue());
-            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
-            prey.setActive(false).setVisible(false);
 
-            prey.parent.setState(States.DEAD);
-            this.collisionGroupEnemies.remove(prey);
+        if (!preySprite.parent.isStateEquals(States.DEAD)) {
+            
+            GameSave.IncScore(preySprite.parent.getValue());
+            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+            
+            prey.die();
+            this.collisionGroupEnemies.remove(preySprite);
+
+            let tween = this.tweens.add({
+                targets: preySprite,
+                duration: 1000,
+                x: {from: preySprite.x, to: pump.x},
+                y: pump.getCenter().y,
+                ease: Phaser.Math.Easing.Back.InOut,
+                onComplete: ()=>{
+                    prey.destroy();
+                }
+            });
         }
     }
 

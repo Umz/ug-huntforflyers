@@ -1,6 +1,6 @@
-import BaseController from "../classes/BaseController";
-import ViewDirection from "../actions/ViewDirection";
-import ViewCollectorAnim from "../actions/ViewCollectorAnim";
+import BaseController from "classes/BaseController";
+import ViewDirection from "actions/ViewDirection";
+import ViewCollectorAnim from "actions/ViewCollectorAnim";
 
 class CollectorView extends BaseController {
 

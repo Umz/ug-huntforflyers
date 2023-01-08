@@ -1,11 +1,11 @@
-import CtrCarryPreyHome from "../actions/CtrCarryPreyHome";
-import CtrFollowTarget from "../actions/CtrFollowTarget";
-import CtrListenFrozen from "../actions/CtrListenFrozen";
-import CtrMoveToPrey from "../actions/CtrMoveToPrey";
-import CtrWait from "../actions/CtrWait";
-import BaseController from "../classes/BaseController";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import CtrCarryPreyHome from "actions/CtrCarryPreyHome";
+import CtrFollowTarget from "actions/CtrFollowTarget";
+import CtrListenFrozen from "actions/CtrListenFrozen";
+import CtrMoveToPrey from "actions/CtrMoveToPrey";
+import CtrWait from "actions/CtrWait";
+import BaseController from "classes/BaseController";
+import FnNames from "consts/FnNames";
+import States from "consts/States";
 
 class CollectorCtrl extends BaseController {
 

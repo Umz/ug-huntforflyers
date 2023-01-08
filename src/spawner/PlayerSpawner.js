@@ -1,8 +1,8 @@
-import Collector from "../collector/Collector";
-import Buildings from "../consts/Buildings";
-import States from "../consts/States";
-import WorldConsts from "../consts/WorldConsts";
-import Player from "../player/Player";
+import Buildings from "consts/Buildings";
+import States from "consts/States";
+import WorldConsts from "consts/WorldConsts";
+import Player from "player/Player";
+import Collector from "characters/collector/Collector";
 
 class PlayerSpawner {
     

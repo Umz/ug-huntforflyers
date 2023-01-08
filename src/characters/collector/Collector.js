@@ -1,7 +1,7 @@
-import Base from "../classes/Base";
-import SpriteBulider from "../components/SpriteBuilder";
-import States from "../consts/States";
-import CollectorModel from "../models/CollectorModel";
+import Base from "classes/Base";
+import SpriteBulider from "components/SpriteBuilder";
+import States from "consts/States";
+import CollectorModel from "models/CollectorModel";
 import CollectorCtrl from "./CollectorCtrl";
 import CollectorView from "./CollectorView";
 

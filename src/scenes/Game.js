@@ -65,6 +65,11 @@ class Game extends Phaser.Scene {
             defaultFrame: 'puff1',
             runChildUpdate: true
         });
+
+        this.coinGroup = this.physics.add.group({
+            defaultKey: 'background',
+            defaultFrame: 'coin'
+        });
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupEnemies = this.physics.add.group();
@@ -76,6 +81,7 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
+        this.physics.add.collider(this.platforms, this.coinGroup);
         
         this.physics.add.collider(this.platforms, this.collisionGroupEnemies, this.collidePlatformPrey, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
@@ -84,6 +90,7 @@ class Game extends Phaser.Scene {
         this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
         this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupThieves, this.overlapBulletThief, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
+        this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
@@ -207,9 +214,7 @@ class Game extends Phaser.Scene {
 
         if (!preySprite.parent.isStateEquals(States.DEAD)) {
             
-            GameSave.IncScore(preySprite.parent.getValue());
-            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
-            
+            let value = prey.getValue();
             prey.die();
             this.collisionGroupEnemies.remove(preySprite);
 
@@ -221,9 +226,39 @@ class Game extends Phaser.Scene {
                 ease: Phaser.Math.Easing.Back.InOut,
                 onComplete: ()=>{
                     prey.destroy();
+                    this.addCoin(value);
                 }
             });
         }
+    }
+
+    overlapCoinPlayers(coin, player) {
+
+        //  Flash Player-
+        //  Show collection effect - upwards white dots
+        //  Collection sound
+
+        coin.setVisible(false).setActive(false).setPosition(0, 0);
+
+        GameSave.IncScore(coin.coinValue);
+        Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+    }
+
+    addCoin(value) {
+
+        let pump = this.buildings.get(Buildings.WATER_PUMP);
+        let sprite = this.coinGroup.get(pump.x, pump.getCenter().y);
+        sprite.setDepth(Depths.ENEMIES_FROZEN).setVisible(true).setActive(true);
+        SpritePhysics.AddPhysics(sprite);
+        SpritePhysics.AddGroundDrag(sprite);
+
+        this.showPuff(pump.x, pump.getCenter().y);
+
+        let velX = Phaser.Math.Between(-96, 96);
+        let velY = Phaser.Math.Between(-32, 0);
+        sprite.body.setVelocity(velX, velY);
+
+        sprite.coinValue = value;
     }
 
     collidePlatformEnemy(platform, sprite) {

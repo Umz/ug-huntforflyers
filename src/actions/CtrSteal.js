@@ -1,5 +1,6 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
+import Action from "classes/Action";
+import FnNames from "consts/FnNames";
+import States from "consts/States";
 
 class CtrSteal extends Action {
     constructor(sprite, target) {
@@ -14,10 +15,12 @@ class CtrSteal extends Action {
         this.target.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
 
         if (this.target.y < -32) {
-            this.target.setVisible(false).setActive(false);
+            this.target.destroy();
             this.sprite.setY(-16)
             this.setComplete();
         }
+        else if (!this.target.parent.isStateEquals(States.STOLEN))
+            this.setComplete();
     }
 }
 export default CtrSteal;

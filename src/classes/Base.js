@@ -45,6 +45,12 @@ class Base {
         this.updateFunctions.delete(key);
     }
 
+    destroy() {
+        this.sprite.destroy();
+        this.setState(States.DEAD);
+        this.updateFunctions.clear();
+    }
+
     isStateEquals(state) {
         return this.state === state;
     }

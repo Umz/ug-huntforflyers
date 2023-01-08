@@ -1,6 +1,7 @@
 const States = {
 
     DEAD: -1,
+    REMOVED: -2,
 
     IDLE: 0,
     JUST_SPAWNED: 1,

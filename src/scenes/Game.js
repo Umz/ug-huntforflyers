@@ -378,6 +378,11 @@ class Game extends Phaser.Scene {
         return new Phaser.Geom.Point(this.player.x, this.player.y - 32);
     }
 
+    getClosestCoin(coiner) {
+        let active = this.coinGroup.getMatching('active', true);
+        return this.physics.closest(coiner, active);
+    }
+
     getLiveBirdsCount() {
         return this.collisionGroupEnemies.countActive();
     }

@@ -15,6 +15,7 @@ const FnNames = {
     VIEW_DIRECTION_FACING: "spriteFaceDirectionMoving",
 
     VIEw_COLLECTOR_FRAME: "collectorAnimations",
+    VIEW_COINER: "coinerAnimation",
 
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",

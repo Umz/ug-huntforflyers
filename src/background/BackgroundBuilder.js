@@ -61,5 +61,9 @@ class BackgroundBuilder {
         }
     }
 
+    static AddMound(scene, x) {
+        let mound = scene.add.image(x, WorldConsts.GROUND_Y, 'background', 'mound').setOrigin(.5, 1).setDepth(Depths.ENEMIES_MOUND);
+        return mound;
+    }
 }
 export default BackgroundBuilder;

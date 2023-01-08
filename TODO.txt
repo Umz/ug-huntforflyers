@@ -1,9 +1,7 @@
-Coins drop from collection
 Enemy coin thief
 Add level 6
 Split BGM and SFX
 FIX: Carrying bug
-FIX: Stealing bug
 FIX: Invisible collection bug
 UI Weapon mode select
 Clean Player Controller
@@ -41,6 +39,8 @@ Collect effects
 Crystal effect on frozen prey (sparkle)
 
 Fill in the game over screen
+
+Refactor Game Scene
 
 Fill in the info screen button (Story)
 Fill in the question button (controls)

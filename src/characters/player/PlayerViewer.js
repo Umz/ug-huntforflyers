@@ -1,4 +1,4 @@
-import BaseController from "../classes/BaseController";
+import BaseController from "classes/BaseController";
 
 class Playerviewer extends BaseController {
 

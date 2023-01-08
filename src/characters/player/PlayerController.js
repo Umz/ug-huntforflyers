@@ -1,7 +1,6 @@
-import BaseController from "../classes/BaseController";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
-import WorldConsts from "../consts/WorldConsts";
+import BaseController from "classes/BaseController";
+import FnNames from "consts/FnNames";
+import WorldConsts from "consts/WorldConsts";
 
 class PlayerController extends BaseController {
 

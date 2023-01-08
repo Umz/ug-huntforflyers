@@ -1,8 +1,8 @@
-import Base from "../classes/Base";
-import SpriteBuilder from "../components/SpriteBuilder";
-import States from "../consts/States";
+import Base from "classes/Base";
+import SpriteBuilder from "components/SpriteBuilder";
+import States from "consts/States";
 import PlayerController from "./PlayerController";
-import PlayerModel from "../models/PlayerModel";
+import PlayerModel from "models/PlayerModel";
 import Playerviewer from "./PlayerViewer";
 
 class Player extends Base {

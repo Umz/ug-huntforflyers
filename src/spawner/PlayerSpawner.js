@@ -1,7 +1,7 @@
 import Buildings from "consts/Buildings";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
-import Player from "player/Player";
+import Player from "characters/player/Player";
 import Collector from "characters/collector/Collector";
 
 class PlayerSpawner {

@@ -106,6 +106,9 @@ class Game extends Phaser.Scene {
         this.controlpad.weaponSwap = ()=>{
             //Player swap animation
             this.swapPlayerMode();
+
+            for (let i=0;i<10;i++)
+            this.addCoin(4);
         }
         this.updateRunner.add(this.controlpad);
 
@@ -133,11 +136,6 @@ class Game extends Phaser.Scene {
                 this.updateRunner.add(birdSpawner);
             }
         }
-        
-        this.addCoin(4);
-        this.addCoin(4);
-        this.addCoin(4);
-        this.addCoin(4);
     }
 
     countFrozen(includeCarried = false) {
@@ -280,17 +278,14 @@ class Game extends Phaser.Scene {
     }
 
     dropCoin(coin, x) {
-
-        coin.setX(x);
-        coin.setActive(false)
-
         let tween = this.tweens.add({
             targets: coin,
             duration: 500,
+            x: {from:x, to:x},
             y: WorldConsts.GROUND_Y + 16,
             ease: Phaser.Math.Easing.Back.InOut,
             onComplete: ()=>{
-                coin.setVisible(false);
+                coin.setVisible(false).setActive(false);
             }
         });
     }

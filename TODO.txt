@@ -1,8 +1,5 @@
 Bug fixing - Carrykin, Thief, Coiner
 
-COINER 
-- Stuck in position carrying
-
 CARRYKIN
 - Stuck by the pump
 

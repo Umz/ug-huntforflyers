@@ -1,9 +1,12 @@
-Enemy coin thief
-Add level 6
+Bug fixing - Carrykin, Thief, Coiner
+Add level 6 - windmill and wheat farm ( small village )
+
 Split BGM and SFX
 FIX: Carrying bug
 FIX: Invisible collection bug
-UI Weapon mode select
+UI Weapon mode select + player graphics (wheels spin animation)
+Coin to own class with claimed and reset()
+
 Clean Player Controller
 Abstract spawner
 
@@ -23,6 +26,7 @@ Add level 7
 Add level 8
 
 Refactor names for all actions (arguements are what they are : Sprite, Prey,)
+Refactor SpriteBuilder
 
 Clean dead objects and recycle if available
 

@@ -26,7 +26,7 @@ class CtrFindCoin extends Action {
                 this.setComplete();
             }
 
-            if (!this.target.active)
+            if (!this.target.active || this.target.claimed)
                 this.target = null;
         }
         else {

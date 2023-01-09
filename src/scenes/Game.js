@@ -91,6 +91,7 @@ class Game extends Phaser.Scene {
 
         this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
         this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupThieves, this.overlapBulletThief, null, this);
+        this.physics.add.overlap(this.collisionGroupCoiners, this.collisionGroupPlayers, this.overlapCoinerPlayers, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
         this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
 
@@ -131,7 +132,12 @@ class Game extends Phaser.Scene {
                 birdSpawner.setBirdType(forest.getEnemyType());
                 this.updateRunner.add(birdSpawner);
             }
-        }       
+        }
+        
+        this.addCoin(4);
+        this.addCoin(4);
+        this.addCoin(4);
+        this.addCoin(4);
     }
 
     countFrozen(includeCarried = false) {
@@ -246,6 +252,15 @@ class Game extends Phaser.Scene {
         Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
     }
 
+    overlapCoinerPlayers(coinerSprite, playerSprite) {
+
+        this.collisionGroupCoiners.remove(coinerSprite);
+
+        let coiner = coinerSprite.parent;
+        coiner.die();
+        coiner.destroy();
+    }
+
     addCoin(value) {
 
         let pump = this.buildings.get(Buildings.WATER_PUMP);
@@ -261,6 +276,23 @@ class Game extends Phaser.Scene {
         sprite.body.setVelocity(velX, velY);
 
         sprite.coinValue = value;
+        sprite.claimed = false;
+    }
+
+    dropCoin(coin, x) {
+
+        coin.setX(x);
+        coin.setActive(false)
+
+        let tween = this.tweens.add({
+            targets: coin,
+            duration: 500,
+            y: WorldConsts.GROUND_Y + 16,
+            ease: Phaser.Math.Easing.Back.InOut,
+            onComplete: ()=>{
+                coin.setVisible(false);
+            }
+        });
     }
 
     collidePlatformEnemy(platform, sprite) {
@@ -379,7 +411,7 @@ class Game extends Phaser.Scene {
     }
 
     getClosestCoin(coiner) {
-        let active = this.coinGroup.getMatching('active', true);
+        let active = this.coinGroup.getChildren().filter(sprite => !sprite.claimed && sprite.active);
         return this.physics.closest(coiner, active);
     }
 
@@ -389,6 +421,10 @@ class Game extends Phaser.Scene {
 
     getThiefCount() {
         return this.collisionGroupThieves.countActive();
+    }
+
+    getCoinerCount() {
+        return this.collisionGroupCoiners.countActive();
     }
 
     setPreyFlyingcollision(sprite) {

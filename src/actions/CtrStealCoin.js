@@ -30,7 +30,7 @@ class CtrStealCoin extends Action {
             this.setComplete();
         }
 
-        if (!this.coinSprite.active)
+        if (!this.coinSprite.active || !this.coinSprite.visible)
             this.setComplete();
     }
 }

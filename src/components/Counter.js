@@ -4,12 +4,14 @@ class Counter {
         this.counter = 0;
         this.counterMax = 1000;
         this.isRepeating = false;
+        this.isActive = true;
     }
 
     static New() { return new Counter() }
 
     update(time, delta) {
-        this.counter += delta;
+        if (this.isActive)
+            this.counter += delta;
     }
 
     setRepeating(bool) {
@@ -38,5 +40,8 @@ class Counter {
         return false;
     }
 
+    setActive(active) {
+        this.isActive = active;
+    }
 }
 export default Counter;

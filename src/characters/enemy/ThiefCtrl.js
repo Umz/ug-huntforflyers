@@ -58,7 +58,6 @@ class ThiefCtrl extends BaseController {
     attemptToSteal(preySprite) {
         let prey = preySprite.parent;
         if (prey.isStateEquals(States.FROZEN) || prey.isStateEquals(States.CARRIED)) {
-            prey.setState(States.STOLEN);
             prey.setDepth(Depths.ENEMIES_STOLEN);
             this.scene.setPreyStolenCollisions(preySprite);
             this.addAction(new CtrSteal(this.sprite, preySprite).addCallback(()=>{

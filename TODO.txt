@@ -1,4 +1,14 @@
 Bug fixing - Carrykin, Thief, Coiner
+
+COINER 
+- Stuck in position carrying
+
+CARRYKIN
+- Stuck by the pump
+
+SPRITES > HEIGHT-
+- Remove
+
 Add level 6 - windmill and wheat farm ( small village )
 
 Split BGM and SFX

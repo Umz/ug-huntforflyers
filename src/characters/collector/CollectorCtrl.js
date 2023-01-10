@@ -13,6 +13,18 @@ class CollectorCtrl extends BaseController {
         super(target);
         this.scene = this.sprite.scene;
         this.setDefaults();
+        this.addListener()
+    }
+
+    addListener() {
+        const fn = function(time, delta) {
+            if (!this.updateFunctions.has(FnNames.ACT_FOLLOW_TARGET)
+                && !this.updateFunctions.has(FnNames.ACT_MOVE_TO_COLLECT)
+                && !this.updateFunctions.has(FnNames.ACT_CARRY_PREY_HOME)
+            )
+                this.controller.setDefaults();
+        };
+        this.addUpdateFnAndBindToTarget('listenForIdle', fn);
     }
 
     setDefaults() {

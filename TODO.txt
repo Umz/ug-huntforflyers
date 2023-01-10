@@ -1,47 +1,39 @@
-Bug fixing - Carrykin, Thief, Coiner
-
-CARRYKIN
-- Stuck by the pump
-
-SPRITES > HEIGHT-
-- Remove
-
 Add level 6 - windmill and wheat farm ( small village )
 
+Refactor Game Scene
+Refactor SpriteBuilder
+Refactor names for all actions (arguements are what they are : Sprite, Prey,)
+
+Add chicken sprite
+
 Split BGM and SFX
-FIX: Carrying bug
-FIX: Invisible collection bug
 UI Weapon mode select + player graphics (wheels spin animation)
 Coin to own class with claimed and reset()
 
 Clean Player Controller
 Abstract spawner
+Base extend Phaser.Sprite and refactor
+Base add default action - listen for list not present
 
 Controlpad refactor
 setAction()
 setSwap()
 GameController
 
-Bullet group refactor- using 2 groups for bullets
 BG Dialogue
-
-Enemy attacker ground
 
 Webpack split into vendor and bundle
 
 Add level 7
 Add level 8
 
-Refactor names for all actions (arguements are what they are : Sprite, Prey,)
-Refactor SpriteBuilder
 
 Clean dead objects and recycle if available
 
 create pools
 - Prey pool
-- Bullet poool
 - Enemy Pool 
-- collect pool 
+- collect pool
 
 Add game effects
 Hit effects
@@ -50,8 +42,6 @@ Collect effects
 Crystal effect on frozen prey (sparkle)
 
 Fill in the game over screen
-
-Refactor Game Scene
 
 Fill in the info screen button (Story)
 Fill in the question button (controls)

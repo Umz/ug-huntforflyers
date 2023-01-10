@@ -106,9 +106,6 @@ class Game extends Phaser.Scene {
         this.controlpad.weaponSwap = ()=>{
             //Player swap animation
             this.swapPlayerMode();
-
-            for (let i=0;i<10;i++)
-            this.addCoin(4);
         }
         this.updateRunner.add(this.controlpad);
 
@@ -291,7 +288,7 @@ class Game extends Phaser.Scene {
     }
 
     collidePlatformEnemy(platform, sprite) {
-        sprite.parent.die();
+        sprite.parent.destroy();
         sprite.setVisible(false).setActive(false);
         this.collisionGroupThieves.remove(sprite);
     }

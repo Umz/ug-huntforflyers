@@ -1,6 +1,6 @@
 import BaseController from "classes/BaseController";
-import CtrFindCoin from "../../actions/CtrFindCoin";
-import CtrStealCoin from "../../actions/CtrStealCoin";
+import CtrFindCoin from "actions/CtrFindCoin";
+import CtrStealCoin from "actions/CtrStealCoin";
 
 class CoinerCtrl extends BaseController {
 
@@ -18,14 +18,16 @@ class CoinerCtrl extends BaseController {
 
     attemptStealCoin() {
         let coin = this.scene.getClosestCoin(this.sprite);
-        if (!coin.claimed) {
-            this.addAction(new CtrStealCoin(this.target, coin, this.spawnPoint).addCallback(()=>{
+        if (coin) {
+            if (!coin.claimed) {
+                this.addAction(new CtrStealCoin(this.target, coin, this.spawnPoint).addCallback(()=>{
+                    this.findCoin();
+                }));
+                coin.claimed = true;
+            }
+            else
                 this.findCoin();
-            }));
-            coin.claimed = true;
         }
-        else
-            this.findCoin();
     }
 
     setPoint(x) {

@@ -2,7 +2,9 @@ import Buildings from "consts/Buildings";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import Player from "characters/player/Player";
-import Collector from "characters/collector/Collector";
+import CollectorModel from "models/CollectorModel";
+import SpriteBuilder from "components/SpriteBuilder";
+import SpritePhysics from "components/SpritePhysics";
 
 class PlayerSpawner {
     
@@ -29,16 +31,19 @@ class PlayerSpawner {
 
     spawnCollector() {
 
-        let col = new Collector(this.scene);
-        col.init();
-        col.setPosition(this.scene.player.x, WorldConsts.GROUND_Y - 32);
+        let player = this.scene.player;
 
-        this.scene.addCollectorToGroups(col.getSprite());
-        this.scene.addGroundPhysics(col.getSprite());
+        let collector = SpriteBuilder.GetCollectorSprite(this.scene, CollectorModel);
+        collector.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
 
-        col.setTrackedSprite(this.scene.player.getSprite());
+        this.scene.addSpriteToSceneAndGroups(
+            collector,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupCollectors,
+        );
+        SpritePhysics.AddPhysics(collector);
 
-        return col;
+        return collector;
     }
 
 }

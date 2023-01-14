@@ -1,7 +1,8 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
+import Action from "classes/Action";
+import FnNames from "consts/FnNames";
 
 class CtrWait extends Action {
+
     constructor(time) {
         super(FnNames.ACT_WAIT);
         this.time = time;

@@ -13,7 +13,7 @@ class CtrCarryPreyHome extends Action {
         this.preySprite = preySprite;
         this.scene = sprite.scene;
 
-        this.sprite.parent.setState(States.CARRYING);
+        this.sprite.setState(States.CARRYING);
     }
 
     subclassUpdate(time, delta) {
@@ -23,16 +23,15 @@ class CtrCarryPreyHome extends Action {
         
         if (!this.prey.isStateEquals(States.CARRIED)) {
             this.sprite.setVelocity(0);
-            this.sprite.parent.setState(States.NORMAL);
+            this.sprite.setState(States.NORMAL);
             this.setComplete();
         }
     }
     
     moveTowardCollectionPoint() {
         let collectPoint = this.scene.getBuilding(Buildings.WATER_PUMP);
-        let velX = this.sprite.parent.calcVelocityX();
         let dir = collectPoint.worldX > this.sprite.x ? 1 : -1;
-        let vel = velX * dir;
+        let vel = this.sprite.getSpeed() * dir;
         this.sprite.setVelocityX(vel);
     }
 

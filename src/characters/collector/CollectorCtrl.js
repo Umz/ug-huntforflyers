@@ -1,55 +1,40 @@
 import CtrCarryPreyHome from "actions/CtrCarryPreyHome";
-import CtrFollowTarget from "actions/CtrFollowTarget";
 import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToPrey from "actions/CtrMoveToPrey";
 import CtrWait from "actions/CtrWait";
 import BaseController from "classes/BaseController";
 import FnNames from "consts/FnNames";
 import States from "consts/States";
+import CtrFollowSprite from "actions/CtrFollowSprite";
 
 class CollectorCtrl extends BaseController {
 
-    constructor(target) {
-        super(target);
-        this.scene = this.sprite.scene;
-        this.setDefaults();
-        this.addListener()
+    constructor(sprite) {
+        super(sprite);
+        this.scene = sprite.scene;
+
+        this.addNoActionListener();
     }
 
-    addListener() {
-        const fn = function(time, delta) {
-            if (!this.updateFunctions.has(FnNames.ACT_FOLLOW_TARGET)
-                && !this.updateFunctions.has(FnNames.ACT_MOVE_TO_COLLECT)
-                && !this.updateFunctions.has(FnNames.ACT_CARRY_PREY_HOME)
-            )
-                this.controller.setDefaults();
-        };
-        this.addUpdateFnAndBindToTarget('listenForIdle', fn);
-    }
-
-    setDefaults() {
-        this.followPlayer();
-        this.listenForFrozen();
-    }
-
-    followPlayer() {
+    setDefaultActions() {
+        
         let player = this.scene.player;
-        let distance = Math.random() * 3 + 1;
-        this.addAction(new CtrFollowTarget(this.sprite, player).setDistance(distance));
-    }
+        let distance = Math.random() * 4 + 1;
 
-    listenForFrozen() {
-        this.addAction(new CtrListenFrozen(this.sprite).addCallback(()=>{
+        this.addActionNew(new CtrFollowSprite(this.spriteNew, player).setDistance(distance));
+        this.addActionNew(new CtrListenFrozen(this.spriteNew).addCallback(()=>{
             this.moveToFrozenPrey();
         }));
     }
 
     moveToFrozenPrey() {
-        this.target.removeUpdateFn(FnNames.ACT_FOLLOW_TARGET);
-        let preySprite = this.scene.getClosestFrozen(this.sprite);
-        this.addAction(new CtrMoveToPrey(this.sprite, preySprite).addCallback(()=>{
-            this.carryPreyToCollectionPoint(preySprite);
+
+        let prey = this.scene.getClosestFrozen(this.spriteNew);
+        this.addActionNew(new CtrMoveToPrey(this.spriteNew, prey).addCallback(()=>{
+            this.carryPreyToCollectionPoint(prey);
         }));
+
+        this.spriteNew.removeAction(FnNames.ACT_FOLLOW_TARGET);
     }
     
     carryPreyToCollectionPoint(preySprite) {
@@ -57,15 +42,14 @@ class CollectorCtrl extends BaseController {
         let prey = preySprite.parent;
 
         if (prey.isStateEquals(States.FROZEN)) {
+
             prey.setState(States.CARRIED);
+
             this.scene.setPreyCarriedCollisions(preySprite);
             this.scene.setPreyCarriedDepth(preySprite);
-            this.addAction(new CtrCarryPreyHome(this.sprite, preySprite).addCallback(()=>{
-                this.setDefaults();
-            }));
+
+            this.addActionNew(new CtrCarryPreyHome(this.spriteNew, preySprite));
         }
-        else
-            this.addAction(new CtrWait(500).addCallback(()=>{ this.setDefaults() }));
     }
 }
 export default CollectorCtrl;

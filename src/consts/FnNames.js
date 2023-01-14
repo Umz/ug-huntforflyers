@@ -26,8 +26,8 @@ const FnNames = {
     ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
     ACT_ENEMY_DIVE: "controlActionStealDive",
     ACT_FOLLOW_TARGET: "controlActionFollowTarget",
-    ACT_LISTENFORFROZEN: "controlActionListenToFrozen",
-
+    
+    ACT_LISTEN_FOR_FROZEN: "controlActionListenToFrozen",
     ACT_FIND_COINS: "coinerGoingToStealCoins",
     ACT_STEAL_COINS: "coinerReturningWithOrWithoutCoins",
 

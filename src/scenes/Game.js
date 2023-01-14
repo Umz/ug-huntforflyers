@@ -14,6 +14,7 @@ import Buildings from "consts/Buildings";
 import Animations from "consts/Animations";
 import BGAnimations from "background/BGAnimations";
 import DomSceneControl from "components/DomSceneControl";
+import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
 import PlayerSpawner from "spawner/PlayerSpawner";
 import CivilianSpawner from "spawner/CivilianSpawner";
@@ -38,6 +39,8 @@ class Game extends Phaser.Scene {
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
         this.cameras.main.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
+
+        SpriteBuilder.scene = this;
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.liveBirdGroup = this.add.group();
@@ -119,7 +122,7 @@ class Game extends Phaser.Scene {
         this.addBackground();
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<3; i++)
+        for (let i=0; i<1; i++)
             ps.spawnCollector();
 
         this.enemySpawner = new EnemySpawner(this);

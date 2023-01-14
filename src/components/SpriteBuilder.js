@@ -9,8 +9,8 @@ class SpriteBuilder {
         return sprite;
     }
 
-    static GetCollectorSprite(scene, model) {
-        let sprite = new Collector(scene, -100, -100, model.atlas, model.frame);
+    static GetCollectorSprite(model) {
+        let sprite = new Collector(SpriteBuilder.scene, -100, -100, model.atlas, model.frame);
         sprite.setDepth(Depths.PLAYER_TEAM);
         return sprite;
     }

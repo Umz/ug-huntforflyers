@@ -1,5 +1,6 @@
 import Collector from "characters/collector/Collector";
 import Depths from "consts/Depths";
+import CollectorModel from "models/CollectorModel";
 
 class SpriteBuilder {
 
@@ -9,7 +10,8 @@ class SpriteBuilder {
         return sprite;
     }
 
-    static GetCollectorSprite(model) {
+    static GetCollectorSprite() {
+        let model = CollectorModel;
         let sprite = new Collector(SpriteBuilder.scene, -100, -100, model.atlas, model.frame);
         sprite.setDepth(Depths.PLAYER_TEAM);
         return sprite;

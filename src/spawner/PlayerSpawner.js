@@ -2,7 +2,6 @@ import Buildings from "consts/Buildings";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import Player from "characters/player/Player";
-import CollectorModel from "models/CollectorModel";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
 
@@ -33,7 +32,7 @@ class PlayerSpawner {
 
         let player = this.scene.player;
 
-        let collector = SpriteBuilder.GetCollectorSprite(this.scene, CollectorModel);
+        let collector = SpriteBuilder.GetCollectorSprite();
         collector.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
 
         this.scene.addSpriteToSceneAndGroups(

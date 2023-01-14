@@ -1,4 +1,5 @@
 class UpdateRunner {
+    
     constructor() {
         this.objectswithUpdateFn = [];
     }

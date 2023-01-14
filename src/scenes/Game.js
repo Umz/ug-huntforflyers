@@ -312,6 +312,15 @@ class Game extends Phaser.Scene {
         puff.anims.play(Animations.FX_PUFF)
     }
 
+    addSpriteToSceneAndGroups(sprite, ...groups) {
+
+        this.add.existing(sprite);
+
+        for (let group of groups) {
+            group.add(sprite);
+        }
+    }
+
     addPlayerToGroups(sprite) {
         this.spriteUpdateGroup.add(sprite);
         this.collisionGroupPlayers.add(sprite);

@@ -1,4 +1,5 @@
 const FnNames = {
+
     CTRL_SPAWN_TO_NORMAL_STATE: "spawnStateToNormalState",
     CTRL_IS_ON_GROUND: "spriteIsTouchingGround",
 
@@ -33,7 +34,9 @@ const FnNames = {
     ACT_MOVE_TO_COLLECT: "collectorToPreyX",
     ACT_CARRY_PREY_HOME: "collectorCarryPreyHome",
 
-    ACT_FACEDIRECTION: "faceMovementDirection",
-    ACT_COLLECTOR_ANIMATION: "collectorAnimation",
+    ACT_NO_ACTIONS: "controllerHasNoActiveActions",
+
+    VIEW_FACE_DIRECTION: "faceMovementDirection",
+    VIEW_COLLECTOR_ANIMATION: "collectorAnimation",
 }
 export default FnNames;

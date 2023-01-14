@@ -1,15 +1,14 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import Action from "classes/Action";
+import FnNames from "consts/FnNames";
+import States from "consts/States";
 
 class ViewCollectorAnim extends Action {
 
-    constructor(collector) {
-        super(FnNames.ACT_COLLECTOR_ANIMATION);
+    constructor(sprite) {
+        super(FnNames.VIEW_COLLECTOR_ANIMATION);
 
-        this.collector = collector;
-        this.sprite = collector.sprite;
-        this.model = collector.model;
+        this.sprite = sprite;
+        this.model = sprite.model;
     }
 
     subclassUpdate(time, delta) {
@@ -19,10 +18,10 @@ class ViewCollectorAnim extends Action {
         const carry = this.model.carry;
         const hold = this.model.hold;
 
-        let moving = this.collector.isStateEquals(States.CARRYING) ?  carry : run;
-        let still = this.collector.isStateEquals(States.CARRYING) ?  hold : idle;
+        let moving = this.sprite.isState(States.CARRYING) ?  carry : run;
+        let still = this.sprite.isState(States.CARRYING) ?  hold : idle;
 
-        let velX = Math.abs(this.sprite.body.velocity.x);
+        let velX = Math.abs(this.sprite.velocityX);
         if (velX > 16)
             this.sprite.anims.play(moving, true);
         else

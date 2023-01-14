@@ -1,9 +1,10 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
+import Action from "classes/Action";
+import FnNames from "consts/FnNames";
 
 class ViewDirection extends Action {
+
     constructor(sprite) {
-        super(FnNames.ACT_FACEDIRECTION);
+        super(FnNames.VIEW_FACE_DIRECTION);
         this.sprite = sprite;
     }
 

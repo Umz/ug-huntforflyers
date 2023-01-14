@@ -17,7 +17,7 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
         for (let action of this.actionMap.values()) {
             action.update(time, delta);
             if (action.isComplete()) {
-                complete.push(action);
+                complete.push(action.name);
             }
         }
 

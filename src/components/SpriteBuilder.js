@@ -1,6 +1,8 @@
 import Collector from "characters/collector/Collector";
+import Civilian from "characters/civilian/Civilian";
 import Depths from "consts/Depths";
 import CollectorModel from "models/CollectorModel";
+import CivilianModel from "models/CivilianModel";
 
 class SpriteBuilder {
 
@@ -17,8 +19,9 @@ class SpriteBuilder {
         return sprite;
     }
 
-    static GetCivilianSprite(scene, model) {
-        let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.CIVILIANS);
+    static GetCivilianSprite() {
+        let model = CivilianModel;
+        let sprite = new Civilian(SpriteBuilder.scene, -100, -100, model.atlas, model.frame).setDepth(Depths.CIVILIANS);
         return sprite;
     }
 

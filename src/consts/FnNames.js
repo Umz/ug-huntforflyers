@@ -20,7 +20,7 @@ const FnNames = {
 
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",
-    ACT_MOVETOX: "controlActionMoveToXPoisition",
+    ACT_MOVE_TO_X: "controlActionMoveToXPoisition",
     ACT_MOVETOTARGETX: "controlActionMoveToTargetXPosition",
     ACT_ENEMY_FLY: "controlActionFly",
     ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
@@ -38,5 +38,6 @@ const FnNames = {
 
     VIEW_FACE_DIRECTION: "faceMovementDirection",
     VIEW_COLLECTOR_ANIMATION: "collectorAnimation",
+    VIEW_RUN_IDLE: "playRunOrIdleAnimation",
 }
 export default FnNames;

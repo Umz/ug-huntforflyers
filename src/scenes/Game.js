@@ -329,11 +329,6 @@ class Game extends Phaser.Scene {
         this.collisionGroupPlayers.add(sprite);
     }
 
-    addCollectorToGroups(sprite) {
-        this.spriteUpdateGroup.add(sprite);
-        this.collisionGroupCollectors.add(sprite);
-    }
-
     addGroundPhysics(sprite) {
         SpritePhysics.AddPhysics(sprite);
     }
@@ -369,11 +364,6 @@ class Game extends Phaser.Scene {
 
         this.controlpad.addControlTarget(player.controller);
         this.cameras.main.startFollow(player.getSprite());
-    }
-
-    addCivilianToGroups(sprite) {
-        this.spriteUpdateGroup.add(sprite);
-        this.collisionGroupCivilians.add(sprite);
     }
 
     fireBullet() {

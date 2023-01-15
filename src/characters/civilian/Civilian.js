@@ -1,20 +1,24 @@
-import Base from "classes/Base";
-import SpriteBulider from "components/SpriteBuilder";
+import BaseSprite from "classes/BaseSprite";
 import CivilianModel from "models/CivilianModel";
 import CivilianCtrl from "./CivilianCtrl";
-import CollectorView from "./CollectorView";
+import CivilianView from "./CivilianView";
 
-class Civilian extends Base {
+class Civilian extends BaseSprite {
 
-    constructor(scene) {
-        super(scene, CivilianModel);
-        this.sprite = SpriteBulider.GetCivilianSprite(scene, CivilianModel);
-        this.controller = new CivilianCtrl(this);
-        this.view = new CollectorView(this);
+    constructor(scene, x, y, atlas, frame) {
+        super(scene, x, y, atlas, frame);
+        
+        this.setModel(CivilianModel)
+        this.setView(new CivilianView(this));
+        this.setController(new CivilianCtrl(this));
     }
 
     setHome(buildingData) {
         this.homeData = buildingData;
+    }
+
+    getHomeX() {
+        return this.homeData.worldX;
     }
 }
 export default Civilian;

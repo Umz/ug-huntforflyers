@@ -1,5 +1,6 @@
-import Civilian from "characters/civilian/Civilian";
 import WorldConsts from "consts/WorldConsts";
+import SpriteBuilder from "components/SpriteBuilder";
+import SpritePhysics from "components/SpritePhysics";
 
 class CivilianSpawner {
     
@@ -9,12 +10,15 @@ class CivilianSpawner {
 
     spawnCivilian(building) {
 
-        let civ = new Civilian(this.scene);
-        civ.init();
+        let civ = SpriteBuilder.GetCivilianSprite();
         civ.setPosition(building.worldX, WorldConsts.GROUND_Y - 16);
 
-        this.scene.addCivilianToGroups(civ.getSprite());
-        this.scene.addGroundPhysics(civ.getSprite());
+        this.scene.addSpriteToSceneAndGroups(
+            civ,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupCivilians
+        );
+        SpritePhysics.AddPhysics(civ);
 
         civ.setHome(building);
     }

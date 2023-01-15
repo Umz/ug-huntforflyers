@@ -13,16 +13,11 @@ class SpriteBuilder {
     }
 
     static GetCollectorSprite() {
-        let model = CollectorModel;
-        let sprite = new Collector(SpriteBuilder.scene, -100, -100, model.atlas, model.frame);
-        sprite.setDepth(Depths.PLAYER_TEAM);
-        return sprite;
+        return SpriteBuilder.GetSprite(Collector, CollectorModel, Depths.PLAYER_TEAM);
     }
 
     static GetCivilianSprite() {
-        let model = CivilianModel;
-        let sprite = new Civilian(SpriteBuilder.scene, -100, -100, model.atlas, model.frame).setDepth(Depths.CIVILIANS);
-        return sprite;
+        return SpriteBuilder.GetSprite(Civilian, CivilianModel, Depths.CIVILIANS);
     }
 
     static GetFlyingEnemySprite(scene, model) {
@@ -32,6 +27,12 @@ class SpriteBuilder {
 
     static GetThiefSprite(scene, model) {
         let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.ENEMIES);
+        return sprite;
+    }
+
+    static GetSprite(ClassType, model, depth) {
+        let sprite = new ClassType(SpriteBuilder.scene, -100, -100, model.atlas, model.frame);
+        sprite.setDepth(depth);
         return sprite;
     }
 }

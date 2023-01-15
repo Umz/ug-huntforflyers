@@ -23,7 +23,6 @@ class CivilianCtrl extends BaseController {
 
             case 4: this.speakAndWait(); break;
         }
-        console.log('Action Chosen', rand);
     }
 
     speakAndWait() {

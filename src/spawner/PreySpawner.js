@@ -1,16 +1,19 @@
 import Counter from "components/Counter";
 import WorldConsts from "consts/WorldConsts";
 import BeeModel from "models/BeeModel";
-import Prey from "characters/prey/Prey";
+import SpriteBuilder from "../components/SpriteBuilder";
+import SpritePhysics from "../components/SpritePhysics";
+import PreyViewer from "../characters/prey/PreyViewer";
+import PreyController from "../characters/prey/PreyController";
 
-class BirdSpawner {
+class PreySpawner {
 
     //  Max amount of birds to spawn (?)
 
     constructor(scene) {
         this.scene = scene;
 
-        this.mainBirdType = BeeModel;
+        this.preyModel = BeeModel;
         
         this.spawned = 0;
         this.spawnLimit = 30;
@@ -28,20 +31,28 @@ class BirdSpawner {
             this.counter.update(time, delta);
 
         if (this.counter.isComplete())
-            this.spawnBirdInScene();
+            this.spawnPrey();
     }
 
-    spawnBirdInScene() {
+    spawnPrey() {
 
-        //let type = Phaser.Utils.Array.GetRandom([BlueBirdModel, RedBirdModel, FairyModel, BeeModel, BatModel, BugModel]);
-        let type = BeeModel;
+        let bird = SpriteBuilder.GetPrey(this.preyModel);
 
-        let bird = new Prey(this.scene, this.mainBirdType);
+        this.scene.addSpriteToSceneAndGroups(
+            bird,
+            this.scene.spriteUpdateGroup,
+            this.scene.liveBirdGroup,
+            this.scene.collisionGroupEnemies,
+        )
+        SpritePhysics.AddFlightPhysics(bird);
+
+        bird.setModel(this.preyModel);
+        bird.setView(new PreyViewer(bird));
+        bird.setController(new PreyController(bird));
+
         bird.init();
         bird.setHomePoint(this.spawnX, this.spawnY);
-
-        this.scene.addBirdToGroups(bird.getSprite());
-        this.scene.addFlightPhysics(bird.getSprite());
+        bird.setFlyingCollision();
 
         this.spawned ++;
     }
@@ -51,11 +62,11 @@ class BirdSpawner {
     }
 
     setBirdType(type) {
-        this.mainBirdType = type;
+        this.preyModel = type;
     }
 
     setFrequencyInMillis(millis) {
         this.counter.setMaxCount(millis);
     }
 }
-export default BirdSpawner;
+export default PreySpawner;

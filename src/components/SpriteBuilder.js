@@ -2,6 +2,7 @@ import Player from "characters/player/Player";
 import Collector from "characters/collector/Collector";
 import Civilian from "characters/civilian/Civilian";
 import Enemy from "characters/enemy/Enemy";
+import Prey from "characters/prey/Prey";
 import Depths from "consts/Depths";
 import CollectorModel from "models/CollectorModel";
 import CivilianModel from "models/CivilianModel";
@@ -21,9 +22,8 @@ class SpriteBuilder {
         return GetSprite(Civilian, CivilianModel, Depths.CIVILIANS);
     }
 
-    static GetFlyingEnemySprite(scene, model) {
-        let sprite = scene.physics.add.sprite(-100, -100, model.atlas, model.frame).setDepth(Depths.ENEMIES_SPAWNED);
-        return sprite;
+    static GetPrey(model) {
+        return GetSprite(Prey, model, Depths.ENEMIES_SPAWNED);
     }
 
     static GetEnemy(model) {

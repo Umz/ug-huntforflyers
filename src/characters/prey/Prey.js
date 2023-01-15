@@ -1,38 +1,30 @@
-import Base from "classes/Base";
+import BaseSprite from "classes/BaseSprite";
 import States from "consts/States";
-import SpriteBuilder from "components/SpriteBuilder";
-import FlyerController from "./FlyerController";
-import Flyerviewer from "./FlyerViewer";
 
-class Prey extends Base {
+class Prey extends BaseSprite {
 
-    constructor(scene, model) {
-        super(scene);
-
-        this.model = model;
-        this.sprite = SpriteBuilder.GetFlyingEnemySprite(scene, model);
-        this.controller = new FlyerController(this);
-        this.view = new Flyerviewer(this);
+    constructor(scene, x, y, atlas, frame) {
+        super(scene, x, y, atlas, frame);
     }
 
     init() {
-        super.init();
-
-        this.sprite.setAccelerationX(Phaser.Math.Between(100, 200));
-        this.sprite.setX(this.sprite.x + Phaser.Math.Between(-50, 50))
-        this.sprite.setY(this.sprite.y - Phaser.Math.Between(0, 25))
-        this.sprite.freeze = this.freeze;
-
+        this.setAccelerationX(Phaser.Math.Between(100, 200));
+        this.setX(this.x + Phaser.Math.Between(-50, 50));
+        this.setY(this.y - Phaser.Math.Between(0, 25));
         this.setState(States.JUST_SPAWNED);
     }
 
     freeze() {
         this.setAcceleration(0);
         this.setVelocity(0);
-        //this.setTintFill(this.parent.getTint());
-        this.setTint(this.parent.getTint());
+        this.setTint(this.getTint());
         this.setActive(false);
-        this.parent.setState(States.FROZEN);
+        this.setState(States.FROZEN);
+    }
+
+    setFlyingCollision() {
+        this.body.checkCollision.left = false;
+        this.body.checkCollision.right = false;
     }
 
     setHomePoint(x, y) {

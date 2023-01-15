@@ -17,7 +17,7 @@ class EnemySpawner {
     constructor(scene) {
         this.scene = scene;
         this.maxAlive = 3;
-        this.counter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
+        this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
         
         this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
         this.coinerCounter.setActive(false);
@@ -26,10 +26,10 @@ class EnemySpawner {
     update(time, delta) {
 
         if (this.scene.getThiefCount() < this.maxAlive)
-            this.counter.update(time, delta);
+            this.thiefCounter.update(time, delta);
 
-        if (this.counter.isComplete())
-            this.spawnEnemy();
+        if (this.thiefCounter.isComplete())
+            this.spawnThief();
 
         if (this.scene.getCoinerCount() < 6)
             this.coinerCounter.update(time, delta);
@@ -37,7 +37,7 @@ class EnemySpawner {
             this.spawnCoiner();
     }
 
-    spawnEnemy() {
+    spawnThief() {
 
         let x = Phaser.Math.Between(32, this.scene.getLevelWidth() - 32);
         let y = -24;

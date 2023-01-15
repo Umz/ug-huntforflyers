@@ -206,8 +206,7 @@ class Game extends Phaser.Scene {
         }
     }
 
-    overlapBulletThief(bullet, thiefSprite) {
-        let thief = thiefSprite.parent;
+    overlapBulletThief(bullet, thief) {
         bullet.setActive(false).setVisible(false).setPosition(0, 0);
         thief.hit();
         this.showPuff(thief.x, thief.y);
@@ -291,10 +290,10 @@ class Game extends Phaser.Scene {
         });
     }
 
-    collidePlatformEnemy(platform, sprite) {
-        sprite.parent.destroy();
-        sprite.setVisible(false).setActive(false);
-        this.collisionGroupThieves.remove(sprite);
+    collidePlatformEnemy(platform, thief) {
+        this.collisionGroupThieves.remove(thief);
+        thief.kill();
+        thief.destroy();
     }
 
     collidePlatformPrey(platform, preySprite) {
@@ -325,28 +324,15 @@ class Game extends Phaser.Scene {
         }
     }
 
-    addGroundPhysics(sprite) {
-        SpritePhysics.AddPhysics(sprite);
-    }
-
     addBirdToGroups(sprite) {
         this.liveBirdGroup.add(sprite);
         this.spriteUpdateGroup.add(sprite);
         this.collisionGroupEnemies.add(sprite);
     }
-
-    addThiefToGroups(sprite) {
-        this.collisionGroupThieves.add(sprite);
-        this.spriteUpdateGroup.add(sprite);
-    }
     
     addFlightPhysics(sprite) {
         SpritePhysics.AddFlightPhysics(sprite);
         this.setPreyFlyingcollision(sprite);
-    }
-
-    addBoundlessFlightPhysics(sprite) {
-        SpritePhysics.AddFlightPhysicsNoBounds(sprite);
     }
 
     addPlayerControls(player) {

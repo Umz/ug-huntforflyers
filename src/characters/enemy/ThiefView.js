@@ -2,19 +2,20 @@ import ViewDirection from "actions/ViewDirection";
 import BaseController from "classes/BaseController";
 
 class ThiefView extends BaseController {
-    constructor(target) {
-        super(target);
+
+    constructor(sprite) {
+        super(sprite);
         this.addDirectionTracking();
         this.playFlyingAnimation();
     }
 
     addDirectionTracking() {
-        this.addAction(new ViewDirection(this.sprite));
+        this.addActionNew(new ViewDirection(this.spriteNew));
     }
 
     playFlyingAnimation() {
-        let model = this.target.model;
-        this.sprite.anims.play(model.idle, true);
+        let model = this.spriteNew.model;
+        this.spriteNew.anims.play(model.idle, true);
     }
 }
 export default ThiefView;

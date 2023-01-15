@@ -22,7 +22,7 @@ class CtrStealDive extends Action {
             this.sprite.setVelocity(0, -80);
 
         if (this.sprite.getBounds().contains(this.target.x, this.target.y)) {
-            this.sprite.setVelocity(0, -40);
+            this.sprite.setVelocity(0, -32);
             this.setComplete();
         }
 

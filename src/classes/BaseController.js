@@ -38,8 +38,8 @@ class BaseController {
     }
 
     clearAllActions() {
-        for (let action of this.clearableActions.values())
-            this.target.removeUpdateFn(action);
+        for (let actionName of this.allActionNames.values())
+            this.spriteNew.removeAction(actionName);
     }
 
     addUpdateFn(key, fn) {

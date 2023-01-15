@@ -20,7 +20,7 @@ const FnNames = {
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",
     ACT_MOVE_TO_X: "controlActionMoveToXPoisition",
-    ACT_MOVETOTARGETX: "controlActionMoveToTargetXPosition",
+    ACT_MOVE_TO_TARGET_X: "controlActionMoveToTargetXPosition",
     ACT_ENEMY_FLY: "controlActionFly",
     ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
     ACT_ENEMY_DIVE: "controlActionStealDive",

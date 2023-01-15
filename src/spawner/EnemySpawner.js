@@ -16,10 +16,11 @@ class EnemySpawner {
     
     constructor(scene) {
         this.scene = scene;
-        this.maxAlive = 5;
-        this.counter = Counter.New().setRepeating(true).setMaxCount(12 * 1000);
-        this.counter.setActive(false);
+        this.maxAlive = 3;
+        this.counter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
+        
         this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
+        this.coinerCounter.setActive(false);
     }
 
     update(time, delta) {
@@ -41,14 +42,18 @@ class EnemySpawner {
         let x = Phaser.Math.Between(32, this.scene.getLevelWidth() - 32);
         let y = -24;
 
-        let ene = new Enemy(this.scene, ThiefModel);
-        ene.setController(new ThiefCtrl(ene));
+        let ene = SpriteBuilder.GetEnemy(ThiefModel);
+        ene.setModel(ThiefModel);
         ene.setView(new ThiefView(ene));
-        ene.init();
+        ene.setController(new ThiefCtrl(ene));
         ene.setPosition(x, y);
 
-        this.scene.addThiefToGroups(ene.getSprite());
-        this.scene.addBoundlessFlightPhysics(ene.getSprite());
+        this.scene.addSpriteToSceneAndGroups(
+            ene,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupThieves,
+        )
+        SpritePhysics.AddFlightPhysicsNoBounds(ene);
     }
 
     spawnCoiner() {
@@ -67,7 +72,6 @@ class EnemySpawner {
         coiner.setController(new CoinerCtrl(coiner));
         
         coiner.setPosition(spawnX, WorldConsts.GROUND_Y - 8);
-
         coiner.controller.setPoint(spawnX);
 
         this.scene.addSpriteToSceneAndGroups(

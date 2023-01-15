@@ -41,6 +41,7 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
     kill() {
         this.actionMap.clear();
         this.setState(States.DEAD);
+        this.setVisible(false).setActive(false);
     }
 
     setState(state) {

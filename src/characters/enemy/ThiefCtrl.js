@@ -1,5 +1,5 @@
 import CtrEnemyFly from "actions/CtrEnemyFly";
-import CtrFollowTarget from "actions/CtrFollowTarget";
+import CtrFollowSprite from "actions/CtrFollowSprite";
 import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
 import CtrSteal from "actions/CtrSteal";
@@ -12,73 +12,70 @@ import States from "consts/States";
 
 class ThiefCtrl extends BaseController {
 
-    constructor(target) {
-        super(target);
-        this.scene = this.sprite.scene;
-        this.setDefaults();
+    constructor(sprite) {
+        super(sprite);
+        this.scene = sprite.scene;
+        
+        this.addNoActionListener();     // DELETE after Base removed
     }
     
-    setDefaults() {
-        this.addFlying();
-        this.followPlayer();
-        this.listenForFrozenPrey();
-    }
+    setDefaultActions() {
 
-    addFlying() {
-        this.addAction(new CtrEnemyFly(this.sprite), false);
-    }
+        this.addActionNew(new CtrEnemyFly(this.spriteNew));
 
-    followPlayer() {
         let player = this.scene.player;
         let distance = Phaser.Math.Between(6, 11);
-        this.addAction(new CtrFollowTarget(this.sprite, player).setDistance(distance));
-    }
+        this.addActionNew(new CtrFollowSprite(this.spriteNew, player).setDistance(distance));
 
-    listenForFrozenPrey() {
-        this.addAction(new CtrListenFrozen(this.sprite).listenForCarried().addCallback(()=>{
+        this.addActionNew(new CtrListenFrozen(this.spriteNew).listenForCarried().addCallback(()=>{
             this.moveToFrozenPrey();
         }));
     }
 
     moveToFrozenPrey() {
-        this.target.removeUpdateFn(FnNames.ACT_FOLLOW_TARGET);
-        let preySprite = this.scene.getClosestFrozen(this.sprite, [States.FROZEN, States.CARRIED]);
-        this.addAction(new CtrMoveToTargetX(this.sprite, preySprite).addCallback(()=>{
-            this.dropToCollect(preySprite);
+
+        let prey = this.scene.getClosestFrozen(this.spriteNew, [States.FROZEN, States.CARRIED]);
+        
+        this.addActionNew(new CtrMoveToTargetX(this.spriteNew, prey).addCallback(()=>{
+            this.dropToCollect(prey);
         }));
+        
+        this.spriteNew.removeAction(FnNames.ACT_FOLLOW_TARGET);
     }
 
-    dropToCollect(preySprite) {
-        this.target.removeUpdateFn(FnNames.ACT_ENEMY_FLY);
-        this.addAction(new CtrStealDive(this.sprite, preySprite).addCallback(()=>{
-            this.attemptToSteal(preySprite);
-        }));
-    }
-
-    attemptToSteal(preySprite) {
-        let prey = preySprite.parent;
-        if (prey.isStateEquals(States.FROZEN) || prey.isStateEquals(States.CARRIED)) {
-            prey.setDepth(Depths.ENEMIES_STOLEN);
-            this.scene.setPreyStolenCollisions(preySprite);
-            this.addAction(new CtrSteal(this.sprite, preySprite).addCallback(()=>{
-                this.setDefaults();
+    dropToCollect(prey) {
+        let parent = prey.parent;
+        if (parent.isStateEquals(States.FROZEN) || parent.isStateEquals(States.CARRIED)) {
+            this.addActionNew(new CtrStealDive(this.spriteNew, prey).addCallback(()=>{
+                this.attemptToSteal(prey);
             }));
+            this.spriteNew.removeAction(FnNames.ACT_ENEMY_FLY);
         }
         else {
-            this.sprite.setVelocityY(-40);
-            this.addAction(new CtrWait(500).addCallback(()=>{
-                this.setDefaults();
-            }));
+            this.clearAllActions();
+        }
+    }
+
+    attemptToSteal(prey) {
+        let parent = prey.parent;
+        if (parent.isStateEquals(States.FROZEN) || parent.isStateEquals(States.CARRIED)) {
+            parent.setDepth(Depths.ENEMIES_STOLEN);
+            this.scene.setPreyStolenCollisions(prey);
+            this.addActionNew(new CtrSteal(this.spriteNew, prey));
+        }
+        else {
+            this.clearAllActions();
         }
     }
 
     setToCrash() {
-        this.target.removeUpdateFn(FnNames.ACT_ENEMY_FLY);
         this.clearAllActions();
-        this.sprite.setAngularVelocity(90);
-        this.sprite.setAccelerationY(10);
-        if (this.sprite.body.velocity.y <= 10)
-            this.sprite.setVelocityY(10);
+        this.spriteNew.setAngularVelocity(90);
+        this.spriteNew.setAccelerationY(10);
+        if (this.spriteNew.body.velocity.y <= 10)
+            this.spriteNew.setVelocityY(10);
+
+        //  Blow up just above ground level
     }
 }
 export default ThiefCtrl;

@@ -1,12 +1,10 @@
-import Base from "classes/Base";
-import SpriteBulider from "components/SpriteBuilder";
+import BaseSprite from "classes/BaseSprite";
 import States from "consts/States";
 
-class Enemy extends Base {
+class Enemy extends BaseSprite {
 
-    constructor(scene, model) {
-        super(scene, model);
-        this.sprite = SpriteBulider.GetThiefSprite(scene, model);
+    constructor(scene, x, y, atlas, frame) {
+        super(scene, x, y, atlas, frame);
     }
 
     hit() {

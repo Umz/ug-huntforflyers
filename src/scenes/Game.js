@@ -244,19 +244,20 @@ class Game extends Phaser.Scene {
         //  Show collection effect - upwards white dots
         //  Collection sound
 
-        coin.setVisible(false).setActive(false).setPosition(0, 0);
-
-        GameSave.IncScore(coin.coinValue);
-        Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+        if (player.isState(States.PUSHING)) {
+            coin.setVisible(false).setActive(false).setPosition(0, 0);
+    
+            GameSave.IncScore(coin.coinValue);
+            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+        }
     }
 
-    overlapCoinerPlayers(coinerSprite, playerSprite) {
-
-        this.collisionGroupCoiners.remove(coinerSprite);
-
-        let coiner = coinerSprite.parent;
-        coiner.die();
-        coiner.destroy();
+    overlapCoinerPlayers(coiner, player) {
+        if (player.isState(States.PUSHING)) {
+            this.collisionGroupCoiners.remove(coiner);
+            coiner.kill();
+            coiner.destroy();
+        }
     }
 
     addCoin(value) {
@@ -336,11 +337,6 @@ class Game extends Phaser.Scene {
 
     addThiefToGroups(sprite) {
         this.collisionGroupThieves.add(sprite);
-        this.spriteUpdateGroup.add(sprite);
-    }
-
-    addCoinerToGroups(sprite) {
-        this.collisionGroupCoiners.add(sprite);
         this.spriteUpdateGroup.add(sprite);
     }
     

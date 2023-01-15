@@ -1,6 +1,6 @@
 import BaseController from "classes/BaseController";
 import ViewDirection from "actions/ViewDirection";
-import ViewCoiner from "actions/ViewCoiner";
+import ViewRunStop from "actions/ViewRunStop";
 
 class CoinerView extends BaseController {
 
@@ -11,11 +11,11 @@ class CoinerView extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addAction(new ViewDirection(this.sprite));
+        this.addActionNew(new ViewDirection(this.spriteNew));
     }
 
     playAnimation() {
-        this.addAction(new ViewCoiner(this.target));
+        this.addActionNew(new ViewRunStop(this.spriteNew));
     }
 }
 export default CoinerView;

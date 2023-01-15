@@ -7,8 +7,10 @@ import CoinerModel from "models/CoinerModel";
 import CoinerCtrl from "characters/enemy/CoinerCtrl";
 import CoinerView from "characters/enemy/CoinerView";
 import WorldConsts from "consts/WorldConsts";
-import BackgroundBuilder from "../background/BackgroundBuilder";
-import Buildings from "../consts/Buildings";
+import BackgroundBuilder from "background/BackgroundBuilder";
+import Buildings from "consts/Buildings";
+import SpriteBuilder from "components/SpriteBuilder";
+import SpritePhysics from "components/SpritePhysics";
 
 class EnemySpawner {
     
@@ -16,6 +18,7 @@ class EnemySpawner {
         this.scene = scene;
         this.maxAlive = 5;
         this.counter = Counter.New().setRepeating(true).setMaxCount(12 * 1000);
+        this.counter.setActive(false);
         this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
     }
 
@@ -50,31 +53,32 @@ class EnemySpawner {
 
     spawnCoiner() {
 
-        //  Spawn around the pump - min to max
-        let pump = this.scene.getBuilding(Buildings.WATER_PUMP);
-        let min = this.scene.getLevelWidth() * .2;
-        let max = this.scene.getLevelWidth() * .4;
-        let mul = Math.random() > .5 ? 1 : -1;
-        let distance = Phaser.Math.Between(min, max);
-        let x = pump.worldX + (distance * mul);
+        let camera = this.scene.cameras.main;
+        let width = camera.width;
 
-        let coiner = new Enemy(this.scene, CoinerModel);
-        coiner.setController(new CoinerCtrl(coiner));
+        let waterPump = this.scene.getBuilding(Buildings.WATER_PUMP);
+        let multiplier = Math.random() > .5 ? 1 : -1;
+        let distance = Phaser.Math.Between(width * .25, width * .5);
+        let spawnX = waterPump.worldX + (distance * multiplier);
+
+        let coiner = SpriteBuilder.GetEnemy(CoinerModel);
+        coiner.setModel(CoinerModel);
         coiner.setView(new CoinerView(coiner));
-        coiner.init();
-        coiner.setPosition(x, WorldConsts.GROUND_Y - 8);
+        coiner.setController(new CoinerCtrl(coiner));
+        
+        coiner.setPosition(spawnX, WorldConsts.GROUND_Y - 8);
 
-        coiner.controller.setPoint(x);
+        coiner.controller.setPoint(spawnX);
 
-        this.scene.addCoinerToGroups(coiner.getSprite());
-        this.scene.addGroundPhysics(coiner.getSprite());
-
+        this.scene.addSpriteToSceneAndGroups(
+            coiner,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupCoiners,
+        )
+        SpritePhysics.AddPhysics(coiner);
+        
         //  Show FX
-        let mound = BackgroundBuilder.AddMound(this.scene, x);
-    }
-
-    getEnemy(type, x, y) {
-        // new > (model, ctrl, view) > init, x, y
+        let mound = BackgroundBuilder.AddMound(this.scene, spawnX);
     }
 }
 export default EnemySpawner;

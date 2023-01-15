@@ -3,12 +3,11 @@ import FnNames from "consts/FnNames";
 
 class CtrFindCoin extends Action {
 
-    constructor(coiner) {
+    constructor(sprite) {
         super(FnNames.ACT_FIND_COINS);
 
-        this.coiner = coiner;
-        this.sprite = coiner.getSprite();
-        this.scene = this.sprite.scene;
+        this.sprite = sprite;
+        this.scene = sprite.scene;
 
         this.init = true;
     }
@@ -17,7 +16,7 @@ class CtrFindCoin extends Action {
 
         if (this.target) {
 
-            let speed = Math.round(this.velY) !== 0 ? 0 : this.coiner.calcVelocityX();
+            let speed = Math.round(this.sprite.velocityY) !== 0 ? 0 : this.sprite.getSpeed();
             let dir = this.target.x > this.sprite.x ? 1 : -1;
             this.sprite.setVelocityX(speed * dir);
 
@@ -36,11 +35,9 @@ class CtrFindCoin extends Action {
 
         //  Initial Jump
         if (this.init) {
-            this.sprite.setVelocityY(-48);
+            this.sprite.setVelocityY(-32);
             this.init = false;
         }
     }
-
-    get velY() { return this.sprite.body.velocity.y }
 }
 export default CtrFindCoin;

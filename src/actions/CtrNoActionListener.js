@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrNoActionListener extends Action {
 
     constructor(controller, sprite) {
-        super(FnNames.ACT_NO_ACTIONS);
+        super(Actions.ACT_NO_ACTIONS);
         this.controller = controller;
         this.sprite = sprite;
     }

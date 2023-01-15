@@ -1,9 +1,8 @@
 import CtrCarryPreyHome from "actions/CtrCarryPreyHome";
 import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToPrey from "actions/CtrMoveToPrey";
-import CtrWait from "actions/CtrWait";
 import BaseController from "classes/BaseController";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 import States from "consts/States";
 import CtrFollowSprite from "actions/CtrFollowSprite";
 
@@ -34,7 +33,7 @@ class CollectorCtrl extends BaseController {
             this.carryPreyToCollectionPoint(prey);
         }));
 
-        this.spriteNew.removeAction(FnNames.ACT_FOLLOW_TARGET);
+        this.spriteNew.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
     
     carryPreyToCollectionPoint(preySprite) {

@@ -1,11 +1,11 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 import WorldConsts from "consts/WorldConsts";
 
 class CtrPreyFly extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_PREY_FLY);
+        super(Actions.ACT_PREY_FLY);
         this.sprite = sprite;
     }
 

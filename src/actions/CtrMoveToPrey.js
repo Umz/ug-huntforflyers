@@ -1,11 +1,11 @@
-import Action from "../classes/Action";
-import FnNames from "../consts/FnNames";
-import States from "../consts/States";
+import Action from "classes/Action";
+import Actions from "consts/Actions";
+import States from "consts/States";
 
 class CtrMoveToPrey extends Action {
 
     constructor(sprite, target) {
-        super(FnNames.ACT_MOVE_TO_COLLECT);
+        super(Actions.ACT_MOVE_TO_COLLECT);
         this.sprite = sprite;
         this.target = target;
     }

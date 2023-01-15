@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class ViewRunStop extends Action {
 
     constructor(sprite) {
-        super(FnNames.VIEW_RUN_STOP);
+        super(Actions.VIEW_RUN_STOP);
         this.sprite = sprite;
         this.model = sprite.model;
     }

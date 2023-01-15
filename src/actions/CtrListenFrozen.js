@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrFlyToFrozen extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_LISTEN_FOR_FROZEN);
+        super(Actions.ACT_LISTEN_FOR_FROZEN);
         this.sprite = sprite;
         this.scene = sprite.scene;
         this.includeCarried = false;

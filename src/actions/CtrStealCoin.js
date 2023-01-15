@@ -1,11 +1,11 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrStealCoin extends Action {
 
     constructor(sprite, coin, posX) {
 
-        super(FnNames.ACT_STEAL_COINS);
+        super(Actions.ACT_STEAL_COINS);
 
         this.sprite = sprite;
         this.scene = sprite.scene;

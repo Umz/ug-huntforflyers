@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class ViewDirection extends Action {
 
     constructor(sprite) {
-        super(FnNames.VIEW_FACE_DIRECTION);
+        super(Actions.VIEW_FACE_DIRECTION);
         this.sprite = sprite;
         this.defaultFacingRight = true;
     }

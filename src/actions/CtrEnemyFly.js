@@ -1,11 +1,11 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "../consts/Actions";
 import WorldConsts from "consts/WorldConsts";
 
 class CtrEnemyFly extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_ENEMY_FLY);
+        super(Actions.ACT_ENEMY_FLY);
         this.sprite = sprite;
         this.body = sprite.body;
         this.variation = Phaser.Math.Between(-5, 5);

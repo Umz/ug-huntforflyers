@@ -1,9 +1,9 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrBlank extends Action {
     constructor() {
-        super(FnNames.ACT_BLANK);
+        super(Actions.ACT_BLANK);
     }
 
     subclassUpdate(time, delta) {

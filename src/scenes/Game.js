@@ -7,7 +7,7 @@ import Consts from "consts/Consts";
 import States from "consts/States";
 import GameSave from "components/GameSave";
 import LevelMapper from "mappers/LevelMapper";
-import BirdSpawner from "spawner/BirdSpawner";
+import PreySpawner from "spawner/PreySpawner";
 import UpdateRunner from "components/UpdateRunner";
 import Depths from "consts/Depths";
 import Buildings from "consts/Buildings";
@@ -130,7 +130,7 @@ class Game extends Phaser.Scene {
 
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
-                let birdSpawner = new BirdSpawner(this);
+                let birdSpawner = new PreySpawner(this);
                 birdSpawner.setX(forest.getCenterX());
                 birdSpawner.setBirdType(forest.getEnemyType());
                 this.updateRunner.add(birdSpawner);
@@ -141,9 +141,9 @@ class Game extends Phaser.Scene {
     countFrozen(includeCarried = false) {
         let birds = this.collisionGroupEnemies.getChildren();
         let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
-            if (sprite.parent.isStateEquals(States.FROZEN))
+            if (sprite.isState(States.FROZEN))
                 acc ++;
-            if (includeCarried && sprite.parent.isStateEquals(States.CARRIED))
+            if (includeCarried && sprite.isState(States.CARRIED))
                 acc ++;
             return acc;
         }, 0) : 0;
@@ -154,7 +154,7 @@ class Game extends Phaser.Scene {
 
         let frozen = this.collisionGroupEnemies.getChildren().filter(sprite => {
             for (let state of states)
-                if (sprite.parent.isStateEquals(state)) return true;
+                if (sprite.isState(state)) return true;
             return false;
         });
         let target = this.physics.closest(source, frozen);
@@ -194,7 +194,7 @@ class Game extends Phaser.Scene {
     }
 
     overlapBulletPrey(bullet, enemy) {
-        if (enemy.parent.isStateEquals(States.NORMAL)) {
+        if (enemy.isState(States.NORMAL)) {
             bullet.setActive(false).setVisible(false).setPosition(0, 0);
             this.liveBirdGroup.remove(enemy);
             enemy.freeze();
@@ -212,21 +212,20 @@ class Game extends Phaser.Scene {
         this.showPuff(thief.x, thief.y);
     }
 
-    overlapWaterPump(pump, preySprite) {
+    overlapWaterPump(pump, prey) {
         
-        let prey = preySprite.parent;
         pump.anims.play(Animations.WATER_PUMPING);
 
-        if (!preySprite.parent.isStateEquals(States.DEAD)) {
+        if (!prey.isState(States.DEAD)) {
             
             let value = prey.getValue();
-            prey.die();
-            this.collisionGroupEnemies.remove(preySprite);
+            prey.kill();
+            this.collisionGroupEnemies.remove(prey);
 
             let tween = this.tweens.add({
-                targets: preySprite,
+                targets: prey,
                 duration: 1000,
-                x: {from: preySprite.x, to: pump.x},
+                x: {from: prey.x, to: pump.x},
                 y: pump.getCenter().y,
                 ease: Phaser.Math.Easing.Back.InOut,
                 onComplete: ()=>{
@@ -296,16 +295,15 @@ class Game extends Phaser.Scene {
         thief.destroy();
     }
 
-    collidePlatformPrey(platform, preySprite) {
-        let prey = preySprite.parent;
-        if (prey.isStateEquals(States.CARRIED) || prey.isStateEquals(States.STOLEN)) {
+    collidePlatformPrey(platform, prey) {
+        if (prey.isState(States.CARRIED) || prey.isState(States.STOLEN)) {
             prey.setState(States.FROZEN);
-            this.setPreyFrozenCollision(preySprite);
+            this.setPreyFrozenCollision(prey);
         }
     }
 
     collidePlayerPrey(player, prey) {
-        (prey.parent.isStateEquals(States.FROZEN))
+        (prey.isState(States.FROZEN))
             prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
     }
 
@@ -322,17 +320,6 @@ class Game extends Phaser.Scene {
         for (let group of groups) {
             group.add(sprite);
         }
-    }
-
-    addBirdToGroups(sprite) {
-        this.liveBirdGroup.add(sprite);
-        this.spriteUpdateGroup.add(sprite);
-        this.collisionGroupEnemies.add(sprite);
-    }
-    
-    addFlightPhysics(sprite) {
-        SpritePhysics.AddFlightPhysics(sprite);
-        this.setPreyFlyingcollision(sprite);
     }
 
     addPlayerControls(player) {
@@ -393,11 +380,6 @@ class Game extends Phaser.Scene {
 
     getCoinerCount() {
         return this.collisionGroupCoiners.countActive();
-    }
-
-    setPreyFlyingcollision(sprite) {
-        sprite.body.checkCollision.left = false;
-        sprite.body.checkCollision.right = false;
     }
 
     setPreyFrozenCollision(sprite) {

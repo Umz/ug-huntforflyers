@@ -1,11 +1,11 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 import WorldConsts from "consts/WorldConsts";
 
 class CtrFollowSprite extends Action {
 
     constructor(sprite, target) {
-        super(FnNames.ACT_FOLLOW_TARGET);
+        super(Actions.ACT_FOLLOW_TARGET);
         this.sprite = sprite;
         this.target = target;
         this.minTileDistance = 1;

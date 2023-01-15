@@ -1,12 +1,12 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 import WorldConsts from "consts/WorldConsts";
 import States from "consts/States";
 
 class CtrPreyInitial extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_PREY_INIT);
+        super(Actions.ACT_PREY_INIT);
         this.sprite = sprite;
     }
 

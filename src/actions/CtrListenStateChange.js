@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrListenStateChange extends Action {
 
     constructor(sprite, state) {
-        super(FnNames.ACT_STATE_CHANGE);
+        super(Actions.ACT_STATE_CHANGE);
         this.sprite = sprite;
         this.state = state;
     }

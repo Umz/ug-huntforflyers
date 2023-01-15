@@ -1,12 +1,12 @@
 import Action from "../classes/Action";
 import Buildings from "../consts/Buildings";
-import FnNames from "../consts/FnNames";
+import Actions from "../consts/Actions";
 import States from "../consts/States";
 
 class CtrCarryPreyHome extends Action {
 
     constructor(sprite, preySprite) {
-        super(FnNames.ACT_CARRY_PREY_HOME);
+        super(Actions.ACT_CARRY_PREY_HOME);
 
         this.sprite = sprite;
         this.prey = preySprite.parent;

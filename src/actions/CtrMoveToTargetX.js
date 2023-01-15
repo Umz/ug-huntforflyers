@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class CtrMoveToTargetX extends Action {
 
     constructor(sprite, target) {
-        super(FnNames.ACT_MOVE_TO_TARGET_X);
+        super(Actions.ACT_MOVE_TO_TARGET_X);
         this.sprite = sprite;
         this.target = target;
     }

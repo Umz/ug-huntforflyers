@@ -4,11 +4,10 @@ import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
 import CtrSteal from "actions/CtrSteal";
 import CtrStealDive from "actions/CtrStealDive";
-import CtrWait from "actions/CtrWait";
 import BaseController from "classes/BaseController";
 import Depths from "consts/Depths";
-import FnNames from "consts/FnNames";
 import States from "consts/States";
+import Actions from "consts/Actions";
 
 class ThiefCtrl extends BaseController {
 
@@ -40,7 +39,7 @@ class ThiefCtrl extends BaseController {
             this.dropToCollect(prey);
         }));
         
-        this.spriteNew.removeAction(FnNames.ACT_FOLLOW_TARGET);
+        this.spriteNew.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
 
     dropToCollect(prey) {
@@ -49,7 +48,7 @@ class ThiefCtrl extends BaseController {
             this.addActionNew(new CtrStealDive(this.spriteNew, prey).addCallback(()=>{
                 this.attemptToSteal(prey);
             }));
-            this.spriteNew.removeAction(FnNames.ACT_ENEMY_FLY);
+            this.spriteNew.removeAction(Actions.ACT_ENEMY_FLY);
         }
         else {
             this.clearAllActions();

@@ -1,11 +1,11 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 import WorldConsts from "consts/WorldConsts";
 
 class CtrPreyLocalFlight extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_PREY_LOCAL_X);
+        super(Actions.ACT_PREY_LOCAL_X);
         this.sprite = sprite;
         this.sprite.body.setMaxSpeed(this.sprite.getSpeed());
     }

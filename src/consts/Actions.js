@@ -1,4 +1,4 @@
-const FnNames = {
+const Actions = {
 
     ACT_PREY_INIT: "initialMovementAfterSpawn",
     ACT_PREY_FLY: "keepFlyingInTheAir",
@@ -29,4 +29,4 @@ const FnNames = {
     VIEW_RUN_IDLE: "playRunOrIdleAnimation",
     VIEW_RUN_STOP: "playRunOrStopAnimation",
 }
-export default FnNames;
+export default Actions;

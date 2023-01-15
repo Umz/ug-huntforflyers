@@ -1,10 +1,10 @@
 import Action from "classes/Action";
-import FnNames from "consts/FnNames";
+import Actions from "consts/Actions";
 
 class ActTest extends Action {
 
     constructor(sprite) {
-        super(FnNames.ACT_BLANK);
+        super(Actions.ACT_BLANK);
         this.sprite = sprite;
         this.toX = Phaser.Math.Between(32, 320);
     }

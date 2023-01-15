@@ -39,5 +39,6 @@ const FnNames = {
     VIEW_FACE_DIRECTION: "faceMovementDirection",
     VIEW_COLLECTOR_ANIMATION: "collectorAnimation",
     VIEW_RUN_IDLE: "playRunOrIdleAnimation",
+    VIEW_RUN_STOP: "playRunOrStopAnimation",
 }
 export default FnNames;

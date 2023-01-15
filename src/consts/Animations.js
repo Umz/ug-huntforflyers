@@ -25,6 +25,8 @@ const Animations = {
     CK_RUN: 'carrykin_run',
     CK_CARRY: 'carrykin_carry',
 
+    PLAYER_TANK_RUN: 'tank_run',
+
     FX_PUFF: 'preyPuff'
 }
 export default Animations;

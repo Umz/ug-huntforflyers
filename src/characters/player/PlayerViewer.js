@@ -1,16 +1,23 @@
 import BaseController from "classes/BaseController";
 import ViewDirection from "actions/ViewDirection";
+import ViewRunStop from "actions/ViewRunStop";
 
 class Playerviewer extends BaseController {
 
     constructor(sprite) {
         super(sprite);
         this.scene = sprite.scene;
+        
         this.addDirectionTracking();
+        this.addAnimation();
     }
 
     addDirectionTracking() {
         this.addActionNew(new ViewDirection(this.spriteNew));
+    }
+
+    addAnimation() {
+        this.addActionNew(new ViewRunStop(this.spriteNew));
     }
 
     showFireAnimation() {

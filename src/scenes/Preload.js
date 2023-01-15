@@ -74,6 +74,8 @@ class Preload extends Phaser.Scene {
             { key: Animations.CK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_run', start:1, end:6}), frameRate: 10, repeat: -1 },
             { key: Animations.CK_CARRY , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_ck_carry', start:1, end:6}), frameRate: 10, repeat: -1 },
 
+            { key: Animations.PLAYER_TANK_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'spr_tank_run', start:1, end:2}), frameRate: 10, repeat: -1 },
+
             { key: Animations.THIEF_FLY , frames: this.anims.generateFrameNames(sheet, { prefix: 'thief', start:2, end:3}), frameRate: 8, repeat: -1 },
             { key: Animations.COINER_RUN , frames: this.anims.generateFrameNames(sheet, { prefix: 'coiner', start:1, end:2}), frameRate: 10, repeat: -1 },
         ]

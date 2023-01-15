@@ -1,7 +1,6 @@
 import Buildings from "consts/Buildings";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
-import Player from "characters/player/Player";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
 
@@ -15,15 +14,19 @@ class PlayerSpawner {
 
         let home = this.scene.getBuilding(Buildings.PLAYER_HOUSE);
 
-        let player = new Player(this.scene)
-        player.init();
-        player.setPosition(home.worldX, WorldConsts.GROUND_Y - 32);
+        let player = SpriteBuilder.GetPlayerSprite();
+        player.setPosition(home.worldX, WorldConsts.GROUND_Y - 16);
         player.setState(States.HUNTING);
-        player.updateCollision();
 
-        this.scene.addPlayerToGroups(player.getSprite());
-        this.scene.addGroundPhysics(player.getSprite());
+        this.scene.addSpriteToSceneAndGroups(
+            player,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupPlayers
+        );
+        SpritePhysics.AddPhysics(player);
+
         this.scene.addPlayerControls(player);
+        player.updateCollision();
 
         return player;
     }

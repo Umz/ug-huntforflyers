@@ -101,7 +101,7 @@ class Game extends Phaser.Scene {
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
         this.controlpad.action = ()=>{
-            if (this.player.isStateEquals(States.HUNTING) || this.player.isStateEquals(States.SKY_ATTACK)) {
+            if (this.player.isState(States.HUNTING) || this.player.isState(States.SKY_ATTACK)) {
                 this.player.fireBullet();
                 this.fireBullet();
             }
@@ -324,11 +324,6 @@ class Game extends Phaser.Scene {
         }
     }
 
-    addPlayerToGroups(sprite) {
-        this.spriteUpdateGroup.add(sprite);
-        this.collisionGroupPlayers.add(sprite);
-    }
-
     addGroundPhysics(sprite) {
         SpritePhysics.AddPhysics(sprite);
     }
@@ -359,11 +354,8 @@ class Game extends Phaser.Scene {
     }
 
     addPlayerControls(player) {
-
-        player.getSprite().body.checkCollision.up = false;  //  Refactor
-
         this.controlpad.addControlTarget(player.controller);
-        this.cameras.main.startFollow(player.getSprite());
+        this.cameras.main.startFollow(player);
     }
 
     fireBullet() {

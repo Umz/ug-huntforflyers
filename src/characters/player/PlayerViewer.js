@@ -1,27 +1,29 @@
 import BaseController from "classes/BaseController";
+import ViewDirection from "actions/ViewDirection";
 
 class Playerviewer extends BaseController {
 
-    constructor(player) {
-        super(player);
+    constructor(sprite) {
+        super(sprite);
+        this.scene = sprite.scene;
         this.addDirectionTracking();
     }
 
     addDirectionTracking() {
-        const fn = function(time, delta) {
-            let flipX = (this.body.velocity.x > 0);
-            this.setFlipX(flipX);
-        };
-        this.addUpdateFnAndBindToSprite('directionView', fn);
+        this.addActionNew(new ViewDirection(this.spriteNew));
     }
 
     showFireAnimation() {
-        this.sprite.clearTint();
-        this.sprite.setTintFill(0xFFFFFF);
-        this.target.scene.time.addEvent({
+        
+        this.spriteNew.clearTint();
+        this.spriteNew.setTintFill(0xFFFFFF);
+
+        this.scene.time.addEvent({
             delay: 100,
-            callback: ()=>{ this.sprite.clearTint() }
-        })
+            callback: ()=>{
+                this.spriteNew.clearTint();
+            }
+        });
     }
 }   
 export default Playerviewer;

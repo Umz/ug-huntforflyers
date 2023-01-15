@@ -1,34 +1,22 @@
 import BaseController from "classes/BaseController";
-import FnNames from "consts/FnNames";
-import WorldConsts from "consts/WorldConsts";
 
 class PlayerController extends BaseController {
 
-    constructor(player) {
-        super(player);
-        this.addGroundListener();
+    constructor(sprite) {
+        super(sprite);
     }
 
     moveLeft() {
-        this.sprite.setVelocityX(-this.velocityX);
+        this.spriteNew.setVelocityX(-this.spriteNew.getSpeed());
     }
 
     moveRight() {
-        this.sprite.setVelocityX(this.velocityX);
+        this.spriteNew.setVelocityX(this.spriteNew.getSpeed());
     }
 
     moveRecoil() {
-        this.sprite.y -= 2;
-        this.sprite.setVelocityY(-10);
+        this.spriteNew.y -= 2;
+        this.spriteNew.setVelocityY(-10);
     }
-
-    addGroundListener() {
-        this.addUpdateFnAndBindToSprite(FnNames.CTRL_IS_ON_GROUND, function(time, delta) {
-            //if (this.getBottomCenter().y >= WorldConsts.GROUND_Y && !this.parent.isStateEquals(States.HUNTING))
-                //this.parent.setState(States.HUNTING);
-        });
-    }
-
-    get velocityX() { return WorldConsts.BASE_MOVE_SPEED * this.stats.relativeSpeed }
 }
 export default PlayerController;

@@ -1,15 +1,15 @@
+import Player from "characters/player/Player";
 import Collector from "characters/collector/Collector";
 import Civilian from "characters/civilian/Civilian";
 import Depths from "consts/Depths";
 import CollectorModel from "models/CollectorModel";
 import CivilianModel from "models/CivilianModel";
+import PlayerModel from "models/PlayerModel";
 
 class SpriteBuilder {
 
     static GetPlayerSprite(scene, model) {
-        let sprite = scene.physics.add.sprite(-100, -100, model.frame).setDepth(Depths.PLAYERS);
-        sprite.setSize(20, 28);
-        return sprite;
+        return SpriteBuilder.GetSprite(Player, PlayerModel, Depths.PLAYERS);
     }
 
     static GetCollectorSprite() {

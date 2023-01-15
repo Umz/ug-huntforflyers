@@ -4,6 +4,7 @@ import CtrMoveToPrey from "actions/CtrMoveToPrey";
 import BaseController from "classes/BaseController";
 import Actions from "consts/Actions";
 import States from "consts/States";
+import Depths from "consts/Depths";
 import CtrFollowSprite from "actions/CtrFollowSprite";
 
 class CollectorCtrl extends BaseController {
@@ -36,18 +37,15 @@ class CollectorCtrl extends BaseController {
         this.spriteNew.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
     
-    carryPreyToCollectionPoint(preySprite) {
+    carryPreyToCollectionPoint(prey) {
 
-        let prey = preySprite.parent;
-
-        if (prey.isStateEquals(States.FROZEN)) {
+        if (prey.isState(States.FROZEN)) {
 
             prey.setState(States.CARRIED);
+            prey.setCarriedCollision();
+            prey.setDepth(Depths.ENEMIES_CARRIED);
 
-            this.scene.setPreyCarriedCollisions(preySprite);
-            this.scene.setPreyCarriedDepth(preySprite);
-
-            this.addActionNew(new CtrCarryPreyHome(this.spriteNew, preySprite));
+            this.addActionNew(new CtrCarryPreyHome(this.spriteNew, prey));
         }
     }
 }

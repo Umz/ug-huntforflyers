@@ -4,27 +4,28 @@ import States from "consts/States";
 
 class CtrSteal extends Action {
 
-    constructor(sprite, target) {
+    constructor(sprite, prey) {
         super(Actions.ACT_ENEMY_STEAL);
 
         this.sprite = sprite;
-        this.target = target;
+        this.prey = prey;
     }
 
     subclassUpdate(time, delta) {
 
         this.sprite.setVelocity(0, -40);
 
-        let prey = this.target.parent;
-        prey.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
-        prey.setState(States.STOLEN);
+        this.prey.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
+        this.prey.setState(States.STOLEN);
 
-        if (this.target.y < -32) {
-            this.target.destroy();
+        if (this.prey.y < -32) {
+            this.prey.kill();
+            this.prey.destroy();
+            
             this.sprite.setY(-16)
             this.setComplete();
         }
-        else if (!prey.isStateEquals(States.STOLEN))
+        else if (!this.prey.isState(States.STOLEN))
             this.setComplete();
     }
 }

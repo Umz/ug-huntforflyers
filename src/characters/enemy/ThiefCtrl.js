@@ -4,6 +4,7 @@ import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
 import CtrSteal from "actions/CtrSteal";
 import CtrStealDive from "actions/CtrStealDive";
+import CtrBlank from "actions/CtrBlank";
 import BaseController from "classes/BaseController";
 import Depths from "consts/Depths";
 import States from "consts/States";
@@ -43,8 +44,8 @@ class ThiefCtrl extends BaseController {
     }
 
     dropToCollect(prey) {
-        let parent = prey.parent;
-        if (parent.isStateEquals(States.FROZEN) || parent.isStateEquals(States.CARRIED)) {
+        
+        if (prey.isState(States.FROZEN) || prey.isState(States.CARRIED)) {
             this.addActionNew(new CtrStealDive(this.spriteNew, prey).addCallback(()=>{
                 this.attemptToSteal(prey);
             }));
@@ -56,10 +57,10 @@ class ThiefCtrl extends BaseController {
     }
 
     attemptToSteal(prey) {
-        let parent = prey.parent;
-        if (parent.isStateEquals(States.FROZEN) || parent.isStateEquals(States.CARRIED)) {
-            parent.setDepth(Depths.ENEMIES_STOLEN);
-            this.scene.setPreyStolenCollisions(prey);
+        
+        if (prey.isState(States.FROZEN) || prey.isState(States.CARRIED)) {
+            prey.setDepth(Depths.ENEMIES_STOLEN);
+            prey.setStolenCollision();
             this.addActionNew(new CtrSteal(this.spriteNew, prey));
         }
         else {
@@ -67,11 +68,16 @@ class ThiefCtrl extends BaseController {
         }
     }
 
-    setToCrash() {
+    hit() {
+        
         this.clearAllActions();
+        this.addActionNew(new CtrBlank(this.spriteNew));
+        
+        this.spriteNew.setState(States.CRASHING);
+
         this.spriteNew.setAngularVelocity(90);
         this.spriteNew.setAccelerationY(10);
-        if (this.spriteNew.body.velocity.y <= 10)
+        if (this.spriteNew.body.velocity.y <= 5)
             this.spriteNew.setVelocityY(10);
 
         //  Blow up just above ground level

@@ -42,7 +42,7 @@ class PreySpawner {
             bird,
             this.scene.spriteUpdateGroup,
             this.scene.liveBirdGroup,
-            this.scene.collisionGroupEnemies,
+            this.scene.collisionGroupPrey,
         )
         SpritePhysics.AddFlightPhysics(bird);
 

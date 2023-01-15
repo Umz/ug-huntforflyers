@@ -1,39 +1,37 @@
-Add level 6 - windmill and wheat farm ( small village )
+Complete level 6 - windmill and wheat farm ( small village )
+Add level 7 - Ranch + all.
 
 Refactor Game Scene
-Refactor SpriteBuilder
-Refactor names for all actions (arguements are what they are : Sprite, Prey,)
-
+ActionChain implement
 Add chicken sprite
 
-Split BGM and SFX
-UI Weapon mode select + player graphics (wheels spin animation)
+Speech box
+BG Dialogue
 Coin to own class with claimed and reset()
-
 Clean Player Controller
 Abstract spawner
-Base extend Phaser.Sprite and refactor
-Base add default action - listen for list not present
+Spawner abstract class
+Scrollfactor and background refactoring
+Conversations
+Signage
+
+UI Weapon mode select (show graphic)
+Split BGM and SFX
+Clean dead objects and recycle if available
+create pools
+- Prey pool
+- Enemy Pool 
+- collect pool
 
 Controlpad refactor
 setAction()
 setSwap()
 GameController
 
-BG Dialogue
-
 Webpack split into vendor and bundle
 
 Add level 7
 Add level 8
-
-
-Clean dead objects and recycle if available
-
-create pools
-- Prey pool
-- Enemy Pool 
-- collect pool
 
 Add game effects
 Hit effects
@@ -42,16 +40,10 @@ Collect effects
 Crystal effect on frozen prey (sparkle)
 
 Fill in the game over screen
-
 Fill in the info screen button (Story)
 Fill in the question button (controls)
 
-Scrollfactor and background refactoring
-
 Convert all sound files
-
-Conversations
-Signage
 
 Add sun in background, day and night cycle - reload level?
 BG dust cloud or particles

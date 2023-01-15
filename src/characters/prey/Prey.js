@@ -1,5 +1,7 @@
 import BaseSprite from "classes/BaseSprite";
 import States from "consts/States";
+import Buildings from "consts/Buildings";
+import SpritePhysics from "components/SpritePhysics";
 
 class Prey extends BaseSprite {
 
@@ -20,11 +22,33 @@ class Prey extends BaseSprite {
         this.setTint(this.getTint());
         this.setActive(false);
         this.setState(States.FROZEN);
+
+        this.setFrozenCollision();
+        SpritePhysics.AddGroundDrag(this);
+    }
+
+    setFrozenCollision() {
+
+        let waterPump = this.scene.getBuilding(Buildings.WATER_PUMP);
+
+        let canPushLeft = (waterPump.worldX < this.x);
+        let canPushRight = (waterPump.x > this.x);
+        this.body.checkCollision.left = canPushRight;
+        this.body.checkCollision.right = canPushLeft;
     }
 
     setFlyingCollision() {
         this.body.checkCollision.left = false;
         this.body.checkCollision.right = false;
+    }
+
+    setStolenCollision() {
+        this.setFlyingCollision();
+        this.setCollideWorldBounds(false);
+    }
+
+    setCarriedCollision() {
+        this.setFlyingCollision();
     }
 
     setHomePoint(x, y) {

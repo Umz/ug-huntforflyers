@@ -8,8 +8,9 @@ class Enemy extends BaseSprite {
     }
 
     hit() {
-        this.setState(States.CRASHING);
-        this.controller.setToCrash();
+        if (typeof this.controller.hit === "function") { 
+            this.controller.hit();
+        }
     }
 }
 export default Enemy;

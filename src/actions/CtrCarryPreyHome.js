@@ -1,16 +1,15 @@
-import Action from "../classes/Action";
-import Buildings from "../consts/Buildings";
-import Actions from "../consts/Actions";
-import States from "../consts/States";
+import Action from "classes/Action";
+import Buildings from "consts/Buildings";
+import Actions from "consts/Actions";
+import States from "consts/States";
 
 class CtrCarryPreyHome extends Action {
 
-    constructor(sprite, preySprite) {
+    constructor(sprite, prey) {
         super(Actions.ACT_CARRY_PREY_HOME);
 
         this.sprite = sprite;
-        this.prey = preySprite.parent;
-        this.preySprite = preySprite;
+        this.prey = prey;
         this.scene = sprite.scene;
 
         this.sprite.setState(States.CARRYING);
@@ -21,7 +20,7 @@ class CtrCarryPreyHome extends Action {
         this.moveTowardCollectionPoint();
         this.carryPrey();
         
-        if (!this.prey.isStateEquals(States.CARRIED)) {
+        if (!this.prey.isState(States.CARRIED)) {
             this.sprite.setVelocity(0);
             this.sprite.setState(States.NORMAL);
             this.setComplete();

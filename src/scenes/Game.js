@@ -75,7 +75,7 @@ class Game extends Phaser.Scene {
         });
         
         this.collisionGroupPlayers = this.physics.add.group();
-        this.collisionGroupEnemies = this.physics.add.group();
+        this.collisionGroupPrey = this.physics.add.group();
         this.collisionGroupThieves = this.physics.add.group();
         this.collisionGroupCoiners = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
@@ -88,14 +88,14 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupCoiners);
         this.physics.add.collider(this.platforms, this.coinGroup);
         
-        this.physics.add.collider(this.platforms, this.collisionGroupEnemies, this.collidePlatformPrey, null, this);
+        this.physics.add.collider(this.platforms, this.collisionGroupPrey, this.collidePlatformPrey, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
-        this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupEnemies, this.collidePlayerPrey, null, this);
+        this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupPrey, this.collidePlayerPrey, null, this);
 
-        this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupEnemies, this.overlapBulletPrey, null, this);
+        this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupPrey, this.overlapBulletPrey, null, this);
         this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupThieves, this.overlapBulletThief, null, this);
         this.physics.add.overlap(this.collisionGroupCoiners, this.collisionGroupPlayers, this.overlapCoinerPlayers, null, this);
-        this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupEnemies, this.overlapWaterPump, null, this);
+        this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupPrey, this.overlapWaterPump, null, this);
         this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
 
         this.controlpad = new Controlpad(this);
@@ -139,7 +139,7 @@ class Game extends Phaser.Scene {
     }
 
     countFrozen(includeCarried = false) {
-        let birds = this.collisionGroupEnemies.getChildren();
+        let birds = this.collisionGroupPrey.getChildren();
         let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
             if (sprite.isState(States.FROZEN))
                 acc ++;
@@ -152,7 +152,7 @@ class Game extends Phaser.Scene {
 
     getClosestFrozen(source, states = [States.FROZEN]) {
 
-        let frozen = this.collisionGroupEnemies.getChildren().filter(sprite => {
+        let frozen = this.collisionGroupPrey.getChildren().filter(sprite => {
             for (let state of states)
                 if (sprite.isState(state)) return true;
             return false;
@@ -194,14 +194,15 @@ class Game extends Phaser.Scene {
     }
 
     overlapBulletPrey(bullet, enemy) {
+
         if (enemy.isState(States.NORMAL)) {
+
             bullet.setActive(false).setVisible(false).setPosition(0, 0);
+
             this.liveBirdGroup.remove(enemy);
             enemy.freeze();
 
             this.soundManager.play(Sfx.HIT_PREY);
-
-            this.setPreyFrozenCollision(enemy);
             this.showPuff(enemy.x, enemy.y);
         }
     }
@@ -220,7 +221,7 @@ class Game extends Phaser.Scene {
             
             let value = prey.getValue();
             prey.kill();
-            this.collisionGroupEnemies.remove(prey);
+            this.collisionGroupPrey.remove(prey);
 
             let tween = this.tweens.add({
                 targets: prey,
@@ -298,7 +299,7 @@ class Game extends Phaser.Scene {
     collidePlatformPrey(platform, prey) {
         if (prey.isState(States.CARRIED) || prey.isState(States.STOLEN)) {
             prey.setState(States.FROZEN);
-            this.setPreyFrozenCollision(prey);
+            prey.setPreyFrozenCollision();
         }
     }
 
@@ -371,7 +372,7 @@ class Game extends Phaser.Scene {
     }
 
     getLiveBirdsCount() {
-        return this.collisionGroupEnemies.countActive();
+        return this.collisionGroupPrey.countActive();
     }
 
     getThiefCount() {
@@ -380,30 +381,6 @@ class Game extends Phaser.Scene {
 
     getCoinerCount() {
         return this.collisionGroupCoiners.countActive();
-    }
-
-    setPreyFrozenCollision(sprite) {
-        let waterPump = this.buildings.get(Buildings.WATER_PUMP);
-        let canPushLeft = (waterPump.x < sprite.x);
-        let canPushRight = (waterPump.x > sprite.x);
-        sprite.body.checkCollision.left = canPushRight;
-        sprite.body.checkCollision.right = canPushLeft;
-
-        SpritePhysics.AddGroundDrag(sprite);
-    }
-
-    setPreyCarriedCollisions(sprite) {
-        sprite.body.checkCollision.left = false;
-        sprite.body.checkCollision.right = false;
-    }
-
-    setPreyStolenCollisions(sprite) {
-        this.setPreyCarriedCollisions(sprite);
-        sprite.setCollideWorldBounds(false);
-    }
-
-    setPreyCarriedDepth(sprite) {
-        sprite.setDepth(Depths.ENEMIES_CARRIED);
     }
 
     addBackground() {

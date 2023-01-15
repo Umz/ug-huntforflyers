@@ -1,13 +1,5 @@
 const FnNames = {
 
-    CTRL_SPAWN_TO_NORMAL_STATE: "spawnStateToNormalState",
-    CTRL_IS_ON_GROUND: "spriteIsTouchingGround",
-
-    CTRL_TO_COLLECT: "collectorTowardsFrozenPrey",
-    CTRL_CARRY_HOME: "collectorToCarryPreyHome",
-
-    VIEw_COLLECTOR_FRAME: "collectorAnimations",
-
     ACT_PREY_INIT: "initialMovementAfterSpawn",
     ACT_PREY_FLY: "keepFlyingInTheAir",
     ACT_PREY_LOCAL_X: "movingInTheLocalArea",

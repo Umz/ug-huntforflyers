@@ -299,7 +299,7 @@ class Game extends Phaser.Scene {
     collidePlatformPrey(platform, prey) {
         if (prey.isState(States.CARRIED) || prey.isState(States.STOLEN)) {
             prey.setState(States.FROZEN);
-            prey.setPreyFrozenCollision();
+            prey.setFrozenCollision();
         }
     }
 

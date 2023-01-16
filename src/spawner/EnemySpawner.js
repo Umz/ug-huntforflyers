@@ -18,6 +18,7 @@ class EnemySpawner {
         this.scene = scene;
         this.maxAlive = 3;
         this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
+        this.thiefCounter.setActive(false);
         
         this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
         this.coinerCounter.setActive(false);

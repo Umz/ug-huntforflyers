@@ -32,7 +32,7 @@ class Prey extends BaseSprite {
         let waterPump = this.scene.getBuilding(Buildings.WATER_PUMP);
 
         let canPushLeft = (waterPump.worldX < this.x);
-        let canPushRight = (waterPump.x > this.x);
+        let canPushRight = (waterPump.worldX > this.x);
         this.body.checkCollision.left = canPushRight;
         this.body.checkCollision.right = canPushLeft;
     }

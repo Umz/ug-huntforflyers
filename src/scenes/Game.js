@@ -138,28 +138,8 @@ class Game extends Phaser.Scene {
         }
     }
 
-    countFrozen(includeCarried = false) {
-        let birds = this.collisionGroupPrey.getChildren();
-        let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
-            if (sprite.isState(States.FROZEN))
-                acc ++;
-            if (includeCarried && sprite.isState(States.CARRIED))
-                acc ++;
-            return acc;
-        }, 0) : 0;
-        return count;
-    }
-
-    getClosestFrozen(source, states = [States.FROZEN]) {
-
-        let frozen = this.collisionGroupPrey.getChildren().filter(sprite => {
-            for (let state of states)
-                if (sprite.isState(state)) return true;
-            return false;
-        });
-        let target = this.physics.closest(source, frozen);
-
-        return target;
+    update(time, delta) {
+        this.updateRunner.update(time, delta);
     }
 
     swapPlayerMode() {
@@ -189,10 +169,6 @@ class Game extends Phaser.Scene {
         }
     }
 
-    update(time, delta) {
-        this.updateRunner.update(time, delta);
-    }
-
     overlapBulletPrey(bullet, enemy) {
 
         if (enemy.isState(States.NORMAL)) {
@@ -220,7 +196,8 @@ class Game extends Phaser.Scene {
         if (!prey.isState(States.DEAD)) {
             
             let value = prey.getValue();
-            prey.kill();
+            prey.setActive(false);
+            prey.setState(States.DEAD);
             this.collisionGroupPrey.remove(prey);
 
             let tween = this.tweens.add({
@@ -230,6 +207,7 @@ class Game extends Phaser.Scene {
                 y: pump.getCenter().y,
                 ease: Phaser.Math.Easing.Back.InOut,
                 onComplete: ()=>{
+                    prey.kill();
                     prey.destroy();
                     this.addCoin(value);
                 }
@@ -343,6 +321,30 @@ class Game extends Phaser.Scene {
                 bullet.setHuntBullet(angle)
             else
                 bullet.setAttackBullet(angle);
+    }
+
+    countFrozen(includeCarried = false) {
+        let birds = this.collisionGroupPrey.getChildren();
+        let count = (birds.length > 0) ? birds.reduce((acc, sprite) => {
+            if (sprite.isState(States.FROZEN))
+                acc ++;
+            if (includeCarried && sprite.isState(States.CARRIED))
+                acc ++;
+            return acc;
+        }, 0) : 0;
+        return count;
+    }
+
+    getClosestFrozen(source, states = [States.FROZEN]) {
+
+        let frozen = this.collisionGroupPrey.getChildren().filter(sprite => {
+            for (let state of states)
+                if (sprite.isState(state)) return true;
+            return false;
+        });
+        let target = this.physics.closest(source, frozen);
+
+        return target;
     }
 
     getClosestBirdTarget(player) {

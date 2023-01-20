@@ -411,7 +411,7 @@ class Game extends Phaser.Scene {
             
         //  ADD the ground - physics
         let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
-        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
+        let ground = this.add.rectangle(0, WorldConsts.GROUND_Y - 1, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);
         this.physics.add.existing(ground);
         this.platforms.add(ground);
 

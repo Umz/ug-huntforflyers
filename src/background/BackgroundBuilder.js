@@ -1,10 +1,12 @@
 import Depths from "../consts/Depths";
+import Textures from "../consts/Textures";
 import WorldConsts from "../consts/WorldConsts";
 import TextureMapper from "../mappers/TextureMapper";
 
 class BackgroundBuilder {
 
     static addBackgroundScene(scene) {
+
         for (let i=0; i<6; i++) {
 
             let bg = scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', `bg${i}`).setOrigin(0).setScrollFactor(0);
@@ -25,6 +27,7 @@ class BackgroundBuilder {
     }
 
     static addGround(scene) {
+        
         let gr = scene.add.tileSprite(0, WorldConsts.GROUND_Y, WorldConsts.WIDTH, 64, 'background', `ground_0`).setOrigin(0).setScrollFactor(0);
         gr.setDepth(Depths.BG_GROUND); 
         gr.update = function(time, delta) {
@@ -33,11 +36,14 @@ class BackgroundBuilder {
         }
         if (scene.updateRunner)
             scene.updateRunner.add(gr);
+
+        let groundDepth = scene.add.image(0, WorldConsts.GROUND_Y, Textures.BG_GRASS).setOrigin(0, 1).setScrollFactor(0).setDepth(Depths.BG_GROUND_DEPTH);
     }
 
     static addBuilding(scene, building) {
+        let offset = getOffset(building.depth);
         let atlas = TextureMapper.getAtlas(building.type);
-        let b = scene.add.sprite(building.worldX, WorldConsts.GROUND_Y, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
+        let b = scene.add.sprite(building.worldX, WorldConsts.GROUND_Y - offset, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
         return b;
     }
 
@@ -48,7 +54,8 @@ class BackgroundBuilder {
 
     static addForestLayer(scene, layer) {
 
-        const PY = WorldConsts.GROUND_Y;
+        let offset = getOffset(layer.depth);
+        const PY = WorldConsts.GROUND_Y - offset;
         
         for (let i=0; i<layer.size; i++) {
             
@@ -67,3 +74,12 @@ class BackgroundBuilder {
     }
 }
 export default BackgroundBuilder;
+
+function getOffset(depth) {
+    switch (depth) {
+        case Depths.BUILDINGS_BEHIND: return 3;
+        case Depths.BUILDINGS_BG: return 2;
+        case Depths.FOREST_FG1: return 1;
+        default: return 0;
+    }
+}

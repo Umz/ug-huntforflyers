@@ -3,6 +3,7 @@ import GameSave from "../components/GameSave";
 import Textures from "../consts/Textures";
 import Consts from "../consts/Consts";
 import Sfx from "../consts/Sfx";
+import WorldConsts from "../consts/WorldConsts";
 
 class Preload extends Phaser.Scene {
 
@@ -116,6 +117,12 @@ class Preload extends Phaser.Scene {
             graphics.fillRect(0, 0, 2, 2);
             graphics.generateTexture(Textures.BLACK_SQUARE, 2, 2);
         };
+
+        CreateBGGrass: {
+            graphics.fillStyle(0xa4bc23, 1);
+            graphics.fillRect(0, 0, WorldConsts.WIDTH, 3);
+            graphics.generateTexture(Textures.BG_GRASS, WorldConsts.WIDTH, 3);
+        }
 
         graphics.destroy();
     }

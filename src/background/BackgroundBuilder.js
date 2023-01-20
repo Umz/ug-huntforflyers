@@ -1,7 +1,7 @@
-import Depths from "../consts/Depths";
-import Textures from "../consts/Textures";
-import WorldConsts from "../consts/WorldConsts";
-import TextureMapper from "../mappers/TextureMapper";
+import Depths from "consts/Depths";
+import Textures from "consts/Textures";
+import WorldConsts from "consts/WorldConsts";
+import TextureMapper from "mappers/TextureMapper";
 
 class BackgroundBuilder {
 
@@ -78,6 +78,9 @@ export default BackgroundBuilder;
 function getOffset(depth) {
     switch (depth) {
         case Depths.BUILDINGS_BEHIND: return 3;
+        case Depths.FOREST_BG1:
+        case Depths.FOREST_BG2:
+        case Depths.FOREST_BG3:
         case Depths.BUILDINGS_BG: return 2;
         case Depths.FOREST_FG1: return 1;
         default: return 0;

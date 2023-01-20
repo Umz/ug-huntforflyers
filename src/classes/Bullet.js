@@ -1,6 +1,6 @@
-import Depths from "../consts/Depths";
-import Textures from "../consts/Textures";
-import WorldConsts from "../consts/WorldConsts";
+import Depths from "consts/Depths";
+import Textures from "consts/Textures";
+import WorldConsts from "consts/WorldConsts";
 
 class Bullet extends Phaser.Physics.Arcade.Sprite {
 
@@ -16,13 +16,13 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     setHuntBullet(angle) {
-        this.bulletSpeed = WorldConsts.HEIGHT * 1.5;
+        this.bulletSpeed = WorldConsts.HEIGHT * 2;
         this.setFrame(Textures.BULLET);
         this.reset(angle);
     }
 
     setAttackBullet(angle) {
-        this.bulletSpeed = WorldConsts.HEIGHT * 2.5;
+        this.bulletSpeed = WorldConsts.HEIGHT * 3;
         this.setFrame(Textures.BULLET_BIG);
         this.reset(angle);
     }

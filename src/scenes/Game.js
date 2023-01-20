@@ -21,6 +21,7 @@ import CivilianSpawner from "spawner/CivilianSpawner";
 import EnemySpawner from "spawner/EnemySpawner";
 import Sfx from "consts/Sfx";
 import SoundManager from "components/SoundManager";
+import Coin from "classes/Coin";
 
 class Game extends Phaser.Scene {
 
@@ -70,6 +71,7 @@ class Game extends Phaser.Scene {
         });
 
         this.coinGroup = this.physics.add.group({
+            classType: Coin,
             defaultKey: 'background',
             defaultFrame: 'coin'
         });
@@ -237,37 +239,6 @@ class Game extends Phaser.Scene {
         }
     }
 
-    addCoin(value) {
-
-        let pump = this.buildings.get(Buildings.WATER_PUMP);
-        let sprite = this.coinGroup.get(pump.x, pump.getCenter().y);
-        sprite.setDepth(Depths.ENEMIES_FROZEN).setVisible(true).setActive(true);
-        SpritePhysics.AddPhysics(sprite);
-        SpritePhysics.AddGroundDrag(sprite);
-
-        this.showPuff(pump.x, pump.getCenter().y);
-
-        let velX = Phaser.Math.Between(-96, 96);
-        let velY = Phaser.Math.Between(-32, 0);
-        sprite.body.setVelocity(velX, velY);
-
-        sprite.coinValue = value;
-        sprite.claimed = false;
-    }
-
-    dropCoin(coin, x) {
-        let tween = this.tweens.add({
-            targets: coin,
-            duration: 500,
-            x: {from:x, to:x},
-            y: WorldConsts.GROUND_Y + 16,
-            ease: Phaser.Math.Easing.Back.InOut,
-            onComplete: ()=>{
-                coin.setVisible(false).setActive(false);
-            }
-        });
-    }
-
     collidePlatformEnemy(platform, thief) {
         this.collisionGroupThieves.remove(thief);
         thief.kill();
@@ -290,6 +261,33 @@ class Game extends Phaser.Scene {
         let puff = this.puffGroup.get(x, y);
         puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
         puff.anims.play(Animations.FX_PUFF)
+    }
+    
+    addCoin(value) {
+
+        let pump = this.buildings.get(Buildings.WATER_PUMP);
+
+        let sprite = this.coinGroup.get(pump.x, pump.getCenter().y);
+        sprite.reset(value);
+        sprite.initVelocity();
+
+        SpritePhysics.AddPhysics(sprite);
+        SpritePhysics.AddGroundDrag(sprite);
+
+        this.showPuff(pump.x, pump.getCenter().y);
+    }
+
+    dropCoin(coin, x) {
+        let tween = this.tweens.add({
+            targets: coin,
+            duration: 500,
+            x: {from:x, to:x},
+            y: WorldConsts.GROUND_Y + 16,
+            ease: Phaser.Math.Easing.Back.InOut,
+            onComplete: ()=>{
+                coin.setVisible(false).setActive(false);
+            }
+        });
     }
 
     addSpriteToSceneAndGroups(sprite, ...groups) {

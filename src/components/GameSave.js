@@ -1,12 +1,12 @@
-import Consts from "../consts/Consts";
-import Levels from "../consts/Levels";
+import Consts from "consts/Consts";
+import Levels from "consts/Levels";
 
 class GameSave {
 
     static Init() {
         sessionStorage.setItem(Consts.SAVE_NAME, "-");
         sessionStorage.setItem(Consts.SAVE_NAME_SCORE, 0);
-        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE1);
+        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE3);
     }
 
     static SetScore(val) {

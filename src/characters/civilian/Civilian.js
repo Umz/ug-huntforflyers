@@ -13,12 +13,12 @@ class Civilian extends BaseSprite {
         this.setController(new CivilianCtrl(this));
     }
 
-    setHome(buildingData) {
-        this.homeData = buildingData;
+    setHome(sprite) {
+        this.home = sprite;
     }
 
     getHomeX() {
-        return this.homeData.worldX;
+        return this.home.x;
     }
 }
 export default Civilian;

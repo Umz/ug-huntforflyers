@@ -42,6 +42,7 @@ class Game extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
 
         SpriteBuilder.scene = this;
+        BackgroundBuilder.scene = this;
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.liveBirdGroup = this.add.group();
@@ -393,13 +394,22 @@ class Game extends Phaser.Scene {
 
         for (let building of this.levelData.BUILDINGS) {
 
-            let sprite = BackgroundBuilder.addBuilding(this, building);
+            let house = BackgroundBuilder.getHouse(this, building);
+            this.add.existing(house);
 
             if (mapTypes.find(type => type === building.type))
-                this.buildings.set(building.type, sprite);
+            this.buildings.set(building.type, house);
+            
+            if (houseTypes.find(type => type === building.type)) {
 
-            if (houseTypes.find(type => type === building.type))
-                this.civSpawner.spawnCivilian(building);
+                let scaffold = BackgroundBuilder.addScaffolding(house);
+                house.setScaffold(scaffold);
+
+                let complete = Phaser.Math.Between(1, 10) *.01;
+                house.setCompletePercentAndCrop(complete);
+                
+                this.civSpawner.spawnCivilian(house); 
+            }
         }
 
         this.addBuldingCollisions();

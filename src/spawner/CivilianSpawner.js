@@ -11,7 +11,7 @@ class CivilianSpawner {
     spawnCivilian(building) {
 
         let civ = SpriteBuilder.GetCivilianSprite();
-        civ.setPosition(building.worldX, WorldConsts.GROUND_Y - 16);
+        civ.setPosition(building.x, WorldConsts.GROUND_Y - 16);
 
         this.scene.addSpriteToSceneAndGroups(
             civ,

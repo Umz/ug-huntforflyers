@@ -20,6 +20,8 @@ const Buildings = {
     RESTAURANT: "building_restaurant",
 
     RANCH: "building_ranch",
-    WINDMILL: "building_windmill"
+    WINDMILL: "building_windmill",
+
+    SCAFFOLD: "building_scaffold"
 }
 export default Buildings;

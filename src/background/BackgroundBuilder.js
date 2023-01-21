@@ -1,7 +1,9 @@
+import House from "classes/House";
 import Depths from "consts/Depths";
 import Textures from "consts/Textures";
 import WorldConsts from "consts/WorldConsts";
 import TextureMapper from "mappers/TextureMapper";
+import Scaffold from "../classes/Scaffold";
 
 class BackgroundBuilder {
 
@@ -40,11 +42,23 @@ class BackgroundBuilder {
         let groundDepth = scene.add.image(0, WorldConsts.GROUND_Y, Textures.BG_GRASS).setOrigin(0, 1).setScrollFactor(0).setDepth(Depths.BG_GROUND_DEPTH);
     }
 
-    static addBuilding(scene, building) {
+    static getHouse(scene, building) {
+        
         let offset = getOffset(building.depth);
         let atlas = TextureMapper.getAtlas(building.type);
-        let b = scene.add.sprite(building.worldX, WorldConsts.GROUND_Y - offset, atlas, building.type).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
-        return b;
+        let house = new House(scene, building.worldX, WorldConsts.GROUND_Y - offset, atlas, building.type);
+        house.setConfig(building).setOrigin(.5, 1).setDepth(building.depth).setAlpha(building.alpha);
+
+        return house;
+    }
+
+    static addScaffolding(house) {
+        
+        const scene = BackgroundBuilder.scene;
+        let scaffold = new Scaffold(house);
+        scaffold.createScaffoldSprites(scene);
+
+        return scaffold;
     }
 
     static addForest(scene, forest) {

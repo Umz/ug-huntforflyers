@@ -1,19 +1,21 @@
-Complete level 6 - windmill and wheat farm ( small village )
-Add level 7 - Ranch + all.
+Build toward the game design document
 
-Refactor Game Scene
-ActionChain implement
-Add chicken sprite
+Redo level 3
+Redo level 4
+Redo level 5
+Redo level 6
+Add level 7 - Ranch + all.
+Add level 8
+
+Collect houses to full to complete level
 
 Speech box
 BG Dialogue
-Coin to own class with claimed and reset()
-Clean Player Controller
-Abstract spawner
-Spawner abstract class
-Scrollfactor and background refactoring
 Conversations
 Signage
+
+ActionChain implement
+Add chicken sprite
 
 UI Weapon mode select (show graphic)
 Split BGM and SFX
@@ -21,17 +23,15 @@ Clean dead objects and recycle if available
 create pools
 - Prey pool
 - Enemy Pool 
-- collect pool
+- Collector pool
+Abstract spawner
+Refactor Game Scene (With bug fixing)
 
-Controlpad refactor
 setAction()
 setSwap()
 GameController
 
 Webpack split into vendor and bundle
-
-Add level 7
-Add level 8
 
 Add game effects
 Hit effects
@@ -49,6 +49,7 @@ Add sun in background, day and night cycle - reload level?
 BG dust cloud or particles
 BG wind effects 
 
+Boot screen 
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 

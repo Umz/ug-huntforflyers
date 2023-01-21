@@ -15,8 +15,6 @@ const Stage6Model = {
     //140
     BUILDINGS: [
 
-        //  Slums
-
         Building.New(Buildings.TENT1).setTileX(2).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT1).setTileX(3).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT2).setTileX(4).setDepth(Depths.BUILDINGS_BG),
@@ -31,14 +29,12 @@ const Stage6Model = {
         Building.New(Buildings.HOUSE1).setTileX(35).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HOUSE2).setTileX(40).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HOUSE2).setTileX(45).setDepth(Depths.BUILDINGS_BG),
-
         
         Building.New(Buildings.LAB_TABLE).setTileX(60).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(62).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.WATER_PUMP).setTileX(66).setDepth(Depths.BUILDINGS_FG),
         Building.New(Decor.POST).setTileX(63).setDepth(Depths.DECOR_FG),
 
-        //  Houses, shops, houses
         Building.New(Buildings.SHOP).setTileX(77).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.STORE).setTileX(80).setDepth(Depths.BUILDINGS_BG),
 

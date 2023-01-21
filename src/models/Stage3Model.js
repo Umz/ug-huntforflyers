@@ -1,10 +1,10 @@
-import Depths from "../consts/Depths";
-import PlantType from "../consts/PlantType";
-import Forest from "../classes/Forest";
+import Building from "classes/Building";
+import Forest from "classes/Forest";
+import Depths from "consts/Depths";
+import PlantType from "consts/PlantType";
+import Buildings from "consts/Buildings";
+import Decor from "consts/Decor";
 import BugModel from "./BugModel";
-import Building from "../classes/Building";
-import Buildings from "../consts/Buildings";
-import Decor from "../consts/Decor";
 
 const Stage3Model = {
 
@@ -13,27 +13,25 @@ const Stage3Model = {
     
     BUILDINGS: [
 
-        Building.New(Buildings.LAB_TABLE).setTileX(27).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
+
+        Building.New(Decor.WATER).setTileX(10.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT1).setTileX(11).setDepth(Depths.BUILDINGS_BG),
+
+        Building.New(Decor.POD).setTileX(25.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.LAB_TABLE).setTileX(25).setDepth(Depths.BUILDINGS_BG),
+        //Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.WATER_PUMP).setTileX(33).setDepth(Depths.BUILDINGS_FG),
         Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG),
 
-        Building.New(Buildings.TENT1).setTileX(1).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT1).setTileX(2).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Decor.BARREL).setTileX(.5).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.SIGN).setTileX(3).setDepth(Depths.DECOR_FG),
-
-        Building.New(Buildings.TENT2).setTileX(18).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT1).setTileX(18.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(18).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT2).setTileX(19.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.BARREL).setTileX(16).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(16.5).setDepth(Depths.DECOR_FG),
         Building.New(Decor.CHEST).setTileX(17).setDepth(Depths.DECOR_FG),
 
-        Building.New(Decor.SIGN).setTileX(20).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.BARREL).setTileX(21).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.BARREL).setTileX(21.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.BBQ).setTileX(21.5).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(22).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.CHEST).setTileX(23).setDepth(Depths.DECOR_FG),
 
         Building.New(Decor.BARREL).setTileX(32).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(34).setDepth(Depths.DECOR_FG),
@@ -50,17 +48,27 @@ const Stage3Model = {
 
     FORESTS: [
 
-        Forest.New().setTileX(5).setSize(5)
+        Forest.New().setTileX(0).setSize(5)
+            .addLayer([PlantType.DRY_GRASS1, PlantType.DRY_GRASS2, PlantType.DRY_GRASS3], Depths.FOREST_FG2),
+
+        Forest.New().setTileX(.5).setSize(5)
+            .addLayer([PlantType.DRY_GRASS1, PlantType.DRY_GRASS2, PlantType.DRY_GRASS3], Depths.FOREST_FG2),
+
+        Forest.New().setTileX(3).setSize(6)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
-        Forest.New().setTileX(10).setSize(5).setEnemy(BugModel)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
+
+        Forest.New().setTileX(12).setSize(2).setEnemy(BugModel)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1)
             .addLayer([PlantType.BUSH], Depths.FOREST_FG2),
+
+        Forest.New().setTileX(9).setSize(4)
+            .addLayer([PlantType.DRY_GRASS1, PlantType.DRY_GRASS2, PlantType.DRY_GRASS3], Depths.FOREST_FG2),
+
+        Forest.New().setTileX(16).setSize(6)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.BUILDINGS_BEHIND),
 
         Forest.New().setTileX(38).setSize(2)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
@@ -68,6 +76,7 @@ const Stage3Model = {
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1)
             .addLayer([PlantType.BUSH], Depths.FOREST_FG2),
+
         Forest.New().setTileX(48).setSize(3).setEnemy(BugModel)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)

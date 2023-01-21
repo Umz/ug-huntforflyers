@@ -124,7 +124,7 @@ class Game extends Phaser.Scene {
         this.addBackground();
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<1; i++)
+        for (let i=0; i<3; i++)
             ps.spawnCollector();
 
         this.enemySpawner = new EnemySpawner(this);
@@ -262,7 +262,7 @@ class Game extends Phaser.Scene {
         puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
         puff.anims.play(Animations.FX_PUFF)
     }
-    
+
     addCoin(value) {
 
         let pump = this.buildings.get(Buildings.WATER_PUMP);

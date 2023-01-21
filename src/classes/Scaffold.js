@@ -1,8 +1,8 @@
 import Depths from "consts/Depths";
 import TextureMapper from "mappers/TextureMapper";
-import Buildings from "../consts/Buildings";
+import Buildings from "consts/Buildings";
 
-const SCAFFOLDFRAMEWIDTH = 32;
+const SCAFFOLDFRAMEWIDTH = 16;
 const SCAFFOLDFRAMEHEIGHT = 32;
 
 class Scaffold {

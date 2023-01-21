@@ -125,7 +125,7 @@ class Game extends Phaser.Scene {
         this.addBackground();
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<3; i++)
+        for (let i=0; i<6; i++)
             ps.spawnCollector();
 
         this.enemySpawner = new EnemySpawner(this);
@@ -389,7 +389,7 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
 
-        let mapTypes = [Buildings.WATER_PUMP];
+        let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE];
         let houseTypes = [Buildings.TENT1, Buildings.TENT2, Buildings.TENT3, Buildings.HUT, Buildings.HOUSE1];
 
         for (let building of this.levelData.BUILDINGS) {
@@ -398,7 +398,7 @@ class Game extends Phaser.Scene {
             this.add.existing(house);
 
             if (mapTypes.find(type => type === building.type))
-            this.buildings.set(building.type, house);
+                this.buildings.set(building.type, house);
             
             if (houseTypes.find(type => type === building.type)) {
 

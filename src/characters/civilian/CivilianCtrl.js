@@ -1,6 +1,9 @@
 import BaseController from "classes/BaseController";
 import CtrWait from "actions/CtrWait";
 import CtrMoveToX from "actions/CtrMoveToX";
+import Buildings from "../../consts/Buildings";
+import GameSave from "../../components/GameSave";
+import Dom from "../../components/Dom";
 
 class CivilianCtrl extends BaseController {
 
@@ -12,16 +15,22 @@ class CivilianCtrl extends BaseController {
 
     setDefaultActions() {
 
-        let rand = Phaser.Math.Between(1, 4);
-        switch (rand) {
-
-            case 1: this.move100(); break;
-
-            case 2: this.returnHome(); break;
-
-            case 3: this.waitRandomTime(); break;
-
-            case 4: this.speakAndWait(); break;
+        if (GameSave.GetScore() > 0 && !this.spriteNew.isHomeComplete()) {
+            this.gotoLabTable();
+        }
+        else {
+            
+            let rand = Phaser.Math.Between(1, 4);
+            switch (rand) {
+    
+                case 1: this.move100(); break;
+    
+                case 2: this.returnHome(); break;
+    
+                case 3: this.waitRandomTime(); break;
+    
+                case 4: this.speakAndWait(); break;
+            }
         }
     }
 
@@ -48,6 +57,28 @@ class CivilianCtrl extends BaseController {
     returnHome() {
         let homeX = this.spriteNew.getHomeX();
         this.addActionNew(new CtrMoveToX(this.spriteNew, homeX));
+    }
+
+    gotoLabTable() {
+        let tableX = this.scene.getBuilding(Buildings.LAB_TABLE).worldX;
+        this.addActionNew(new CtrMoveToX(this.spriteNew, tableX).addCallback(()=>{
+            this.collectCoin();
+        }));
+    }
+
+    collectCoin() {
+        this.spriteNew.setVelocityY(-16);
+        this.addActionNew(new CtrWait(1000).addCallback(()=>{
+            this.spriteNew.setCoins(GameSave.UpdateScoreAndDom(-10));
+            this.returnHomeAndDepositCoin();
+        }));
+    }
+
+    returnHomeAndDepositCoin() {
+        let homeX = this.spriteNew.getHomeX();
+        this.addActionNew(new CtrMoveToX(this.spriteNew, homeX).addCallback(()=>{
+            this.spriteNew.addCoinsToHome();
+        }));
     }
 }
 export default CivilianCtrl;

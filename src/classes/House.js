@@ -1,24 +1,38 @@
+import Buildings from "../consts/Buildings";
+
 class House extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
 
-        this.completion = 1;
         this.capacity = 100;
         this.filled = 100;
     }
 
     setConfig(config) {
         this.config = config;
+        this.capacity = getCapacityForHouseType(config.type);
         return this;
     }
 
-    setScaffold() {
+    setScaffold(scaffold) {
+        this.scaffold = scaffold;
+    }
 
+    add(amt) {
+        this.filled = Math.min(this.capacity, this.filled + amt);
+        this.setCropToCompletion();
+
+        if (this.isComplete())
+            this.scaffold.destroy();
+    }
+
+    isComplete() {
+        return this.filled === this.capacity;
     }
 
     setCompletePercentAndCrop(val) {
-        this.completion = val;
+        this.filled = val * this.capacity;
         this.setCropToCompletion();
     }
 
@@ -34,5 +48,32 @@ class House extends Phaser.GameObjects.Sprite {
     getType() {
         return this.config.type;
     }
+
+    get completion() {
+        return this.filled / this.capacity;
+    }
 }
 export default House;
+
+function getCapacityForHouseType(type) {
+    switch (type) {
+        
+        case Buildings.TENT1: return 20;
+        case Buildings.TENT2: return 40;
+        case Buildings.TENT3: return 60;
+
+        case Buildings.HUT: return 100;
+        case Buildings.FARMHUT: return 130;
+        case Buildings.HOUSE1: return 200;
+        case Buildings.HOUSE2: return 300;
+
+        case Buildings.MOSQUE: return 400;
+
+        case Buildings.SHOP: return 250;
+        case Buildings.STORE: return 300;
+        case Buildings.RESTAURANT: return 300;
+
+        case Buildings.RANCH: return 750;
+        case Buildings.WINDMILL: return 500;
+    }
+}

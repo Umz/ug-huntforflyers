@@ -29,8 +29,16 @@ class Scaffold {
 
                 let sprite = scene.add.sprite(posX, posY, atlas, Buildings.SCAFFOLD);
                 sprite.setOrigin(0, 1).setDepth(Depths.SCAFFOLD);
+
+                this.sprites.push(sprite);
             }
         }
+    }
+
+    destroy() {
+        for (let sprite of this.sprites)
+            sprite.destroy();
+        this.sprites.length = 0;
     }
 
 }

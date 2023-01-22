@@ -23,7 +23,7 @@ class Scaffold {
         for (let col=0; col<this.columns; col++) {
             for (let row=0; row<this.rows; row++) {
 
-                let posX = pos.x + (col * SCAFFOLDFRAMEWIDTH);
+                let posX = (pos.x - 4) + (col * SCAFFOLDFRAMEWIDTH);
                 let posY = pos.y - (row * SCAFFOLDFRAMEHEIGHT);
                 let atlas = TextureMapper.getAtlas(Buildings.SCAFFOLD);
 

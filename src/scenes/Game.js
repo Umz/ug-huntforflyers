@@ -1,27 +1,29 @@
-import Controlpad from "components/Controlpad";
-import Bullet from "classes/Bullet";
-import WorldConsts from "consts/WorldConsts";
 import BackgroundBuilder from "background/BackgroundBuilder";
-import Dom from "components/Dom";
-import Consts from "consts/Consts";
-import States from "consts/States";
-import GameSave from "components/GameSave";
-import LevelMapper from "mappers/LevelMapper";
-import PreySpawner from "spawner/PreySpawner";
-import UpdateRunner from "components/UpdateRunner";
-import Depths from "consts/Depths";
-import Buildings from "consts/Buildings";
-import Animations from "consts/Animations";
 import BGAnimations from "background/BGAnimations";
+import Bullet from "classes/Bullet";
+import Coin from "classes/Coin";
+import Icon from "classes/Icon";
+import Controlpad from "components/Controlpad";
+import Dom from "components/Dom";
 import DomSceneControl from "components/DomSceneControl";
+import Counter from "components/Counter";
+import GameSave from "components/GameSave";
+import UpdateRunner from "components/UpdateRunner";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
+import SoundManager from "components/SoundManager";
+import WorldConsts from "consts/WorldConsts";
+import Consts from "consts/Consts";
+import States from "consts/States";
+import LevelMapper from "mappers/LevelMapper";
+import PreySpawner from "spawner/PreySpawner";
+import Depths from "consts/Depths";
+import Buildings from "consts/Buildings";
+import Sfx from "consts/Sfx";
+import Animations from "consts/Animations";
 import PlayerSpawner from "spawner/PlayerSpawner";
 import CivilianSpawner from "spawner/CivilianSpawner";
 import EnemySpawner from "spawner/EnemySpawner";
-import Sfx from "consts/Sfx";
-import SoundManager from "components/SoundManager";
-import Coin from "classes/Coin";
 
 class Game extends Phaser.Scene {
 
@@ -76,6 +78,13 @@ class Game extends Phaser.Scene {
             defaultKey: 'background',
             defaultFrame: 'coin'
         });
+
+        this.iconGroup = this.add.group({
+            classType: Icon,
+            defaultKey: 'background',
+            defaultFrame: 'coin',
+            runChildUpdate: true
+        });
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupPrey = this.physics.add.group();
@@ -122,15 +131,14 @@ class Game extends Phaser.Scene {
 
         DomSceneControl.SetGameSceneControl(this);
         
-        this.addBackground();
-        
         this.player = ps.spawnPlayer();
         for (let i=0; i<6; i++)
-            ps.spawnCollector();
-
+        ps.spawnCollector();
+        
         this.enemySpawner = new EnemySpawner(this);
         this.updateRunner.add(this.enemySpawner);
-
+        
+        this.addBackground();
         for (let forest of this.levelData.FORESTS) {
             if (forest.hasEnemies()) {
                 let birdSpawner = new PreySpawner(this);
@@ -139,10 +147,24 @@ class Game extends Phaser.Scene {
                 this.updateRunner.add(birdSpawner);
             }
         }
+
+        //  #   REFACTOR
+
+        this.levelComplete = false;
+        this.counter = Counter.New().setRepeating(true).setMaxCount(3000);
     }
 
     update(time, delta) {
         this.updateRunner.update(time, delta);
+
+        this.counter.update(time, delta);
+        if (this.counter.isComplete()) {
+            if (this.isAllHousesComplete()) {
+                let house = this.buildings.get(Buildings.PLAYER_HOUSE);
+                this.showIcon(house, -1, 'puff1');
+                this.counter.setActive(false);
+            }
+        }
     }
 
     swapPlayerMode() {
@@ -262,6 +284,19 @@ class Game extends Phaser.Scene {
         let puff = this.puffGroup.get(x, y);
         puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
         puff.anims.play(Animations.FX_PUFF)
+    }
+
+    showIcon(sprite, millis, frame) {
+        let active = this.iconGroup.getMatching('target', sprite);
+        let icon = active.shift() || this.iconGroup.get(sprite.x, sprite.y);
+        icon.setFrame(frame).showAboveTarget(sprite, millis);
+        let tween = this.tweens.add({
+            targets: icon,
+            duration: 300,
+            scaleX: {from:0, to:1},
+            scaleY: {from:0, to:1},
+            ease: Phaser.Math.Easing.Back.Out
+        });
     }
 
     addCoin(value) {
@@ -389,7 +424,7 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
 
-        let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE];
+        let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE, Buildings.PLAYER_HOUSE];
         let houseTypes = [Buildings.TENT1, Buildings.TENT2, Buildings.TENT3, Buildings.HUT, Buildings.HOUSE1];
 
         for (let building of this.levelData.BUILDINGS) {
@@ -405,7 +440,7 @@ class Game extends Phaser.Scene {
                 let scaffold = BackgroundBuilder.addScaffolding(house);
                 house.setScaffold(scaffold);
 
-                let complete = Phaser.Math.Between(1, 10) *.01;
+                let complete = Phaser.Math.Between(90, 100) *.01;
                 house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 

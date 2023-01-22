@@ -1,10 +1,10 @@
-import Counter from "components/Counter";
 import WorldConsts from "consts/WorldConsts";
-import BeeModel from "models/BeeModel";
+import Counter from "components/Counter";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
 import PreyViewer from "characters/prey/PreyViewer";
 import PreyController from "characters/prey/PreyController";
+import BeeModel from "models/BeeModel";
 
 class PreySpawner {
 

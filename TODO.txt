@@ -1,15 +1,12 @@
 Build toward the game design document
 
 Redo level 3
+
 Redo level 4
 Redo level 5
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
-
-Collect houses to full to complete level
-Complete level available when all houses have been built (Show signal on base)
-All spawners stop when houses have been built
 
 Speech box
 BG Dialogue
@@ -18,6 +15,7 @@ Signage
 
 ActionChain implement
 Add chicken sprite
+All spawners stop when houses have been built
 
 UI Weapon mode select (show graphic)
 Split BGM and SFX

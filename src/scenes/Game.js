@@ -132,7 +132,7 @@ class Game extends Phaser.Scene {
         DomSceneControl.SetGameSceneControl(this);
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<6; i++)
+        for (let i=0; i<0; i++)
         ps.spawnCollector();
         
         this.enemySpawner = new EnemySpawner(this);
@@ -247,7 +247,7 @@ class Game extends Phaser.Scene {
         //  Collection sound
 
         if (player.isState(States.PUSHING)) {
-            coin.setVisible(false).setActive(false).setPosition(0, 0);
+            coin.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
     
             GameSave.IncScore(coin.coinValue);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
@@ -441,7 +441,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
 
                 let complete = Phaser.Math.Between(90, 100) *.01;
-                house.setCompletePercentAndCrop(complete);
+                house.setCompletePercentAndCrop(100);
                 
                 this.civSpawner.spawnCivilian(house); 
             }

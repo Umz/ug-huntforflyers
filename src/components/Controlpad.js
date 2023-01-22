@@ -1,6 +1,8 @@
 import Consts from "../consts/Consts";
 import Levels from "../consts/Levels";
 import WorldConsts from "../consts/WorldConsts";
+import GameSave from "./GameSave";
+import Dom from './Dom';
 
 /** Class that configures any input device to the Player control */
 class Controlpad {
@@ -36,6 +38,16 @@ class Controlpad {
             const target = this.controlTarget.target;
             const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
             console.log(tileX);
+        });
+
+        scene.input.keyboard.on('keydown-P', (event) => {
+            GameSave.IncScore(101);
+            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+        });
+
+        scene.input.keyboard.on('keydown-L', (event) => {
+            scene.showIcon(scene.player, 2000, 'decor_sign2')
+            console.log('Level Complete?', scene.isAllHousesComplete())
         });
 
         scene.input.keyboard.on('keydown-ONE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE1 }) });

@@ -1,12 +1,31 @@
 Build toward the game design document
 
-Redo level 3
-
-Redo level 4
+Redo level 4 (right side, kin tank with pub-tent3, houses, bush with birds)
 Redo level 5
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
+
+Sky bomber enemies
+
+Pale Kins for collection to citizen houses
+Solid for fighting
+Clones run around the base
+
+Drunk visitors turn to Kins
+
+Zombie enemies (run into and kick back)
+Freezers (run into and stun)
+Bombers (run into and explode)
+Back-attack (run into and kill)
+Kin attack (kills your CarryKins)
+Clone attackers (kills clones)
+
+Lab workers - Work near the pub 
+
+Press up for interaction
+Press up to name your CKs (menu)
+Up to speak (dialogue)
 
 Speech box
 BG Dialogue
@@ -19,7 +38,6 @@ All spawners stop when houses have been built
 
 UI Weapon mode select (show graphic)
 Split BGM and SFX
-Clean dead objects and recycle if available
 create pools
 - Prey pool
 - Enemy Pool 

@@ -4,6 +4,7 @@ const Decor = {
     PURPLE_CHEST: "decor_chest_purple",
     SIGN: "decor_sign1",
     FENCE: "decor_fence",
+    FENCE2: "decor_fence2",
     POST: "decor_post",
     RED_SIGN: "decor_restaurant_sign",
     BENCH: "decor_bench",

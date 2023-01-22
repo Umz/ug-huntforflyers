@@ -34,6 +34,7 @@ class House extends Phaser.GameObjects.Sprite {
     setCompletePercentAndCrop(val) {
         this.filled = val * this.capacity;
         this.setCropToCompletion();
+        this.add(0);
     }
 
     setCropToCompletion() {

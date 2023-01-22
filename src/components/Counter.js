@@ -42,6 +42,7 @@ class Counter {
 
     setActive(active) {
         this.isActive = active;
+        return this;
     }
 }
 export default Counter;

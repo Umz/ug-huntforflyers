@@ -1,37 +1,58 @@
 import Counter from "components/Counter";
 import WorldConsts from "consts/WorldConsts";
 import BeeModel from "models/BeeModel";
-import SpriteBuilder from "../components/SpriteBuilder";
-import SpritePhysics from "../components/SpritePhysics";
-import PreyViewer from "../characters/prey/PreyViewer";
-import PreyController from "../characters/prey/PreyController";
+import SpriteBuilder from "components/SpriteBuilder";
+import SpritePhysics from "components/SpritePhysics";
+import PreyViewer from "characters/prey/PreyViewer";
+import PreyController from "characters/prey/PreyController";
 
 class PreySpawner {
 
-    //  Max amount of birds to spawn (?)
-
     constructor(scene) {
+
         this.scene = scene;
-
         this.preyModel = BeeModel;
-        
-        this.spawned = 0;
-        this.spawnLimit = 30;
 
-        this.spawnMax = 10;
+        this.activePrey = [];
+        this.maxActive = 10;
+
+        this.spawned = 0;
+        this.spawnLimit = 20;
+        
         this.spawnX = 0;
         this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
 
-        this.counter = Counter.New().setRepeating(true).setMaxCount(2000);
+        this.counter = Counter.New().setRepeating(true).setMaxCount(1250);
+        this.cooldown = Counter.New().setRepeating(true).setMaxCount(23000).setActive(false);
     }
 
     update(time, delta) {
 
-        if (this.scene.getLiveBirdsCount() < this.spawnMax && this.spawnLimit > this.spawned)
-            this.counter.update(time, delta);
+        for (let i=this.activePrey.length; --i>=0;) {
+            let bird = this.activePrey[i];
+            if (!bird.active)
+                this.activePrey.splice(i, 1);
+        }
 
+        this.counter.setActive(this.activePrey.length < this.maxActive && (this.spawned < this.spawnLimit));
+        this.counter.update(time, delta);
         if (this.counter.isComplete())
             this.spawnPrey();
+
+        this.cooldown.update(time, delta);
+        if (this.cooldown.isComplete())
+            this.setSpawning();
+    }
+
+    setCooldown() {
+        this.counter.setActive(false);
+        this.cooldown.setActive(true);
+    }
+
+    setSpawning() {
+        this.spawned = 0;
+        this.counter.setActive(true);
+        this.cooldown.setActive(false);
     }
 
     spawnPrey() {
@@ -54,7 +75,11 @@ class PreySpawner {
         bird.setHomePoint(this.spawnX, this.spawnY);
         bird.setFlyingCollision();
 
+        this.activePrey.push(bird);
+
         this.spawned ++;
+        if (this.spawned >= this.spawnLimit)
+            this.setCooldown();
     }
 
     setX(x) {

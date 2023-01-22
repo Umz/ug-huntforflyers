@@ -437,6 +437,14 @@ class Game extends Phaser.Scene {
         return found;
     }
 
+    isAllHousesComplete() {
+        let civs = this.collisionGroupCivilians.getChildren();
+        for (let c of civs)
+            if (!c.isHomeComplete())
+                return false;
+        return true;
+    }
+
     getLevelWidth() {
         return this.levelData.LENGTHS * WorldConsts.WIDTH;
     }

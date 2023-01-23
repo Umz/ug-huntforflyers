@@ -20,30 +20,26 @@ class EnemySpawner {
     constructor(scene) {
 
         this.scene = scene;
-        this.maxAlive = 3;
+        this.maxAlive = 5;
 
-        this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
-        this.thiefCounter.setActive(false);
-        
-        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
-        this.coinerCounter.setActive(false);
-
-        this.skybomberCounter = Counter.New().setRepeating(true).setMaxCount(5 * 1000);
+        this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(13 * 1000);
+        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(15 * 1000);
+        this.skybomberCounter = Counter.New().setRepeating(true).setMaxCount(21 * 1000);
     }
 
     update(time, delta) {
 
-        if (this.scene.getThiefCount() < this.maxAlive)
-            this.thiefCounter.update(time, delta);
+        this.thiefCounter.setActive(this.getGroupCount(this.scene.collisionGroupThieves) < this.maxAlive)
+        this.thiefCounter.update(time, delta);
         if (this.thiefCounter.isComplete())
             this.spawnThief();
 
-        if (this.scene.getCoinerCount() < 6)
-            this.coinerCounter.update(time, delta);
+        this.coinerCounter.setActive(this.getGroupCount(this.scene.collisionGroupCoiners) < 5);
+        this.coinerCounter.update(time, delta);
         if (this.coinerCounter.isComplete())
             this.spawnCoiner();
 
-        this.skybomberCounter.setActive(this.getGroupCount(this.scene.collisionGroupSkyBombers) < 2);
+        this.skybomberCounter.setActive(this.getGroupCount(this.scene.collisionGroupSkyBombers) < 3);
         this.skybomberCounter.update(time, delta);
         if (this.skybomberCounter.isComplete())
             this.spawnSkyBomber();
@@ -64,6 +60,7 @@ class EnemySpawner {
             ene,
             this.scene.spriteUpdateGroup,
             this.scene.collisionGroupThieves,
+            this.scene.liveSkyEnemies
         )
         SpritePhysics.AddFlightPhysicsNoBounds(ene);
     }
@@ -71,11 +68,11 @@ class EnemySpawner {
     spawnCoiner() {
 
         let camera = this.scene.cameras.main;
-        let width = camera.width;
+        let width = WorldConsts.WIDTH;
 
         let waterPump = this.scene.getBuilding(Buildings.WATER_PUMP);
         let multiplier = Math.random() > .5 ? 1 : -1;
-        let distance = Phaser.Math.Between(width * .25, width * .5);
+        let distance = Phaser.Math.Between(width * .25, width * .45);
         let spawnX = waterPump.worldX + (distance * multiplier);
 
         let coiner = SpriteBuilder.GetEnemy(CoinerModel);
@@ -112,6 +109,7 @@ class EnemySpawner {
             ene,
             this.scene.spriteUpdateGroup,
             this.scene.collisionGroupSkyBombers,
+            this.scene.liveSkyEnemies
         )
         SpritePhysics.AddFlightPhysicsNoBounds(ene);
     }

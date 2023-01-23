@@ -18,6 +18,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     reset() {
         this.setActive(true).setVisible(true).setDepth(Depths.ENEMIES);
+        this.setGravityY(WorldConsts.GRAVITY);
     }
 }
 export default Bullet;

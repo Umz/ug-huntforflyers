@@ -12,6 +12,7 @@ class CtrCarryRocket extends Action {
     subclassUpdate(time, delta) {
         let pos = this.sprite.getBottomCenter();
         this.rocket.setPosition(pos.x, pos.y);
+        this.rocket.setVelocityY(0);
     }
 }
 export default CtrCarryRocket;

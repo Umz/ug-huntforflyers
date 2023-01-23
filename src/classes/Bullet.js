@@ -22,7 +22,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     setAttackBullet(angle) {
-        this.bulletSpeed = WorldConsts.HEIGHT * 3;
+        this.bulletSpeed = WorldConsts.HEIGHT * 4;
         this.setFrame(Textures.BULLET_BIG);
         this.reset(angle);
     }

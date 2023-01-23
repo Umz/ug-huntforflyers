@@ -52,9 +52,13 @@ class ThiefCtrl extends BaseController {
 
     hit() {
         
-        this.clearAllActions();
-        this.addActionNew(new CtrBlank(this.spriteNew));
-        //  Blow up BIG in sky (holding a rocket)
+        this.sprite.setY(this.sprite.y - 8);
+
+        if (this.sprite.hp <= 0) {
+            this.sprite.kill();
+            this.sprite.destroy();
+            //  Blow up BIG in sky (holding a rocket)
+        }
     }
 }
 export default ThiefCtrl;

@@ -49,6 +49,7 @@ class Game extends Phaser.Scene {
 
         this.platforms = this.physics.add.group({ immovable: true });
         this.liveBirdGroup = this.add.group();
+        this.liveSkyEnemies = this.add.group();
         this.bgBirdGroup = this.add.group({runChildUpdate:true});
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
 
@@ -116,6 +117,7 @@ class Game extends Phaser.Scene {
 
         this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupPrey, this.overlapBulletPrey, null, this);
         this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupThieves, this.overlapBulletThief, null, this);
+        this.physics.add.overlap(this.attackBulletGroup, this.collisionGroupSkyBombers, this.overlapBulletThief, null, this);
         this.physics.add.overlap(this.collisionGroupCoiners, this.collisionGroupPlayers, this.overlapCoinerPlayers, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupPrey, this.overlapWaterPump, null, this);
         this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
@@ -142,8 +144,8 @@ class Game extends Phaser.Scene {
         DomSceneControl.SetGameSceneControl(this);
         
         this.player = ps.spawnPlayer();
-        for (let i=0; i<0; i++)
-        ps.spawnCollector();
+        for (let i=0; i<5; i++)
+            ps.spawnCollector();
         
         this.enemySpawner = new EnemySpawner(this);
         this.updateRunner.add(this.enemySpawner);
@@ -279,6 +281,16 @@ class Game extends Phaser.Scene {
     }
 
     collidePlatformRocket(platform, rocket) {
+
+        let players = this.collisionGroupPlayers.getChildren();
+        // carryKins - paleKins - civilians?
+        //  GET any nearby players and hit 
+        if (rocket.active)
+            for (let player of players) {
+                if (Math.abs(rocket.x - player.x) < WorldConsts.WIDTH * .1)
+                    player.hit();
+            }
+        
         rocket.setVisible(false).setActive(false);
     }
 
@@ -414,7 +426,7 @@ class Game extends Phaser.Scene {
 
     getClosestThiefTarget(player) {
 
-        let all = this.collisionGroupThieves.getChildren();
+        let all = this.liveSkyEnemies.getChildren();
         let closest = this.physics.closest(player, all);
         let maxDist = WorldConsts.WIDTH * .5;
         if (closest && Math.abs(closest.x - player.x) < maxDist)
@@ -465,8 +477,8 @@ class Game extends Phaser.Scene {
                 let scaffold = BackgroundBuilder.addScaffolding(house);
                 house.setScaffold(scaffold);
 
-                let complete = Phaser.Math.Between(90, 100) *.01;
-                house.setCompletePercentAndCrop(100);
+                let complete = Phaser.Math.Between(5, 15) *.01;
+                house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 
             }

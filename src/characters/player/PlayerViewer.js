@@ -32,5 +32,9 @@ class Playerviewer extends BaseController {
             }
         });
     }
+
+    hit() {
+        this.showFireAnimation();
+    }
 }   
 export default Playerviewer;

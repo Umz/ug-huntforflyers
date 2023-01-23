@@ -8,6 +8,7 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
 
         this.actionMap = new Map();
         this.state = States.NORMAL;
+        this.hp = 1;
     }
 
     update(time, delta) {
@@ -38,6 +39,17 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
         this.actionMap.delete(actionName);
     }
 
+    hit(dmg = 1) {
+        this.hp -= dmg;
+
+        if (typeof this.controller.hit === "function") { 
+            this.controller.hit();
+        }
+        if (typeof this.view.hit === "function") { 
+            this.view.hit();
+        }
+    }
+
     kill() {
         this.actionMap.clear();
         this.setState(States.DEAD);
@@ -62,6 +74,7 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
 
     setModel(model) {
         this.model = model;
+        this.hp = this.model.hp || 1;
         return this;
     }
 

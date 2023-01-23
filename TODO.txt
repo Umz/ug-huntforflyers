@@ -27,6 +27,8 @@ Press up for interaction
 Press up to name your CKs (menu)
 Up to speak (dialogue)
 
+Refactor Base and BaseController - update in controller not in Base
+
 Speech box
 BG Dialogue
 Conversations

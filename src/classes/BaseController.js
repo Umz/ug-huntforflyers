@@ -6,9 +6,9 @@ class BaseController {
     constructor(target) {
 
         this.target = target;
-        this.sprite = target.sprite;
         this.stats = target.stats;
-
+        
+        this.sprite = target;
         this.spriteNew = target;
 
         this.allActionNames = new Set();

@@ -5,10 +5,12 @@ import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
 import CtrSteal from "actions/CtrSteal";
 import CtrStealDive from "actions/CtrStealDive";
 import CtrBlank from "actions/CtrBlank";
+import CtrWait from "actions/CtrWait";
 import BaseController from "classes/BaseController";
 import Depths from "consts/Depths";
 import States from "consts/States";
 import Actions from "consts/Actions";
+import CtrCarryRocket from "../../actions/CtrCarryRocket";
 
 class ThiefCtrl extends BaseController {
 
@@ -20,26 +22,38 @@ class ThiefCtrl extends BaseController {
     }
     
     setDefaultActions() {
-
         this.addActionNew(new CtrEnemyFly(this.spriteNew));
+        this.addActionNew(new CtrWait(Phaser.Math.Between(4000, 7000)).addCallback(()=>{
+            this.loadRocket();
+            this.moveToPlayer();
+        }));
+    }
 
-        let player = this.scene.player;
-        let distance = Phaser.Math.Between(3, 7);
-        this.addActionNew(new CtrFollowSprite(this.spriteNew, player).setDistance(distance));
+    loadRocket() {
+        let rocket = this.scene.addRocketToScene();
+        let act = new CtrCarryRocket(this.sprite, rocket);
+        this.addActionNew(act);
+        this.rocket = rocket;
+    }
+
+    moveToPlayer() {
+        let act = new CtrMoveToTargetX(this.sprite, this.scene.player);
+        act.addCallback(()=>{
+            this.dropRocket();
+        });
+        this.addActionNew(act);
+    }
+
+    dropRocket() {
+        this.clearAllActions();
+        this.sprite.setVelocityX(this.sprite.velocityX * .2);
+        this.rocket.drop();
     }
 
     hit() {
         
         this.clearAllActions();
         this.addActionNew(new CtrBlank(this.spriteNew));
-        
-        this.spriteNew.setState(States.CRASHING);
-
-        this.spriteNew.setAngularVelocity(90);
-        this.spriteNew.setAccelerationY(10);
-        if (this.spriteNew.body.velocity.y <= 5)
-            this.spriteNew.setVelocityY(10);
-
         //  Blow up BIG in sky (holding a rocket)
     }
 }

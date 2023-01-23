@@ -3,6 +3,7 @@ import BGAnimations from "background/BGAnimations";
 import Bullet from "classes/Bullet";
 import Coin from "classes/Coin";
 import Icon from "classes/Icon";
+import Rocket from "classes/Rocket";
 import Controlpad from "components/Controlpad";
 import Dom from "components/Dom";
 import DomSceneControl from "components/DomSceneControl";
@@ -73,6 +74,12 @@ class Game extends Phaser.Scene {
             runChildUpdate: true
         });
 
+        this.rocketGroup = this.physics.add.group({
+            classType: Rocket,
+            defaultKey: 'background',
+            defaultFrame: 'rocket'
+        });
+
         this.coinGroup = this.physics.add.group({
             classType: Coin,
             defaultKey: 'background',
@@ -104,6 +111,7 @@ class Game extends Phaser.Scene {
         this.physics.add.collider(this.platforms, this.collisionGroupPrey, this.collidePlatformPrey, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupSkyBombers, this.collidePlatformEnemy, null, this);
+        this.physics.add.collider(this.platforms, this.rocketGroup, this.collidePlatformRocket, null, this);
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupPrey, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupPrey, this.overlapBulletPrey, null, this);
@@ -270,6 +278,10 @@ class Game extends Phaser.Scene {
         thief.destroy();
     }
 
+    collidePlatformRocket(platform, rocket) {
+        rocket.setVisible(false).setActive(false);
+    }
+
     collidePlatformPrey(platform, prey) {
         if (prey.isState(States.CARRIED) || prey.isState(States.STOLEN)) {
             prey.setState(States.FROZEN);
@@ -326,6 +338,13 @@ class Game extends Phaser.Scene {
                 coin.setVisible(false).setActive(false);
             }
         });
+    }
+
+    addRocketToScene() {
+        let rocket = this.rocketGroup.get(-10, -10);
+        rocket.reset();
+
+        return rocket;
     }
 
     addSpriteToSceneAndGroups(sprite, ...groups) {

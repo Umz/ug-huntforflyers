@@ -5,6 +5,7 @@ const Actions = {
     ACT_PREY_LOCAL_X: "movingInTheLocalArea",
 
     ACT_STATE_CHANGE: "listenForChangeInState",
+    ACT_CARRY_ROCKET: "carryRocket",
 
     ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",

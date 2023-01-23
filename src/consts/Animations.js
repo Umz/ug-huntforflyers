@@ -19,6 +19,7 @@ const Animations = {
 
     THIEF_FLY: 'thief_fly',
     COINER_RUN: 'coiner_run',
+    SKY_BOMBER: 'sky_bomber',
 
     CK_IDLE: 'carrykin_idle',
     CK_HOLD: 'carrykin_hold',

@@ -11,24 +11,30 @@ import BackgroundBuilder from "background/BackgroundBuilder";
 import Buildings from "consts/Buildings";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
+import SkyBomberModel from "models/SkyBomberModel";
+import SkyBomberView from "../characters/enemy/SkyBomberView";
+import SkyBomberCtrl from "../characters/enemy/SkyBomberCtrl";
 
 class EnemySpawner {
     
     constructor(scene) {
+
         this.scene = scene;
         this.maxAlive = 3;
+
         this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
         this.thiefCounter.setActive(false);
         
         this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(1 * 1000);
         this.coinerCounter.setActive(false);
+
+        this.skybomberCounter = Counter.New().setRepeating(true).setMaxCount(5 * 1000);
     }
 
     update(time, delta) {
 
         if (this.scene.getThiefCount() < this.maxAlive)
             this.thiefCounter.update(time, delta);
-
         if (this.thiefCounter.isComplete())
             this.spawnThief();
 
@@ -36,6 +42,11 @@ class EnemySpawner {
             this.coinerCounter.update(time, delta);
         if (this.coinerCounter.isComplete())
             this.spawnCoiner();
+
+        this.skybomberCounter.setActive(this.getGroupCount(this.scene.collisionGroupSkyBombers) < 2);
+        this.skybomberCounter.update(time, delta);
+        if (this.skybomberCounter.isComplete())
+            this.spawnSkyBomber();
     }
 
     spawnThief() {
@@ -84,6 +95,29 @@ class EnemySpawner {
         
         //  Show FX
         let mound = BackgroundBuilder.AddMound(this.scene, spawnX);
+    }
+
+    spawnSkyBomber() {
+
+        let x = Phaser.Math.Between(32, this.scene.getLevelWidth() - 32);
+        let y = -24;
+
+        let ene = SpriteBuilder.GetEnemy(SkyBomberModel);
+        ene.setModel(SkyBomberModel);
+        ene.setView(new SkyBomberView(ene));
+        ene.setController(new SkyBomberCtrl(ene));
+        ene.setPosition(x, y);
+
+        this.scene.addSpriteToSceneAndGroups(
+            ene,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupSkyBombers,
+        )
+        SpritePhysics.AddFlightPhysicsNoBounds(ene);
+    }
+
+    getGroupCount(group) {
+        return this.scene.getGroupActiveCount(group);
     }
 }
 export default EnemySpawner;

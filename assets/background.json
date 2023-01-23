@@ -1060,6 +1060,27 @@
 					}
 				},
 				{
+					"filename": "rocket",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 12
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 12
+					},
+					"frame": {
+						"x": 423,
+						"y": 1753,
+						"w": 8,
+						"h": 12
+					}
+				},
+				{
 					"filename": "bullet",
 					"rotated": false,
 					"trimmed": false,
@@ -1082,27 +1103,6 @@
 				},
 				{
 					"filename": "bulletBig",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 8,
-						"h": 8
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 8,
-						"h": 8
-					},
-					"frame": {
-						"x": 423,
-						"y": 1753,
-						"w": 8,
-						"h": 8
-					}
-				},
-				{
-					"filename": "coin",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1144,7 +1144,7 @@
 					}
 				},
 				{
-					"filename": "puff1",
+					"filename": "coin",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1159,6 +1159,27 @@
 					},
 					"frame": {
 						"x": 274,
+						"y": 1798,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "puff1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 284,
 						"y": 1798,
 						"w": 8,
 						"h": 8
@@ -1338,6 +1359,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5e456ed5e19f3c1c0360db05694782e2:cb6d3ff97fa0e3f53df840a610bc5fe3:2ba65c328dea799e4d80739630892abf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a05e48c71e60260c056c7c062788fcc2:1de2d35e9ca56717c88d5f6b9f226794:2ba65c328dea799e4d80739630892abf$"
 	}
 }

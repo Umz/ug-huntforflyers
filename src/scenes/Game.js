@@ -90,6 +90,7 @@ class Game extends Phaser.Scene {
         this.collisionGroupPrey = this.physics.add.group();
         this.collisionGroupThieves = this.physics.add.group();
         this.collisionGroupCoiners = this.physics.add.group();
+        this.collisionGroupSkyBombers = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
         this.collisionGroupCivilians = this.physics.add.group();
@@ -102,6 +103,7 @@ class Game extends Phaser.Scene {
         
         this.physics.add.collider(this.platforms, this.collisionGroupPrey, this.collidePlatformPrey, null, this);
         this.physics.add.collider(this.platforms, this.collisionGroupThieves, this.collidePlatformEnemy, null, this);
+        this.physics.add.collider(this.platforms, this.collisionGroupSkyBombers, this.collidePlatformEnemy, null, this);
         this.physics.add.collider(this.collisionGroupPlayers, this.collisionGroupPrey, this.collidePlayerPrey, null, this);
 
         this.physics.add.overlap(this.huntBulletGroup, this.collisionGroupPrey, this.overlapBulletPrey, null, this);
@@ -417,6 +419,10 @@ class Game extends Phaser.Scene {
 
     getCoinerCount() {
         return this.collisionGroupCoiners.countActive();
+    }
+
+    getGroupActiveCount(group) {
+        return group.countActive();
     }
 
     addBackground() {

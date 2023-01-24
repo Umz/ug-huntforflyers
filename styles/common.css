@@ -14,3 +14,7 @@
 .spacer {
     height: 40px;
 }
+
+.flex-box {
+    display: flex;
+}

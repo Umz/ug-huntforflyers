@@ -9,4 +9,7 @@
 #guw-name {
     display: none;
     text-align: center;
+    font-size: calc(.8em + 1vmin);
+    text-transform: uppercase;
+    letter-spacing: calc(.1em + 1vmin);
 }

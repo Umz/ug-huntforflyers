@@ -1,12 +1,12 @@
 const Levels = {
     
-    STAGE1: 'Hometown',
-    STAGE2: 'Bees',
-    STAGE3: 'Bugs',
-    STAGE4: 'Birds',
-    STAGE5: 'Reds',
-    STAGE6: 'Bats',
-    STAGE7: 'Faries'
+    STAGE1: 'Dwelling',
+    STAGE2: 'Locale of Bees',
+    STAGE3: 'Far Hamlet',
+    STAGE4: 'Village',
+    STAGE5: 'Red Village',
+    STAGE6: 'Green Village',
+    STAGE7: 'Village III'
     
 }
 export default Levels;

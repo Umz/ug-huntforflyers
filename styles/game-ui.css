@@ -8,6 +8,7 @@
 }
 .gui-area {
     padding: 20px;
+    width: 35%;
 }
 
 /* LEFT - PLAYER Stats */
@@ -21,13 +22,24 @@
 }
 
 .gui-tl-stat-image {
-    display: inline-block;
+    display: block;
+}
+
+.gui-tl-tbl-col-text {
+    font-size: calc(.75em + 1vmin);
 }
 
 /* RIGHT - Pause */
 #gui-top-right {
     float: right;
+    text-align: right;
 }
 .gui-tr-image {
-    min-height: 32px;
+    width: 64px;
+}
+
+@media (max-width: 768px) {
+    .gui-tr-image {
+        width: 32px;
+    }
 }

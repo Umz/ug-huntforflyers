@@ -6,11 +6,23 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
+Boot screen 
+Fill in the game over screen
+Fill in the info screen button (Story)
+Fill in the question button (controls)
+Add game effects
+Hit effects
+Fire effects 
+Collect effects 
+Crystal effect on frozen prey (sparkle)
+Split BGM and SFX
+UI Weapon mode select (show graphic)
+All spawners stop when houses have been built
+
 Pale Kins for collection to citizen houses
-
-Solid for fighting
 Clones run around the base
-
+Die and respawn as clone (add tombstone permanent)
+Solid for fighting
 Drunk visitors turn to Kins
 
 Zombie enemies (run into and kick back)
@@ -35,10 +47,7 @@ Signage
 
 ActionChain implement
 Add chicken sprite
-All spawners stop when houses have been built
 
-UI Weapon mode select (show graphic)
-Split BGM and SFX
 create pools
 - Prey pool
 - Enemy Pool 
@@ -52,23 +61,12 @@ GameController
 
 Webpack split into vendor and bundle
 
-Add game effects
-Hit effects
-Fire effects 
-Collect effects 
-Crystal effect on frozen prey (sparkle)
-
-Fill in the game over screen
-Fill in the info screen button (Story)
-Fill in the question button (controls)
-
 Convert all sound files
 
 Add sun in background, day and night cycle - reload level?
 BG dust cloud or particles
 BG wind effects 
 
-Boot screen 
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 

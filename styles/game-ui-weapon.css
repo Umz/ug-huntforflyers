@@ -13,3 +13,20 @@
     text-transform: uppercase;
     letter-spacing: calc(.1em + 1vmin);
 }
+
+/** WEAPON Select boxes visual */
+
+#guw-select-boxes {
+    width: 13%;
+    aspect-ratio: 3 / 1;
+    margin: 0 auto;
+}
+
+.guw-select {
+    flex: 1;
+    word-wrap: break-word;
+    border: 1px solid #000;
+}
+.guw-select-active {
+    background-color: white;
+}

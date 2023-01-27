@@ -16,22 +16,8 @@
      <body>
 
         <div id="game-ui" class="game-overlay">
-            <div id="gui-top-left" class="gui-area">
-                <table>
-                    <tr>
-                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_rank.png" alt="Ranking" /></td>
-                        <td id="gui-tl-level" class="gui-tl-tbl-col-text">Lv. 1</td>
-                    </tr>
-                    <tr>
-                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_star.png" alt="Life Force" /></td>
-                        <td id="gui-tl-lifeforce" class="gui-tl-tbl-col-text">0</td>
-                    </tr>
-                    <tr>
-                        <td class="gui-tl-tbl-col-image"><img class=".gui-tl-stat-image" src="assets/ui/stat_person.png" alt="Lives" /></td>
-                        <td id="gui-tl-lives" class="gui-tl-tbl-col-text">1</td>
-                    </tr>
-                </table>
-            </div>
+            <div id="gui-top-left" class="gui-area"></div>
+    
             <div id="gui-top-right" class="gui-area">
                 <img class="gui-tr-image" src="assets/ui/pause.png" alt="Pause" />
             </div>
@@ -81,6 +67,11 @@
         </div>
 
         <div id="game-ui-weapon" class="game-overlay">
+            <div id="guw-select-boxes" class="flex-box">
+                <div class="guw-select guw-select-active">HUNT</div>
+                <div class="guw-select">ATT</div>
+                <div class="guw-select">COLL</div>
+            </div>
             <div>
                 <h1 id="guw-name">Hunting</h1>
             </div>
@@ -88,5 +79,15 @@
 
         <div id="phaser-game"></div>
         <script src="build/project.bundle.js" charset="utf-8"></script>
+        <script src="js/page-functions.js" charset="utf-8"></script>
+
+        <script>
+        //  ADD the UI Stats
+        addUIStat('gui-tl-replica', 'assets/ui/stat_rank.png', 'Replica #1');
+        addUIStat('gui-tl-stage', 'assets/ui/stat_rank.png', 'Dwelling');
+        addUIStat('gui-tl-lifeforce', 'assets/ui/stat_rank.png', '102');
+        addUIStat('gui-tl-team', 'assets/ui/stat_rank.png', '4');
+        </script>
+
      </body>
  </html>

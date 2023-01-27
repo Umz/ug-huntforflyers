@@ -11,6 +11,10 @@
     width: 35%;
 }
 
+.ui-stat-row {
+    margin-bottom: 5px;
+}
+
 /* LEFT - PLAYER Stats */
 #gui-top-left {
     float: left;

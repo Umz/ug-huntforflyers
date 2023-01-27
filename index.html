@@ -15,12 +15,12 @@
      </head>
      <body>
 
-        <div id="game-ui" class="game-overlay">
-            <div id="gui-top-left" class="gui-area"></div>
-    
-            <div id="gui-top-right" class="gui-area">
-                <img class="gui-tr-image" src="assets/ui/pause.png" alt="Pause" />
-            </div>
+        <div id="stats-container" class="hud-overlay">
+            <div id="hud-stats"></div>
+        </div>
+
+        <div id="pause-container" class="hud-overlay">
+            <img class="pause-image" src="assets/ui/pause.png" alt="Pause" />
         </div>
 
         <div id="game-logo" class="game-overlay">
@@ -83,10 +83,10 @@
 
         <script>
         //  ADD the UI Stats
-        addUIStat('gui-tl-replica', 'assets/ui/stat_rank.png', 'Replica #1');
-        addUIStat('gui-tl-stage', 'assets/ui/stat_rank.png', 'Dwelling');
-        addUIStat('gui-tl-lifeforce', 'assets/ui/stat_rank.png', '102');
-        addUIStat('gui-tl-team', 'assets/ui/stat_rank.png', '4');
+        addUIStat('gui-tl-replica', 'assets/ui/stat_player.png', 'Replica #1');
+        addUIStat('gui-tl-stage', 'assets/ui/stat_stage.png', 'Dwelling');
+        addUIStat('gui-tl-lifeforce', 'assets/ui/stat_crystal.png', '102');
+        addUIStat('gui-tl-team', 'assets/ui/stat_carrykins.png', '4');
         </script>
 
      </body>

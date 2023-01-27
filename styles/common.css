@@ -18,3 +18,7 @@
 .flex-box {
     display: flex;
 }
+
+.hud-overlay {
+    position: absolute;
+}

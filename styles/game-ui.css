@@ -1,49 +1,56 @@
-#game-ui {
-    display: none;
+/* PLAYER Stats */
+
+#stats-container {
+    
+    display: block;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 50%;
+    padding: 20px;
     
     z-index: 11;
 }
-.gui-area {
-    padding: 20px;
-    width: 35%;
+
+#hud-stats {
+    display: grid;
+    width: 100%;
+    height: 100%;
 }
 
-.ui-stat-row {
-    margin-bottom: 5px;
+.hud-stat-row {
+    display: flex;
+    margin-bottom: 7px;
+    gap: 9px;
 }
 
-/* LEFT - PLAYER Stats */
-#gui-top-left {
-    float: left;
-}
-
-.gui-tl-tbl-col-image {
+.stat-col-image {
+    display: inline-block;
     text-align: center;
-    min-width: 42px;
 }
 
-.gui-tl-stat-image {
+.stat-image {
     display: block;
+    height: calc(1.75em + 1vmin);
+    max-height: 48px;
 }
 
-.gui-tl-tbl-col-text {
+.stat-col-text {
+    display: inline-block;
     font-size: calc(.75em + 1vmin);
 }
 
 /* RIGHT - Pause */
-#gui-top-right {
-    float: right;
-    text-align: right;
-}
-.gui-tr-image {
-    width: 64px;
-}
 
-@media (max-width: 768px) {
-    .gui-tr-image {
-        width: 32px;
-    }
+#pause-container {
+
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+
+}
+.pause-image {
+    height: calc(2.75em + 1vmin);
+    max-height: 64px;
 }

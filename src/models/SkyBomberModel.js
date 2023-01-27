@@ -3,7 +3,7 @@ import BaseModel from "consts/BaseModel";
 
 const SkyBomberModel = Object.assign({}, BaseModel);
 
-SkyBomberModel.hp = 9;
+SkyBomberModel.hp = 5;
 SkyBomberModel.relativeSpeed = 1.8;
 SkyBomberModel.atlas = 'sprites';
 SkyBomberModel.frame = 'skybomber1';

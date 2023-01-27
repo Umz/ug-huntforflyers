@@ -6,6 +6,15 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
+Main menu - relevant buttons and sizes
+[ Div width (100%) max-width X, equally spaced flex ]
+UI Weapon mode select (show graphic)
+
+Full sounds for all
+Progression - increasing difficulties 
+Game FX and particles
+Game controls full
+
 Boot screen 
 Fill in the game over screen
 Fill in the info screen button (Story)
@@ -16,7 +25,6 @@ Fire effects
 Collect effects 
 Crystal effect on frozen prey (sparkle)
 Split BGM and SFX
-UI Weapon mode select (show graphic)
 All spawners stop when houses have been built
 
 Pale Kins for collection to citizen houses

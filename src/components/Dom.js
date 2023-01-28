@@ -1,8 +1,9 @@
 class Dom {
 
     static SetDomIdDisplay(id, visible) {
-        const display = (visible) ? 'block' : 'none';
-        document.getElementById(id).style.display = display;
+        const visibility = (visible) ? 'visible' : 'hidden';
+        let element = document.getElementById(id);
+        element.style.visibility = visibility;
     }
 
     static SetDomIdOpacity(id, opacity) {
@@ -26,6 +27,14 @@ class Dom {
 
     static SetDomText(id, txt) {
         document.getElementById(id).innerText = txt;
+    }
+
+    static SetActiveInGroup(groupClass, activeClass, id) {
+        document.querySelectorAll(`.${groupClass}`).forEach(function(element) {
+            element.classList.remove(activeClass);
+        });
+        let element = document.getElementById(id);
+        element.classList.add(activeClass);
     }
 }
 export default Dom;

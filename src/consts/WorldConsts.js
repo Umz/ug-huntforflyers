@@ -8,7 +8,7 @@ const WorldConsts = {
 
     TILES: 20,
     TILE_WIDTH: 32,
-    GROUND_Y: 270,
+    GROUND_Y: 240,
     GRAVITY: 150,
 
     WIDTH: 640,

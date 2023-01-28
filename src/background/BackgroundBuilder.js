@@ -39,6 +39,7 @@ class BackgroundBuilder {
         if (scene.updateRunner)
             scene.updateRunner.add(gr);
 
+        let groundMud = scene.add.image(0, WorldConsts.HEIGHT, Textures.BG_MUD).setOrigin(0,1).setScrollFactor(0).setDepth(Depths.BG_GROUND_DEPTH);
         let groundDepth = scene.add.image(0, WorldConsts.GROUND_Y, Textures.BG_GRASS).setOrigin(0, 1).setScrollFactor(0).setDepth(Depths.BG_GROUND_DEPTH);
     }
 

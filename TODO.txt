@@ -1,7 +1,9 @@
 Build toward the game design document
 
+Speech box
 Full sounds for all
 Redo level 4 (right side, kin tank with pub-tent3, houses, bush with birds)
+Boot screen (Umz Games Cover)
 
 Redo level 5
 Redo level 6
@@ -12,7 +14,6 @@ Progression - increasing difficulties
 Game FX and particles
 Game controls full
 
-Boot screen (Umz Games Cover)
 Fill in the game over screen
 Fill in the info screen button (Story)
 Fill in the question button (controls)
@@ -45,7 +46,6 @@ Up to speak (dialogue)
 
 Refactor Base and BaseController - update in controller not in Base
 
-Speech box
 BG Dialogue
 Conversations
 Signage
@@ -76,6 +76,7 @@ Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 
 Death - Permanent effects going forward
+- Consts update names
 
 Game needs to be super simple to learn the concept -
 And the development should be seen during the levels progressing

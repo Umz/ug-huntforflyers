@@ -20,13 +20,15 @@ class Menu extends Phaser.Scene {
 
         GameSave.SetScore(0);
 
+        Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
+        /**/
         Dom.SetDomIdDisplay(Consts.MAIN_MENU, false);
         Dom.SetDomIdDisplay(Consts.MAIN_LOGO, false);
         Dom.SetDomIdDisplay(Consts.UI, true);
-        Dom.SetDomIdDisplay(Consts.UI_WEAPON_TEXT, true);
-        Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
-
+        Dom.SetDomIdDisplay(Consts.UI_PAUSE_BUTTON, true);
+        Dom.SetDomIdDisplay(Consts.UI_WEAPON, true);
         this.scene.start(Consts.GAME_SCENE);
+        /**/
 
         BackgroundBuilder.addBackgroundScene(this);
         BackgroundBuilder.addGround(this);
@@ -44,7 +46,8 @@ class Menu extends Phaser.Scene {
             Dom.SetDomIdDisplay(Consts.MAIN_MENU, false);
             Dom.SetDomIdDisplay(Consts.MAIN_LOGO, false);
             Dom.SetDomIdDisplay(Consts.UI, true);
-            Dom.SetDomIdDisplay(Consts.UI_WEAPON_TEXT, true);
+            Dom.SetDomIdDisplay(Consts.UI_PAUSE_BUTTON, true);
+            Dom.SetDomIdDisplay(Consts.UI_WEAPON, true);
             Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
             this.scene.start(Consts.GAME_SCENE);

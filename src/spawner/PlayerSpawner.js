@@ -16,7 +16,7 @@ class PlayerSpawner {
 
         let player = SpriteBuilder.GetPlayerSprite();
         player.setPosition(home.worldX, WorldConsts.GROUND_Y - 16);
-        player.setState(States.HUNTING);
+        player.setState(States.MODE_HUNT);
 
         this.scene.addSpriteToSceneAndGroups(
             player,

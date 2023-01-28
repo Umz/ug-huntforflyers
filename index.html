@@ -3,9 +3,10 @@
      <head>
 
         <meta charset="utf-8">
-        <title>Hunt For Flyers | Umz Games</title>
+        <title>Farborne 2 | Umz Games</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+        <link rel="icon" type="image/png" href="assets/ui/stat_crystal.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,20 +71,20 @@
         <div id="hud-weapon" class="game-overlay">
 
             <div id="wep-select-boxes" class="flex-box">
-                <div class="wep-select wep-select-active">
+                <div id="wep-hunting" class="wep-select wep-select-active">
                     <img class="wep-select-image" src="assets/ui/tank_hunting.png" alt="Hunt" />
                 </div>
 
-                <div class="wep-select">
+                <div id="wep-attack" class="wep-select">
                     <img class="wep-select-image" src="assets/ui/tank_attack.png" alt="Attack" />
                 </div>
 
-                <div class="wep-select">
+                <div id="wep-collect" class="wep-select">
                     <img class="wep-select-image" src="assets/ui/tank_collect.png" alt="Collect" />
                 </div>
             </div>
 
-            <div id="wep-name">Hunting</div>
+            <div id="wep-name">HunT</div>
         </div>
 
         <div id="phaser-game"></div>
@@ -92,10 +93,10 @@
 
         <script>
         //  ADD the UI Stats
-        addUIStat('gui-tl-replica', 'assets/ui/stat_player.png', 'Replica #1');
-        addUIStat('gui-tl-stage', 'assets/ui/stat_stage.png', 'Dwelling');
-        addUIStat('gui-tl-lifeforce', 'assets/ui/stat_crystal.png', '102');
-        addUIStat('gui-tl-team', 'assets/ui/stat_carrykins.png', '4');
+        addUIStat('hud-replica-text', 'assets/ui/stat_player.png', 'Replica #1');
+        addUIStat('hud-stage-text', 'assets/ui/stat_stage.png', 'Dwelling');
+        addUIStat('hud-lifeforce-text', 'assets/ui/stat_crystal.png', '0');
+        addUIStat('hud-team-text', 'assets/ui/stat_carrykins.png', '0');
         </script>
 
      </body>

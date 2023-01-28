@@ -8,14 +8,25 @@ const Consts = {
 
     MENU_BG: "game-menu-bg-cover",
 
-    MAIN_MENU: "game-title-menu",
+    MAIN_MENU: "title-menu-container",
     MAIN_LOGO: "game-logo",
     MAIN_PLAY_BUTTON: "menu-play",
 
-    UI: "game-ui",
-    UI_PAUSE_BUTTON: "gui-top-right",
-    UI_SCORE_TEXT: "gui-tl-lifeforce",
-    UI_WEAPON_TEXT: "guw-name",
+    // Refactor UIs to HUD
+    UI: "stats-container",
+    UI_PAUSE_BUTTON: "pause-container",
+    UI_SCORE_TEXT: "hud-lifeforce-text",
+    UI_WEAPON: "hud-weapon",
+
+    HUD_WEAPON_TEXT: "wep-name",
+    HUD_WEAPON_SELECT: "wep-select",
+    HUD_WEAPON_ACTIVE: "wep-select-active",
+
+    HUD_WEP_HUNTING: "wep-hunting",
+    HUD_WEP_ATTACK: "wep-attack",
+    HUD_WEP_COLLECT: "wep-collect",
+
+    HUD_STAGE_TEXT: "hud-stage-text",
 
     PAUSE_MENU: "game-pause-menu",
     PAUSE_PLAY_BUTTON: "pause-menu-play",

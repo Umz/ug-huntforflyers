@@ -35,12 +35,12 @@ class EnemySpawner {
             this.spawnThief();
 
         this.coinerCounter.setActive(this.getGroupCount(this.scene.collisionGroupCoiners) < 5);
-        this.coinerCounter.update(time, delta);
+        //this.coinerCounter.update(time, delta);
         if (this.coinerCounter.isComplete())
             this.spawnCoiner();
 
         this.skybomberCounter.setActive(this.getGroupCount(this.scene.collisionGroupSkyBombers) < 3);
-        this.skybomberCounter.update(time, delta);
+        //this.skybomberCounter.update(time, delta);
         if (this.skybomberCounter.isComplete())
             this.spawnSkyBomber();
     }

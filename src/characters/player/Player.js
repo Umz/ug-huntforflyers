@@ -1,7 +1,7 @@
 import BaseSprite from "classes/BaseSprite";
 import States from "consts/States";
-import PlayerController from "./PlayerController";
 import PlayerModel from "models/PlayerModel";
+import PlayerController from "./PlayerController";
 import Playerviewer from "./PlayerViewer";
 
 class Player extends BaseSprite {
@@ -20,10 +20,34 @@ class Player extends BaseSprite {
     }
 
     updateCollision() {
-        let isColliding = this.isState(States.PUSHING);
+        let isColliding = this.isState(States.MODE_TANK);
         this.body.checkCollision.left = isColliding;
         this.body.checkCollision.right = isColliding;
         this.body.checkCollision.up = false;
+    }
+
+    nextState() {
+        
+        let playerStates = [
+            States.MODE_HUNT,
+            States.MODE_CANNON,
+            States.MODE_TANK
+        ];
+
+        let state = this.getState();
+        let index = playerStates.findIndex(s => s === state);
+        let nextIndex = index === playerStates.length - 1 ? 0 : index + 1;
+
+        this.setState(playerStates[nextIndex]);
+    }
+
+    getStateName(state) {
+        switch (state) {
+            case States.MODE_HUNT: return "Hunt";
+            case States.MODE_CANNON: return "Cannon";
+            case States.MODE_TANK: return "Tank";
+            default: return "Idle";
+        }
     }
 }
 export default Player;

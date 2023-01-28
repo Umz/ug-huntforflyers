@@ -19,9 +19,9 @@ const States = {
 
     CRASHING: 40,
 
-    PUSHING: 101,
-    HUNTING: 102,
-    SKY_ATTACK: 103,
+    MODE_TANK: 101,
+    MODE_HUNT: 102,
+    MODE_CANNON: 103,
     
 }
 export default States;

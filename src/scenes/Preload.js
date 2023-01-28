@@ -125,6 +125,13 @@ class Preload extends Phaser.Scene {
             graphics.generateTexture(Textures.BG_GRASS, WorldConsts.WIDTH, 3);
         }
 
+        CreateBGMud: {
+            let height = (WorldConsts.HEIGHT - WorldConsts.GROUND_Y) - 5;
+            graphics.fillStyle(0x3e1e00, 1);
+            graphics.fillRect(0, 0, WorldConsts.WIDTH, height);
+            graphics.generateTexture(Textures.BG_MUD, WorldConsts.WIDTH, height);
+        }
+
         graphics.destroy();
     }
 };

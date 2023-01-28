@@ -35,6 +35,8 @@ class Game extends Phaser.Scene {
     create(data) {
 
         const CURRENT_STAGE = GameSave.GetStage();
+        Dom.SetDomText(Consts.HUD_STAGE_TEXT, CURRENT_STAGE);
+        DomSceneControl.SetGameSceneControl(this);
 
         this.levelData = LevelMapper.GetLevelData(CURRENT_STAGE);
         this.buildings = new Map();
@@ -124,28 +126,25 @@ class Game extends Phaser.Scene {
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
+        this.updateRunner.add(this.controlpad);
+
         this.controlpad.action = ()=>{
-            if (this.player.isState(States.HUNTING) || this.player.isState(States.SKY_ATTACK)) {
+            if (this.player.isState(States.MODE_HUNT) || this.player.isState(States.MODE_CANNON)) {
                 this.player.fireBullet();
                 this.fireBullet();
             }
         }
         this.controlpad.weaponSwap = ()=>{
-            //Player swap animation
             this.swapPlayerMode();
         }
-        this.updateRunner.add(this.controlpad);
 
         this.soundManager = new SoundManager(this);
-
-        let ps = new PlayerSpawner(this);
+        this.playerSpawner = new PlayerSpawner(this);
         this.civSpawner = new CivilianSpawner(this);
 
-        DomSceneControl.SetGameSceneControl(this);
-        
-        this.player = ps.spawnPlayer();
+        this.player = this.playerSpawner.spawnPlayer();
         for (let i=0; i<5; i++)
-            ps.spawnCollector();
+            this.playerSpawner.spawnCollector();
         
         this.enemySpawner = new EnemySpawner(this);
         this.updateRunner.add(this.enemySpawner);
@@ -176,33 +175,6 @@ class Game extends Phaser.Scene {
                 this.showIcon(house, -1, 'puff1');
                 this.counter.setActive(false);
             }
-        }
-    }
-
-    swapPlayerMode() {
-
-        let allModes = [States.PUSHING, States.HUNTING, States.SKY_ATTACK];
-        let state = this.player.getState();
-        let index = allModes.findIndex(mode => mode === state);
-
-        let nextIndex = index === allModes.length - 1 ? 0 : index + 1;
-        let nextState = allModes[nextIndex];
-
-        this.player.setState(nextState);
-        this.player.updateCollision();
-        
-        let name = this.getStateDisplayName(nextState);
-
-        Dom.SetDomText(Consts.UI_WEAPON_TEXT, name);
-        Dom.SetDomIdDisplay(Consts.UI_WEAPON_TEXT, true);
-    }
-
-    getStateDisplayName(state) {
-        switch (state) {
-            case States.HUNTING: return "Hunting";
-            case States.SKY_ATTACK: return "Attacking";
-            case States.PUSHING: return "Collecting";
-            default: return "Idle";
         }
     }
 
@@ -258,7 +230,7 @@ class Game extends Phaser.Scene {
         //  Show collection effect - upwards white dots
         //  Collection sound
 
-        if (player.isState(States.PUSHING)) {
+        if (player.isState(States.MODE_TANK)) {
             coin.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
     
             GameSave.IncScore(coin.coinValue);
@@ -267,7 +239,7 @@ class Game extends Phaser.Scene {
     }
 
     overlapCoinerPlayers(coiner, player) {
-        if (player.isState(States.PUSHING)) {
+        if (player.isState(States.MODE_TANK)) {
             this.collisionGroupCoiners.remove(coiner);
             coiner.kill();
             coiner.destroy();
@@ -304,6 +276,26 @@ class Game extends Phaser.Scene {
     collidePlayerPrey(player, prey) {
         (prey.isState(States.FROZEN))
             prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
+    }
+
+    swapPlayerMode() {
+        
+        let modes = [
+            {state: States.MODE_HUNT, hud:Consts.HUD_WEP_HUNTING},
+            {state: States.MODE_CANNON, hud:Consts.HUD_WEP_ATTACK},
+            {state: States.MODE_TANK, hud:Consts.HUD_WEP_COLLECT}
+        ];
+
+        this.player.nextState();
+        this.player.updateCollision();
+
+        let state = this.player.getState();
+        let current = modes.find(m => m.state === state);
+        let displayName = this.player.getStateName(current.state);
+        
+        Dom.SetDomText(Consts.HUD_WEAPON_TEXT, displayName);
+        Dom.SetDomIdDisplay(Consts.HUD_WEAPON_TEXT, true);
+        Dom.SetActiveInGroup(Consts.HUD_WEAPON_SELECT, Consts.HUD_WEAPON_ACTIVE, current.hud);
     }
 
     showPuff(x, y) {
@@ -376,7 +368,7 @@ class Game extends Phaser.Scene {
     fireBullet() {
 
         let mode = this.player.getState();
-        let isHunting = (mode === States.HUNTING);
+        let isHunting = (mode === States.MODE_HUNT);
         let group = (isHunting) ? this.huntBulletGroup : this.attackBulletGroup;
         let target = (isHunting) ? this.getClosestBirdTarget(this.player) : this.getClosestThiefTarget(this.player);
 

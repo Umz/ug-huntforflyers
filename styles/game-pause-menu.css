@@ -2,7 +2,7 @@
     top: 45%;
     transform: translate(0, -50%);
     z-index: 13;
-    display: none;
+    visibility: hidden;
 }
 
 #gpm-logo {

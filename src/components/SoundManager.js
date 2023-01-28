@@ -39,8 +39,15 @@ class SoundManager {
     }
 
     setupSounds() {
+
         this.allSounds.set(Sfx.MENU_PLAY_BUTTON, {volume: 1});
-        this.allSounds.set(Sfx.HIT_PREY, {volume: .5});
+        this.allSounds.set(Sfx.HIT_PREY, {volume: .3});
+        this.allSounds.set(Sfx.FIRE_HUNT, {volume: .2});
+        this.allSounds.set(Sfx.WEAPON_SELECT, {volume: .1});
+
+        this.allSounds.set(Sfx.FIRE_CANNON, {volume: .4});
+        this.allSounds.set(Sfx.HIT_CANNON, {volume: .1});
+        this.allSounds.set(Sfx.PICKUP, {volume: .8});
         
         this.allSounds.set(Sfx.BGM_MENU, {volume: .4, loop:true, isMusic:true});
     }

@@ -19,13 +19,11 @@ class Preload extends Phaser.Scene {
         this.load.atlas('flyers', 'flyers.png', 'flyers.json');
         this.load.atlas('sprites', 'sprites.png', 'sprites.json');
 
+        for (let key of Object.values(Sfx))
+            if (key !== Sfx.BGM_MENU)
+                this.load.audio(key, `sfx/${key}`);
+            
         this.load.audio(Sfx.BGM_MENU, `bgm/${Sfx.BGM_MENU}`);
-
-        this.load.audio(Sfx.MENU_PLAY_BUTTON, `sfx/${Sfx.MENU_PLAY_BUTTON}`);
-        this.load.audio(Sfx.HIT_PREY, `sfx/${Sfx.HIT_PREY}`);
-
-        //  TESTER graphics
-        this.load.image('tester', 'test/spr_tank.png');
     }
 
     create(data) {

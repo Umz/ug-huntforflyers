@@ -28,6 +28,7 @@ const Consts = {
     HUD_WEP_COLLECT: "wep-collect",
 
     HUD_STAGE_TEXT: "hud-stage-text",
+    HUD_CARRYKINS_TEXT: "hud-team-text",
 
     PAUSE_MENU: "game-pause-menu",
     PAUSE_PLAY_BUTTON: "pause-menu-play",

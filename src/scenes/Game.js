@@ -136,6 +136,7 @@ class Game extends Phaser.Scene {
         }
         this.controlpad.weaponSwap = ()=>{
             this.swapPlayerMode();
+            this.soundManager.play(Sfx.WEAPON_SELECT);
         }
 
         this.soundManager = new SoundManager(this);
@@ -195,6 +196,8 @@ class Game extends Phaser.Scene {
     overlapBulletThief(bullet, thief) {
         bullet.setActive(false).setVisible(false).setPosition(0, 0);
         thief.hit();
+
+        this.soundManager.play(Sfx.HIT_CANNON);
         this.showPuff(thief.x, thief.y);
     }
 
@@ -235,6 +238,8 @@ class Game extends Phaser.Scene {
     
             GameSave.IncScore(coin.coinValue);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+
+            this.soundManager.play(Sfx.PICKUP);
         }
     }
 
@@ -377,10 +382,14 @@ class Game extends Phaser.Scene {
         let bullet = group.get(this.player.x, this.player.y);
 
         if (bullet)
-            if (isHunting)
+            if (isHunting) {
                 bullet.setHuntBullet(angle)
-            else
+                this.soundManager.play(Sfx.FIRE_HUNT);
+            }
+            else {
                 bullet.setAttackBullet(angle);
+                this.soundManager.play(Sfx.FIRE_CANNON);
+            }
     }
 
     countFrozen(includeCarried = false) {
@@ -471,6 +480,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
 
                 let complete = Phaser.Math.Between(5, 15) *.01;
+                complete = 100;
                 house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 

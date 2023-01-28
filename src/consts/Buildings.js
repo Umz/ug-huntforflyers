@@ -15,6 +15,7 @@ const Buildings = {
 
     MOSQUE: "building_mosque",
 
+    PUB: "building_shop",
     SHOP: "building_shop",
     STORE: "building_store",
     RESTAURANT: "building_restaurant",

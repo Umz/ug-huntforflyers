@@ -15,7 +15,7 @@ const Stage3Model = {
     //  80
     BUILDINGS: [
         
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(39).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.1),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(65).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.1),
 
         Building.New(Decor.WATER).setTileX(9).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Decor.WATER).setTileX(11).setDepth(Depths.BUILDINGS_BEHIND),
@@ -54,35 +54,46 @@ const Stage3Model = {
         Building.New(Decor.FENCE).setTileX(35.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.FENCE2).setTileX(35).setDepth(Depths.DECOR_FG),
 
+        Building.New(Decor.WATER).setTileX(38).setDepth(Depths.BUILDINGS_BEHIND),
+        Building.New(Decor.WATER).setTileX(39).setDepth(Depths.BUILDINGS_BEHIND),
+        Building.New(Decor.WATER).setTileX(40).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Buildings.WATER_PUMP).setTileX(39).setDepth(Depths.BUILDINGS_FG),
 
-        Building.New(Buildings.TENT1).setTileX(51).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT2).setTileX(52.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Decor.BARREL).setTileX(39.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.BARREL).setTileX(40.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.BARREL).setTileX(41).setDepth(Depths.DECOR_FG),
+
+        Building.New(Decor.POD).setTileX(47).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PUB).setTileX(48).setDepth(Depths.BUILDINGS_BG),
+
+        Building.New(Decor.CHEST).setTileX(47).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.BARREL).setTileX(49).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(49.5).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.BARREL).setTileX(50).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.BARREL).setTileX(50.5).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.CHEST).setTileX(53.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.HANGING_SIGN).setTileX(50).setDepth(Depths.DECOR_FG),
 
-        Building.New(Buildings.TENT3).setTileX(58).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.HUT).setTileX(61).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.HOUSE1).setTileX(63).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Decor.BENCH).setTileX(51.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Decor.BENCH).setTileX(52).setDepth(Depths.BUILDINGS_BG),
+
+        Building.New(Buildings.HOUSE1).setTileX(59).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.HOUSE1).setTileX(60.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT2).setTileX(62.5).setDepth(Depths.BUILDINGS_BG),
         
-        Building.New(Decor.CHEST).setTileX(59).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.HANGING_SIGN).setTileX(60).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.WATER).setTileX(63.5).setDepth(Depths.BUILDINGS_BEHIND),
-        Building.New(Decor.POT).setTileX(61.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.FENCE2).setTileX(58.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Decor.WATER).setTileX(61).setDepth(Depths.BUILDINGS_BEHIND),
+        Building.New(Decor.CHEST).setTileX(61.5).setDepth(Depths.DECOR_FG),
 
-        Building.New(Buildings.TENT2).setTileX(68.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(67).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(68.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(70).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT2).setTileX(73).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT1).setTileX(74).setDepth(Depths.BUILDINGS_BG),
 
+        Building.New(Decor.BARREL).setTileX(67).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(67.5).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.BARREL).setTileX(68).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.CHEST).setTileX(71).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.WATER).setTileX(68).setDepth(Depths.BUILDINGS_BEHIND),
+        Building.New(Decor.WATER).setTileX(69.5).setDepth(Depths.BUILDINGS_BEHIND),
 
-        Building.New(Decor.CHEST).setTileX(74.5).setDepth(Depths.DECOR_FG),
-        Building.New(Decor.SIGN).setTileX(76).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(72).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(75).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Decor.SIGN).setTileX(78).setDepth(Depths.DECOR_FG),
     ],
 
     FORESTS: [
@@ -127,26 +138,28 @@ const Stage3Model = {
         Forest.New().setTileX(24.5).setSize(2)
             .addLayer([PlantType.FLOWER1, PlantType.FLOWER2, PlantType.FLOWER3], Depths.FOREST_FG1),
 
-        Forest.New().setTileX(70).setSize(2).setEnemy(BeeModel)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
-        Forest.New().setTileX(70).setSize(7)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG1)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG2)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
+        Forest.New().setTileX(42).setSize(7)
+            .addLayer([PlantType.BUSH], Depths.FOREST_BG1)
+            .addLayer([PlantType.BUSH], Depths.FOREST_BG2)
+            .addLayer([PlantType.BUSH], Depths.FOREST_BG3)
+            .addLayer([PlantType.BUSH], Depths.FOREST_FG1),
 
         Forest.New().setTileX(45).setSize(2).setEnemy(BlueBirdModel)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
-        Forest.New().setTileX(55).setSize(2)
+
+        Forest.New().setTileX(53).setSize(4)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
             .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
-        Forest.New().setTileX(65).setSize(2).setEnemy(BlueBirdModel)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3)
-            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_FG1),
+        Forest.New().setTileX(56).setSize(5)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3),
+
+        Forest.New().setTileX(61).setSize(6)
+            .addLayer([PlantType.BUSH], Depths.FOREST_BG3)
+            .addLayer([PlantType.BUSH], Depths.FOREST_FG1),
+
+        Forest.New().setTileX(64).setSize(2).setEnemy(BlueBirdModel)
+            .addLayer([PlantType.TREE1, PlantType.TREE2], Depths.FOREST_BG3),
 
         Forest.New().setTileX(78).setSize(2)
             .addLayer([PlantType.BUSH], Depths.FOREST_FG2),

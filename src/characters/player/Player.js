@@ -41,6 +41,10 @@ class Player extends BaseSprite {
         this.setState(playerStates[nextIndex]);
     }
 
+    updateAnimation() {
+        this.view.updateAnimation();
+    }
+
     getStateName(state) {
         switch (state) {
             case States.MODE_HUNT: return "Hunt";

@@ -27,6 +27,8 @@ const Animations = {
     CK_CARRY: 'carrykin_carry',
 
     PLAYER_TANK_RUN: 'tank_run',
+    PLAYER_HUNT_RUN: 'hunt_run',
+    PLAYER_CANNON_RUN: 'cannon_run',
 
     FX_PUFF: 'preyPuff'
 }

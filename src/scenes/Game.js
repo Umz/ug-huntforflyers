@@ -288,6 +288,7 @@ class Game extends Phaser.Scene {
 
         this.player.nextState();
         this.player.updateCollision();
+        this.player.updateAnimation();
 
         let state = this.player.getState();
         let current = modes.find(m => m.state === state);

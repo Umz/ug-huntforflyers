@@ -1,0 +1,64 @@
+#chatbox-container {
+
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    width: 30%;
+    height: 20%;
+    min-height: 130px;
+
+    overflow-y: hidden;
+    padding: 10px;
+    color: #fff;
+
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(3px);
+
+    visibility: hidden;
+}
+
+.chat-row {
+    display: flex;
+    margin-bottom: 7px;
+    text-shadow: 1px 1px #000;
+    align-items: baseline;
+}
+.chat-col-speaker {
+    flex: 1;
+    font-size: calc(.35em + 1vmin);
+    font-variant: small-caps;
+}
+.chat-col-message {
+    flex: 4;
+    font-size: calc(.5em + 1vmin);;
+    line-height: 1;
+}
+
+.speech-main {
+    font-weight: 700;
+}
+.speech-holy {
+    color: plum;
+}
+.speech-shop {
+    color: greenyellow;
+}
+.speech-lab {
+    color: skyblue;
+}
+
+.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: .3s;
+}
+@keyframes fadeInOpacity {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

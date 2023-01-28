@@ -38,6 +38,7 @@ class Controlpad {
             const target = this.controlTarget.target;
             const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
             console.log(tileX);
+            addChatMessage('Professor', 'Farborne: "The Hunt for Flyers"')
         });
 
         scene.input.keyboard.on('keydown-P', (event) => {

@@ -12,6 +12,7 @@ const Consts = {
     MAIN_LOGO: "game-logo",
     MAIN_PLAY_BUTTON: "menu-play",
 
+    CHATBOX: "chatbox-container",
     // Refactor UIs to HUD
     UI: "stats-container",
     UI_PAUSE_BUTTON: "pause-container",

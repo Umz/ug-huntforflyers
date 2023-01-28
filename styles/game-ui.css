@@ -19,7 +19,6 @@
 .hud-stat-row {
     display: flex;
     margin-bottom: 7px;
-    gap: 9px;
 }
 
 .stat-col-image {
@@ -35,6 +34,7 @@
 
 .stat-col-text {
     display: inline-block;
+    margin-left: 9px;
     font-size: calc(.75em + 1vmin);
 }
 

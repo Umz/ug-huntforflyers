@@ -31,3 +31,27 @@ function addUIStat(id, src, val) {
     flexDiv.appendChild(textDiv);
     uiHolder.appendChild(flexDiv);
 }
+
+function addChatMessage(speaker, message, cssClass) {
+
+    const box = document.getElementById('chatbox-container');
+
+    let chatDiv = document.createElement('div');
+    let speakerDiv = document.createElement('div');
+    let messageDiv = document.createElement('div');
+
+    chatDiv.setAttribute('class', 'chat-row fade-in');
+    chatDiv.classList.add(cssClass);
+
+    speakerDiv.setAttribute('class', 'chat-col-speaker');
+    messageDiv.setAttribute('class', 'chat-col-message');
+
+    speakerDiv.innerText = speaker;
+    messageDiv.innerText = message;
+
+    chatDiv.appendChild(speakerDiv);
+    chatDiv.appendChild(messageDiv);
+    box.appendChild(chatDiv);
+
+    box.scrollTop = box.scrollHeight;
+}

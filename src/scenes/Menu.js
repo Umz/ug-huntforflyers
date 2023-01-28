@@ -21,7 +21,7 @@ class Menu extends Phaser.Scene {
         GameSave.SetScore(0);
 
         Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
-        /**/
+        /**
         Dom.SetDomIdDisplay(Consts.MAIN_MENU, false);
         Dom.SetDomIdDisplay(Consts.MAIN_LOGO, false);
         Dom.SetDomIdDisplay(Consts.UI, true);

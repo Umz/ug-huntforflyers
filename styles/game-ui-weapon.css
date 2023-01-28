@@ -1,32 +1,39 @@
-#game-ui-weapon {
+#hud-weapon {
     bottom: 0;
     width: 100%;
     transform: translate(0, -20px);
-    overflow: visible;
     z-index: 10;
+    visibility: hidden;
 }
 
-#guw-name {
-    display: none;
-    text-align: center;
-    font-size: calc(.8em + 1vmin);
+/** Name of Weapon selected */
+
+#wep-name {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: calc(.6em + 1vmin);
     text-transform: uppercase;
     letter-spacing: calc(.1em + 1vmin);
 }
 
-/** WEAPON Select boxes visual */
+/** Weapon select boxes visual */
 
-#guw-select-boxes {
+#wep-select-boxes {
     width: 13%;
     aspect-ratio: 3 / 1;
     margin: 0 auto;
 }
 
-.guw-select {
+.wep-select {
     flex: 1;
-    word-wrap: break-word;
-    border: 1px solid #000;
+    opacity: .2;
 }
-.guw-select-active {
-    background-color: white;
+.wep-select-active {
+    opacity: 1;
+}
+.wep-select-image {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
 }

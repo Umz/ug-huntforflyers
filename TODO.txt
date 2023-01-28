@@ -1,21 +1,18 @@
 Build toward the game design document
 
+Full sounds for all
 Redo level 4 (right side, kin tank with pub-tent3, houses, bush with birds)
+
 Redo level 5
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
-Main menu - relevant buttons and sizes
-[ Div width (100%) max-width X, equally spaced flex ]
-UI Weapon mode select (show graphic)
-
-Full sounds for all
 Progression - increasing difficulties 
 Game FX and particles
 Game controls full
 
-Boot screen 
+Boot screen (Umz Games Cover)
 Fill in the game over screen
 Fill in the info screen button (Story)
 Fill in the question button (controls)

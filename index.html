@@ -18,23 +18,24 @@
         <div id="stats-container" class="hud-overlay">
             <div id="hud-stats"></div>
         </div>
-
         <div id="pause-container" class="hud-overlay">
             <img class="pause-image" src="assets/ui/pause.png" alt="Pause" />
         </div>
 
         <div id="game-logo" class="game-overlay">
-            <img src="assets/test/phaser-logo.png" alt="Logo" />
+            <img src="assets/ui/LogoV1.png" alt="Logo" />
         </div>
 
-        <div id="game-title-menu" class="game-overlay">
-            <ul class="gtm-menu-list">
-                <li class="gtm-ml-item"><img class="" src="assets/ui/info.png" alt="How To" /></li>
-                <li class="gtm-ml-item"><img class="" src="assets/ui/locked.png" alt="Locked" /></li>
-                <li id="menu-play" class="gtm-ml-item gtm-ml-main bounce-5"><img class="" src="assets/ui/play_160.png" alt="Play" /></li>
-                <li class="gtm-ml-item"><img class="" src="assets/ui/speaker_on.png" alt="Sound On" /></li>
-                <li class="gtm-ml-item"><img class="" src="assets/ui/question.png" alt="Info" /></li>
-            </ul>
+        <div id="title-menu-container" class="game-overlay">
+            <div class="title-menu-items">
+                <div class="title-menu-option"><img class="menu-image" src="assets/ui/info.png" alt="How To" /></div>
+                <div class="title-menu-option"><img class="menu-image" src="assets/ui/locked.png" alt="Locked" /></div>
+                <div id="menu-play" class="title-menu-option title-menu-main bounce-5">
+                    <img class="menu-image" src="assets/ui/play_160.png" alt="Play" />
+                </div>
+                <div class="title-menu-option"><img class="menu-image" src="assets/ui/speaker_on.png" alt="Sound On" /></div>
+                <div class="title-menu-option"><img class="menu-image" src="assets/ui/question.png" alt="Info" /></div>
+            </div>
         </div>
 
         <div id="game-menu-bg-cover" class="game-overlay size-fullscreen"></div>
@@ -42,7 +43,7 @@
         <div id="game-pause-menu" class="game-overlay size-fullwidth">
 
             <div class="size-fullwidth">
-                <img id="gpm-logo" src="assets/test/phaser-logo.png" alt="Logo" />
+                <img id="gpm-logo" src="assets/ui/LogoV1.png" alt="Logo" />
             </div>
 
             <div class="spacer"></div>
@@ -66,15 +67,23 @@
             </div>
         </div>
 
-        <div id="game-ui-weapon" class="game-overlay">
-            <div id="guw-select-boxes" class="flex-box">
-                <div class="guw-select guw-select-active">HUNT</div>
-                <div class="guw-select">ATT</div>
-                <div class="guw-select">COLL</div>
+        <div id="hud-weapon" class="game-overlay">
+
+            <div id="wep-select-boxes" class="flex-box">
+                <div class="wep-select wep-select-active">
+                    <img class="wep-select-image" src="assets/ui/tank_hunting.png" alt="Hunt" />
+                </div>
+
+                <div class="wep-select">
+                    <img class="wep-select-image" src="assets/ui/tank_attack.png" alt="Attack" />
+                </div>
+
+                <div class="wep-select">
+                    <img class="wep-select-image" src="assets/ui/tank_collect.png" alt="Collect" />
+                </div>
             </div>
-            <div>
-                <h1 id="guw-name">Hunting</h1>
-            </div>
+
+            <div id="wep-name">Hunting</div>
         </div>
 
         <div id="phaser-game"></div>

@@ -1,14 +1,13 @@
 /* PLAYER Stats */
 
 #stats-container {
-    
-    display: block;
     left: 0;
     top: 0;
     width: 50%;
     padding: 20px;
     
     z-index: 11;
+    visibility: hidden;
 }
 
 #hud-stats {
@@ -42,13 +41,11 @@
 /* RIGHT - Pause */
 
 #pause-container {
-
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
     padding: 20px;
-
+    visibility: hidden;
 }
 .pause-image {
     height: calc(2.75em + 1vmin);

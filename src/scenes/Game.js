@@ -174,6 +174,7 @@ class Game extends Phaser.Scene {
             if (this.isAllHousesComplete()) {
                 let house = this.buildings.get(Buildings.PLAYER_HOUSE);
                 this.showIcon(house, -1, 'puff1');
+                this.soundManager.play(Sfx.LEVEL_COMPLETE);
                 this.counter.setActive(false);
             }
         }
@@ -486,7 +487,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
 
                 let complete = Phaser.Math.Between(5, 15) *.01;
-                complete = 100;
+                complete = .4;
                 house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 

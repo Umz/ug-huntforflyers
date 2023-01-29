@@ -1,9 +1,7 @@
 Build toward the game design document
 
 Full sounds for all
-- Enemy sounds (thief appear, steal crystal, drop crystal, splat/pop, missle drop, attack mode)
-- citizen sounds (aoe, build, collect crytal, talk, )
-- building sounds (complete, level complete)
+- Enemy sounds (thief appear, drop crystal, splat/pop, missle drop, attack mode)
 
 Boot screen (Umz Games Cover)
 

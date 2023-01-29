@@ -33,7 +33,7 @@ class SoundManager {
 
     playLimitedInstances(key, config, max = 4) {
         let soundInstances = this.sound.getAll(key);
-        if (soundInstances.length < max)
+        if (soundInstances.length <= max)
             this.scene.sound.play(key, config);
     }
 
@@ -59,9 +59,15 @@ class SoundManager {
 
         this.allSounds.set(Sfx.HIT_CANNON_NOKILL, {volume: .3});
         this.allSounds.set(Sfx.CONVERT_PREY_TO_COIN, {volume: .7});
-        this.allSounds.set(Sfx.ABSORB_PREY, {volume: .1});
+        this.allSounds.set(Sfx.ABSORB_PREY, {volume: .3});
 
-        this.allSounds.set(Sfx.THIEF_STEAL, {volume: .1});
+        this.allSounds.set(Sfx.THIEF_STEAL, {volume: .6});
+
+        this.allSounds.set(Sfx.CIV_SPEAK, {volume: .3});
+        this.allSounds.set(Sfx.CIV_COLLECT, {volume: .3});
+        this.allSounds.set(Sfx.CIV_BUILDING, {volume: .1});
+        this.allSounds.set(Sfx.CIV_BUILD_COMPLETE, {volume: .2});
+        this.allSounds.set(Sfx.LEVEL_COMPLETE, {volume: .3});
         
         this.allSounds.set(Sfx.BGM_MENU, {volume: .4, loop:true, isMusic:true});
     }

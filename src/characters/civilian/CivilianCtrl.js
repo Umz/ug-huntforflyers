@@ -4,6 +4,7 @@ import CtrMoveToX from "actions/CtrMoveToX";
 import Buildings from "../../consts/Buildings";
 import GameSave from "../../components/GameSave";
 import Dom from "../../components/Dom";
+import Sfx from "../../consts/Sfx";
 
 class CivilianCtrl extends BaseController {
 
@@ -67,17 +68,23 @@ class CivilianCtrl extends BaseController {
     }
 
     collectCoin() {
+        let sndM = this.scene.soundManager;
         this.spriteNew.setVelocityY(-16);
         this.addActionNew(new CtrWait(1000).addCallback(()=>{
             this.spriteNew.setCoins(GameSave.UpdateScoreAndDom(-10));
+            sndM.playLimited(Sfx.CIV_COLLECT);
             this.returnHomeAndDepositCoin();
         }));
     }
 
     returnHomeAndDepositCoin() {
+        let sndM = this.scene.soundManager;
         let homeX = this.spriteNew.getHomeX();
         this.addActionNew(new CtrMoveToX(this.spriteNew, homeX).addCallback(()=>{
             this.spriteNew.addCoinsToHome();
+
+            let sound = this.sprite.isHomeComplete() ? Sfx.CIV_BUILD_COMPLETE : Sfx.CIV_BUILDING;
+            sndM.playLimited(sound);
         }));
     }
 }

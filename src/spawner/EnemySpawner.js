@@ -14,6 +14,7 @@ import SpritePhysics from "components/SpritePhysics";
 import SkyBomberModel from "models/SkyBomberModel";
 import SkyBomberView from "../characters/enemy/SkyBomberView";
 import SkyBomberCtrl from "../characters/enemy/SkyBomberCtrl";
+import Sfx from "../consts/Sfx";
 
 class EnemySpawner {
     
@@ -23,19 +24,19 @@ class EnemySpawner {
         this.maxAlive = 5;
 
         this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(13 * 1000);
-        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(15 * 1000);
+        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(5 * 1000);
         this.skybomberCounter = Counter.New().setRepeating(true).setMaxCount(21 * 1000);
     }
 
     update(time, delta) {
 
         this.thiefCounter.setActive(this.getGroupCount(this.scene.collisionGroupThieves) < this.maxAlive)
-        this.thiefCounter.update(time, delta);
+        //this.thiefCounter.update(time, delta);
         if (this.thiefCounter.isComplete())
             this.spawnThief();
 
         this.coinerCounter.setActive(this.getGroupCount(this.scene.collisionGroupCoiners) < 5);
-        //this.coinerCounter.update(time, delta);
+        this.coinerCounter.update(time, delta);
         if (this.coinerCounter.isComplete())
             this.spawnCoiner();
 
@@ -92,6 +93,8 @@ class EnemySpawner {
         
         //  Show FX
         let mound = BackgroundBuilder.AddMound(this.scene, spawnX);
+
+        this.scene.soundManager.play(Sfx.COINER_APPEAR);
     }
 
     spawnSkyBomber() {

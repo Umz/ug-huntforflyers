@@ -18,7 +18,7 @@ var config = {
 
     type: Phaser.AUTO,
     pixelArt: true,
-    backgroundColor: '#3e1e00',
+    backgroundColor: '#000000',
     
     scale: {
         mode: Phaser.Scale.FIT,

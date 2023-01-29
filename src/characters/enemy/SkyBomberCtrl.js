@@ -11,6 +11,7 @@ import Depths from "consts/Depths";
 import States from "consts/States";
 import Actions from "consts/Actions";
 import CtrCarryRocket from "../../actions/CtrCarryRocket";
+import Sfx from "../../consts/Sfx";
 
 class ThiefCtrl extends BaseController {
 
@@ -48,6 +49,9 @@ class ThiefCtrl extends BaseController {
         this.clearAllActions();
         this.sprite.setVelocityX(this.sprite.velocityX * .2);
         this.rocket.drop();
+
+        let sndM = this.scene.soundManager;
+        sndM.play(Sfx.BOMBER_DROP_MISSLE);
     }
 
     hit() {

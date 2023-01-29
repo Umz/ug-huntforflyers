@@ -54,7 +54,7 @@ class SoundManager {
         this.allSounds.set(Sfx.WEAPON_SELECT, {volume: .1});
 
         this.allSounds.set(Sfx.FIRE_CANNON, {volume: .4});
-        this.allSounds.set(Sfx.HIT_CANNON, {volume: .1});
+        this.allSounds.set(Sfx.HIT_CANNON, {volume: .3});
         this.allSounds.set(Sfx.PICKUP, {volume: .7});
 
         this.allSounds.set(Sfx.HIT_CANNON_NOKILL, {volume: .3});
@@ -68,8 +68,16 @@ class SoundManager {
         this.allSounds.set(Sfx.CIV_BUILDING, {volume: .1});
         this.allSounds.set(Sfx.CIV_BUILD_COMPLETE, {volume: .2});
         this.allSounds.set(Sfx.LEVEL_COMPLETE, {volume: .3});
+
+        this.allSounds.set(Sfx.COINER_APPEAR, {volume:.3});
+        this.allSounds.set(Sfx.COINER_DROP_COIN, {volume:.3});
+        this.allSounds.set(Sfx.HIT_COINER, {volume:.5});
+
+        this.allSounds.set(Sfx.BOMBER_DROP_MISSLE, {volume:.4});
+        this.allSounds.set(Sfx.MISSLE_BLAST, {volume:.4});
         
         this.allSounds.set(Sfx.BGM_MENU, {volume: .4, loop:true, isMusic:true});
+        this.allSounds.set(Sfx.BGM_LEVEL, {volume: .3, loop:true, isMusic:true});
     }
 }
 export default SoundManager;

@@ -1,8 +1,5 @@
 Build toward the game design document
 
-Full sounds for all
-- Enemy sounds (thief appear, drop crystal, splat/pop, missle drop, attack mode)
-
 Boot screen (Umz Games Cover)
 
 Redo level 5 (Pre Masjid)
@@ -46,6 +43,7 @@ Press up to name your CKs (menu)
 Up to speak (dialogue)
 
 Refactor Base and BaseController - update in controller not in Base
+Refactor Sfx names 
 
 BG Dialogue
 Conversations

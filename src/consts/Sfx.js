@@ -1,7 +1,7 @@
 const Sfx = {
 
     BGM_MENU: 'gem_popper.mp3',
-    BMG_LEVEL: 'mus_level.wav',
+    BGM_LEVEL: 'mus_level.wav',
 
     MENU_PLAY_BUTTON: 'menu_start.ogg',
 
@@ -24,6 +24,14 @@ const Sfx = {
     CONVERT_PREY_TO_COIN: "convert.mp3",
     ABSORB_PREY: "suck_in.mp3",
 
-    THIEF_STEAL: "thief_steal.mp3"
+    THIEF_STEAL: "thief_steal.mp3",
+
+    COINER_APPEAR: "coiner_appear.mp3",
+    COINER_DROP_COIN: "coiner_steal.mp3",
+    HIT_COINER: "splat.mp3",
+
+    BOMBER_DROP_MISSLE: "bomb_drop.mp3",
+    MISSLE_BLAST: "firework.mp3"
+
 }
 export default Sfx;

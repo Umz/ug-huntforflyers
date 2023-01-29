@@ -164,6 +164,8 @@ class Game extends Phaser.Scene {
 
         this.levelComplete = false;
         this.counter = Counter.New().setRepeating(true).setMaxCount(3000);
+
+        this.soundManager.play(Sfx.BGM_LEVEL);
     }
 
     update(time, delta) {
@@ -252,6 +254,7 @@ class Game extends Phaser.Scene {
             this.collisionGroupCoiners.remove(coiner);
             coiner.kill();
             coiner.destroy();
+            this.soundManager.play(Sfx.HIT_COINER);
         }
     }
 
@@ -269,12 +272,12 @@ class Game extends Phaser.Scene {
         // carryKins - paleKins - civilians?
         //  GET any nearby players and hit 
         if (rocket.active)
-            for (let player of players) {
+            for (let player of players)
                 if (Math.abs(rocket.x - player.x) < WorldConsts.WIDTH * .1)
                     player.hit();
-            }
         
-        rocket.setVisible(false).setActive(false);
+        rocket.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
+        this.soundManager.play(Sfx.MISSLE_BLAST);
     }
 
     collidePlatformPrey(platform, prey) {
@@ -353,6 +356,7 @@ class Game extends Phaser.Scene {
             ease: Phaser.Math.Easing.Back.InOut,
             onComplete: ()=>{
                 coin.setVisible(false).setActive(false);
+                this.soundManager.play(Sfx.COINER_DROP_COIN);
             }
         });
     }

@@ -1,8 +1,6 @@
 Build toward the game design document
 
 Full sounds for all
-- Player Movement
-- Collection sounds 
 - Enemy sounds 
 - citizen sounds (aoe)
 - building sounds 
@@ -93,3 +91,6 @@ https://umzgames.com/demo/farb2/
 
 Add Credits:
 Gem Popper - BGM - Mopz - https://opengameart.org/content/gem-popper-piano-tune
+Pixabay -
+OpenGameArt 
+FreeSound 

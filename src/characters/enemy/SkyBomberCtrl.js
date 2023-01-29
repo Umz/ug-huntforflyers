@@ -54,7 +54,7 @@ class ThiefCtrl extends BaseController {
         
         this.sprite.setY(this.sprite.y - 8);
 
-        if (this.sprite.hp <= 0) {
+        if (this.sprite.isDead()) {
             this.sprite.kill();
             this.sprite.destroy();
             //  Blow up BIG in sky (holding a rocket)

@@ -15,8 +15,6 @@ const Stage3Model = {
     //  80
     BUILDINGS: [
         
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(65).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.1),
-
         Building.New(Decor.WATER).setTileX(9).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Decor.WATER).setTileX(11).setDepth(Depths.BUILDINGS_BEHIND),
         

@@ -3,6 +3,7 @@ import BaseModel from "../consts/BaseModel";
 
 const ThiefModel = Object.assign({}, BaseModel);
 
+ThiefModel.hp = 2;
 ThiefModel.relativeSpeed = 1;
 ThiefModel.atlas = 'sprites';
 ThiefModel.frame = 'thief1';

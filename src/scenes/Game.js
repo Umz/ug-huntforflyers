@@ -144,7 +144,7 @@ class Game extends Phaser.Scene {
         this.civSpawner = new CivilianSpawner(this);
 
         this.player = this.playerSpawner.spawnPlayer();
-        for (let i=0; i<5; i++)
+        for (let i=0; i<1; i++)
             this.playerSpawner.spawnCollector();
         
         this.enemySpawner = new EnemySpawner(this);
@@ -197,7 +197,8 @@ class Game extends Phaser.Scene {
         bullet.setActive(false).setVisible(false).setPosition(0, 0);
         thief.hit();
 
-        this.soundManager.play(Sfx.HIT_CANNON);
+        let sound = thief.isDead() ? Sfx.HIT_CANNON : Sfx.HIT_CANNON_NOKILL;
+        this.soundManager.play(sound);
         this.showPuff(thief.x, thief.y);
     }
 
@@ -211,6 +212,8 @@ class Game extends Phaser.Scene {
             prey.setActive(false);
             prey.setState(States.DEAD);
             this.collisionGroupPrey.remove(prey);
+
+            this.soundManager.playLimited(Sfx.ABSORB_PREY);
 
             let tween = this.tweens.add({
                 targets: prey,
@@ -239,7 +242,7 @@ class Game extends Phaser.Scene {
             GameSave.IncScore(coin.coinValue);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
 
-            this.soundManager.play(Sfx.PICKUP);
+            this.soundManager.playLimited(Sfx.PICKUP);
         }
     }
 
@@ -255,6 +258,8 @@ class Game extends Phaser.Scene {
         this.collisionGroupThieves.remove(thief);
         thief.kill();
         thief.destroy();
+
+        this.soundManager.play(Sfx.HIT_CANNON);
     }
 
     collidePlatformRocket(platform, rocket) {
@@ -334,6 +339,7 @@ class Game extends Phaser.Scene {
         SpritePhysics.AddPhysics(sprite);
         SpritePhysics.AddGroundDrag(sprite);
 
+        this.soundManager.playLimited(Sfx.CONVERT_PREY_TO_COIN);
         this.showPuff(pump.x, pump.getCenter().y);
     }
 

@@ -8,6 +8,7 @@ import CtrBlank from "actions/CtrBlank";
 import BaseController from "classes/BaseController";
 import Depths from "consts/Depths";
 import States from "consts/States";
+import Sfx from "consts/Sfx";
 import Actions from "consts/Actions";
 
 class ThiefCtrl extends BaseController {
@@ -62,6 +63,9 @@ class ThiefCtrl extends BaseController {
             prey.setDepth(Depths.ENEMIES_STOLEN);
             prey.setStolenCollision();
             this.addActionNew(new CtrSteal(this.spriteNew, prey));
+
+            let sndM = this.scene.soundManager;
+            sndM.playSound(Sfx.THIEF_STEAL);
         }
         else {
             this.clearAllActions();

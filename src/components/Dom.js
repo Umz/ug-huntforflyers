@@ -1,9 +1,20 @@
 class Dom {
 
-    static SetDomIdDisplay(id, visible) {
+    static SetDomIdVisibility(id, visible) {
         const visibility = (visible) ? 'visible' : 'hidden';
         let element = document.getElementById(id);
         element.style.visibility = visibility;
+    }
+    
+    static SetDomIdDisplay(id, visible) {
+        const display = (visible) ? 'block' : 'none';
+        let element = document.getElementById(id);
+        element.style.display = display;
+    }
+
+    static AddClassToDomId(id, className) {
+        let element = document.getElementById(id);
+        element.classList.add(className);
     }
 
     static SetDomIdOpacity(id, opacity) {

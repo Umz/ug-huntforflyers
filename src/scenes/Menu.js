@@ -20,14 +20,23 @@ class Menu extends Phaser.Scene {
 
         GameSave.SetScore(0);
 
+        Dom.AddClassToDomId(Consts.BOOT_CONTAINER, Consts.BOOT_LOGO_FADE);
         Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
+
+        this.time.addEvent({
+            delay: 3000,
+            callback: ()=>{
+                Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
+            }
+        });
+
         /**
-        Dom.SetDomIdDisplay(Consts.MAIN_MENU, false);
-        Dom.SetDomIdDisplay(Consts.MAIN_LOGO, false);
-        Dom.SetDomIdDisplay(Consts.UI, true);
-        Dom.SetDomIdDisplay(Consts.UI_PAUSE_BUTTON, true);
-        Dom.SetDomIdDisplay(Consts.CHATBOX, true);
-        Dom.SetDomIdDisplay(Consts.UI_WEAPON, true);
+        Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
+        Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);
+        Dom.SetDomIdVisibility(Consts.UI, true);
+        Dom.SetDomIdVisibility(Consts.UI_PAUSE_BUTTON, true);
+        Dom.SetDomIdVisibility(Consts.CHATBOX, true);
+        Dom.SetDomIdVisibility(Consts.UI_WEAPON, true);
         this.scene.start(Consts.GAME_SCENE);
         /**/
 
@@ -44,12 +53,12 @@ class Menu extends Phaser.Scene {
         Dom.SetDomText(Consts.UI_SCORE_TEXT, 0);
 
         Dom.AddClick(Consts.MAIN_PLAY_BUTTON, ()=> {
-            Dom.SetDomIdDisplay(Consts.MAIN_MENU, false);
-            Dom.SetDomIdDisplay(Consts.MAIN_LOGO, false);
-            Dom.SetDomIdDisplay(Consts.UI, true);
-            Dom.SetDomIdDisplay(Consts.CHATBOX, true);
-            Dom.SetDomIdDisplay(Consts.UI_PAUSE_BUTTON, true);
-            Dom.SetDomIdDisplay(Consts.UI_WEAPON, true);
+            Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
+            Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);
+            Dom.SetDomIdVisibility(Consts.UI, true);
+            Dom.SetDomIdVisibility(Consts.CHATBOX, true);
+            Dom.SetDomIdVisibility(Consts.UI_PAUSE_BUTTON, true);
+            Dom.SetDomIdVisibility(Consts.UI_WEAPON, true);
             Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
             this.scene.start(Consts.GAME_SCENE);

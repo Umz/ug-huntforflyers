@@ -9,3 +9,33 @@
     margin: auto;
     max-width: 90%;
 }
+
+#boot-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    background-color: #000;
+    z-index: 100;
+}
+#boot-logo-holder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+#boot-ug {
+    display: block;
+    max-width: 90%;
+    margin: auto;
+}
+
+.boot-fade-out {
+    animation: boot-fade-anim 2s ease-out 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes boot-fade-anim {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}

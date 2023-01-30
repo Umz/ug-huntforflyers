@@ -6,6 +6,9 @@ const Consts = {
     GAME_SCENE: "Game",
     LOAD_SCENE: "Load",
 
+    BOOT_CONTAINER: "boot-container",
+    BOOT_LOGO_FADE: "boot-fade-out",
+
     MENU_BG: "game-menu-bg-cover",
 
     MAIN_MENU: "title-menu-container",

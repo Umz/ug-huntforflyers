@@ -309,7 +309,7 @@ class Game extends Phaser.Scene {
         let displayName = this.player.getStateName(current.state);
         
         Dom.SetDomText(Consts.HUD_WEAPON_TEXT, displayName);
-        Dom.SetDomIdDisplay(Consts.HUD_WEAPON_TEXT, true);
+        Dom.SetDomIdVisibility(Consts.HUD_WEAPON_TEXT, true);
         Dom.SetActiveInGroup(Consts.HUD_WEAPON_SELECT, Consts.HUD_WEAPON_ACTIVE, current.hud);
     }
 

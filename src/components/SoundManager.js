@@ -31,12 +31,6 @@ class SoundManager {
         this.scene.sound.play(key, config);
     }
 
-    playLimitedInstances(key, config, max = 4) {
-        let soundInstances = this.sound.getAll(key);
-        if (soundInstances.length <= max)
-            this.scene.sound.play(key, config);
-    }
-
     playMusic(key, config) {
         
         if (this.music)
@@ -44,6 +38,11 @@ class SoundManager {
 
         this.music = this.scene.sound.add(key, config);
         this.music.play();
+    }
+
+    destroyMusic() {
+        this.music.stop();
+        this.music.destroy();
     }
 
     setupSounds() {

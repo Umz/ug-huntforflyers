@@ -24,14 +24,14 @@ class EnemySpawner {
         this.maxAlive = 5;
 
         this.thiefCounter = Counter.New().setRepeating(true).setMaxCount(13 * 1000);
-        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(5 * 1000);
+        this.coinerCounter = Counter.New().setRepeating(true).setMaxCount(19 * 1000);
         this.skybomberCounter = Counter.New().setRepeating(true).setMaxCount(21 * 1000);
     }
 
     update(time, delta) {
 
         this.thiefCounter.setActive(this.getGroupCount(this.scene.collisionGroupThieves) < this.maxAlive)
-        //this.thiefCounter.update(time, delta);
+        this.thiefCounter.update(time, delta);
         if (this.thiefCounter.isComplete())
             this.spawnThief();
 
@@ -41,7 +41,7 @@ class EnemySpawner {
             this.spawnCoiner();
 
         this.skybomberCounter.setActive(this.getGroupCount(this.scene.collisionGroupSkyBombers) < 3);
-        //this.skybomberCounter.update(time, delta);
+        this.skybomberCounter.update(time, delta);
         if (this.skybomberCounter.isComplete())
             this.spawnSkyBomber();
     }

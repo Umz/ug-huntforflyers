@@ -166,6 +166,10 @@ class Game extends Phaser.Scene {
         this.counter = Counter.New().setRepeating(true).setMaxCount(3000);
 
         this.soundManager.play(Sfx.BGM_LEVEL);
+
+        this.events.on('shutdown', ()=>{
+            this.soundManager.destroyMusic();
+        }, this);
     }
 
     update(time, delta) {

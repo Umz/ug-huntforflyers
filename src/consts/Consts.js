@@ -11,6 +11,9 @@ const Consts = {
 
     MENU_BG: "game-menu-bg-cover",
 
+    MENU_MAIN_CLASS: "title-menu-option",
+    MENU_MAIN_SELECTED: "title-menu-selected",
+
     MAIN_MENU: "title-menu-container",
     MAIN_LOGO: "game-logo",
     MAIN_PLAY_BUTTON: "menu-play",

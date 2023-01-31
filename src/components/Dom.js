@@ -23,6 +23,7 @@ class Dom {
 
     static AddClick(elementId, fn) {
         document.getElementById(elementId).addEventListener('click', fn);
+        document.getElementById(elementId).clickAction = fn;
     }
 
     static ResetClick(elementId) {

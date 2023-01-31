@@ -1,7 +1,5 @@
 Build toward the game design document
 
-Boot screen (Umz Games Cover)
-
 Redo level 5 (Pre Masjid)
 Level 5 just for Masjid
 Redo level 6
@@ -15,6 +13,8 @@ Game controls full
 Fill in the game over screen
 Fill in the info screen button (Story)
 Fill in the question button (controls)
+Fill in unlock screen (name characters)
+Unlock screen use for ITCN - name your CarryKins
 Add game effects
 Hit effects
 Fire effects 
@@ -51,30 +51,23 @@ Signage
 
 ActionChain implement
 Add chicken sprite
+Add rabbit sprite 
 
 create pools
 - Prey pool
 - Enemy Pool 
 - Collector pool
 Abstract spawner
-Refactor Game Scene (With bug fixing)
-
-setAction()
-setSwap()
-GameController
 
 Webpack split into vendor and bundle
-
 Convert all sound files
 
-Add sun in background, day and night cycle - reload level?
 BG dust cloud or particles
 BG wind effects 
-
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 
-Death - Permanent effects going forward
+Death - Permanent effects going forward - Read tombstone 
 - Consts update names
 
 Game needs to be super simple to learn the concept -

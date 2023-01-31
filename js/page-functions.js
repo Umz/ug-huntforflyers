@@ -55,3 +55,27 @@ function addChatMessage(speaker, message, cssClass) {
 
     box.scrollTop = box.scrollHeight;
 }
+
+function selectedMenuElementAction(className) {
+    let active = document.getElementsByClassName(className)[0];
+    active.clickAction();
+}
+
+function selectMenuElement(event) {
+    let className = "title-menu-selected";
+    let active = document.getElementsByClassName(className)[0];
+    active.classList.remove(className);
+    this.classList.add(className);
+}
+
+function moveMenuElement(className, dir = 1) {
+
+    let activeElement = document.getElementsByClassName(className)[0];
+    activeElement.classList.remove(className);
+    
+    let left = activeElement.previousElementSibling || activeElement.parentElement.lastElementChild;
+    let right = activeElement.nextElementSibling || activeElement.parentElement.firstElementChild;
+
+    let nextElement = (dir > 0) ? right : left;
+    nextElement.classList.add(className);
+}

@@ -15,8 +15,10 @@ class Menu extends Phaser.Scene {
 
     create(data) {
 
+        this.addMenuControls();
+
         this.music = this.sound.add(Sfx.BGM_MENU);
-        //this.music.play({volume:.5});
+        this.music.play({volume:.3, loop:true});
 
         GameSave.SetScore(0);
 
@@ -62,10 +64,33 @@ class Menu extends Phaser.Scene {
             Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
 
             this.scene.start(Consts.GAME_SCENE);
-
-            this.music.stop();
-            this.sound.stopAll();
             this.sound.play(Sfx.MENU_PLAY_BUTTON, {volume: .5});
+        });
+
+        this.events.on('shutdown', ()=>{
+            this.music.stop();
+            this.music.destroy();
+        }, this);
+    }
+
+    addMenuControls() {
+
+        let elems = document.querySelectorAll(`.${Consts.MENU_MAIN_CLASS}`);
+        for (let elem of elems)
+            elem.addEventListener('click', selectMenuElement, false);
+
+        this.input.keyboard.on('keydown-LEFT', (event) => {
+            moveMenuElement(Consts.MENU_MAIN_SELECTED, -1);
+        });
+        this.input.keyboard.on('keydown-RIGHT', (event) => {
+            moveMenuElement(Consts.MENU_MAIN_SELECTED, 1);
+        });
+
+        this.input.keyboard.on('keydown-ENTER', (event) => {
+            selectedMenuElementAction(Consts.MENU_MAIN_SELECTED);
+        });
+        this.input.keyboard.on('keydown-SPACEBAR', (event) => {
+            selectedMenuElementAction(Consts.MENU_MAIN_SELECTED);
         });
     }
 }

@@ -23,13 +23,15 @@
     margin: 0 auto;
 }
 
-.title-menu-main {
+.title-menu-selected {
     animation-duration: 2s;
     animation-iteration-count: infinite;
-}
-.bounce-5 {
     animation-name: bounce-5;
     animation-timing-function: ease;
+
+    border: 5px double #fff;
+    padding: 11px 0;
+    border-radius: 11px;
 }
 @keyframes bounce-5 {
     0%   { transform: scale(1,1)    translateY(0); }

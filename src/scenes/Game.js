@@ -147,7 +147,8 @@ class Game extends Phaser.Scene {
         for (let i=0; i<1; i++)
             this.playerSpawner.spawnCollector();
         
-        this.enemySpawner = new EnemySpawner(this);
+        let enemies = this.levelData.ENEMIES;
+        this.enemySpawner = new EnemySpawner(this, enemies);
         this.updateRunner.add(this.enemySpawner);
         
         this.addBackground();
@@ -165,11 +166,12 @@ class Game extends Phaser.Scene {
         this.levelComplete = false;
         this.counter = Counter.New().setRepeating(true).setMaxCount(3000);
 
+        /*
         this.soundManager.play(Sfx.BGM_LEVEL);
-
         this.events.on('shutdown', ()=>{
             this.soundManager.destroyMusic();
         }, this);
+        */
     }
 
     update(time, delta) {
@@ -495,7 +497,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
 
                 let complete = Phaser.Math.Between(5, 15) *.01;
-                complete = .4;
+                complete = 1.0;
                 house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 

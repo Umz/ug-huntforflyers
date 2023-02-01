@@ -18,7 +18,7 @@ class Menu extends Phaser.Scene {
         this.addMenuControls();
 
         this.music = this.sound.add(Sfx.BGM_MENU);
-        this.music.play({volume:.3, loop:true});
+        //this.music.play({volume:.3, loop:true});
 
         GameSave.SetScore(0);
 
@@ -28,11 +28,12 @@ class Menu extends Phaser.Scene {
         this.time.addEvent({
             delay: 3000,
             callback: ()=>{
-                Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
+                //Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
             }
         });
+        Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
 
-        /**
+        /**/
         Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
         Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);
         Dom.SetDomIdVisibility(Consts.UI, true);

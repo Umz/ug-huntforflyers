@@ -4,12 +4,16 @@ import Depths from "consts/Depths";
 import PlantType from "consts/PlantType";
 import Buildings from "consts/Buildings";
 import Decor from "consts/Decor";
+import Characters from "consts/Characters";
 import BugModel from "./BugModel";
 
 const Stage3Model = {
 
     LENGTHS: 3,
-    ENEMIES: [],
+    ENEMIES: [
+        Characters.DRONE,
+        Characters.PIP
+    ],
     
     BUILDINGS: [
 

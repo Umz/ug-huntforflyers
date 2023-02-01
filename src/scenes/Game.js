@@ -496,8 +496,7 @@ class Game extends Phaser.Scene {
                 let scaffold = BackgroundBuilder.addScaffolding(house);
                 house.setScaffold(scaffold);
 
-                let complete = Phaser.Math.Between(5, 15) *.01;
-                complete = 1.0;
+                let complete = Phaser.Math.Between(1, 10) *.01;
                 house.setCompletePercentAndCrop(complete);
                 
                 this.civSpawner.spawnCivilian(house); 

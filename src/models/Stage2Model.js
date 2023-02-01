@@ -4,12 +4,15 @@ import Buildings from "consts/Buildings";
 import Decor from "consts/Decor";
 import Depths from "consts/Depths";
 import PlantType from "consts/PlantType";
+import Characters from 'consts/Characters';
 import BeeModel from "./BeeModel";
 
 const Stage2Model = {
 
     LENGTHS: 2,
-    ENEMIES: [], 
+    ENEMIES: [
+        Characters.DRONE
+    ],
     
     BUILDINGS: [
 

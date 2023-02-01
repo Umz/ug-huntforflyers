@@ -23,7 +23,7 @@ class Spawner {
             }
 
             if (this.scene.isAllHousesComplete())
-                this.setActive(true);
+                this.setActive(false);
         }
     }
 

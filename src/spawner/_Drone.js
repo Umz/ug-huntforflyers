@@ -9,7 +9,7 @@ class _Drone extends Spawner {
 
     constructor(scene) {
         super(scene, scene.collisionGroupThieves);
-        this.setSeconds(3).setMaxAlive(5);
+        this.setSeconds(15).setMaxAlive(5);
     }
 
     spawn() {

@@ -6,11 +6,16 @@ import Buildings from "consts/Buildings";
 import Decor from "consts/Decor";
 import BeeModel from "./BeeModel";
 import BlueBirdModel from "./BlueBirdModel";
+import Characters from "consts/Characters";
 
 const Stage3Model = {
 
     LENGTHS: 4,
-    ENEMIES: [],
+    ENEMIES: [
+        Characters.DRONE,
+        Characters.BOMBER,
+        Characters.PIP
+    ],
     
     //  80
     BUILDINGS: [

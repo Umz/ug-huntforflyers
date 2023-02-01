@@ -85,6 +85,10 @@ class ThiefCtrl extends BaseController {
             this.spriteNew.setVelocityY(10);
 
         //  Blow up just above ground level
+        if (this.sprite.isDead()) {
+            this.sprite.kill();
+            this.sprite.destroy();
+        }
     }
 }
 export default ThiefCtrl;

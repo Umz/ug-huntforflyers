@@ -7,6 +7,8 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
+HUD count active carrykins and set
+FIX: Civs cancel when no currency found
 Game Tutorial
 Game FX and particles
 Game controls full

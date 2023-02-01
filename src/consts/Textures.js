@@ -5,6 +5,10 @@ const Textures = {
     BG_MUD: '-bg_mud_square',
 
     BULLET: "bullet",
-    BULLET_BIG: "bulletBig"
+    BULLET_BIG: "bulletBig",
+
+    ICON_HAMMER: "ic_hammer",
+    ICON_EMPTY: "ic_empty",
+    ICON_SPEECH: "ic_speech",
 }
 export default Textures;

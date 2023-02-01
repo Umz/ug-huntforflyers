@@ -5,7 +5,6 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
-*** FIX: Civs cancel when no currency found
 *** Hold fire gap
 Game Tutorial
 Game FX and particles
@@ -49,7 +48,7 @@ BG Dialogue
 Conversations
 Signage
 
-ActionChain implement
+*** ActionChain implement
 Add chicken sprite
 Add rabbit sprite 
 

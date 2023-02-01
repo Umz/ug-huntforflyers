@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "puff1",
+					"filename": "ic_hammer",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -514,6 +514,48 @@
 					}
 				},
 				{
+					"filename": "ic_s",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 595,
+						"y": 889,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "ic_speech",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 605,
+						"y": 889,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
 					"filename": "building_pump",
 					"rotated": false,
 					"trimmed": false,
@@ -550,72 +592,30 @@
 					},
 					"frame": {
 						"x": 610,
-						"y": 889,
+						"y": 899,
 						"w": 34,
 						"h": 60
 					}
 				},
 				{
-					"filename": "rocket",
+					"filename": "puff1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
 						"w": 8,
-						"h": 12
+						"h": 8
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
 						"w": 8,
-						"h": 12
+						"h": 8
 					},
 					"frame": {
-						"x": 610,
-						"y": 951,
+						"x": 615,
+						"y": 889,
 						"w": 8,
-						"h": 12
-					}
-				},
-				{
-					"filename": "decor_bbq",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 11,
-						"h": 11
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 11,
-						"h": 11
-					},
-					"frame": {
-						"x": 620,
-						"y": 951,
-						"w": 11,
-						"h": 11
-					}
-				},
-				{
-					"filename": "decor_barrel",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 10,
-						"h": 11
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 10,
-						"h": 11
-					},
-					"frame": {
-						"x": 633,
-						"y": 951,
-						"w": 10,
-						"h": 11
+						"h": 8
 					}
 				},
 				{
@@ -640,678 +640,6 @@
 					}
 				},
 				{
-					"filename": "decor_restaurant_sign",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 49
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 49
-					},
-					"frame": {
-						"x": 637,
-						"y": 964,
-						"w": 16,
-						"h": 49
-					}
-				},
-				{
-					"filename": "plant_flower1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 14,
-						"h": 17
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 14,
-						"h": 17
-					},
-					"frame": {
-						"x": 637,
-						"y": 1015,
-						"w": 14,
-						"h": 17
-					}
-				},
-				{
-					"filename": "building_restaurant",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 68,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 68,
-						"h": 48
-					},
-					"frame": {
-						"x": 644,
-						"y": 1034,
-						"w": 68,
-						"h": 48
-					}
-				},
-				{
-					"filename": "plant_flower2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 14,
-						"h": 17
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 14,
-						"h": 17
-					},
-					"frame": {
-						"x": 653,
-						"y": 1015,
-						"w": 14,
-						"h": 17
-					}
-				},
-				{
-					"filename": "building_farmhut",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 55,
-						"h": 47
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 55,
-						"h": 47
-					},
-					"frame": {
-						"x": 646,
-						"y": 882,
-						"w": 55,
-						"h": 47
-					}
-				},
-				{
-					"filename": "decor_sign1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 24,
-						"h": 31
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 24,
-						"h": 31
-					},
-					"frame": {
-						"x": 646,
-						"y": 931,
-						"w": 24,
-						"h": 31
-					}
-				},
-				{
-					"filename": "building_tent3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 50,
-						"h": 46
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 50,
-						"h": 46
-					},
-					"frame": {
-						"x": 655,
-						"y": 964,
-						"w": 50,
-						"h": 46
-					}
-				},
-				{
-					"filename": "decor_lab_table",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 52,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 52,
-						"h": 20
-					},
-					"frame": {
-						"x": 669,
-						"y": 1012,
-						"w": 52,
-						"h": 20
-					}
-				},
-				{
-					"filename": "decor_water_jug",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 24,
-						"h": 25
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 24,
-						"h": 25
-					},
-					"frame": {
-						"x": 672,
-						"y": 931,
-						"w": 24,
-						"h": 25
-					}
-				},
-				{
-					"filename": "building_tent2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 48,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 48,
-						"h": 24
-					},
-					"frame": {
-						"x": 698,
-						"y": 931,
-						"w": 48,
-						"h": 24
-					}
-				},
-				{
-					"filename": "plant_tree2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 45
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 45
-					},
-					"frame": {
-						"x": 707,
-						"y": 957,
-						"w": 32,
-						"h": 45
-					}
-				},
-				{
-					"filename": "building_store",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 74,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 74,
-						"h": 42
-					},
-					"frame": {
-						"x": 659,
-						"y": 823,
-						"w": 74,
-						"h": 42
-					}
-				},
-				{
-					"filename": "decor_bench",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 19,
-						"h": 13
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 19,
-						"h": 13
-					},
-					"frame": {
-						"x": 659,
-						"y": 867,
-						"w": 19,
-						"h": 13
-					}
-				},
-				{
-					"filename": "plant_dry_grass2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 13
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 13
-					},
-					"frame": {
-						"x": 680,
-						"y": 867,
-						"w": 16,
-						"h": 13
-					}
-				},
-				{
-					"filename": "building_hut",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 36,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 36,
-						"h": 40
-					},
-					"frame": {
-						"x": 714,
-						"y": 1034,
-						"w": 36,
-						"h": 40
-					}
-				},
-				{
-					"filename": "plant_flower3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 14,
-						"h": 17
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 14,
-						"h": 17
-					},
-					"frame": {
-						"x": 714,
-						"y": 1076,
-						"w": 14,
-						"h": 17
-					}
-				},
-				{
-					"filename": "building_tent1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 16
-					},
-					"frame": {
-						"x": 730,
-						"y": 1076,
-						"w": 32,
-						"h": 16
-					}
-				},
-				{
-					"filename": "decor_sign2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 24
-					},
-					"frame": {
-						"x": 723,
-						"y": 1004,
-						"w": 16,
-						"h": 24
-					}
-				},
-				{
-					"filename": "decor_pod",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 40
-					},
-					"frame": {
-						"x": 703,
-						"y": 867,
-						"w": 32,
-						"h": 40
-					}
-				},
-				{
-					"filename": "decor_pot",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 12,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 12,
-						"h": 20
-					},
-					"frame": {
-						"x": 703,
-						"y": 909,
-						"w": 12,
-						"h": 20
-					}
-				},
-				{
-					"filename": "decor_fence2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 16
-					},
-					"frame": {
-						"x": 717,
-						"y": 909,
-						"w": 32,
-						"h": 16
-					}
-				},
-				{
-					"filename": "building_shop",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 42,
-						"h": 37
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 42,
-						"h": 37
-					},
-					"frame": {
-						"x": 735,
-						"y": 823,
-						"w": 42,
-						"h": 37
-					}
-				},
-				{
-					"filename": "building_scaffold",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 32
-					},
-					"frame": {
-						"x": 737,
-						"y": 862,
-						"w": 16,
-						"h": 32
-					}
-				},
-				{
-					"filename": "plant_sunflower",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 32
-					},
-					"frame": {
-						"x": 741,
-						"y": 957,
-						"w": 16,
-						"h": 32
-					}
-				},
-				{
-					"filename": "decor_post",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 11,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 11,
-						"h": 24
-					},
-					"frame": {
-						"x": 748,
-						"y": 927,
-						"w": 11,
-						"h": 24
-					}
-				},
-				{
-					"filename": "plant_bush",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 25,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 25,
-						"h": 16
-					},
-					"frame": {
-						"x": 751,
-						"y": 896,
-						"w": 25,
-						"h": 16
-					}
-				},
-				{
-					"filename": "decor_fence",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 755,
-						"y": 862,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "plant_dry_grass1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 14
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 14
-					},
-					"frame": {
-						"x": 755,
-						"y": 880,
-						"w": 16,
-						"h": 14
-					}
-				},
-				{
-					"filename": "puff3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 773,
-						"y": 862,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "plant_dry_grass3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 14
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 14
-					},
-					"frame": {
-						"x": 773,
-						"y": 880,
-						"w": 16,
-						"h": 14
-					}
-				},
-				{
-					"filename": "puff4",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 779,
-						"y": 823,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "puff5",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 779,
-						"y": 841,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
 					"filename": "decor_chest",
 					"rotated": false,
 					"trimmed": false,
@@ -1326,8 +654,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 741,
-						"y": 991,
+						"x": 625,
+						"y": 882,
 						"w": 16,
 						"h": 15
 					}
@@ -1347,10 +675,640 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 741,
-						"y": 1008,
+						"x": 643,
+						"y": 882,
 						"w": 16,
 						"h": 15
+					}
+				},
+				{
+					"filename": "decor_restaurant_sign",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 49
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 49
+					},
+					"frame": {
+						"x": 659,
+						"y": 823,
+						"w": 16,
+						"h": 49
+					}
+				},
+				{
+					"filename": "building_restaurant",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 68,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 68,
+						"h": 48
+					},
+					"frame": {
+						"x": 637,
+						"y": 961,
+						"w": 68,
+						"h": 48
+					}
+				},
+				{
+					"filename": "decor_lab_table",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 52,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 52,
+						"h": 20
+					},
+					"frame": {
+						"x": 637,
+						"y": 1011,
+						"w": 52,
+						"h": 20
+					}
+				},
+				{
+					"filename": "building_farmhut",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 55,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 55,
+						"h": 47
+					},
+					"frame": {
+						"x": 646,
+						"y": 899,
+						"w": 55,
+						"h": 47
+					}
+				},
+				{
+					"filename": "decor_bbq",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 11,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 11,
+						"h": 11
+					},
+					"frame": {
+						"x": 646,
+						"y": 948,
+						"w": 11,
+						"h": 11
+					}
+				},
+				{
+					"filename": "decor_barrel",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 10,
+						"h": 11
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 11
+					},
+					"frame": {
+						"x": 659,
+						"y": 948,
+						"w": 10,
+						"h": 11
+					}
+				},
+				{
+					"filename": "decor_pot",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 12,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 661,
+						"y": 874,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "plant_flower1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 17
+					},
+					"frame": {
+						"x": 675,
+						"y": 874,
+						"w": 14,
+						"h": 17
+					}
+				},
+				{
+					"filename": "building_tent3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 46
+					},
+					"frame": {
+						"x": 677,
+						"y": 823,
+						"w": 50,
+						"h": 46
+					}
+				},
+				{
+					"filename": "decor_water_jug",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 25
+					},
+					"frame": {
+						"x": 691,
+						"y": 871,
+						"w": 24,
+						"h": 25
+					}
+				},
+				{
+					"filename": "plant_tree2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 45
+					},
+					"frame": {
+						"x": 703,
+						"y": 898,
+						"w": 32,
+						"h": 45
+					}
+				},
+				{
+					"filename": "plant_dry_grass1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 14
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 703,
+						"y": 945,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "building_tent2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 24
+					},
+					"frame": {
+						"x": 717,
+						"y": 871,
+						"w": 48,
+						"h": 24
+					}
+				},
+				{
+					"filename": "building_store",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 74,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 74,
+						"h": 42
+					},
+					"frame": {
+						"x": 729,
+						"y": 823,
+						"w": 74,
+						"h": 42
+					}
+				},
+				{
+					"filename": "building_hut",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 36,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 36,
+						"h": 40
+					},
+					"frame": {
+						"x": 644,
+						"y": 1033,
+						"w": 36,
+						"h": 40
+					}
+				},
+				{
+					"filename": "plant_flower2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 17
+					},
+					"frame": {
+						"x": 644,
+						"y": 1075,
+						"w": 14,
+						"h": 17
+					}
+				},
+				{
+					"filename": "plant_flower3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 14,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 17
+					},
+					"frame": {
+						"x": 660,
+						"y": 1075,
+						"w": 14,
+						"h": 17
+					}
+				},
+				{
+					"filename": "building_tent1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 676,
+						"y": 1075,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "decor_pod",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 40
+					},
+					"frame": {
+						"x": 682,
+						"y": 1033,
+						"w": 32,
+						"h": 40
+					}
+				},
+				{
+					"filename": "decor_fence2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 710,
+						"y": 1075,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "plant_bush",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 25,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 25,
+						"h": 16
+					},
+					"frame": {
+						"x": 691,
+						"y": 1011,
+						"w": 25,
+						"h": 16
+					}
+				},
+				{
+					"filename": "building_shop",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 42,
+						"h": 37
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 42,
+						"h": 37
+					},
+					"frame": {
+						"x": 716,
+						"y": 1029,
+						"w": 42,
+						"h": 37
+					}
+				},
+				{
+					"filename": "decor_sign2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 24
+					},
+					"frame": {
+						"x": 744,
+						"y": 1068,
+						"w": 16,
+						"h": 24
+					}
+				},
+				{
+					"filename": "building_scaffold",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 32
+					},
+					"frame": {
+						"x": 707,
+						"y": 961,
+						"w": 16,
+						"h": 32
+					}
+				},
+				{
+					"filename": "plant_dry_grass3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 14
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 721,
+						"y": 945,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "plant_sunflower",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 32
+					},
+					"frame": {
+						"x": 718,
+						"y": 995,
+						"w": 16,
+						"h": 32
+					}
+				},
+				{
+					"filename": "rocket",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 12
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 12
+					},
+					"frame": {
+						"x": 707,
+						"y": 995,
+						"w": 8,
+						"h": 12
+					}
+				},
+				{
+					"filename": "decor_sign1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 31
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 31
+					},
+					"frame": {
+						"x": 725,
+						"y": 961,
+						"w": 24,
+						"h": 31
+					}
+				},
+				{
+					"filename": "decor_post",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 11,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 736,
+						"y": 994,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "decor_fence",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 749,
+						"y": 994,
+						"w": 16,
+						"h": 16
 					}
 				},
 				{
@@ -1368,10 +1326,115 @@
 						"h": 14
 					},
 					"frame": {
-						"x": 752,
-						"y": 1025,
+						"x": 749,
+						"y": 1012,
 						"w": 14,
 						"h": 14
+					}
+				},
+				{
+					"filename": "puff3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 760,
+						"y": 1028,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "decor_bench",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 19,
+						"h": 13
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 19,
+						"h": 13
+					},
+					"frame": {
+						"x": 765,
+						"y": 1012,
+						"w": 19,
+						"h": 13
+					}
+				},
+				{
+					"filename": "puff4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 760,
+						"y": 1046,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "puff5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 762,
+						"y": 1064,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "plant_dry_grass2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 13
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 13
+					},
+					"frame": {
+						"x": 762,
+						"y": 1082,
+						"w": 16,
+						"h": 13
 					}
 				}
 			]
@@ -1380,6 +1443,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:e996e8936f33772b51d0571616a3b6ab:74eae964df10414a24a1addfb6ce6f00:2ba65c328dea799e4d80739630892abf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9c336e004452637cfa01634c85eeff76:f09a23cc87dd0b126b4baff4434ad56d:2ba65c328dea799e4d80739630892abf$"
 	}
 }

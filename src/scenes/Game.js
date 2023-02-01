@@ -334,8 +334,8 @@ class Game extends Phaser.Scene {
         icon.setFrame(frame).showAboveTarget(sprite, millis);
         let tween = this.tweens.add({
             targets: icon,
-            duration: 300,
-            scaleX: {from:0, to:1},
+            duration: 1000,
+            //scaleX: {from:0, to:1},
             scaleY: {from:0, to:1},
             ease: Phaser.Math.Easing.Back.Out
         });

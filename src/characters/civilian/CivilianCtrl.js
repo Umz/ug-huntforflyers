@@ -5,6 +5,7 @@ import Buildings from "../../consts/Buildings";
 import GameSave from "../../components/GameSave";
 import Dom from "../../components/Dom";
 import Sfx from "../../consts/Sfx";
+import Textures from "../../consts/Textures";
 
 class CivilianCtrl extends BaseController {
 
@@ -36,7 +37,7 @@ class CivilianCtrl extends BaseController {
     }
 
     speakAndWait() {
-        //console.log('Speaking civilian')
+        this.scene.showIcon(this.sprite, 3000, Textures.ICON_SPEECH);
         this.spriteNew.setVelocityY(-32);
         this.addActionNew(new CtrWait(3000));
     }
@@ -68,13 +69,21 @@ class CivilianCtrl extends BaseController {
     }
 
     collectCoin() {
+
         let sndM = this.scene.soundManager;
-        this.spriteNew.setVelocityY(-16);
-        this.addActionNew(new CtrWait(1000).addCallback(()=>{
-            this.spriteNew.setCoins(GameSave.UpdateScoreAndDom(-10));
-            sndM.playLimited(Sfx.CIV_COLLECT);
-            this.returnHomeAndDepositCoin();
-        }));
+        this.sprite.setVelocityY(-16);
+
+        let coins = GameSave.UpdateScoreAndDom(-10);
+        if (coins > 0)
+            this.addActionNew(new CtrWait(1000).addCallback(()=>{
+                this.sprite.setCoins(coins);
+
+                this.scene.showIcon(this.sprite, 3000, Textures.ICON_HAMMER);
+                sndM.playLimited(Sfx.CIV_COLLECT);
+                this.returnHomeAndDepositCoin();
+            }));
+        else
+            this.scene.showIcon(this.sprite, 2000, Textures.ICON_EMPTY);
     }
 
     returnHomeAndDepositCoin() {
@@ -82,6 +91,8 @@ class CivilianCtrl extends BaseController {
         let homeX = this.spriteNew.getHomeX();
         this.addActionNew(new CtrMoveToX(this.spriteNew, homeX).addCallback(()=>{
             this.spriteNew.addCoinsToHome();
+            this.scene.showIcon(this.sprite, 3000, Textures.ICON_HAMMER);
+            this.waitRandomTime();
 
             let sound = this.sprite.isHomeComplete() ? Sfx.CIV_BUILD_COMPLETE : Sfx.CIV_BUILDING;
             sndM.playLimited(sound);

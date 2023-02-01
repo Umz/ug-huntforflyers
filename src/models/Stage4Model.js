@@ -25,7 +25,7 @@ const Stage3Model = {
         
         Building.New(Buildings.TENT1).setTileX(7).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT1).setTileX(8).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT3).setTileX(10).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(10).setDepth(Depths.BUILDINGS_BG).setComplete(1),
         Building.New(Buildings.TENT1).setTileX(12).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT1).setTileX(13).setDepth(Depths.BUILDINGS_BG),
 
@@ -87,7 +87,7 @@ const Stage3Model = {
 
         Building.New(Buildings.TENT3).setTileX(67).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(68.5).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT3).setTileX(70).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(70).setDepth(Depths.BUILDINGS_BG).setComplete(1),
 
         Building.New(Decor.BARREL).setTileX(67).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(67.5).setDepth(Depths.DECOR_FG),

@@ -16,7 +16,7 @@ const Stage2Model = {
     
     BUILDINGS: [
 
-        Building.New(Buildings.TENT1).setTileX(7.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT1).setTileX(7.5).setDepth(Depths.BUILDINGS_BG).setComplete(1),
         Building.New(Buildings.TENT2).setTileX(9).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.SIGN).setTileX(10).setDepth(Depths.BUILDINGS_BG),
         
@@ -30,7 +30,7 @@ const Stage2Model = {
         Building.New(Buildings.PLAYER_HOUSE).setTileX(17).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.WATER_PUMP).setTileX(19).setDepth(Depths.BUILDINGS_FG),
 
-        Building.New(Buildings.TENT2).setTileX(22).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT1).setTileX(22).setDepth(Depths.BUILDINGS_BG).setComplete(1),
         Building.New(Buildings.TENT2).setTileX(23).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HUT).setTileX(25).setDepth(Depths.BUILDINGS_BG),
     ],

@@ -25,8 +25,7 @@ const Stage1Model = {
         Building.New(Decor.BARREL).setTileX(10).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(10.5).setDepth(Depths.DECOR_FG),
 
-        Building.New(Buildings.TENT1).setTileX(13).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT2).setTileX(12).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT1).setTileX(12).setDepth(Depths.BUILDINGS_BG),
         
         Building.New(Decor.SIGN).setTileX(18).setDepth(Depths.DECOR_FG),
     ],

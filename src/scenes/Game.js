@@ -25,6 +25,7 @@ import Animations from "consts/Animations";
 import PlayerSpawner from "spawner/PlayerSpawner";
 import CivilianSpawner from "spawner/CivilianSpawner";
 import EnemySpawner from "spawner/EnemySpawner";
+import Dialogue from "../consts/Dialogue";
 
 class Game extends Phaser.Scene {
 
@@ -182,6 +183,7 @@ class Game extends Phaser.Scene {
             if (this.isAllHousesComplete()) {
                 let house = this.buildings.get(Buildings.PLAYER_HOUSE);
                 this.showIcon(house, -1, 'puff1');
+                addChatMessage('Professor', Dialogue.LEVEL_COMPLETE, Dialogue.TYPE_PLAYER);
                 this.soundManager.play(Sfx.LEVEL_COMPLETE);
                 this.counter.setActive(false);
             }

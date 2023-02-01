@@ -7,6 +7,8 @@ Add level 8
 
 *** ActionChain implement
 *** Signage
+*** UI loading screen
+*** Crystal effect on frozen prey (sparkle) (Emitter)
 
 Game Tutorial
 Game FX and particles
@@ -17,11 +19,9 @@ Fill in the info screen button (Story)
 Fill in the question button (controls)
 Fill in unlock screen (name characters)
 Unlock screen use for ITCN - name your CarryKins
-Add game effects
 Hit effects
+Collect effects  (Emitter)
 Fire effects 
-Collect effects 
-Crystal effect on frozen prey (sparkle)
 Split BGM and SFX
 
 Pale Kins for collection to citizen houses
@@ -56,7 +56,6 @@ create pools
 - Prey pool
 - Enemy Pool 
 - Collector pool
-Abstract spawner
 
 Webpack split into vendor and bundle
 Convert all sound files

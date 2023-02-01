@@ -1,13 +1,12 @@
 Build toward the game design document
 
-Redo level 5 (Pre Masjid)
-
 Level 5 just for Masjid
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
 HUD count active carrykins and set
+Player hit- more X less Y
 FIX: Civs cancel when no currency found
 Game Tutorial
 Game FX and particles

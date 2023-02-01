@@ -11,7 +11,8 @@ class BackgroundBuilder {
 
         for (let i=0; i<6; i++) {
 
-            let bg = scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', `bg${i}`).setOrigin(0).setScrollFactor(0);
+            let name = i === 5 ? `bg${i}` : `bg${i}`;
+            let bg = scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', name).setOrigin(0).setScrollFactor(0);
             bg.setDepth(Depths.BG_SCENE + i);
             bg.sf = (i * .15);
             bg.of = 0;

@@ -32,7 +32,7 @@ class Menu extends Phaser.Scene {
             }
         });
         
-        /**
+        /**/
         Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
         Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
         Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);

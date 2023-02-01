@@ -9,6 +9,7 @@ import BeeModel from "./BeeModel";
 const Stage1Model = {
 
     LENGTHS: 1,
+    ENEMIES: [],
    
     BUILDINGS: [
 

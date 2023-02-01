@@ -3,7 +3,7 @@ import WorldConsts from "../consts/WorldConsts";
 class SpritePhysics {
 
     static AddPhysics(sprite) {
-        sprite.setBounce(.1).setDrag(.03, 0).setCollideWorldBounds(true);
+        sprite.setBounce(.1).setDrag(.01, 0).setCollideWorldBounds(true);
         sprite.body.setGravity(0, WorldConsts.GRAVITY);
         sprite.body.useDamping = true;
     }

@@ -22,9 +22,9 @@ class PlayerController extends BaseController {
     hit() {
         //  Kickback from explosions
         let mul = Math.random() > .5 ? 1 : -1;
-        let velX = WorldConsts.WIDTH * mul;
+        let velX = WorldConsts.WIDTH * 1.3 * mul;
         this.sprite.setY(this.sprite.y - 16);
-        this.sprite.setVelocity(velX, -WorldConsts.HEIGHT * .5);
+        this.sprite.setVelocity(velX, -WorldConsts.HEIGHT * .1);
     }
 }
 export default PlayerController;

@@ -186,6 +186,9 @@ class Game extends Phaser.Scene {
                 this.counter.setActive(false);
             }
         }
+
+        let count = this.collisionGroupCollectors.countActive();
+        Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
     }
 
     overlapBulletPrey(bullet, enemy) {

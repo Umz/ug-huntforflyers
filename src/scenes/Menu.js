@@ -28,12 +28,12 @@ class Menu extends Phaser.Scene {
         this.time.addEvent({
             delay: 3000,
             callback: ()=>{
-                //Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
+                Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
             }
         });
+        
+        /**
         Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
-
-        /**/
         Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
         Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);
         Dom.SetDomIdVisibility(Consts.UI, true);

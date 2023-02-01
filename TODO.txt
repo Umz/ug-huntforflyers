@@ -1,12 +1,13 @@
 Build toward the game design document
 
 Redo level 5 (Pre Masjid)
+
 Level 5 just for Masjid
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
-Progression - increasing difficulties 
+Game Tutorial
 Game FX and particles
 Game controls full
 
@@ -21,7 +22,6 @@ Fire effects
 Collect effects 
 Crystal effect on frozen prey (sparkle)
 Split BGM and SFX
-All spawners stop when houses have been built
 
 Pale Kins for collection to citizen houses
 Clones run around the base

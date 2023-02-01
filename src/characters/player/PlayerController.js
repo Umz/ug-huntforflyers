@@ -1,10 +1,14 @@
 import BaseController from "classes/BaseController";
+import CtrWait from "actions/CtrWait";
 import WorldConsts from "../../consts/WorldConsts";
 
 class PlayerController extends BaseController {
 
     constructor(sprite) {
         super(sprite);
+
+        this.isFireReady = true;
+        this.cooldownTime = 200;
     }
 
     moveLeft() {
@@ -15,8 +19,13 @@ class PlayerController extends BaseController {
         this.spriteNew.setVelocityX(this.spriteNew.getSpeed());
     }
 
-    moveRecoil() {
-        this.spriteNew.setVelocityY(-10);
+    fireAction() {
+        if (this.isFireReady) {
+            this.isFireReady = false;
+            this.addActionNew(new CtrWait(this.cooldownTime).addCallback(()=>{
+                this.isFireReady = true;
+            }));
+        }
     }
 
     hit() {

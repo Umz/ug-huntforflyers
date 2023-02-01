@@ -64,8 +64,6 @@ class Controlpad {
     }
 
     action() {
-        if (this.controlTarget)
-            this.controlTarget.doAction();
     }
 
     weaponSwap() {

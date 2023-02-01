@@ -129,7 +129,7 @@ class Game extends Phaser.Scene {
         this.updateRunner.add(this.controlpad);
 
         this.controlpad.action = ()=>{
-            if (this.player.isState(States.MODE_HUNT) || this.player.isState(States.MODE_CANNON)) {
+            if (this.player.canFire()) {
                 this.player.fireBullet();
                 this.fireBullet();
             }
@@ -144,7 +144,7 @@ class Game extends Phaser.Scene {
         this.civSpawner = new CivilianSpawner(this);
 
         this.player = this.playerSpawner.spawnPlayer();
-        for (let i=0; i<1; i++)
+        for (let i=0; i<14; i++)
             this.playerSpawner.spawnCollector();
         
         let enemies = this.levelData.ENEMIES;
@@ -335,7 +335,6 @@ class Game extends Phaser.Scene {
         let tween = this.tweens.add({
             targets: icon,
             duration: 1000,
-            //scaleX: {from:0, to:1},
             scaleY: {from:0, to:1},
             ease: Phaser.Math.Easing.Back.Out
         });

@@ -36,6 +36,7 @@ class CtrCarryPreyHome extends Action {
 
     carryPrey() {
         let carryPoint = this.sprite.getTopCenter();
+        this.prey.setVelocity(0);
         this.prey.setPosition(carryPoint.x, carryPoint.y - 4);
     }
 }

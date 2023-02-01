@@ -15,8 +15,12 @@ class Player extends BaseSprite {
     }
 
     fireBullet() {
-        this.controller.moveRecoil();
+        this.controller.fireAction();
         this.view.showFireAnimation();
+    }
+
+    canFire() {
+        return (this.isState(States.MODE_HUNT) || this.isState(States.MODE_CANNON)) && this.controller.isFireReady;
     }
 
     updateCollision() {

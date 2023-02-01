@@ -8,7 +8,7 @@ const Textures = {
     BULLET_BIG: "bulletBig",
 
     ICON_HAMMER: "ic_hammer",
-    ICON_EMPTY: "ic_empty",
+    ICON_EMPTY: "ic_s",
     ICON_SPEECH: "ic_speech",
 }
 export default Textures;

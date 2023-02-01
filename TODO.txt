@@ -5,7 +5,9 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
-*** Hold fire gap
+*** ActionChain implement
+*** Signage
+
 Game Tutorial
 Game FX and particles
 Game controls full
@@ -46,9 +48,7 @@ Refactor Sfx names
 
 BG Dialogue
 Conversations
-Signage
 
-*** ActionChain implement
 Add chicken sprite
 Add rabbit sprite 
 

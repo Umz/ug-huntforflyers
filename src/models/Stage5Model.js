@@ -12,6 +12,7 @@ import RedBirdModel from "./RedBirdModel";
 const Stage5Model = {
 
     LENGTHS: 5,
+    CARRYKINS: 11,
     ENEMIES: [
         Characters.DRONE,
         Characters.BOMBER,

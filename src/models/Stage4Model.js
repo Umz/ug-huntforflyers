@@ -11,6 +11,7 @@ import Characters from "consts/Characters";
 const Stage3Model = {
 
     LENGTHS: 4,
+    CARRYKINS: 8,
     ENEMIES: [
         Characters.DRONE,
         Characters.BOMBER,

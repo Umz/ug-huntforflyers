@@ -10,6 +10,7 @@ import BeeModel from "./BeeModel";
 const Stage2Model = {
 
     LENGTHS: 2,
+    CARRYKINS: 2,
     ENEMIES: [
         Characters.DRONE
     ],

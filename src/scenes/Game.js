@@ -145,7 +145,8 @@ class Game extends Phaser.Scene {
         this.civSpawner = new CivilianSpawner(this);
 
         this.player = this.playerSpawner.spawnPlayer();
-        for (let i=0; i<14; i++)
+        let cks = this.levelData.CARRYKINS;
+        for (let i=0; i<cks; i++)
             this.playerSpawner.spawnCollector();
         
         let enemies = this.levelData.ENEMIES;

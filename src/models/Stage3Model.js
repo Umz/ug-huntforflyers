@@ -10,6 +10,7 @@ import BugModel from "./BugModel";
 const Stage3Model = {
 
     LENGTHS: 3,
+    CARRYKINS: 5,
     ENEMIES: [
         Characters.DRONE,
         Characters.PIP

@@ -18,41 +18,45 @@ class Controlpad {
     }
 
     addKeyboardControl() {
-        const scene = this.scene;
-        scene.input.keyboard.on('keydown-LEFT', (event) => { this.LEFT = true; });
-        scene.input.keyboard.on('keyup-LEFT', (event) => { this.LEFT = false });
-        scene.input.keyboard.on('keydown-RIGHT', (event) => { this.RIGHT = true });
-        scene.input.keyboard.on('keyup-RIGHT', (event) => { this.RIGHT = false });
-        scene.input.keyboard.on('keydown-ENTER', (event) => { this.action() });
-        scene.input.keyboard.on('keydown-DOWN', (event) => { this.weaponSwap() });
-        scene.input.keyboard.on('keydown-Z', (event) => { this.action() });
 
-        scene.input.keyboard.on('keydown-A', (event) => { this.LEFT = true; });
-        scene.input.keyboard.on('keyup-A', (event) => { this.LEFT = false });
-        scene.input.keyboard.on('keydown-D', (event) => { this.RIGHT = true });
-        scene.input.keyboard.on('keyup-D', (event) => { this.RIGHT = false });
-        scene.input.keyboard.on('keydown-S', (event) => { this.action() });
-        scene.input.keyboard.on('keydown-E', (event) => { this.weaponSwap() });
+        let scene = this.scene;
+        let rightKeys = ['RIGHT', 'D'];
+        let leftKeys = ['LEFT', 'A'];
+        let upKeys = ['UP', 'W'];
+        let downKeys = ['DOWN', 'S'];
 
-        scene.input.keyboard.on('keydown-W', (event) => {
-            const target = this.controlTarget.target;
-            const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
-            addChatMessage('Professor', `Standing at tile ${tileX}`)
-        });
-        scene.input.keyboard.on('keydown-UP', (event) => {
-            const target = this.controlTarget.target;
-            const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
-            addChatMessage('Professor', `Standing at tile ${tileX}`)
-        });
+        let actionKeys = ['ENTER', 'Z', 'SPACE'];
+
+        for (let key of rightKeys) {
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.RIGHT = true });
+            scene.input.keyboard.on(`keyup-${key}`, (event) => { this.RIGHT = false });
+        }
+
+        for (let key of leftKeys) {
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.LEFT = true });
+            scene.input.keyboard.on(`keyup-${key}`, (event) => { this.LEFT = false });
+        }
+
+        for (let key of upKeys)
+            scene.input.keyboard.on(`keydown-${key}`, (event) => {
+                const target = this.controlTarget.target;
+                const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
+                addChatMessage('Professor', `Standing at tile ${tileX}`)
+            });
+
+        for (let key of downKeys)
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.weaponSwap() });
+
+        for (let key of actionKeys) {
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.action() });
+            scene.input.keyboard.on(`keyup-${key}`, (event) => {
+                this.scene.player.controller.isFireReady = true;    // HACK
+            });
+        }
 
         scene.input.keyboard.on('keydown-P', (event) => {
             GameSave.IncScore(101);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
-        });
-
-        scene.input.keyboard.on('keydown-L', (event) => {
-            scene.showIcon(scene.player, 2000, 'decor_sign2')
-            console.log('Level Complete?', scene.isAllHousesComplete())
         });
 
         scene.input.keyboard.on('keydown-ONE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE1 }) });

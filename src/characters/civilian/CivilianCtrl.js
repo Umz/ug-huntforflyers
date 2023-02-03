@@ -3,21 +3,20 @@ import CtrWait from "actions/CtrWait";
 import CtrMoveToX from "actions/CtrMoveToX";
 import Buildings from "../../consts/Buildings";
 import GameSave from "../../components/GameSave";
-import Dom from "../../components/Dom";
 import Sfx from "../../consts/Sfx";
 import Textures from "../../consts/Textures";
+import ActionChain from "../../classes/ActionChain";
 
 class CivilianCtrl extends BaseController {
 
     constructor(sprite) {
         super(sprite);
         this.scene = sprite.scene;
-        this.addNoActionListener();     // DELETE after Base removed
     }
 
     setDefaultActions() {
 
-        if (GameSave.GetScore() > 0 && !this.spriteNew.isHomeComplete()) {
+        if (GameSave.GetScore() > 0 && !this.sprite.isHomeComplete()) {
             this.gotoLabTable();
         }
         else {
@@ -38,32 +37,32 @@ class CivilianCtrl extends BaseController {
 
     speakAndWait() {
         this.scene.showIcon(this.sprite, 3000, Textures.ICON_SPEECH);
-        this.spriteNew.setVelocityY(-32);
-        this.addActionNew(new CtrWait(3000));
+        this.sprite.setVelocityY(-32);
+        this.addAction(new CtrWait(3000));
     }
 
     waitRandomTime() {
         let rand = Phaser.Math.Between(3000, 7000);
-        this.addActionNew(new CtrWait(rand));
+        this.addAction(new CtrWait(rand));
     }
 
     move100() {
 
         let levelWidth = this.scene.getLevelWidth();
-        let randX = this.spriteNew.x + (Math.random() > .5 ? -1 : 1) * 100;
+        let randX = this.sprite.x + (Math.random() > .5 ? -1 : 1) * 100;
         let toX = Phaser.Math.Wrap(randX, 32, levelWidth - 32);
 
-        this.addActionNew(new CtrMoveToX(this.spriteNew, toX));
+        this.addAction(new CtrMoveToX(this.sprite, toX));
     }
 
     returnHome() {
-        let homeX = this.spriteNew.getHomeX();
-        this.addActionNew(new CtrMoveToX(this.spriteNew, homeX));
+        let homeX = this.sprite.getHomeX();
+        this.addAction(new CtrMoveToX(this.sprite, homeX));
     }
 
     gotoLabTable() {
         let tableX = this.scene.getBuilding(Buildings.LAB_TABLE).worldX;
-        this.addActionNew(new CtrMoveToX(this.spriteNew, tableX).addCallback(()=>{
+        this.addAction(new CtrMoveToX(this.sprite, tableX).addCallback(()=>{
             this.collectCoin();
         }));
     }
@@ -75,7 +74,7 @@ class CivilianCtrl extends BaseController {
 
         let coins = GameSave.UpdateScoreAndDom(-10);
         if (coins > 0)
-            this.addActionNew(new CtrWait(1000).addCallback(()=>{
+            this.addAction(new CtrWait(1000).addCallback(()=>{
                 this.sprite.setCoins(coins);
 
                 this.scene.showIcon(this.sprite, 3000, Textures.ICON_HAMMER);
@@ -88,15 +87,29 @@ class CivilianCtrl extends BaseController {
 
     returnHomeAndDepositCoin() {
         let sndM = this.scene.soundManager;
-        let homeX = this.spriteNew.getHomeX();
-        this.addActionNew(new CtrMoveToX(this.spriteNew, homeX).addCallback(()=>{
-            this.spriteNew.addCoinsToHome();
+        let homeX = this.sprite.getHomeX();
+        this.addAction(new CtrMoveToX(this.sprite, homeX).addCallback(()=>{
+            this.sprite.addCoinsToHome();
             this.scene.showIcon(this.sprite, 3000, Textures.ICON_HAMMER);
             this.waitRandomTime();
 
             let sound = this.sprite.isHomeComplete() ? Sfx.CIV_BUILD_COMPLETE : Sfx.CIV_BUILDING;
             sndM.playLimited(sound);
         }));
+    }
+
+    actionChain() {
+
+        let act1 = new CtrWait(100).addCallback(()=>{ addChatMessage('Civ', 1) });
+        let act2 = new CtrWait(1000).addCallback(()=>{ addChatMessage('Civ', 2) });
+        let act3 = new CtrWait(100).addCallback(()=>{ addChatMessage('Civ', 3) });
+        
+        let chain = new ActionChain()
+            .chain(act1)
+            .chain(act2)
+            .chain(act3);
+
+        this.addAction(chain);
     }
 }
 export default CivilianCtrl;

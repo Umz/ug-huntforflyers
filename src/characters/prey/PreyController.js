@@ -14,15 +14,15 @@ class PreyController extends BaseController {
     }
 
     addInitialSpawnStateChange() {
-        this.addActionNew(new CtrPreyInitial(this.spriteNew));
+        this.addAction(new CtrPreyInitial(this.sprite));
     }
 
     addFlying() {
-        this.addActionNew(new CtrPreyFly(this.spriteNew));
+        this.addAction(new CtrPreyFly(this.sprite));
     }
 
     addLocalMovement() {
-        this.addActionNew(new CtrPreyLocalFlight(this.spriteNew));
+        this.addAction(new CtrPreyLocalFlight(this.sprite));
     }
 }
 export default PreyController;

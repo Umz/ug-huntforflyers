@@ -5,12 +5,8 @@ Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
-*** Signage
-*** UI loading screen
-*** Crystal effect on frozen prey (sparkle) (Emitter)
-*** All Action keys set in loop (key up, release hold timer)
-*** Refactor BaseController unify function names and clean
-
+Signage
+Crystal effect on frozen prey (sparkle) (Emitter)
 Refactor Base and BaseController - update in controller not in Base
 Game Tutorial (bonus currency completion)
 Game FX and particles

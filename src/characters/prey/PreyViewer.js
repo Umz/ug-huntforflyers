@@ -16,16 +16,16 @@ class PreyViewer extends BaseController {
     }
 
     addFlappingAnimation() {
-        this.spriteNew.anims.play(this.model.animation);
+        this.sprite.anims.play(this.model.animation);
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew).setDefaultFaceRight(false));
+        this.addAction(new ViewDirection(this.sprite).setDefaultFaceRight(false));
     }
 
     addSpawnStateChange() {
-        this.addActionNew(new CtrListenStateChange(this.spriteNew, States.NORMAL).addCallback(()=>{
-            this.spriteNew.setDepth(Depths.ENEMIES);
+        this.addAction(new CtrListenStateChange(this.sprite, States.NORMAL).addCallback(()=>{
+            this.sprite.setDepth(Depths.ENEMIES);
         }));
     }
 }   

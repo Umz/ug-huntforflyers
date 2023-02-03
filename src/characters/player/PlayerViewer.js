@@ -14,22 +14,22 @@ class Playerviewer extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew));
+        this.addAction(new ViewDirection(this.sprite));
     }
 
     addAnimation() {
-        this.addActionNew(new ViewRunStop(this.spriteNew));
+        this.addAction(new ViewRunStop(this.sprite));
     }
 
     showFireAnimation() {
         
-        this.spriteNew.clearTint();
-        this.spriteNew.setTintFill(0xFFFFFF);
+        this.sprite.clearTint();
+        this.sprite.setTintFill(0xFFFFFF);
 
         this.scene.time.addEvent({
             delay: 100,
             callback: ()=>{
-                this.spriteNew.clearTint();
+                this.sprite.clearTint();
             }
         });
     }

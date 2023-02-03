@@ -10,12 +10,12 @@ class ThiefView extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew));
+        this.addAction(new ViewDirection(this.sprite));
     }
 
     playFlyingAnimation() {
-        let model = this.spriteNew.model;
-        this.spriteNew.anims.play(model.idle, true);
+        let model = this.sprite.model;
+        this.sprite.anims.play(model.idle, true);
     }
 }
 export default ThiefView;

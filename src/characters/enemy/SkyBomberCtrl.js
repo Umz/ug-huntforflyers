@@ -18,13 +18,11 @@ class ThiefCtrl extends BaseController {
     constructor(sprite) {
         super(sprite);
         this.scene = sprite.scene;
-        
-        this.addNoActionListener();     // DELETE after Base removed
     }
     
     setDefaultActions() {
-        this.addActionNew(new CtrEnemyFly(this.spriteNew));
-        this.addActionNew(new CtrWait(Phaser.Math.Between(4000, 7000)).addCallback(()=>{
+        this.addAction(new CtrEnemyFly(this.sprite));
+        this.addAction(new CtrWait(Phaser.Math.Between(4000, 7000)).addCallback(()=>{
             this.loadRocket();
             this.moveToPlayer();
         }));
@@ -33,7 +31,7 @@ class ThiefCtrl extends BaseController {
     loadRocket() {
         let rocket = this.scene.addRocketToScene();
         let act = new CtrCarryRocket(this.sprite, rocket);
-        this.addActionNew(act);
+        this.addAction(act);
         this.rocket = rocket;
     }
 
@@ -42,7 +40,7 @@ class ThiefCtrl extends BaseController {
         act.addCallback(()=>{
             this.dropRocket();
         });
-        this.addActionNew(act);
+        this.addAction(act);
     }
 
     dropRocket() {

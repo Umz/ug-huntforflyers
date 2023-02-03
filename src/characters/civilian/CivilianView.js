@@ -11,11 +11,11 @@ class CivilianView extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew));
+        this.addAction(new ViewDirection(this.sprite));
     }
 
     addAnimationListener() {
-        this.addActionNew(new ViewRunIdle(this.spriteNew));
+        this.addAction(new ViewRunIdle(this.sprite));
     }
 }
 export default CivilianView;

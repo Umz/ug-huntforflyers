@@ -1,5 +1,5 @@
 import Action from "classes/Action";
-import Actions from "../consts/Actions";
+import Actions from "consts/Actions";
 
 class CtrFindCoin extends Action {
 
@@ -8,8 +8,6 @@ class CtrFindCoin extends Action {
 
         this.sprite = sprite;
         this.scene = sprite.scene;
-
-        this.init = true;
     }
 
     subclassUpdate(time, delta) {
@@ -32,12 +30,10 @@ class CtrFindCoin extends Action {
             this.target = this.scene.getClosestCoin(this.sprite);
             this.sprite.setVelocityX(0);
         }
+    }
 
-        //  Initial Jump
-        if (this.init) {
-            this.sprite.setVelocityY(-32);
-            this.init = false;
-        }
+    init() {
+        this.sprite.setVelocityY(-32);
     }
 }
 export default CtrFindCoin;

@@ -12,17 +12,17 @@ class PlayerController extends BaseController {
     }
 
     moveLeft() {
-        this.spriteNew.setVelocityX(-this.spriteNew.getSpeed());
+        this.sprite.setVelocityX(-this.sprite.getSpeed());
     }
 
     moveRight() {
-        this.spriteNew.setVelocityX(this.spriteNew.getSpeed());
+        this.sprite.setVelocityX(this.sprite.getSpeed());
     }
 
     fireAction() {
         if (this.isFireReady) {
             this.isFireReady = false;
-            this.addActionNew(new CtrWait(this.cooldownTime).addCallback(()=>{
+            this.addAction(new CtrWait(this.cooldownTime).addCallback(()=>{
                 this.isFireReady = true;
             }));
         }

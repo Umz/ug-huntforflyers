@@ -12,8 +12,6 @@ class CollectorCtrl extends BaseController {
     constructor(sprite) {
         super(sprite);
         this.scene = sprite.scene;
-
-        this.addNoActionListener();
     }
 
     setDefaultActions() {
@@ -21,20 +19,20 @@ class CollectorCtrl extends BaseController {
         let player = this.scene.player;
         let distance = Math.random() * 4 + 1;
 
-        this.addActionNew(new CtrFollowSprite(this.spriteNew, player).setDistance(distance));
-        this.addActionNew(new CtrListenFrozen(this.spriteNew).addCallback(()=>{
+        this.addAction(new CtrFollowSprite(this.sprite, player).setDistance(distance));
+        this.addAction(new CtrListenFrozen(this.sprite).addCallback(()=>{
             this.moveToFrozenPrey();
         }));
     }
 
     moveToFrozenPrey() {
 
-        let prey = this.scene.getClosestFrozen(this.spriteNew);
-        this.addActionNew(new CtrMoveToPrey(this.spriteNew, prey).addCallback(()=>{
+        let prey = this.scene.getClosestFrozen(this.sprite);
+        this.addAction(new CtrMoveToPrey(this.sprite, prey).addCallback(()=>{
             this.carryPreyToCollectionPoint(prey);
         }));
 
-        this.spriteNew.removeAction(Actions.ACT_FOLLOW_TARGET);
+        this.sprite.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
     
     carryPreyToCollectionPoint(prey) {
@@ -45,7 +43,7 @@ class CollectorCtrl extends BaseController {
             prey.setCarriedCollision();
             prey.setDepth(Depths.ENEMIES_CARRIED);
 
-            this.addActionNew(new CtrCarryPreyHome(this.spriteNew, prey));
+            this.addAction(new CtrCarryPreyHome(this.sprite, prey));
         }
     }
 }

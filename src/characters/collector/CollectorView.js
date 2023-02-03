@@ -11,11 +11,11 @@ class CollectorView extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew));
+        this.addAction(new ViewDirection(this.sprite));
     }
 
     addAnimations() {
-        this.addActionNew(new ViewCollectorAnim(this.spriteNew));
+        this.addAction(new ViewCollectorAnim(this.sprite));
     }
 }
 export default CollectorView;

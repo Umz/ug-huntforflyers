@@ -16,41 +16,39 @@ class ThiefCtrl extends BaseController {
     constructor(sprite) {
         super(sprite);
         this.scene = sprite.scene;
-        
-        this.addNoActionListener();     // DELETE after Base removed
     }
     
     setDefaultActions() {
 
-        this.addActionNew(new CtrEnemyFly(this.spriteNew));
+        this.addAction(new CtrEnemyFly(this.sprite));
 
         let player = this.scene.player;
         let distance = Phaser.Math.Between(6, 11);
-        this.addActionNew(new CtrFollowSprite(this.spriteNew, player).setDistance(distance));
+        this.addAction(new CtrFollowSprite(this.sprite, player).setDistance(distance));
 
-        this.addActionNew(new CtrListenFrozen(this.spriteNew).listenForCarried().addCallback(()=>{
+        this.addAction(new CtrListenFrozen(this.sprite).listenForCarried().addCallback(()=>{
             this.moveToFrozenPrey();
         }));
     }
 
     moveToFrozenPrey() {
 
-        let prey = this.scene.getClosestFrozen(this.spriteNew, [States.FROZEN, States.CARRIED]);
+        let prey = this.scene.getClosestFrozen(this.sprite, [States.FROZEN, States.CARRIED]);
         
-        this.addActionNew(new CtrMoveToTargetX(this.spriteNew, prey).addCallback(()=>{
+        this.addAction(new CtrMoveToTargetX(this.sprite, prey).addCallback(()=>{
             this.dropToCollect(prey);
         }));
         
-        this.spriteNew.removeAction(Actions.ACT_FOLLOW_TARGET);
+        this.sprite.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
 
     dropToCollect(prey) {
         
         if (prey.isState(States.FROZEN) || prey.isState(States.CARRIED)) {
-            this.addActionNew(new CtrStealDive(this.spriteNew, prey).addCallback(()=>{
+            this.addAction(new CtrStealDive(this.sprite, prey).addCallback(()=>{
                 this.attemptToSteal(prey);
             }));
-            this.spriteNew.removeAction(Actions.ACT_ENEMY_FLY);
+            this.sprite.removeAction(Actions.ACT_ENEMY_FLY);
         }
         else {
             this.clearAllActions();
@@ -62,7 +60,7 @@ class ThiefCtrl extends BaseController {
         if (prey.isState(States.FROZEN) || prey.isState(States.CARRIED)) {
             prey.setDepth(Depths.ENEMIES_STOLEN);
             prey.setStolenCollision();
-            this.addActionNew(new CtrSteal(this.spriteNew, prey));
+            this.addAction(new CtrSteal(this.sprite, prey));
 
             let sndM = this.scene.soundManager;
             sndM.playSound(Sfx.THIEF_STEAL);
@@ -75,14 +73,14 @@ class ThiefCtrl extends BaseController {
     hit() {
         
         this.clearAllActions();
-        this.addActionNew(new CtrBlank(this.spriteNew));
+        this.addAction(new CtrBlank(this.sprite));
         
-        this.spriteNew.setState(States.CRASHING);
+        this.sprite.setState(States.CRASHING);
 
-        this.spriteNew.setAngularVelocity(90);
-        this.spriteNew.setAccelerationY(10);
-        if (this.spriteNew.body.velocity.y <= 5)
-            this.spriteNew.setVelocityY(10);
+        this.sprite.setAngularVelocity(90);
+        this.sprite.setAccelerationY(10);
+        if (this.sprite.body.velocity.y <= 5)
+            this.sprite.setVelocityY(10);
 
         //  Blow up just above ground level
         if (this.sprite.isDead()) {

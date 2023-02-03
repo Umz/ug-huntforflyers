@@ -11,11 +11,11 @@ class CoinerView extends BaseController {
     }
 
     addDirectionTracking() {
-        this.addActionNew(new ViewDirection(this.spriteNew));
+        this.addAction(new ViewDirection(this.sprite));
     }
 
     playAnimation() {
-        this.addActionNew(new ViewRunStop(this.spriteNew));
+        this.addAction(new ViewRunStop(this.sprite));
     }
 }
 export default CoinerView;

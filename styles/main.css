@@ -27,17 +27,3 @@ body {
 #phaser-game {
     z-index: 10;
 }
-
-.game-overlay {
-    position: absolute;
-    overflow: hidden;
-}
-
-#game-menu-bg-cover {
-    display: none;
-    top: 0;
-    z-index: 11;
-
-    opacity: .4;
-    background: #000000;
-}

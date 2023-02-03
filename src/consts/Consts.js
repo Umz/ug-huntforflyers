@@ -9,7 +9,7 @@ const Consts = {
     BOOT_CONTAINER: "boot-container",
     BOOT_LOGO_FADE: "boot-fade-out",
 
-    MENU_BG: "game-menu-bg-cover",
+    LOADING: "loading-container",
 
     MENU_MAIN_CLASS: "title-menu-option",
     MENU_MAIN_SELECTED: "title-menu-selected",

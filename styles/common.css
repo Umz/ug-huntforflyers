@@ -22,3 +22,8 @@
 .hud-overlay {
     position: absolute;
 }
+
+.game-overlay {
+    position: absolute;
+    overflow: hidden;
+}

@@ -40,3 +40,26 @@
     0%   { opacity: 1; }
     100% { opacity: 0; }
 }
+
+/* LOADING CONTAINER */
+
+#loading-container {
+    display: none;
+    position: absolute;
+    bottom: 1px;
+    background-color: #000;
+    z-index: 105;
+    pointer-events: none;
+}
+
+#loading-logo {
+    position: absolute;
+    width: 10%;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+}
+
+.spaced-letters {
+    letter-spacing: calc(.1em + .5vmin);
+}

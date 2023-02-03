@@ -17,8 +17,8 @@ class Load extends Phaser.Scene {
         let fromScene = data.fromScene || Consts.GAME_SCENE;
         let stageData = data.stageData || Levels.STAGE1;
 
-        Dom.SetDomIdOpacity(Consts.MENU_BG, 0);
-        Dom.SetDomIdVisibility(Consts.MENU_BG, true);
+        Dom.SetDomIdOpacity(Consts.LOADING, 0);
+        Dom.SetDomIdVisibility(Consts.LOADING, true);
 
         let timeline = this.tweens.createTimeline();
         timeline.add({
@@ -26,7 +26,7 @@ class Load extends Phaser.Scene {
             alpha: {start: 0, from:0, to:1},
             duration: 500,
             onUpdate: ()=>{
-                Dom.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+                Dom.SetDomIdOpacity(Consts.LOADING, cover.alpha);
             },
             onComplete: ()=>{
                 this.scene.stop(fromScene);
@@ -46,11 +46,11 @@ class Load extends Phaser.Scene {
             alpha: {from:1, to:0},
             duration: 500,
             onUpdate: ()=>{
-                Dom.SetDomIdOpacity(Consts.MENU_BG, cover.alpha);
+                Dom.SetDomIdOpacity(Consts.LOADING, cover.alpha);
             },
             onComplete: ()=>{
-                Dom.SetDomIdVisibility(Consts.MENU_BG, false);
-                Dom.SetDomIdOpacity(Consts.MENU_BG, .4);
+                Dom.SetDomIdVisibility(Consts.LOADING, false);
+                Dom.SetDomIdOpacity(Consts.LOADING, .4);
                 this.scene.stop();
             }
         });

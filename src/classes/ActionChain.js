@@ -14,7 +14,7 @@ class ActionChain {
             this.actions.shift();
     }
     
-    add(action) {
+    chain(action) {
         this.actions.push(action);
         this.name += action.name;
         return this;

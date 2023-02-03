@@ -18,6 +18,11 @@ class BaseController {
         //this.addNoActionListener();
     }
 
+    addAction(action) {
+        this.spriteNew.addAction(action);
+        this.allActionNames.add(action.name);
+    }
+
     addActionNew(action) {
         this.spriteNew.addAction(action);
         this.allActionNames.add(action.name);
@@ -29,12 +34,6 @@ class BaseController {
 
     addNoActionListener() {
         this.spriteNew.addAction(new CtrNoActionListener(this, this.spriteNew));
-    }
-
-    addAction(action, addToClearable = true) {
-        this.target.addUpdateFn(action.name, action);
-        if (addToClearable)
-            this.clearableActions.add(action.name);
     }
 
     clearAllActions() {

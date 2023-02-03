@@ -1,5 +1,7 @@
 const Actions = {
 
+    ACT_CHAIN: "actionChain_",
+
     ACT_PREY_INIT: "initialMovementAfterSpawn",
     ACT_PREY_FLY: "keepFlyingInTheAir",
     ACT_PREY_LOCAL_X: "movingInTheLocalArea",

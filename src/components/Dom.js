@@ -17,6 +17,11 @@ class Dom {
         element.classList.add(className);
     }
 
+    static RemoveClassFromDomById(id, className) {
+        let element = document.getElementById(id);
+        element.classList.remove(className);
+    }
+
     static SetDomIdOpacity(id, opacity) {
         document.getElementById(id).style.opacity = opacity;
     }

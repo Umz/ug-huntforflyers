@@ -44,14 +44,14 @@
 /* LOADING CONTAINER */
 
 #loading-container {
-    display: none;
+    visibility: hidden;
     position: absolute;
     bottom: 1px;
     background-color: #000;
     z-index: 105;
     pointer-events: none;
+    opacity: 0;
 }
-
 #loading-logo {
     position: absolute;
     width: 10%;
@@ -59,7 +59,17 @@
     bottom: 0;
     padding: 20px;
 }
-
 .spaced-letters {
     letter-spacing: calc(.1em + .5vmin);
+}
+
+.loading-fading {
+    animation: loading-anim 4s ease-out 0s;
+    animation-fill-mode: forwards;
+}
+@keyframes loading-anim {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    60% { opacity: 1; }
+    100% { opacity: 0; }
 }

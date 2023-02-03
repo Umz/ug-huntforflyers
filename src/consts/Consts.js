@@ -10,6 +10,7 @@ const Consts = {
     BOOT_LOGO_FADE: "boot-fade-out",
 
     LOADING: "loading-container",
+    LOADING_ANIM: "loading-fading",
 
     MENU_MAIN_CLASS: "title-menu-option",
     MENU_MAIN_SELECTED: "title-menu-selected",

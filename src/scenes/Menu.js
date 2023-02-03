@@ -24,16 +24,8 @@ class Menu extends Phaser.Scene {
 
         Dom.AddClassToDomId(Consts.BOOT_CONTAINER, Consts.BOOT_LOGO_FADE);
         Dom.ResetClick(Consts.MAIN_PLAY_BUTTON);
-
-        this.time.addEvent({
-            delay: 3000,
-            callback: ()=>{
-                Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
-            }
-        });
         
         /**
-        Dom.SetDomIdDisplay(Consts.BOOT_CONTAINER, false);
         Dom.SetDomIdVisibility(Consts.MAIN_MENU, false);
         Dom.SetDomIdVisibility(Consts.MAIN_LOGO, false);
         Dom.SetDomIdVisibility(Consts.UI, true);

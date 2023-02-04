@@ -14,6 +14,11 @@ class Counter {
             this.counter += delta;
     }
 
+    updateAndCheck(time, delta) {
+        this.update(time, delta);
+        return this.isComplete();
+    }
+
     setRepeating(bool) {
         this.isRepeating = bool;
         return this;

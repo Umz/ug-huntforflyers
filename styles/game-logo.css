@@ -57,7 +57,7 @@
     width: 10%;
     right: 0;
     bottom: 0;
-    padding: 20px;
+    padding: 40px;
 }
 .spaced-letters {
     letter-spacing: calc(.1em + .5vmin);

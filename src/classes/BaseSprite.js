@@ -39,6 +39,10 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
         this.actionMap.delete(actionName);
     }
 
+    clearActions() {
+        this.actionMap.clear();
+    }
+
     hit(dmg = 1) {
         this.hp -= dmg;
 

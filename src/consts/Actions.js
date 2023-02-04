@@ -31,5 +31,6 @@ const Actions = {
     VIEW_COLLECTOR_ANIMATION: "collectorAnimation",
     VIEW_RUN_IDLE: "playRunOrIdleAnimation",
     VIEW_RUN_STOP: "playRunOrStopAnimation",
+    VIEW_SPARKLE: "flashAndEmitter"
 }
 export default Actions;

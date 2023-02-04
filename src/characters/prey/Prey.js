@@ -17,14 +17,17 @@ class Prey extends BaseSprite {
     }
 
     freeze() {
+        
         this.setAcceleration(0);
         this.setVelocity(0);
         this.setTint(this.getTint());
-        this.setActive(false);
         this.setState(States.FROZEN);
 
         this.setFrozenCollision();
         SpritePhysics.AddGroundDrag(this);
+
+        this.clearActions();
+        this.view.addFlashing();
     }
 
     setFrozenCollision() {

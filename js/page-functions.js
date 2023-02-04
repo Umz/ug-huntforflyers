@@ -56,6 +56,11 @@ function addChatMessage(speaker, message, cssClass) {
     box.scrollTop = box.scrollHeight;
 }
 
+function clearChat() {
+    let box = document.getElementById('chatbox-container');
+    box.innerHTML = "";
+}
+
 function selectedMenuElementAction(className) {
     let active = document.getElementsByClassName(className)[0];
     active.clickAction();

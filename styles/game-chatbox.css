@@ -51,6 +51,22 @@
     color: skyblue;
 }
 
+.tutorial {
+    font-style: italic;
+}
+.tutorial-command {
+    font-style: italic;
+    color: #ff0;
+}
+.tutorial-success {
+    font-style: italic;
+    color: #0f0;
+}
+.tutorial-mistake {
+    font-style: italic;
+    color: #f44;
+}
+
 .fade-in {
     opacity: 1;
     animation-name: fadeInOpacity;

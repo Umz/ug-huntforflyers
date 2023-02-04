@@ -1,5 +1,8 @@
 Build toward the game design document
 
+*** Citizens collect exact amount with MAX
+*** switch showMessage to Dom.ShowMessage
+
 Level 5 just for Masjid
 Redo level 6
 Add level 7 - Ranch + all.
@@ -8,7 +11,6 @@ Add level 8
 Signage
 Crystal effect on frozen prey (sparkle) (Emitter)
 Refactor Base and BaseController - update in controller not in Base
-Game Tutorial (bonus currency completion)
 Game FX and particles
 Game controls full
 

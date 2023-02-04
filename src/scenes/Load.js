@@ -25,6 +25,7 @@ class Load extends Phaser.Scene {
             delay: transition,
             callback: ()=>{
                 GameSave.SetStage(stageData);
+                Dom.ClearChatBox();
                 this.scene.stop(fromScene);
                 this.scene.launch(nextScene);
             }

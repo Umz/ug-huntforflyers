@@ -53,5 +53,9 @@ class Dom {
         let element = document.getElementById(id);
         element.classList.add(activeClass);
     }
+
+    static ClearChatBox() {
+        clearChat();
+    }
 }
 export default Dom;

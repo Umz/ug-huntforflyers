@@ -5,11 +5,14 @@ import Building from "../classes/Building";
 import PlantType from "../consts/PlantType";
 import Forest from "../classes/Forest";
 import BeeModel from "./BeeModel";
+import Tutorial1 from "../tutorials/Tutorial1";
 
 const Stage1Model = {
 
     LENGTHS: 1,
     CARRYKINS: 0,
+    TUTORIAL: Tutorial1,
+
     ENEMIES: [],
    
     BUILDINGS: [

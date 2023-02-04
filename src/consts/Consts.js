@@ -20,6 +20,11 @@ const Consts = {
     MAIN_PLAY_BUTTON: "menu-play",
 
     CHATBOX: "chatbox-container",
+    CHATBOX_TUTORIAL: "tutorial",
+    CHATBOX_TUT_SUCCESS: "tutorial-success",
+    CHATBOX_TUT_COMMAND: "tutorial-command",
+    CHATBOX_TUT_MISTAKE: "tutorial-mistake",
+
     // Refactor UIs to HUD
     UI: "stats-container",
     UI_PAUSE_BUTTON: "pause-container",

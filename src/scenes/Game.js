@@ -168,6 +168,10 @@ class Game extends Phaser.Scene {
         this.levelComplete = false;
         this.counter = Counter.New().setRepeating(true).setMaxCount(3000);
 
+        let TutClass = this.levelData.TUTORIAL;
+        if (TutClass)
+            this.updateRunner.add(new TutClass(this));
+
         /*
         this.soundManager.play(Sfx.BGM_LEVEL);
         this.events.on('shutdown', ()=>{

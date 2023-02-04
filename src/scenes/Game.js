@@ -256,32 +256,6 @@ class Game extends Phaser.Scene {
             this.debrisEmitter = emitter;
         }
 
-        CreateSplatEmitter: {
-
-            let box = new Phaser.Geom.Rectangle(0, 0, 16, 2);
-            let particle = this.add.particles('background', 'fx_sparkle');
-            particle.depth = Depths.ENEMIES + 1;
-
-            let emitter = particle.createEmitter({
-                x: 0,
-                y: 0,
-                tint: 0xFF0000,
-                speedX: { min: -23, max: 23 },
-                speedY: { min: -64, max: -80 },
-                alpha: { start: 1, end: .2 },
-                scaleX: {start: 1.5, end: .5 },
-                scaleY: {start: 1.5, end: .5 },
-                rotate: {start: 0, end: 90, random: true},
-                gravityY: 120,
-                emitZone: box,
-                
-                lifespan: 1000,
-                frequency: -1
-            });
-            emitter.stop();
-            this.debrisEmitter = emitter;
-        }
-
         /*
         this.soundManager.play(Sfx.BGM_LEVEL);
         this.events.on('shutdown', ()=>{
@@ -381,10 +355,13 @@ class Game extends Phaser.Scene {
 
     overlapCoinerPlayers(coiner, player) {
         if (player.isState(States.MODE_TANK)) {
+            
+            this.soundManager.play(Sfx.HIT_COINER);
+            this.debrisEmitter.explode(30, coiner.x, coiner.y);
+
             this.collisionGroupCoiners.remove(coiner);
             coiner.kill();
             coiner.destroy();
-            this.soundManager.play(Sfx.HIT_COINER);
         }
     }
 

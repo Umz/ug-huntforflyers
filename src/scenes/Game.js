@@ -86,6 +86,16 @@ class Game extends Phaser.Scene {
         this.collectGroup = this.add.group({
             defaultKey: Textures.WHITE_SQUARE
         });
+        this.skyExplodeGroup = this.add.group({
+            defaultKey: 'background',
+            defaultFrame: 'skyExplosion1',
+            runChildUpdate: true
+        });
+        this.groundExplodeGroup = this.add.group({
+            defaultKey: 'background',
+            defaultFrame: 'groundExplode0',
+            runChildUpdate: true
+        });
 
         this.rocketGroup = this.physics.add.group({
             classType: Rocket,
@@ -181,8 +191,9 @@ class Game extends Phaser.Scene {
         if (TutClass)
             this.updateRunner.add(new TutClass(this));
 
+        CreateSparkleEmitter: {
+                
             // Create the particle
-
             let particle = this.add.particles('background', 'fx_sparkle');
             particle.depth = Depths.ENEMIES + 1;
 
@@ -196,11 +207,80 @@ class Game extends Phaser.Scene {
                 frequency: -1
             });
             emitter.stop();
-
             this.fxEmitter = emitter;
+        }
 
-        for (let i=0; i<10; i++)
-            this.addCoin(3);
+        CreatePuffEmitter: {
+            let particle = this.add.particles('background', 'puff2');
+            particle.depth = Depths.ENEMIES + 1;
+
+            let emitter = particle.createEmitter({
+                x: 0,
+                y: 0,
+                tint: 0x333333,
+                speedX: { min: -24, max: 24 },
+                speedY: { min: -2, max: -40 },
+                alpha: { start: 1, end: 0 },
+                scaleX: {start: .2, end: 2 },
+                scaleY: {start: .2, end: 2 },
+                lifespan: 500,
+                frequency: -1
+            });
+            emitter.stop();
+            this.smokeEmitter = emitter;
+        }
+
+        CreateDerbisEmitter: {
+
+            let box = new Phaser.Geom.Rectangle(0, 0, 16, 2);
+            let particle = this.add.particles('background', 'bullet');
+            particle.depth = Depths.ENEMIES + 1;
+
+            let emitter = particle.createEmitter({
+                x: 0,
+                y: 0,
+                
+                speedX: { min: -23, max: 23 },
+                speedY: { min: -64, max: -80 },
+                alpha: { start: 1, end: .2 },
+                scaleX: {start: 1.5, end: .5 },
+                scaleY: {start: 1.5, end: .5 },
+                rotate: {start: 0, end: 90, random: true},
+                gravityY: 120,
+                emitZone: box,
+                
+                lifespan: 1000,
+                frequency: -1
+            });
+            emitter.stop();
+            this.debrisEmitter = emitter;
+        }
+
+        CreateSplatEmitter: {
+
+            let box = new Phaser.Geom.Rectangle(0, 0, 16, 2);
+            let particle = this.add.particles('background', 'fx_sparkle');
+            particle.depth = Depths.ENEMIES + 1;
+
+            let emitter = particle.createEmitter({
+                x: 0,
+                y: 0,
+                tint: 0xFF0000,
+                speedX: { min: -23, max: 23 },
+                speedY: { min: -64, max: -80 },
+                alpha: { start: 1, end: .2 },
+                scaleX: {start: 1.5, end: .5 },
+                scaleY: {start: 1.5, end: .5 },
+                rotate: {start: 0, end: 90, random: true},
+                gravityY: 120,
+                emitZone: box,
+                
+                lifespan: 1000,
+                frequency: -1
+            });
+            emitter.stop();
+            this.debrisEmitter = emitter;
+        }
 
         /*
         this.soundManager.play(Sfx.BGM_LEVEL);
@@ -243,13 +323,16 @@ class Game extends Phaser.Scene {
     }
 
     overlapBulletThief(bullet, thief) {
+
         bullet.setActive(false).setVisible(false).setPosition(0, 0);
         thief.hit();
-
+        
         let sound = thief.isDead() ? Sfx.HIT_CANNON : Sfx.HIT_CANNON_NOKILL;
         this.soundManager.play(sound);
-        if (thief.isDead())
-            this.showPuff(thief.x, thief.y);
+        if (thief.isDead()) {
+            this.smokeEmitter.explode(8, thief.x, thief.y);
+            this.showSkyExplosion(thief.x, thief.y);
+        }
         else
             this.showSpark(thief.x, thief.y);
     }
@@ -306,9 +389,13 @@ class Game extends Phaser.Scene {
     }
 
     collidePlatformEnemy(platform, thief) {
+
         this.collisionGroupThieves.remove(thief);
         thief.kill();
         thief.destroy();
+
+        this.smokeEmitter.explode(8, thief.x, thief.y);
+        this.showGroundExplosion(thief.x);
 
         this.soundManager.play(Sfx.HIT_CANNON);
     }
@@ -322,6 +409,9 @@ class Game extends Phaser.Scene {
             for (let player of players)
                 if (Math.abs(rocket.x - player.x) < WorldConsts.WIDTH * .1)
                     player.hit();
+        
+        this.smokeEmitter.explode(8, rocket.x, rocket.y);
+        this.showGroundExplosion(rocket.x);
         
         rocket.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
         this.soundManager.play(Sfx.MISSLE_BLAST);
@@ -364,6 +454,21 @@ class Game extends Phaser.Scene {
         let puff = this.puffGroup.get(x, y);
         puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
         puff.anims.play(Animations.FX_PUFF);
+    }
+
+    showSkyExplosion(x, y) {
+        let explode = this.skyExplodeGroup.get(x, y);
+        explode.setDepth(Depths.ENEMIES).setScale(.85);
+        explode.anims.play(Animations.FX_SKY_EXPLODE);
+    }
+
+    showGroundExplosion(x) {
+        let y = WorldConsts.GROUND_Y + 1;
+        let explode = this.skyExplodeGroup.get(x, y);
+        explode.setDepth(Depths.ENEMIES).setOrigin(.5, 1);
+        explode.anims.play(Animations.FX_GROUND_EXPLODE);
+
+        this.debrisEmitter.explode(24, x, y);
     }
 
     showSpark(x, y) {

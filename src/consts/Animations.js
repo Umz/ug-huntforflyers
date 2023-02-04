@@ -30,6 +30,8 @@ const Animations = {
     PLAYER_HUNT_RUN: 'hunt_run',
     PLAYER_CANNON_RUN: 'cannon_run',
 
+    FX_SKY_EXPLODE: 'skyExplosion',
+    FX_GROUND_EXPLODE: 'groundExplosition',
     FX_PUFF: 'preyPuff',
     FX_BLUE_SPARK: 'blueSpark',
     FX_GOLD_SPARK: 'goldSpark'

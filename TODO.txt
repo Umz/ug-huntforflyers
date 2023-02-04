@@ -3,15 +3,20 @@ Build toward the game design document
 *** Citizens collect exact amount with MAX
 *** switch showMessage to Dom.ShowMessage
 
+Collect currency effects  (Emitter)
+Game FX and particles
+Hit effects
+Fire effects
+
+BG particles
+
 Level 5 just for Masjid
 Redo level 6
 Add level 7 - Ranch + all.
 Add level 8
 
 Signage
-Crystal effect on frozen prey (sparkle) (Emitter)
 Refactor Base and BaseController - update in controller not in Base
-Game FX and particles
 Game controls full
 
 Fill in the game over screen
@@ -19,9 +24,6 @@ Fill in the info screen button (Story)
 Fill in the question button (controls)
 Fill in unlock screen (name characters)
 Unlock screen use for ITCN - name your CarryKins
-Hit effects
-Collect effects  (Emitter)
-Fire effects 
 Split BGM and SFX
 
 Pale Kins for collection to citizen houses
@@ -59,8 +61,8 @@ create pools
 Webpack split into vendor and bundle
 Convert all sound files
 
-BG dust cloud or particles
-BG wind effects 
+BG dust cloud
+BG wind effects (blow trees)
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 

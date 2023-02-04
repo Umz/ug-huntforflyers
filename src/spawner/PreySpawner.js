@@ -1,3 +1,4 @@
+import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import Counter from "components/Counter";
 import SpriteBuilder from "components/SpriteBuilder";
@@ -17,7 +18,7 @@ class PreySpawner {
         this.maxActive = 10;
 
         this.spawned = 0;
-        this.spawnLimit = 20;
+        this.spawnLimit = Phaser.Math.Between(20, 30);
         
         this.spawnX = 0;
         this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
@@ -30,17 +31,15 @@ class PreySpawner {
 
         for (let i=this.activePrey.length; --i>=0;) {
             let bird = this.activePrey[i];
-            if (!bird.active)
+            if (bird.isState(States.FROZEN))
                 this.activePrey.splice(i, 1);
         }
 
         this.counter.setActive(this.activePrey.length < this.maxActive && (this.spawned < this.spawnLimit));
-        this.counter.update(time, delta);
-        if (this.counter.isComplete())
+        if (this.counter.updateAndCheck(time, delta))
             this.spawnPrey();
 
-        this.cooldown.update(time, delta);
-        if (this.cooldown.isComplete())
+        if (this.cooldown.updateAndCheck(time, delta))
             this.setSpawning();
     }
 

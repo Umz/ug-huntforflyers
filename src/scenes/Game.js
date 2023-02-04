@@ -198,17 +198,17 @@ class Game extends Phaser.Scene {
         Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
     }
 
-    overlapBulletPrey(bullet, enemy) {
+    overlapBulletPrey(bullet, prey) {
 
-        if (enemy.isState(States.NORMAL)) {
+        if (prey.isState(States.NORMAL)) {
 
             bullet.setActive(false).setVisible(false).setPosition(0, 0);
 
-            this.liveBirdGroup.remove(enemy);
-            enemy.freeze();
+            this.liveBirdGroup.remove(prey);
+            prey.freeze();
 
             this.soundManager.play(Sfx.HIT_PREY);
-            this.showPuff(enemy.x, enemy.y);
+            this.showPuff(prey.x, prey.y);
         }
     }
 

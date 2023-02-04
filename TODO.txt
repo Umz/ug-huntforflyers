@@ -2,11 +2,7 @@ Build toward the game design document
 
 *** Citizens collect exact amount with MAX
 *** switch showMessage to Dom.ShowMessage
-
-Collect currency effects  (Emitter)
-Game FX and particles
-Hit effects
-Fire effects
+*** One call for ground explosion hit (damage and visual?)
 
 BG particles
 

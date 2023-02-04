@@ -1,5 +1,4 @@
 import BaseSprite from "classes/BaseSprite";
-import States from "consts/States";
 
 class Enemy extends BaseSprite {
 

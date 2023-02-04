@@ -43,6 +43,19 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
         this.actionMap.clear();
     }
 
+    flash(tint, time) {
+
+        this.clearTint();
+        this.setTintFill(tint);
+
+        this.scene.time.addEvent({
+            delay: time,
+            callback: ()=>{
+                this.clearTint();
+            }
+        });
+    }
+
     hit(dmg = 1) {
         this.hp -= dmg;
 

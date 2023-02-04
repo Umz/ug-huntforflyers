@@ -6,11 +6,13 @@ import Depths from "consts/Depths";
 import PlantType from "consts/PlantType";
 import Characters from 'consts/Characters';
 import BeeModel from "./BeeModel";
+import Tutorial2 from "../tutorials/Tutorial2";
 
 const Stage2Model = {
 
     LENGTHS: 2,
     CARRYKINS: 2,
+    TUTORIAL: Tutorial2,
     ENEMIES: [
         Characters.DRONE
     ],

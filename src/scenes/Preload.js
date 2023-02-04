@@ -103,7 +103,9 @@ class Preload extends Phaser.Scene {
 
     createMiscAnimations() {
         let fxs = [
-            { key: Animations.FX_PUFF , frames: this.anims.generateFrameNames('background', { prefix: 'puff', start:1, end: 5}), frameRate: 16, repeat: 0, hideOnComplete: true },
+            { key: Animations.FX_PUFF, frames: this.anims.generateFrameNames('background', { prefix: 'puff', start:1, end: 5}), frameRate: 16, repeat: 0, hideOnComplete: true },
+            { key: Animations.FX_BLUE_SPARK, frames: this.anims.generateFrameNames('background', { prefix: 'fx_spark', start:1, end: 4}), frameRate: 16, repeat: 0, hideOnComplete: true },
+            { key: Animations.FX_GOLD_SPARK, frames: this.anims.generateFrameNames('background', { prefix: 'gold_spark', start:1, end: 4}), frameRate: 16, repeat: 0, hideOnComplete: true },
         ];
         for (let fx of fxs)
             this.anims.create(fx);
@@ -117,12 +119,14 @@ class Preload extends Phaser.Scene {
             graphics.fillStyle(0x000000, 1);
             graphics.fillRect(0, 0, 2, 2);
             graphics.generateTexture(Textures.BLACK_SQUARE, 2, 2);
+            graphics.clear();
         };
 
         CreateBGGrass: {
             graphics.fillStyle(0xa4bc23, 1);
             graphics.fillRect(0, 0, WorldConsts.WIDTH, 3);
             graphics.generateTexture(Textures.BG_GRASS, WorldConsts.WIDTH, 3);
+            graphics.clear();
         }
 
         CreateBGMud: {
@@ -130,6 +134,17 @@ class Preload extends Phaser.Scene {
             graphics.fillStyle(0x3e1e00, 1);
             graphics.fillRect(0, 0, WorldConsts.WIDTH, height);
             graphics.generateTexture(Textures.BG_MUD, WorldConsts.WIDTH, height);
+            graphics.clear();
+        }
+
+        CreateCollectEffect: {
+            let height = 10;
+            for (let i=0; i<10; i++) {
+                graphics.fillStyle(0xFFFFFF, i * .1);
+                graphics.fillRect(0, i, 8, 1);
+            }
+            graphics.generateTexture(Textures.WHITE_SQUARE, 8, height);
+            graphics.clear();
         }
 
         graphics.destroy();

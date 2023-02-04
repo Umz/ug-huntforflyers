@@ -1,6 +1,8 @@
 const Textures = {
     
     BLACK_SQUARE: '-black_square',
+    WHITE_SQUARE: "-white_square",
+
     BG_GRASS: '-bg_grass_square',
     BG_MUD: '-bg_mud_square',
 

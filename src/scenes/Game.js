@@ -26,6 +26,7 @@ import PlayerSpawner from "spawner/PlayerSpawner";
 import CivilianSpawner from "spawner/CivilianSpawner";
 import EnemySpawner from "spawner/EnemySpawner";
 import Dialogue from "../consts/Dialogue";
+import Textures from "../consts/Textures";
 
 class Game extends Phaser.Scene {
 
@@ -76,6 +77,14 @@ class Game extends Phaser.Scene {
             defaultKey: 'background',
             defaultFrame: 'puff1',
             runChildUpdate: true
+        });
+        this.sparkGroup = this.add.group({
+            defaultKey: 'background',
+            defaultFrame: 'fx_spark1',
+            runChildUpdate: true
+        });
+        this.collectGroup = this.add.group({
+            defaultKey: Textures.WHITE_SQUARE
         });
 
         this.rocketGroup = this.physics.add.group({
@@ -172,6 +181,27 @@ class Game extends Phaser.Scene {
         if (TutClass)
             this.updateRunner.add(new TutClass(this));
 
+            // Create the particle
+
+            let particle = this.add.particles('background', 'fx_sparkle');
+            particle.depth = Depths.ENEMIES + 1;
+
+            let emitter = particle.createEmitter({
+                x: 0,
+                y: 0,
+                speedX: { min: -4, max: 4 },
+                speedY: { min: -2, max: -8 },
+                alpha: { start: 1, end: 0 },
+                lifespan: 1500,
+                frequency: -1
+            });
+            emitter.stop();
+
+            this.fxEmitter = emitter;
+
+        for (let i=0; i<10; i++)
+            this.addCoin(3);
+
         /*
         this.soundManager.play(Sfx.BGM_LEVEL);
         this.events.on('shutdown', ()=>{
@@ -218,7 +248,10 @@ class Game extends Phaser.Scene {
 
         let sound = thief.isDead() ? Sfx.HIT_CANNON : Sfx.HIT_CANNON_NOKILL;
         this.soundManager.play(sound);
-        this.showPuff(thief.x, thief.y);
+        if (thief.isDead())
+            this.showPuff(thief.x, thief.y);
+        else
+            this.showSpark(thief.x, thief.y);
     }
 
     overlapWaterPump(pump, prey) {
@@ -251,17 +284,15 @@ class Game extends Phaser.Scene {
 
     overlapCoinPlayers(coin, player) {
 
-        //  Flash Player-
-        //  Show collection effect - upwards white dots
-        //  Collection sound
-
         if (player.isState(States.MODE_TANK)) {
-            coin.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
-    
+            
             GameSave.IncScore(coin.coinValue);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
-
+            
             this.soundManager.playLimited(Sfx.PICKUP);
+            this.showCollect(coin.x);
+
+            coin.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
         }
     }
 
@@ -332,7 +363,33 @@ class Game extends Phaser.Scene {
     showPuff(x, y) {
         let puff = this.puffGroup.get(x, y);
         puff.setDepth(Depths.FREEZE_FX).setScale(1.5);
-        puff.anims.play(Animations.FX_PUFF)
+        puff.anims.play(Animations.FX_PUFF);
+    }
+
+    showSpark(x, y) {
+        let spark = this.sparkGroup.get(x, y);
+        spark.setDepth(Depths.FREEZE_FX);
+        spark.anims.play(Animations.FX_GOLD_SPARK);
+    }
+
+    showCollect(coinX) {
+
+        let pY = this.player.getBottomCenter().y;
+        let square = this.collectGroup.get(coinX, pY);
+        square.setScale(2, .2).setOrigin(.5, 1).setDepth(this.player.depth + 1).setActive(true).setVisible(true);
+
+        let tween = this.tweens.add({
+            targets: square,
+            delay: 100,
+            duration: 1000,
+            alpha: {from: 1, to: 0},
+            scaleX: {from: 2, to: 0},
+            scaleY: {from: 0, to: 4},
+            ease: Phaser.Math.Easing.Quartic.Out,
+            onComplete: ()=>{
+                square.setActive(false).setVisible(false);
+            }
+        });
     }
 
     showIcon(sprite, millis, frame) {

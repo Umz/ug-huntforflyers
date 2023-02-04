@@ -30,6 +30,8 @@ const Animations = {
     PLAYER_HUNT_RUN: 'hunt_run',
     PLAYER_CANNON_RUN: 'cannon_run',
 
-    FX_PUFF: 'preyPuff'
+    FX_PUFF: 'preyPuff',
+    FX_BLUE_SPARK: 'blueSpark',
+    FX_GOLD_SPARK: 'goldSpark'
 }
 export default Animations;

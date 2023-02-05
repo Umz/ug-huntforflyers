@@ -59,6 +59,15 @@ class Controlpad {
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
         });
 
+        scene.input.keyboard.on('keydown-L', (event) => {
+            for (let i=0; i<10; i++)
+                this.scene.addCoin(3);
+        });
+
+        scene.input.keyboard.on('keydown-K', (event) => {
+            this.scene.smokeEmitter.explode(8, 140, 80);
+        });
+
         scene.input.keyboard.on('keydown-ONE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE1 }) });
         scene.input.keyboard.on('keydown-TWO', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE2 }) });
         scene.input.keyboard.on('keydown-THREE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE3 }) });

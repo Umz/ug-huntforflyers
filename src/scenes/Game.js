@@ -57,6 +57,8 @@ class Game extends Phaser.Scene {
         this.bgBirdGroup = this.add.group({runChildUpdate:true});
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
 
+        this.windTrees = this.add.group();
+
         this.huntBulletGroup = this.physics.add.group({
             classType: Bullet,
             defaultKey: 'background',
@@ -192,14 +194,10 @@ class Game extends Phaser.Scene {
             this.updateRunner.add(new TutClass(this));
 
         CreateSparkleEmitter: {
-                
-            // Create the particle
             let particle = this.add.particles('background', 'fx_sparkle');
             particle.depth = Depths.ENEMIES + 1;
 
             let emitter = particle.createEmitter({
-                x: 0,
-                y: 0,
                 speedX: { min: -4, max: 4 },
                 speedY: { min: -2, max: -8 },
                 alpha: { start: 1, end: 0 },
@@ -215,8 +213,6 @@ class Game extends Phaser.Scene {
             particle.depth = Depths.ENEMIES + 1;
 
             let emitter = particle.createEmitter({
-                x: 0,
-                y: 0,
                 tint: 0x333333,
                 speedX: { min: -24, max: 24 },
                 speedY: { min: -2, max: -40 },
@@ -237,9 +233,6 @@ class Game extends Phaser.Scene {
             particle.depth = Depths.ENEMIES + 1;
 
             let emitter = particle.createEmitter({
-                x: 0,
-                y: 0,
-                
                 speedX: { min: -23, max: 23 },
                 speedY: { min: -64, max: -80 },
                 alpha: { start: 1, end: .2 },
@@ -247,7 +240,7 @@ class Game extends Phaser.Scene {
                 scaleY: {start: 1.5, end: .5 },
                 rotate: {start: 0, end: 90, random: true},
                 gravityY: 120,
-                emitZone: box,
+                emitZone: { type: 'random', source: box },
                 
                 lifespan: 1000,
                 frequency: -1
@@ -256,16 +249,62 @@ class Game extends Phaser.Scene {
             this.debrisEmitter = emitter;
         }
 
+        CreateLeafEmitter: {
+
+            let box = new Phaser.Geom.Rectangle(0, 0, 24, 20);
+            let particle = this.add.particles('background', 'leaf_green');
+            particle.depth = Depths.FOREST_FG2;
+
+            let emitter = particle.createEmitter({
+                frame: { frames: [ 'leaf_red', 'leaf_green', 'leaf_yellow', 'leaf_brown' ] },
+                speedX: { min: -24, max: -40 },
+                speedY: { min: -8, max: 8 },
+                scaleX: {start: 1, end: 0 },
+                scaleY: {start: 1, end: 0 },
+                alpha: { start: 1, end: 0 },
+                rotate: { start: 0, end: 360, rotate: true },
+                lifespan: 2500,
+                emitZone: { type: 'random', source: box },
+                frequency: -1
+            });
+            emitter.stop();
+            this.leafEmitter = emitter;
+        }
+
+        CreateWindEmitter: {
+
+            let particle = this.add.particles(Textures.WIND_CIRCLE);
+            particle.depth = Depths.WIND_FX;
+
+            let emitter = particle.createEmitter({
+                scaleX: {start: 1, end: 0 },
+                scaleY: {start: 1, end: 0 },
+                alpha: { start: .5, end: 0 },
+                lifespan: 1500,
+                frequency: 50
+            });
+            emitter.stop();
+            this.windEmitter = emitter;
+        }
+
         /*
         this.soundManager.play(Sfx.BGM_LEVEL);
         this.events.on('shutdown', ()=>{
             this.soundManager.destroyMusic();
         }, this);
         */
+
+        this.showWind();
+        this.windCounter = Counter.New().setRepeating(true).setMaxCount(61000);
+
+        this.addWindParticle();
     }
 
     update(time, delta) {
         this.updateRunner.update(time, delta);
+
+        if (this.windCounter.updateAndCheck(time, delta))
+            this.showWind();
 
         this.counter.update(time, delta);
         if (this.counter.isComplete()) {
@@ -276,10 +315,85 @@ class Game extends Phaser.Scene {
                 this.soundManager.play(Sfx.LEVEL_COMPLETE);
                 this.counter.setActive(false);
             }
+
+            this.showWindParticle();
         }
 
         let count = this.collisionGroupCollectors.countActive();
         Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
+    }
+
+    addWindParticle() {
+
+        let windSpeed = WorldConsts.WIDTH / 15;
+
+        let windParticle = this.physics.add.sprite(0, -100, Textures.WIND_CIRCLE).setDepth(Depths.WIND_FX);
+        windParticle.setVelocityX(-windSpeed).setAlpha(.5);
+        windParticle.setMaxVelocity(windSpeed);
+        
+        this.wp = windParticle;
+        this.wp.speed = -windSpeed;
+
+        this.windEmitter.startFollow(windParticle);
+        this.windEmitter.start();
+    }
+
+    showWindParticle(x, y) {
+        
+        let point = this.physics.world.bounds.getRandomPoint();
+        this.wp.setPosition(point.x, point.y);
+        let mul = Math.random() > .5 ? 1 : -1;
+        this.wp.setVelocityY((this.wp.speed * .1) * mul);
+    }
+
+    showWind() {
+        
+        //let windSpeed = WorldConsts.WIDTH / 4;
+        //let windX = 0;
+        let windSpeed = WorldConsts.WIDTH / 15;
+        let windX = this.getLevelWidth();
+
+        let allTrees = Phaser.Utils.Array.StableSort(this.windTrees.getChildren(), (a, b) => b.x - a.x );;
+        let treeIndex = 0;
+        let treeTotal = allTrees.length;
+
+        let treeShake = (tree)=>{
+            let pos = tree.getTopLeft();
+            this.leafEmitter.explode(6, pos.x, pos.y);
+
+            let tween = this.tweens.add({
+                targets: tree,
+                duration: 500,
+                x: {from: tree.x, to: tree.x + Phaser.Math.Between(-6, 6)},
+                scaleX: {from:1, to:1.1},
+                scaleY: {from:1, to:1.1},
+                ease: Phaser.Math.Easing.Cubic.InOut,
+                yoyo: true
+            });
+        }
+
+        let windToNextTree = ()=>{            
+            
+            let tree = allTrees[treeIndex];
+            //let timeToTree = Math.abs((tree.x - windX) / windSpeed) * 1000;  // Distance / Speed = Time
+            let timeToTree = (windX - tree.x) / windSpeed * 1000;  // Distance / Speed = Time
+            //console.log(timeToTree)
+            
+            this.time.addEvent({
+                delay: timeToTree,
+                callback: ()=>{
+                    treeShake(tree);
+                    
+                    windX = tree.x;
+                    treeIndex ++;
+
+                    if (treeIndex < treeTotal)
+                        windToNextTree();
+                }
+            });
+        }
+
+        windToNextTree();
     }
 
     overlapBulletPrey(bullet, prey) {
@@ -652,8 +766,8 @@ class Game extends Phaser.Scene {
         this.addBuldingCollisions();
 
         for (let forest of this.levelData.FORESTS)
-            BackgroundBuilder.addForest(this, forest);
-            
+            BackgroundBuilder.addForest(this, forest, this.windTrees);
+
         //  ADD the ground - physics
         let levelWidth = this.levelData.LENGTHS * WorldConsts.WIDTH;
         let ground = this.add.rectangle(0, WorldConsts.GROUND_Y - 1, levelWidth, 10, 0x000000).setOrigin(0).setVisible(false);

@@ -2,6 +2,7 @@ const Textures = {
     
     BLACK_SQUARE: '-black_square',
     WHITE_SQUARE: "-white_square",
+    WIND_CIRCLE: "-wind_circle",
 
     BG_GRASS: '-bg_grass_square',
     BG_MUD: '-bg_mud_square',

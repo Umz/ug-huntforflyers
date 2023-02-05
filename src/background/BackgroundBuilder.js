@@ -2,6 +2,7 @@ import House from "classes/House";
 import Depths from "consts/Depths";
 import Textures from "consts/Textures";
 import WorldConsts from "consts/WorldConsts";
+import PlantType from "consts/PlantType";
 import TextureMapper from "mappers/TextureMapper";
 import Scaffold from "../classes/Scaffold";
 
@@ -63,12 +64,12 @@ class BackgroundBuilder {
         return scaffold;
     }
 
-    static addForest(scene, forest) {
+    static addForest(scene, forest, group) {
         for(let layer of forest.layers)
-            BackgroundBuilder.addForestLayer(scene, layer);
+            BackgroundBuilder.addForestLayer(scene, layer, group);
     }
 
-    static addForestLayer(scene, layer) {
+    static addForestLayer(scene, layer, group) {
 
         let offset = getOffset(layer.depth);
         const PY = WorldConsts.GROUND_Y - offset;
@@ -81,6 +82,11 @@ class BackgroundBuilder {
 
             if (layer.hasTint)
                 tree.setTintFill(0x000000);
+            
+            if (group
+                && (layer.plantTypes.includes(PlantType.TREE1) || layer.plantTypes.includes(PlantType.TREE2))
+                && (layer.depth === Depths.FOREST_BG3 || layer.depth === Depths.FOREST_FG1 || layer.depth === Depths.BUILDINGS_BEHIND))
+                group.add(tree); // Refactor
         }
     }
 

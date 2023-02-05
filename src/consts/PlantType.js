@@ -2,6 +2,9 @@ const PlantType = {
 
     TREE1: 'plant_tree1',
     TREE2: 'plant_tree2',
+    TREE3: 'plant_tree3',
+    TREE3_YELLOW: 'plant_tree3_yellow',
+    TREE3_RED: 'plant_tree3_red',
 
     BUSH: 'plant_bush',
     FLOWER1: 'plant_flower1',

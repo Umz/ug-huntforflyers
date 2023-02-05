@@ -104,7 +104,7 @@ class Preload extends Phaser.Scene {
     createMiscAnimations() {
         let fxs = [
             { key: Animations.FX_PUFF, frames: this.anims.generateFrameNames('background', { prefix: 'puff', start:1, end: 5}), frameRate: 16, repeat: 0, hideOnComplete: true },
-            { key: Animations.FX_SKY_EXPLODE, frames: this.anims.generateFrameNames('background', { prefix: 'skyExplosion', start:0, end: 8}), frameRate: 16, repeat: 0, hideOnComplete: true },
+            { key: Animations.FX_SKY_EXPLODE, frames: this.anims.generateFrameNames('background', { prefix: 'skyExplosion', start:0, end: 7}), frameRate: 16, repeat: 0, hideOnComplete: true },
             { key: Animations.FX_GROUND_EXPLODE, frames: this.anims.generateFrameNames('background', { prefix: 'groundExplode', start:0, end: 13}), frameRate: 16, repeat: 0, hideOnComplete: true },
             { key: Animations.FX_BLUE_SPARK, frames: this.anims.generateFrameNames('background', { prefix: 'fx_spark', start:1, end: 4}), frameRate: 16, repeat: 0, hideOnComplete: true },
             { key: Animations.FX_GOLD_SPARK, frames: this.anims.generateFrameNames('background', { prefix: 'gold_spark', start:1, end: 4}), frameRate: 16, repeat: 0, hideOnComplete: true },
@@ -146,6 +146,16 @@ class Preload extends Phaser.Scene {
                 graphics.fillRect(0, i, 8, 1);
             }
             graphics.generateTexture(Textures.WHITE_SQUARE, 8, height);
+            graphics.clear();
+        }
+
+        CreateWindCicle: {
+            let rad = 5;
+            for (let i=0; i<rad; i++) {
+                graphics.fillStyle(0xFFFFFF, i * .2);
+                graphics.fillCircle(rad, rad, rad - (rad * i * .2));
+            }
+            graphics.generateTexture(Textures.WIND_CIRCLE, rad * 3, rad * 3);
             graphics.clear();
         }
 

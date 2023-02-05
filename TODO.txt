@@ -10,10 +10,9 @@ Build toward the game design document
 *** Lifting carrying, set velocity 0 - independent action alongside other actions (not carry home etc.)
 *** Refactor wind, emitters, trees group,
 
-Level 5 just for Masjid
-Redo level 6
-Add level 7 - Ranch + all.
-Add level 8
+Redo level 6 (Shopping district right | Residential crisis left)
+Add level 7 - Ranch + all (Food crisis)
+Add level 8 - Land restoration
 
 Signage
 BG Dialogue
@@ -24,6 +23,7 @@ Up to speak (dialogue)
 
 Refactor Base and BaseController - update in controller not in Base
 Game controls full
+Tutorial (2, 3, 4, 5, 5M, 6)
 
 Fill in the game over screen
 Fill in the info screen button (Story)

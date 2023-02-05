@@ -15,8 +15,7 @@ class Icon extends Phaser.GameObjects.Sprite {
             this.setPosition(top.x, top.y - 4);
         }
 
-        this.counter.update(time, delta);
-        if (this.counter.isComplete()) {
+        if (this.counter.updateAndCheck(time, delta) || !this.target.showingIcon) {
             this.setActive(false).setVisible(false);
             this.counter.setActive(false);
             this.target = null;

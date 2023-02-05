@@ -21,6 +21,13 @@ class Building {
         return this;
     }
 
+    setSign(message) {
+        this.name = "Sign";
+        this.message = message;
+        this.className = "plain-message";
+        return this;
+    }
+
     isTypeEquals(type) { return this.type === type }
 }
 export default Building;

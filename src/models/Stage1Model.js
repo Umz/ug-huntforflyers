@@ -6,6 +6,7 @@ import PlantType from "../consts/PlantType";
 import Forest from "../classes/Forest";
 import BeeModel from "./BeeModel";
 import Tutorial1 from "../tutorials/Tutorial1";
+import Signage from "../consts/Signage";
 
 const Stage1Model = {
 
@@ -17,7 +18,7 @@ const Stage1Model = {
    
     BUILDINGS: [
 
-        Building.New(Decor.SIGN).setTileX(1).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(1).setDepth(Depths.DECOR_FG).setSign(Signage.LV1_LEFT),
         Building.New(Decor.CHEST).setTileX(4.5).setDepth(Depths.DECOR_FG),
 
         Building.New(Buildings.TENT1).setTileX(3).setDepth(Depths.BUILDINGS_BG),
@@ -31,7 +32,7 @@ const Stage1Model = {
 
         Building.New(Buildings.TENT1).setTileX(12).setDepth(Depths.BUILDINGS_BG),
         
-        Building.New(Decor.SIGN).setTileX(18).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(18).setDepth(Depths.DECOR_FG).setSign(Signage.LV1_RIGHT),
     ],
 
     FORESTS: [

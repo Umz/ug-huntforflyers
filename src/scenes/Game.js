@@ -20,6 +20,7 @@ import LevelMapper from "mappers/LevelMapper";
 import PreySpawner from "spawner/PreySpawner";
 import Depths from "consts/Depths";
 import Buildings from "consts/Buildings";
+import Decor from "consts/Decor";
 import Sfx from "consts/Sfx";
 import Animations from "consts/Animations";
 import PlayerSpawner from "spawner/PlayerSpawner";
@@ -58,6 +59,7 @@ class Game extends Phaser.Scene {
         this.spriteUpdateGroup = this.add.group({ runChildUpdate: true });
 
         this.windTrees = this.add.group();
+        this.talkingGroup = this.add.group();
 
         this.huntBulletGroup = this.physics.add.group({
             classType: Bullet,
@@ -145,6 +147,7 @@ class Game extends Phaser.Scene {
         this.physics.add.overlap(this.collisionGroupCoiners, this.collisionGroupPlayers, this.overlapCoinerPlayers, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupPrey, this.overlapWaterPump, null, this);
         this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
+        this.physics.add.overlap(this.collisionGroupPlayers, this.talkingGroup, this.overlapPlayerTalker, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
@@ -159,6 +162,10 @@ class Game extends Phaser.Scene {
         this.controlpad.weaponSwap = ()=>{
             this.swapPlayerMode();
             this.soundManager.play(Sfx.WEAPON_SELECT);
+        }
+        this.controlpad.interact = ()=>{
+            this.player.setListeningForTalkers(true);
+            this.showIcon(this.player, -1, 'ic_speech');
         }
 
         this.soundManager = new SoundManager(this);
@@ -377,7 +384,6 @@ class Game extends Phaser.Scene {
             let tree = allTrees[treeIndex];
             //let timeToTree = Math.abs((tree.x - windX) / windSpeed) * 1000;  // Distance / Speed = Time
             let timeToTree = (windX - tree.x) / windSpeed * 1000;  // Distance / Speed = Time
-            //console.log(timeToTree)
             
             this.time.addEvent({
                 delay: timeToTree,
@@ -394,6 +400,16 @@ class Game extends Phaser.Scene {
         }
 
         windToNextTree();
+    }
+
+    overlapPlayerTalker(talker, player) {
+        if (player.isListeningForTalkers()) {
+            addChatMessage(talker.getName(), talker.getMessage(), talker.getClass());
+            player.setListeningForTalkers(false);
+            player.showingIcon = false;
+
+            this.showIcon(talker, 2000, 'ic_speech');
+        }
     }
 
     overlapBulletPrey(bullet, prey) {
@@ -598,6 +614,7 @@ class Game extends Phaser.Scene {
             scaleY: {from:0, to:1},
             ease: Phaser.Math.Easing.Back.Out
         });
+        sprite.showingIcon = true;
     }
 
     addCoin(value) {
@@ -744,6 +761,7 @@ class Game extends Phaser.Scene {
 
         let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE, Buildings.PLAYER_HOUSE];
         let houseTypes = [Buildings.TENT1, Buildings.TENT2, Buildings.TENT3, Buildings.HUT, Buildings.HOUSE1];
+        let signs = [Decor.SIGN];
 
         for (let building of this.levelData.BUILDINGS) {
 
@@ -752,6 +770,11 @@ class Game extends Phaser.Scene {
 
             if (mapTypes.find(type => type === building.type))
                 this.buildings.set(building.type, house);
+
+            if (signs.includes(building.type)) {
+                this.talkingGroup.add(house);
+                this.physics.add.existing(house);
+            }
             
             if (houseTypes.find(type => type === building.type)) {
 

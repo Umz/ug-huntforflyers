@@ -41,7 +41,8 @@ class Controlpad {
             scene.input.keyboard.on(`keydown-${key}`, (event) => {
                 const target = this.controlTarget.target;
                 const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
-                addChatMessage('Professor', `Standing at tile ${tileX}`)
+                //addChatMessage('Professor', `Standing at tile ${tileX}`)
+                this.interact();
             });
 
         for (let key of downKeys)
@@ -81,6 +82,8 @@ class Controlpad {
 
     weaponSwap() {
     }
+
+    interact() {}
 
     update(time, delta) {
         const target = this.controlTarget;

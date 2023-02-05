@@ -9,6 +9,8 @@ class Player extends BaseSprite {
     constructor(scene, x, y, atlas, frame) {
         super(scene, x, y, atlas, frame);
 
+        this.listenForSpeech = false;
+
         this.setModel(PlayerModel);
         this.setView(new Playerviewer(this));
         this.setController(new PlayerController(this));
@@ -21,6 +23,14 @@ class Player extends BaseSprite {
 
     canFire() {
         return (this.isState(States.MODE_HUNT) || this.isState(States.MODE_CANNON)) && this.controller.isFireReady;
+    }
+
+    setListeningForTalkers(b) {
+        this.listenForSpeech = b;
+    }
+
+    isListeningForTalkers() {
+        return this.listenForSpeech;
     }
 
     updateCollision() {

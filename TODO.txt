@@ -9,14 +9,15 @@ Build toward the game design document
 *** Multiple citizens per house 
 *** Lifting carrying, set velocity 0 - independent action alongside other actions (not carry home etc.)
 *** Refactor wind, emitters, trees group,
+*** Game.AddBackground change to use includes : check array functions
+
+Conversations
 
 Redo level 6 (Shopping district right | Residential crisis left)
 Add level 7 - Ranch + all (Food crisis)
 Add level 8 - Land restoration
 
-Signage
 BG Dialogue
-Conversations
 Press up for interaction
 Press up to name your CKs (menu)
 Up to speak (dialogue)

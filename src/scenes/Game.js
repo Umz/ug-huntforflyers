@@ -318,7 +318,7 @@ class Game extends Phaser.Scene {
             if (this.isAllHousesComplete()) {
                 let house = this.buildings.get(Buildings.PLAYER_HOUSE);
                 this.showIcon(house, -1, 'puff1');
-                addChatMessage('Professor', Dialogue.LEVEL_COMPLETE, Dialogue.TYPE_PLAYER);
+                Dom.AddChatMessage('Professor', Dialogue.LEVEL_COMPLETE, Dialogue.TYPE_PLAYER);
                 this.soundManager.play(Sfx.LEVEL_COMPLETE);
                 this.counter.setActive(false);
             }
@@ -403,12 +403,15 @@ class Game extends Phaser.Scene {
     }
 
     overlapPlayerTalker(talker, player) {
+        
         if (player.isListeningForTalkers()) {
-            addChatMessage(talker.getName(), talker.getMessage(), talker.getClass());
+
             player.setListeningForTalkers(false);
+            player.setVelocityX(0);
             player.showingIcon = false;
 
-            this.showIcon(talker, 2000, 'ic_speech');
+            talker.interact();
+            this.showIcon(talker, 3000, talker.interactIcon);
         }
     }
 
@@ -768,15 +771,15 @@ class Game extends Phaser.Scene {
             let house = BackgroundBuilder.getHouse(this, building);
             this.add.existing(house);
 
-            if (mapTypes.find(type => type === building.type))
-                this.buildings.set(building.type, house);
-
-            if (signs.includes(building.type)) {
+            if (typeof house.interact === "function") {
                 this.talkingGroup.add(house);
                 this.physics.add.existing(house);
             }
+
+            if (mapTypes.includes(building.type))
+                this.buildings.set(building.type, house);
             
-            if (houseTypes.find(type => type === building.type)) {
+            if (houseTypes.includes(building.type)) {
 
                 let scaffold = BackgroundBuilder.addScaffolding(house);
                 house.setScaffold(scaffold);

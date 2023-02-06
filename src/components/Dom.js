@@ -54,6 +54,10 @@ class Dom {
         element.classList.add(activeClass);
     }
 
+    static AddChatMessage(name, message, className) {
+        addChatMessage(name, message, className);
+    }
+
     static ClearChatBox() {
         clearChat();
     }

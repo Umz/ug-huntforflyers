@@ -50,18 +50,6 @@ class House extends Phaser.GameObjects.Sprite {
         return this.config.type;
     }
 
-    getName() {
-        return this.config.name || "Sign";
-    }
-
-    getMessage() {
-        return this.config.message || "...";
-    }
-
-    getClass() {
-        return this.config.className || "";
-    }
-
     get completion() {
         return this.filled / this.capacity;
     }

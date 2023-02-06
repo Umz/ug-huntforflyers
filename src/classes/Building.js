@@ -1,4 +1,6 @@
+import Interactions from "../consts/Interactions";
 import WorldConsts from "../consts/WorldConsts";
+import Chat from "./Chat";
 
 class Building {
 
@@ -22,9 +24,8 @@ class Building {
     }
 
     setSign(message) {
-        this.name = "Sign";
-        this.message = message;
-        this.className = "plain-message";
+        this.interaction = Interactions.SIGN;
+        this.interactionData = new Chat("Sign", message, "sign-message");
         return this;
     }
 

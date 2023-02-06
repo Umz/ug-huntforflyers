@@ -25,11 +25,11 @@ class Player extends BaseSprite {
         return (this.isState(States.MODE_HUNT) || this.isState(States.MODE_CANNON)) && this.controller.isFireReady;
     }
 
-    setListeningForTalkers(b) {
+    setListeningForInteraction(b) {
         this.listenForSpeech = b;
     }
 
-    isListeningForTalkers() {
+    isListeningForInteraction() {
         return this.listenForSpeech;
     }
 

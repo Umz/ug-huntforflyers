@@ -12,6 +12,9 @@ class Interaction {
             case Interactions.SIGN:
                 AddSignInteraction(sprite, data);
             break;
+            case Interactions.POST:
+                AddMessageList(sprite, data);
+            break;
         }
     }
 }
@@ -21,5 +24,15 @@ function AddSignInteraction(sprite, chat) {
     sprite.interact = function() {
         Dom.AddChatMessage(chat.name, chat.message, chat.className);
         sprite.interactIcon = 'ic_speech';
+    }
+}
+
+function AddMessageList(sprite, chat) {
+    sprite.interact = function() {
+        let message = chat.getNextMessageOrNull();
+        if (message) {
+            Dom.AddChatMessage(chat.name, message, chat.className);
+            sprite.interactIcon = 'ic_speech';
+        }
     }
 }

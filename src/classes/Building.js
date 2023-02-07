@@ -29,6 +29,12 @@ class Building {
         return this;
     }
 
+    setPost(postList) {
+        this.interaction = Interactions.POST;
+        this.interactionData = new Chat("Letter", postList, "post-message");
+        return this;
+    }
+
     isTypeEquals(type) { return this.type === type }
 }
 export default Building;

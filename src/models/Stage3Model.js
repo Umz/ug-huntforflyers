@@ -6,6 +6,7 @@ import Buildings from "consts/Buildings";
 import Decor from "consts/Decor";
 import Characters from "consts/Characters";
 import BugModel from "./BugModel";
+import Signage from "../consts/Signage";
 
 const Stage3Model = {
 
@@ -25,7 +26,7 @@ const Stage3Model = {
         Building.New(Buildings.LAB_TABLE).setTileX(25).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.WATER_PUMP).setTileX(33).setDepth(Depths.BUILDINGS_FG),
-        Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV3),
 
         Building.New(Buildings.TENT2).setTileX(16).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(18).setDepth(Depths.BUILDINGS_BG),

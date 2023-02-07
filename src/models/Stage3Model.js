@@ -22,11 +22,7 @@ const Stage3Model = {
         Building.New(Decor.WATER).setTileX(10.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT1).setTileX(11).setDepth(Depths.BUILDINGS_BG),
 
-        Building.New(Decor.POD).setTileX(25.5).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.LAB_TABLE).setTileX(25).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.WATER_PUMP).setTileX(33).setDepth(Depths.BUILDINGS_FG),
-        Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV3),
+        Building.New(Decor.SIGN).setTileX(14).setDepth(Depths.BUILDINGS_BG).setSign(Signage.LV3_LEFT),
 
         Building.New(Buildings.TENT2).setTileX(16).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(18).setDepth(Depths.BUILDINGS_BG),
@@ -37,6 +33,13 @@ const Stage3Model = {
 
         Building.New(Decor.BBQ).setTileX(21.5).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(22).setDepth(Depths.DECOR_FG),
+
+        Building.New(Decor.HANGING_SIGN).setTileX(26).setDepth(Depths.DECOR_FG).setSign(Signage.LV3_H_POD),
+        Building.New(Decor.POD).setTileX(25.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.LAB_TABLE).setTileX(25).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.WATER_PUMP).setTileX(33).setDepth(Depths.BUILDINGS_FG),
+        Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV3),
 
         Building.New(Decor.WATER).setTileX(33.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.BARREL).setTileX(32).setDepth(Depths.DECOR_FG),

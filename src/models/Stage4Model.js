@@ -7,6 +7,7 @@ import Decor from "consts/Decor";
 import BeeModel from "./BeeModel";
 import BlueBirdModel from "./BlueBirdModel";
 import Characters from "consts/Characters";
+import Signage from "../consts/Signage";
 
 const Stage3Model = {
 
@@ -53,7 +54,7 @@ const Stage3Model = {
 
         Building.New(Buildings.LAB_TABLE).setTileX(29.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(32).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Decor.POST).setTileX(33.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.POST).setTileX(33.5).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV4),
         
         Building.New(Decor.FENCE).setTileX(35.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.FENCE2).setTileX(35).setDepth(Depths.DECOR_FG),

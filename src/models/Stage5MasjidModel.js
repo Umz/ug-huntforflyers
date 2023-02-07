@@ -7,6 +7,7 @@ import PlantType from "../consts/PlantType";
 import Characters from "../consts/Characters";
 import BlueBirdModel from "./BlueBirdModel";
 import RedBirdModel from "./RedBirdModel";
+import Signage from "../consts/Signage";
 
 const Stage5MasjidModel = {
 
@@ -85,7 +86,7 @@ const Stage5MasjidModel = {
         
         Building.New(Buildings.LAB_TABLE).setTileX(43.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(46).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Decor.POST).setTileX(47.5).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.POST).setTileX(47.5).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV5_M),
         
         Building.New(Decor.FENCE).setTileX(49.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Decor.FENCE2).setTileX(49).setDepth(Depths.DECOR_FG),

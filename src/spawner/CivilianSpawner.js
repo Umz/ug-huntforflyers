@@ -30,6 +30,7 @@ class CivilianSpawner {
         civ.setHome(house);
 
         let dialogues = this.chats.get(house.getType());
+        console.log('Dialogues for house type', house.getType(), dialogues);
         if (dialogues && dialogues.length > 0) {
 
             let name = civ.isMale ? this.getMaleName() : this.getFemaleName();
@@ -56,18 +57,19 @@ class CivilianSpawner {
 
     assignDialogueToBuildings(map) {
 
-        map.set(Buildings.LAB_TABLE, Dialogue.HUT);
-        map.set(Buildings.PLAYER_HOUSE, Dialogue.HUT);
-
+        
         map.set(Buildings.TENT1, Dialogue.NPC.TENT1);
         map.set(Buildings.TENT2, Dialogue.NPC.TENT2);
         map.set(Buildings.TENT3, Dialogue.NPC.TENT3);
-
-        map.set(Buildings.HUT, Dialogue.HUT);
+        
+        map.set(Buildings.HUT, Dialogue.NPC.HUT);
+        map.set(Buildings.HOUSE1, Dialogue.NPC.HOUSE1);
+        map.set(Buildings.HOUSE2, Dialogue.NPC.HOUSE2);
+        
+        /*
+        map.set(Buildings.LAB_TABLE, Dialogue.HUT);
+        map.set(Buildings.PLAYER_HOUSE, Dialogue.HUT);
         map.set(Buildings.FARMHUT, Dialogue.HUT);
-        map.set(Buildings.HOUSE1, Dialogue.HOUSE1);
-        map.set(Buildings.HOUSE2, Dialogue.HOUSE2);
-
         map.set(Buildings.MOSQUE, Dialogue.HUT);
         
         map.set(Buildings.PUB, Dialogue.HUT);
@@ -77,6 +79,7 @@ class CivilianSpawner {
 
         map.set(Buildings.RANCH, Dialogue.HUT);
         map.set(Buildings.WINDMILL, Dialogue.HUT);
+        */
     }
 
     getMaleName(isFemale = false) {

@@ -35,7 +35,7 @@ const Stage5Model = {
 
         Building.New(Buildings.TENT3).setTileX(13).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(15.5).setDepth(Depths.BUILDINGS_FG).setComplete(1),
-        Building.New(Decor.SIGN).setTileX(15).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(15).setDepth(Depths.DECOR_FG).setSign(Signage.LV5_LEFT),
 
         //  Houses with Park 20 - 40
 
@@ -69,7 +69,7 @@ const Stage5Model = {
         Building.New(Decor.BBQ).setTileX(32).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BENCH).setTileX(33).setDepth(Depths.DECOR_FG),
         
-        Building.New(Decor.HANGING_SIGN).setTileX(39).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.HANGING_SIGN).setTileX(39).setDepth(Depths.DECOR_FG).setSign(Signage.THE_PARK),
 
         //  Player area 40 - 60
         
@@ -104,13 +104,13 @@ const Stage5Model = {
         
         Building.New(Decor.POD).setTileX(61).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Decor.POD).setTileX(62.5).setDepth(Depths.BUILDINGS_BEHIND),
-        Building.New(Buildings.PUB).setTileX(62).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PUB).setTileX(62).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_PUB),
         Building.New(Decor.PURPLE_CHEST).setTileX(62.5).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(63).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(63.5).setDepth(Depths.DECOR_FG),
         
         Building.New(Buildings.HOUSE1).setTileX(65.5).setDepth(Depths.BUILDINGS_BG).setComplete(1),
-        Building.New(Buildings.SHOP).setTileX(67).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.SHOP).setTileX(67).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_STORE),
 
         Building.New(Buildings.HOUSE1).setTileX(69).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HOUSE1).setTileX(71).setDepth(Depths.BUILDINGS_BG),
@@ -143,6 +143,7 @@ const Stage5Model = {
         
         Building.New(Decor.WATER).setTileX(89.5).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Decor.WATER).setTileX(90.5).setDepth(Depths.BUILDINGS_BEHIND),
+        Building.New(Decor.SIGN).setTileX(90).setDepth(Depths.DECOR_FG).setSign(Signage.THE_MASJID_DEV),
 
         Building.New(Decor.BARREL).setTileX(95).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(95.5).setDepth(Depths.DECOR_FG),

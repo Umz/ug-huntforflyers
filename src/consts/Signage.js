@@ -1,5 +1,14 @@
 const Signage = {
 
+    THE_PARK: "The Park",
+    THE_STORE: "J's Store",
+    THE_PUB: "The Drinking Spot (Visitors Only)",
+    THE_PUB_SIGN: "Visitors of The Farborne drink for free! No limits or restrictions!",
+
+    THE_MASJID: "Al Masjid Farborne",
+    THE_MASJID_SIGN: "Special Thanks to our beloved Professor.",
+    THE_MASJID_DEV: "Al Masjid Farborne Development Area",
+
     LV1_LEFT: "Cut for Wood",
     LV1_RIGHT: "Wildflower Honey",
 
@@ -14,6 +23,10 @@ const Signage = {
         "The birds are in flight toward the sand falls now. We have stirred the nests. If they see trees, they will never leave you."
     ],
 
+    LV4_LEFT: "Residential Area Under Development",
+    LV4_DATES1: "Date Pine fruit is NOT safe for human consumption",
+    LV4_DATES2: "Yellow Date Pines",
+    LV4_DATES3: "Red Date Pines",
     POST_LV4: [
         "Professor! You're back! We were overjoyed to receive your message. All the residents are coming from the cactus grove. Make room for us.",
         "We have recieved your call. We will come to you.",
@@ -21,6 +34,7 @@ const Signage = {
         "These people know nothing but alcohol. There is an endless stream of Kins coming to you Professor, keep their cups full."
     ],
 
+    LV5_LEFT: "Residential Land: Claim your plot",
     POST_LV5: [
         "Take caution Professor. Be inconspicuous as the desert dunes. Gossip has begun to travel with the winds.",
         "There are enemies en route. Destroy them completely. They will be fertilizer for the forest.",

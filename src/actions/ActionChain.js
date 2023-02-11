@@ -24,7 +24,6 @@ class ActChain extends Action {
     nextAction() {
         this.chainedAction.setAddToControllerFn(this.addToController);
         this.addToController(this.chainedAction);
-        //addChatMessage('Civ', 'Calling next fn');
     }
 
     subclassUpdate(time, delta) {

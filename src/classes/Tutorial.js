@@ -38,7 +38,7 @@ class Tutorial {
     addPrompt(message, className = Consts.CHATBOX_TUTORIAL) {
         AddStep(this, ()=>{
             let name = "Guide";
-            addChatMessage(name, message, className);
+            Dom.AddChatMessage(name, message, className);
             return true;
         });
         return this;

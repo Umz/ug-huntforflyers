@@ -6,6 +6,7 @@ import GameSave from "../../components/GameSave";
 import Sfx from "../../consts/Sfx";
 import Textures from "../../consts/Textures";
 import ActionChain from "../../classes/ActionChain";
+import Dom from "../../components/Dom";
 
 class CivilianCtrl extends BaseController {
 
@@ -102,9 +103,9 @@ class CivilianCtrl extends BaseController {
 
     actionChain() {
 
-        let act1 = new CtrWait(100).addCallback(()=>{ addChatMessage('Civ', 1) });
-        let act2 = new CtrWait(1000).addCallback(()=>{ addChatMessage('Civ', 2) });
-        let act3 = new CtrWait(100).addCallback(()=>{ addChatMessage('Civ', 3) });
+        let act1 = new CtrWait(100).addCallback(()=>{ Dom.AddChatMessage('Civ', 1) });
+        let act2 = new CtrWait(1000).addCallback(()=>{ Dom.AddChatMessage('Civ', 2) });
+        let act3 = new CtrWait(100).addCallback(()=>{ Dom.AddChatMessage('Civ', 3) });
         
         let chain = new ActionChain()
             .chain(act1)

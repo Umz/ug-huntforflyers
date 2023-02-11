@@ -17,8 +17,7 @@ class CivilianSpawner {
     spawnCivilian(house) {
 
         let civ = SpriteBuilder.GetCivilianSprite();
-        civ.setPosition(house.x, WorldConsts.GROUND_Y - 16);
-        civ.isMale = Math.random() > .5;
+        civ.setPosition(house.x, WorldConsts.GROUND_Y - 20);
 
         this.scene.addSpriteToSceneAndGroups(
             civ,
@@ -28,6 +27,8 @@ class CivilianSpawner {
         SpritePhysics.AddPhysics(civ);
 
         civ.setHome(house);
+
+        civ.setGender(Math.random() > .8);
 
         let dialogues = this.chats.get(house.getType());
         if (dialogues && dialogues.length > 0) {
@@ -55,7 +56,6 @@ class CivilianSpawner {
     }
 
     assignDialogueToBuildings(map) {
-
         
         map.set(Buildings.TENT1, Dialogue.NPC.TENT1);
         map.set(Buildings.TENT2, Dialogue.NPC.TENT2);

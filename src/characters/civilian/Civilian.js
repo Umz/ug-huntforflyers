@@ -13,6 +13,7 @@ class Civilian extends BaseSprite {
         this.setController(new CivilianCtrl(this));
 
         this.coins = 0;
+        this.isMale = true;
     }
 
     setHome(sprite) {
@@ -38,6 +39,15 @@ class Civilian extends BaseSprite {
 
     hasCoins() {
         return this.coins > 0;
+    }
+
+    setGender(isMale) {
+        this.isMale = isMale;
+
+        if (isMale)
+            this.view.setMaleSkin();
+        else
+            this.view.setFemaleSkin();
     }
 }
 export default Civilian;

@@ -1,6 +1,5 @@
 Build toward the game design document
 
-*** Citizen skins different
 *** Citizens collect exact amount with MAX
 *** switch showMessage to Dom.ShowMessage
 *** One call for ground explosion hit (damage and visual?)

@@ -9,6 +9,8 @@ class BaseController {
         
         this.sprite = target;
 
+        this.scene = target.scene;
+
         this.allActionNames = new Set();
         this.clearableActions = new Set();
         

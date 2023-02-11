@@ -49,9 +49,11 @@ class PreySpawner {
     }
 
     setSpawning() {
-        this.spawned = 0;
-        this.counter.setActive(true);
-        this.cooldown.setActive(false);
+        if (this.scene.isAllHousesComplete()) {
+            this.spawned = 0;
+            this.counter.setActive(true);
+            this.cooldown.setActive(false);
+        }
     }
 
     spawnPrey() {

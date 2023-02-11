@@ -7,11 +7,14 @@ import Decor from "consts/Decor";
 import Characters from "consts/Characters";
 import BugModel from "./BugModel";
 import Signage from "../consts/Signage";
+import Tutorial3 from "../tutorials/Tutorial3";
 
 const Stage3Model = {
 
     LENGTHS: 3,
     CARRYKINS: 5,
+    TUTORIAL: Tutorial3,
+
     ENEMIES: [
         Characters.DRONE,
         Characters.PIP

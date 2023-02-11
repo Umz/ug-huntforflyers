@@ -44,6 +44,10 @@ class Game extends Phaser.Scene {
         this.levelData = LevelMapper.GetLevelData(CURRENT_STAGE);
         this.buildings = new Map();
         this.updateRunner = new UpdateRunner();
+
+        this.track = {
+            killCount: 0
+        }
         
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
@@ -439,6 +443,8 @@ class Game extends Phaser.Scene {
         if (thief.isDead()) {
             this.smokeEmitter.explode(8, thief.x, thief.y);
             this.showSkyExplosion(thief.x, thief.y);
+
+            this.track.killCount ++;
         }
         else
             this.showSpark(thief.x, thief.y);
@@ -495,6 +501,8 @@ class Game extends Phaser.Scene {
             this.collisionGroupCoiners.remove(coiner);
             coiner.kill();
             coiner.destroy();
+
+            this.track.killCount ++;
         }
     }
 

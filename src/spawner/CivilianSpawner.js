@@ -30,7 +30,6 @@ class CivilianSpawner {
         civ.setHome(house);
 
         let dialogues = this.chats.get(house.getType());
-        console.log('Dialogues for house type', house.getType(), dialogues);
         if (dialogues && dialogues.length > 0) {
 
             let name = civ.isMale ? this.getMaleName() : this.getFemaleName();

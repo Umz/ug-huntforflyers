@@ -1,0 +1,317 @@
+<html>
+    <head>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background-color: #ddd;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 12px;
+            }
+
+            #box {
+                display: flex;
+                width: 100%;
+                height: 50px;
+                position: absolute;
+                transform: translate(0, 50%);
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+                align-items: center;
+            }
+            .boxin {
+                flex: 1;
+                height: 100%;
+                text-align: center;
+            }
+            .active {
+                background-color: red;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="box">
+        </div>
+
+        <script>
+
+            const Test = {
+                VAL: "value"
+            }
+            
+            const Speeches = new Map();
+            Speeches.set(Test.VAL, [[123], [345], [456]]);
+            //let copy = new Map(Speeches);
+            let copy = new Map(JSON.parse(JSON.stringify(Array.from(Speeches))));
+            
+            let o = Speeches.get(Test.VAL);
+            let all = copy.get(Test.VAL);
+            
+            let v1 = all.shift();
+            
+            let ele = document.getElementById('box');
+            ele.textContent = `Copy: ${all.length} and Original: ${o.length}`;
+
+        </script>
+<script>
+
+// Shop1 (Friend, Free, Happy)
+[
+    "Yes Habibi, welcome, good to see you!",
+    "We are selling well now, thank you habibi.",
+    "Anything you need, discount for you.",
+    "Come and try our newest perfumes.",
+    "After we close, come by, I have a gift for you.",
+    "My favourite man, habibi!",
+    "Later on habibi, we go together for coffee."
+];
+[
+    "My dear! My friend, come, come!",
+    "For you Professor, anything you want.",
+    "Come and see. Come.",
+    "Come habibi, come and see!",
+    "Take what you like Professor, anything.",
+    "Any time you want, come to me habibi.",
+    "I will sort you out, free, anything!"
+];
+[
+    "Ah, goodness! My dear good Professor!",
+    "Welcome habibi, so happy to see you.",
+    "We get imports from everywhere now.",
+    "I have a special fruit to give you.",
+    "There is so much to show you habibi!",
+    "You need to come visit more often!",
+    "I am always happy when you come!"
+];
+// Shop2 (Fruit, Veg, Meat)
+[
+    "Professor, habibi! Fresh fruit, take some, take!",
+    "Bananas, fresh, today.",
+    "Look habibi, strawberries, fresh!",
+    "Try this one, come habibi.",
+    "Look, see, fresh grapes. Grapes!",
+    "Everything fresh!",
+    "Everything grown local, imagine it!"
+];
+[
+    "Professor! You will not believe what we have!",
+    "Come, we kept some for you habibi.",
+    "Potatoes, fresh potatoes!",
+    "Tomatoes, ripe for you habibi.",
+    "You are welcome any time Professor.",
+    "We even have spinach now!",
+    "Come any time for vegetables. Any time."
+];
+[
+    "Professor, my dear, habibi! Finally you visit.",
+    "Look at our place habibi, amazing.",
+    "We have meat, cheap for everyone.",
+    "Chicken, so plentiful we don't even sell it anymore! Hah!",
+    "Lamb, always fresh, from the local herd.",
+    "Now, we are raising rabbits.",
+    "We will send you, anytime, just let me know habibi!"
+];
+// Restaurant (Welcoming, Menu, Fame)
+[
+    "Hello Professor.",
+    "We can have a table ready for you?",
+    "With or without your Kins.",
+    "There are tables who are happy to have you.",
+    "And many would be happy to join you.",
+    "Come by and have a break.",
+    "You are always welcome Professor."
+];
+[
+    "Good days be upon you Professor.",
+    "How are you today?",
+    "Me? Ana bi khair.",
+    "Today we have watermelon ice.",
+    "Why not stop in?",
+    "We have a menu just for you.",
+    "We are happy when you visit."
+];
+[
+    "Please come in Professor.",
+    "We have a booth made for you.",
+    "Thank you for visiting!",
+    "Every time you come, we gain more fame.",
+    "You are like a sales magnet!",
+    "Our menu has you picture.",
+    "Come and take a seat."
+];
+// Windmill (Easy going)
+[
+    "Salaam Professor.",
+    "Salutations upon our prophet.",
+    "Praise to our Lord.",
+    "Life is sweet.",
+    "Life is good.",
+    "We have plenty, we are happy to share.",
+    "Call for me when you need aid."
+];
+[
+    "Give thanks for the grain.",
+    "All praise is for Allah!",
+    "You must be first take from our next harvest Professor.",
+    "We have tall barely that has grown strong.",
+    "Come and enjoy it with us.",
+    "Feel the warm fresh breeze.",
+    "And give thanks."
+];
+[
+    "Such beautiful birds in our skies.",
+    "Glory to the One who made this.",
+    "This soft earth that rubs our feet.",
+    "Before this, we walked on burning sand and scorching rock.",
+    "How sweet life has become.",
+    "Let us take a moment to reflect.",
+    "A moment..."
+];
+// Farmhouse (Active, Wealthy)
+[
+    "Tears warm my heart when I see you Professor.",
+    "You are an inspiration like our wise words passed down through us.",
+    "Get up good farmer and toil while the dawn is hazy. The good brown soil is never lazy.",
+    "Do not let my ramblings distract you Professor, I am just overjoyed to see you.",
+    "The plants grow, the land is fertile, so fertile here. Opportunity is everywhere.",
+    "You are a blessing to use like this deep rich earth.",
+    "You have inspired your people, our beloved Professor."
+];
+[
+    "Professor, beloved, come and speak a moment with me.",
+    "The farms are successful beyond our dreams. All praise is for Allah!",
+    "The stalks grow strong and thick, the fruits are so big and full.",
+    "We are collecting full buckets, baskets and barrels. Everything we plant springs up from the earth.",
+    "No one has seen the like of this place amongst all The Farborne.",
+    "Allah! We are blessed by this bounty and produce.",
+    "The crops grow and fruit like a never ending stream, we are rich beyond our dreams."
+];
+[
+    "Variety is the spice of life...",
+    "Never before have we tasted so many of the earths bounties.",
+    "My beloved Professor, stop by and enjoy our labours.",
+    "The Kins bring back a new plant each day from the fields.",
+    "How many different praises can we give to Allah?",
+    "Let this good fortune continue for us.",
+    "Let us taste the variety of this land."
+];
+// Ranch
+[
+    "Glory be to Allah, chickens are such strange birds.",
+    "A bird, but it does not fly.",
+    "A good bird, of course, just a strange one.",
+    "And rabbits, hundreds of them now.",
+    "As the green spreads, by the grace of Allah, we increase our livestock.",
+    "We are awaiting your next import of livestock.",
+    "I am eager to see deer and 'dairy cows'"
+];
+[
+    "Peace good Professor, you are welcome.",
+    "Praise be to Allah, for what he has blessed us with.",
+    "Life on the ranch is so easy.",
+    "From days of travelling on hot sands under burning sun.",
+    "We hardly even work now.",
+    "The Kins, the more we keep the better.",
+    "This is a wonderful life to live."
+];
+[
+    "The cool breeze blows through these blessed lands.",
+    "We breath fresh air and give thanks to Allah.",
+    "The animals love this cool breeze.",
+    "When our camels return I have the perfect field for them.",
+    "Chickens and rabbits, soon goats too.",
+    "And swine, we use them for the soil.",
+    "This cool breeze."
+];
+// Mosque (Imaam)
+[
+    "All and every praise is for Allah, Lord of the heavens and earth",
+    "There is no might or power except for Allah",
+    "There is none worthy of worship except Allah, glory be to Him",
+    "Glory is to Allah, all praise is for Allah, Allah is the greatest",
+    "Fear Allah and the last day. Fear Him like He should be feared",
+    "Seek your Lord in this world and for the hereafter",
+    "To Allah we belong and to him we shall return"
+];
+[
+    "And be grateful to the Lord who has given us such blessings.",
+    "It is He who makes the plants grow. As in Surah 'Abasa [80:25-32]",
+    "And remember His blessings, his bounties upon you. As in Surah Ar-Rahman [55:13]",
+    "How many thanks can we give? And each time you are thankful you are rewarded for your thankfulness.",
+    "Whatever blessings you have are from Allah. Then whenever hardship touches you, to Him you cry [16:53]",
+    "And Allah sends down rain from the sky, giving life to the earth after its death. Surely in this is a sign for those who listen [16:65]",
+    "So remind them, if the reminder should benefit [87:9] Sadaqa Allah al-Azeem"
+];
+[
+    "Your adhaab, good manners, courtesy, conduct. Let your adhaab speak for you.",
+    "Treat your neighbours well, we are like brothers to one another, one family of The Farborne",
+    "Reported Anas ibn Malik: The Prophet, peace and blessings be upon him, said: 'None of you will have faith until he loves for his brother as he loves for himself'",
+    "Be as a single unit, and support one another in this great endeavour.",
+    "Abu Huraira reported: The Prophet, peace and blessings be upon him, said: 'Give each other gifts and you will love each other'",
+    "Eat with your right hand, drink with your right hand.",
+    "Remember your conduct in every place, at every time; Allah is ever watchful of you."
+];
+// Visitors (Drugged)
+[
+    "I think there is something in the water...",
+    "This place looks so nice.",
+    "Everything is sparkling, and shiny.",
+    "Can you see it too?",
+    "The air is so crisp here.",
+    "I just feel so refreshed.",
+    "After I had a sip from that tank."
+];
+[
+    "I feel stronger than ever!",
+    "Is there anything you need me to Carry?",
+    "I'm here to help, just say the word.",
+    "My hands look a bit swollen, but I feel great!",
+    "That water tank really invigorates you.",
+    "No job to big, no object too heavy!",
+    "A sip from the tank and I'm ready to go!"
+];
+[
+    "I feel like lifting!",
+    "I want to Carry something heavy.",
+    "I like to Carry things.",
+    "We don't need machines, let's Carry things.",
+    "I like the water in the tank.",
+    "I like to Carry water too.",
+    "Is there anything to lift?"
+];
+// Lab workers (Statistics)
+[
+    "You look well Professor.",
+    "We have a 90% conversion rate from the water.",
+    "Transformation period is down to 3 days.",
+    "Intelligence is retained with the water.",
+    "Life expectancy has increased by 50%",
+    "Obedience has increased by 24%",
+    "Power and stamina are at stable levels"
+];
+[
+    "We have secured an untraceable source.",
+    "So far there has been no suspicion.",
+    "Investigations here have all been general.",
+    "Journalists reported nothing out of the ordinary.",
+    "Corrupt officials were added to stock.",
+    "Belongings have been donated.",
+    "Our stock supply is healthy for now."
+];
+[
+    "The water is spectacular Professor.",
+    "The chemical increases clarity.",
+    "Substance abuse is at 60%, and increasing.",
+    "Adverse reactions decrease mortality rate in transformed stock.",
+    "Presence is imperceptible.",
+    "Transformation dosage reduced by 15%",
+    "Our 'Secret Pub' is at 100%"
+];   
+</script>
+    </body>
+</html>

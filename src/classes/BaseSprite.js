@@ -94,7 +94,7 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
     }
 
     setModel(model) {
-        this.model = model;
+        this.model = JSON.parse(JSON.stringify(model));
         this.hp = this.model.hp || 1;
         return this;
     }

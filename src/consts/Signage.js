@@ -24,7 +24,7 @@ const Signage = {
     POST_LV5: [
         "Take caution Professor. Be inconspicuous as the desert dunes. Gossip has begun to travel with the winds.",
         "There are enemies en route. Destroy them completely. They will be fertilizer for the forest.",
-        "The golden bricks will be delivered, makes plans for the most important house of them all.",
+        "The golden bricks will be delivered, so make plans for the most important house of them all.",
         "News has spread of 'The Drinking Spot' in every place where miscreants gather. It is like myth or legend. It is under control.",
         "The bats of the long cave have become pale and giant. We have captured some and sent them to you Professor.",
         "The caravans are coming with poultry and livestock. Build a cool place to house them."

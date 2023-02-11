@@ -28,6 +28,10 @@ class Civilian extends BaseSprite {
         return this.home.isComplete();
     }
     
+    coinsNeededForHome() {
+        return Math.ceil(this.home.amountNeededToComplete());
+    }
+
     setCoins(amt) {
         this.coins = amt;
     }

@@ -90,7 +90,9 @@ class Preload extends Phaser.Scene {
             { key: Animations.MUSLIM_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_idle', start:1, end: 4}), frameRate: 5, repeat: -1 },
             { key: Animations.MUSLIM_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslim_run', start:1, end: 6}), frameRate: 9, repeat: -1 },
             { key: Animations.MUSLIMA_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslima_idle', start:1, end: 4}), frameRate: 5, repeat: -1 },
-            { key: Animations.MUSLIMA_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslima_run', start:1, end: 6}), frameRate: 9, repeat: -1 }
+            { key: Animations.MUSLIMA_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslima_run', start:1, end: 6}), frameRate: 9, repeat: -1 },
+            { key: Animations.MUSLIMA2_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslima2_idle', start:1, end: 4}), frameRate: 5, repeat: -1 },
+            { key: Animations.MUSLIMA2_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_muslima2_run', start:1, end: 6}), frameRate: 9, repeat: -1 }
         ];
         for (let civ of civilians)
             this.anims.create(civ);

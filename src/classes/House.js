@@ -27,6 +27,10 @@ class House extends Phaser.GameObjects.Sprite {
             this.scaffold.destroy();
     }
 
+    amountNeededToComplete() {
+        return this.capacity - this.filled;
+    }
+
     isComplete() {
         return this.filled === this.capacity;
     }

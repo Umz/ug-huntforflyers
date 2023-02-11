@@ -72,7 +72,9 @@ class CivilianCtrl extends BaseController {
         let sndM = this.scene.soundManager;
         this.sprite.setVelocityY(-16);
 
-        let coins = GameSave.UpdateScoreAndDom(-10);
+        let requestedAmount = Math.min(this.sprite.coinsNeededForHome(), 10);
+        let coins = GameSave.UpdateScoreAndDom(-requestedAmount);
+        console.log('Coins taken: ', coins)
         if (coins > 0)
             this.addAction(new CtrWait(1000).addCallback(()=>{
                 this.sprite.setCoins(coins);

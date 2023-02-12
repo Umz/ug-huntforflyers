@@ -47,8 +47,8 @@ const Consts = {
     PAUSE_HOME_BUTTON: "pause-menu-home",
     PAUSE_SOUND_BUTTON: "pause-menu-sound",
 
-    RESULTS_MENU: "game-result-menu",
-    RESULTS_HOME_BUTTON: "result-menu-home",
+    RESULTS_MENU: "gameover-container",
+    RESULTS_HOME_BUTTON: "gameover-button",
 
     SAVE_NAME: "hff_save_key_1",
     SAVE_NAME_SCORE: "hff_save_score_1",

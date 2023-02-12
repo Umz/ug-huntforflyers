@@ -61,14 +61,12 @@
             </div>
         </div>
 
-        <div id="game-result-menu" class="game-overlay">
-            <div>
-                <h2>Result Menu</h2>
-                <p>And so, Dr. was crushed by the same monsters he had created..</p>
-            </div>
-            <div class="spacer"></div>
-            <div>
-                <img id="result-menu-home" class="" src="assets/ui/home.png" alt="Home" />
+        <div id="gameover-container" class="game-overlay size-fullscreen">
+            <div id="gameover-box">
+                <h2>Farborne Report</h2>
+                <p id="gameover-message">Your endeavours and consistency have paid off. The land has been renewed and The Farborne will enjoy the fruits of your labour for generations.<br />Play Report:</p>
+                <p id="gameover-stats"></p>
+                <img id="gameover-button" src="assets/ui/home.png" alt="Home" />
             </div>
         </div>
 
@@ -107,6 +105,8 @@
         addUIStat('hud-stage-text', 'assets/ui/stat_stage.png', 'Dwelling');
         addUIStat('hud-lifeforce-text', 'assets/ui/stat_crystal.png', '0');
         addUIStat('hud-team-text', 'assets/ui/stat_carrykins.png', '0');
+
+        //addGameoverStat('Example', 3);
         </script>
 
      </body>

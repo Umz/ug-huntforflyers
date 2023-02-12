@@ -34,7 +34,7 @@
 }
 .chat-col-message {
     flex: 4;
-    font-size: calc(.5em + 1vmin);;
+    font-size: calc(.5em + 1vmin);
     line-height: 1;
 }
 

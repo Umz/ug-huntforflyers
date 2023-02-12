@@ -1,0 +1,51 @@
+#gameover-container {
+    z-index: 1400;
+    visibility: visible;
+}
+
+#gameover-box {
+
+    position: relative;
+    width: 512px;
+    max-width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3%;
+
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 1px 3px 5px #000;
+
+    text-align: center;
+    text-shadow: none;
+    color: #5b360f;
+    background-color: #f1e2c6;
+    background-color: rgba(241, 224, 198, .6);
+    backdrop-filter: blur(7px);
+    font-size: calc(.8em + 1vmin);
+}
+
+#gameover-message {
+    margin-bottom: 3%;
+}
+#gameover-stats {
+    margin-bottom: 7%;
+}
+
+.gameover-stat-row {
+    display: flex;
+    gap: 60px;
+}
+.gameover-stat-col {
+    flex: 1;
+    text-align: left;
+}
+.right-align-col {
+    text-align: right;
+}
+
+#gameover-button {
+    display: block;
+    margin: auto;
+}

@@ -3,19 +3,18 @@ Build toward the game design document
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
-
-Interact for next level
-Fill in the game over screen-
+*** Refactor chat to use new functions page-functions.js 
 
 Redo level 6 (Shopping district right | Residential crisis left)
 Add level 7 - Ranch + all (Food crisis)
 Add level 8 - Land restoration
 
-Tutorial (2, 3, 4, 5, 5M, 6)
+Tutorial (4, 5, 5M, 6)
 Press up to name your CKs (menu)
 Refactor Base and BaseController - update in controller not in Base
 Game controls full
 Press up uses box.contains instead of overlap
+Interact for next level
 
 Fill in the info screen button (Story)
 Fill in the question button (controls)

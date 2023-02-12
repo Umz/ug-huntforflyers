@@ -31,6 +31,41 @@ function addUIStat(id, src, val) {
     uiHolder.appendChild(flexDiv);
 }
 
+function addGameoverStat(label, value) {
+
+    let containerId = 'gameover-stats';
+    let rowClass = 'gameover-stat-row';
+    let colClass = 'gameover-stat-col';
+    let colClassL = 'gameover-stat-col right-align-col';
+
+    let rowTag = 'span';
+    let colTag = 'span';
+
+    let row = addElementRowToContainerById(containerId, rowTag, rowClass);
+    addTextColumnToRow(row, colTag, colClassL, label);
+    addTextColumnToRow(row, colTag, colClass, value);
+}
+
+function addElementRowToContainerById(containerId, rowTag, rowClass) {
+    
+    let row = document.createElement(rowTag);
+    row.setAttribute('class', rowClass);
+
+    let container = document.getElementById(containerId);
+    container.appendChild(row);
+
+    return row;
+}
+
+function addTextColumnToRow(rowElement, columnTag, columnClass, columnValue) {
+
+    let column = document.createElement(columnTag);
+    column.setAttribute('class', columnClass);
+    column.textContent = columnValue;
+
+    rowElement.appendChild(column);
+}
+
 function addChatMessage(speaker, message, cssClass) {
 
     const box = document.getElementById('chatbox-container');

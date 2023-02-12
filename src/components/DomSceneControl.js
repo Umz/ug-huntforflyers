@@ -5,10 +5,10 @@ class DomSceneControl {
 
     static SetGameSceneControl(scene) {
 
-        //  GUI
+        //  HUD
+
         Dom.AddClick(Consts.UI_PAUSE_BUTTON, ()=> {
             Dom.SetDomIdVisibility(Consts.UI, false);
-            Dom.SetDomIdVisibility(Consts.MENU_BG, true);
             Dom.SetDomIdVisibility(Consts.PAUSE_MENU, true);
             scene.scene.pause();
         });
@@ -17,13 +17,11 @@ class DomSceneControl {
 
         Dom.AddClick(Consts.PAUSE_PLAY_BUTTON, ()=> {
             Dom.SetDomIdVisibility(Consts.UI, true);
-            Dom.SetDomIdVisibility(Consts.MENU_BG, false);
             Dom.SetDomIdVisibility(Consts.PAUSE_MENU, false);
             scene.scene.resume();
         });
 
         Dom.AddClick(Consts.PAUSE_HOME_BUTTON, ()=> {
-            Dom.SetDomIdVisibility(Consts.MENU_BG, false);
             Dom.SetDomIdVisibility(Consts.PAUSE_MENU, false);
             Dom.ResetClicks(Consts.SC_GAME_BUTTONS);
 
@@ -41,7 +39,6 @@ class DomSceneControl {
         //  RESULTS / GAME OVER
 
         Dom.AddClick(Consts.RESULTS_HOME_BUTTON, ()=>{
-            Dom.SetDomIdVisibility(Consts.MENU_BG, false);
             Dom.SetDomIdVisibility(Consts.RESULTS_MENU, false);
             Dom.ResetClicks(Consts.SC_GAME_BUTTONS);
 

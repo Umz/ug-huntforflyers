@@ -42,7 +42,7 @@ const Consts = {
     HUD_STAGE_TEXT: "hud-stage-text",
     HUD_CARRYKINS_TEXT: "hud-team-text",
 
-    PAUSE_MENU: "game-pause-menu",
+    PAUSE_MENU: "pause-menu-container",
     PAUSE_PLAY_BUTTON: "pause-menu-play",
     PAUSE_HOME_BUTTON: "pause-menu-home",
     PAUSE_SOUND_BUTTON: "pause-menu-sound",

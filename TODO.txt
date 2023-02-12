@@ -1,10 +1,10 @@
 Build toward the game design document
 
-*** Pause screen fix
 *** Kins and Civs hit by explosion
 *** Models, houses need relative size and time to complete 
 *** Refactor wind, emitters, trees group,
 
+Interact for next level
 Fill in the game over screen-
 
 Redo level 6 (Shopping district right | Residential crisis left)

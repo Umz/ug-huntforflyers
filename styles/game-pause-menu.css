@@ -1,12 +1,33 @@
-#game-pause-menu {
-    top: 45%;
-    transform: translate(0, -50%);
+#pause-menu-container {
     z-index: 13;
+    background-color: rgba(0, 0, 0, .5);
     visibility: hidden;
 }
 
-#gpm-logo {
+#pause-logo-cont {
+    margin-top: 25%;
+    margin-bottom: 5%;
+}
+
+#pause-logo {
     display: block;
-    width: 128px;
+    max-width: 300px;
     margin: auto;
+}
+
+#pause-menu-buttons {
+    display: flex;
+    margin: auto;
+    max-width: 300px;
+}
+
+.pause-menu-button {
+    flex: 1;
+    text-align: center;
+}
+
+.pause-selected-button {
+    border-bottom: 4px dashed #fff;
+    border-radius: 11px;
+    padding-bottom: 11px;
 }

@@ -1,7 +1,7 @@
 Build toward the game design document
 
-*** Kins and Civs hit by explosion
 *** Models, houses need relative size and time to complete 
+*** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 
 Interact for next level

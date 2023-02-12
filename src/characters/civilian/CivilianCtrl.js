@@ -75,7 +75,6 @@ class CivilianCtrl extends BaseController {
 
         let requestedAmount = Math.min(this.sprite.coinsNeededForHome(), 10);
         let coins = GameSave.UpdateScoreAndDom(-requestedAmount);
-        console.log('Coins taken: ', coins)
         if (coins > 0)
             this.addAction(new CtrWait(1000).addCallback(()=>{
                 this.sprite.setCoins(coins);

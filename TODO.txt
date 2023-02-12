@@ -1,14 +1,9 @@
 Build toward the game design document
 
-*** Lifting carrying, set velocity 0 - independent action alongside other actions (not carry home etc.)
-*** Refactor wind, emitters, trees group,
-*** Game.AddBackground change to use includes : check array functions
-*** JS optimize the Dom reading and writing
-*** MAX wind wait time
-*** Missing texture toads 
 *** Pause screen fix
 *** Kins and Civs hit by explosion
 *** Models, houses need relative size and time to complete 
+*** Refactor wind, emitters, trees group,
 
 Tutorial 2, 3
 Fill in the game over screen-

@@ -362,8 +362,6 @@ class Game extends Phaser.Scene {
 
     showWind() {
         
-        //let windSpeed = WorldConsts.WIDTH / 4;
-        //let windX = 0;
         let windSpeed = WorldConsts.WIDTH / 15;
         let windX = this.getLevelWidth();
 
@@ -389,7 +387,6 @@ class Game extends Phaser.Scene {
         let windToNextTree = ()=>{            
             
             let tree = allTrees[treeIndex];
-            //let timeToTree = Math.abs((tree.x - windX) / windSpeed) * 1000;  // Distance / Speed = Time
             let timeToTree = (windX - tree.x) / windSpeed * 1000;  // Distance / Speed = Time
             
             this.time.addEvent({

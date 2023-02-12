@@ -49,7 +49,6 @@ class CivilianSpawner {
     spawnCivilians(house) {
         for (let i=0; i<house.getResidents(); i++)
             this.spawnCivilian(house);
-        console.log('Spawned for house ', house.getResidents())
     }
 
     setupDialogue() {

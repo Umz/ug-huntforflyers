@@ -5,7 +5,7 @@ import WorldConsts from "../consts/WorldConsts";
 class BGToad extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
-        super(scene, x, y, 'flyers', 'toad1');
+        super(scene, x, y, 'sprites', 'toad1');
 
         this.offsetX = x;
         this.scrollOffset = (4 * .15);

@@ -1,6 +1,6 @@
 #gameover-container {
-    z-index: 1400;
-    visibility: visible;
+    z-index: 14;
+    visibility: hidden;
 }
 
 #gameover-box {

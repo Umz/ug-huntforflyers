@@ -48,5 +48,25 @@ class PlayerSpawner {
         return collector;
     }
 
+    spawnClone() {
+
+        let home = this.scene.getBuilding(Buildings.PLAYER_HOUSE);
+        let clone = SpriteBuilder.GetCloneSprite();
+        clone.setPosition(home.worldX + Phaser.Math.Between(-32, 32), WorldConsts.GROUND_Y - 18);
+
+        this.scene.addSpriteToSceneAndGroups(
+            clone,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupClones,
+        );
+        SpritePhysics.AddPhysics(clone);
+
+        return clone;
+    }
+
+    spawnClones(amt) {
+        for (let i=0;i<amt;i++)
+            this.spawnClone();
+    }
 }
 export default PlayerSpawner;

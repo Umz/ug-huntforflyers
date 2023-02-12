@@ -7,6 +7,8 @@ import Depths from "consts/Depths";
 import CollectorModel from "models/CollectorModel";
 import CivilianModel from "models/CivilianModel";
 import PlayerModel from "models/PlayerModel";
+import Clone from "../characters/clone/Clone";
+import CloneModel from "../models/CloneModel";
 
 class SpriteBuilder {
 
@@ -20,6 +22,10 @@ class SpriteBuilder {
 
     static GetCivilianSprite() {
         return GetSprite(Civilian, CivilianModel, Depths.CIVILIANS);
+    }
+
+    static GetCloneSprite() {
+        return GetSprite(Clone, CloneModel, Depths.CIVILIANS);
     }
 
     static GetPrey(model) {

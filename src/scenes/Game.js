@@ -132,10 +132,12 @@ class Game extends Phaser.Scene {
         this.collisionGroupWaterPump = this.physics.add.group();
         this.collisionGroupCollectors = this.physics.add.group();
         this.collisionGroupCivilians = this.physics.add.group();
+        this.collisionGroupClones = this.physics.add.group();
 
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
         this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
+        this.physics.add.collider(this.platforms, this.collisionGroupClones);
         this.physics.add.collider(this.platforms, this.collisionGroupCoiners);
         this.physics.add.collider(this.platforms, this.coinGroup);
         
@@ -181,21 +183,21 @@ class Game extends Phaser.Scene {
         for (let i=0; i<cks; i++)
             this.playerSpawner.spawnCollector();
         
+        this.playerSpawner.spawnClones(2);
+        
         let enemies = this.levelData.ENEMIES;
         this.enemySpawner = new EnemySpawner(this, enemies);
         this.updateRunner.add(this.enemySpawner);
         
         this.addBackground();
 
-        let spawnerCount = this.levelData.FORESTS.filter(forest => forest.hasPrey()).length;
-        for (let forest of this.levelData.FORESTS) {
-            if (forest.hasPrey()) {
-                let preySpawner = new PreySpawner(this);
-                preySpawner.setX(forest.getCenterX());
-                preySpawner.setBirdType(forest.getEnemyType());
-                preySpawner.multiplyDownTime(spawnerCount);
-                this.updateRunner.add(preySpawner);
-            }
+        let forestWithPrey = this.levelData.FORESTS.filter(forest => forest.hasPrey());
+        for (let forest of forestWithPrey) {
+            let preySpawner = new PreySpawner(this);
+            preySpawner.setX(forest.getCenterX());
+            preySpawner.setBirdType(forest.getEnemyType());
+            preySpawner.multiplyDownTime(forestWithPrey.length);
+            this.updateRunner.add(preySpawner);
         }
 
         //  #   REFACTOR

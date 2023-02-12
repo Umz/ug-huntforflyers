@@ -19,6 +19,9 @@ const Animations = {
     MUSLIMA2_IDLE: 'muslima2_idle',
     MUSLIMA2_RUN: 'muslima2_run',
 
+    TOLU_IDLE: "tolu_idle",
+    TOLU_RUN: "tolu_run",
+
     THIEF_FLY: 'thief_fly',
     COINER_RUN: 'coiner_run',
     SKY_BOMBER: 'sky_bomber',

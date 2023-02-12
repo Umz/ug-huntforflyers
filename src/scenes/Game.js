@@ -512,27 +512,17 @@ class Game extends Phaser.Scene {
         thief.kill();
         thief.destroy();
 
-        this.smokeEmitter.explode(8, thief.x, thief.y);
-        this.showGroundExplosion(thief.x);
+        this.bombExplodeOnGround(thief.x);
 
         this.soundManager.play(Sfx.HIT_CANNON);
     }
 
     collidePlatformRocket(platform, rocket) {
 
-        let players = this.collisionGroupPlayers.getChildren();
-        // carryKins - paleKins - civilians?
-        //  GET any nearby players and hit 
         if (rocket.active)
-            for (let player of players)
-                if (Math.abs(rocket.x - player.x) < WorldConsts.WIDTH * .1)
-                    player.hit();
-        
-        this.smokeEmitter.explode(8, rocket.x, rocket.y);
-        this.showGroundExplosion(rocket.x);
+            this.bombExplodeOnGround(rocket.x);
         
         rocket.setVisible(false).setActive(false).setPosition(0, WorldConsts.HEIGHT);
-        this.soundManager.play(Sfx.MISSLE_BLAST);
     }
 
     collidePlatformPrey(platform, prey) {
@@ -655,6 +645,24 @@ class Game extends Phaser.Scene {
                 this.soundManager.play(Sfx.COINER_DROP_COIN);
             }
         });
+    }
+
+    bombExplodeOnGround(posX) {
+        
+        let players = this.collisionGroupPlayers.getChildren();
+        let kins = this.collisionGroupCollectors.getChildren();
+        let civs = this.collisionGroupCivilians.getChildren();
+
+        let all = players.concat(kins, civs);
+
+        for (let sprite of all)
+            if (Math.abs(posX - sprite.x) < WorldConsts.WIDTH * .1)
+                sprite.hit();
+        
+        this.smokeEmitter.explode(8, posX, WorldConsts.GROUND_Y);
+        this.showGroundExplosion(posX);
+
+        this.soundManager.play(Sfx.MISSLE_BLAST);
     }
 
     addRocketToScene() {

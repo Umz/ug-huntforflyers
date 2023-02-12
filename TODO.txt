@@ -1,7 +1,5 @@
 Build toward the game design document
 
-*** One call for ground explosion hit (damage and visual?)
-*** Stop spawning prey after level complete
 *** Time between spawning multiplied by spawners
 *** Models, houses need relative size and time to complete 
 *** Multiple citizens per house 
@@ -10,6 +8,9 @@ Build toward the game design document
 *** Game.AddBackground change to use includes : check array functions
 *** JS optimize the Dom reading and writing
 *** MAX wind wait time
+*** Missing texture toads 
+*** Pause screen fix
+*** Kins and Civs hit by explosion
 
 Tutorial 2, 3
 Fill in the game over screen-

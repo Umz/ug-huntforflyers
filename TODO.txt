@@ -5,7 +5,6 @@ Build toward the game design document
 *** Models, houses need relative size and time to complete 
 *** Refactor wind, emitters, trees group,
 
-Tutorial 2, 3
 Fill in the game over screen-
 
 Redo level 6 (Shopping district right | Residential crisis left)

@@ -1,6 +1,5 @@
 Build toward the game design document
 
-*** Time between spawning multiplied by spawners
 *** Models, houses need relative size and time to complete 
 *** Multiple citizens per house 
 *** Lifting carrying, set velocity 0 - independent action alongside other actions (not carry home etc.)

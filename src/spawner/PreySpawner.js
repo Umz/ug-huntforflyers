@@ -16,6 +16,7 @@ class PreySpawner {
 
         this.activePrey = [];
         this.maxActive = 10;
+        this.downTime = 23 * 1000;
 
         this.spawned = 0;
         this.spawnLimit = Phaser.Math.Between(20, 30);
@@ -24,7 +25,7 @@ class PreySpawner {
         this.spawnY = WorldConsts.GROUND_Y - 24;    // 24 - buffer to stop sprites appearing underground
 
         this.counter = Counter.New().setRepeating(true).setMaxCount(1250);
-        this.cooldown = Counter.New().setRepeating(true).setMaxCount(23000).setActive(false);
+        this.cooldownCounter = Counter.New().setRepeating(true).setMaxCount(this.downTime).setActive(false);
     }
 
     update(time, delta) {
@@ -39,20 +40,20 @@ class PreySpawner {
         if (this.counter.updateAndCheck(time, delta))
             this.spawnPrey();
 
-        if (this.cooldown.updateAndCheck(time, delta))
+        if (this.cooldownCounter.updateAndCheck(time, delta))
             this.setSpawning();
     }
 
     setCooldown() {
         this.counter.setActive(false);
-        this.cooldown.setActive(true);
+        this.cooldownCounter.setActive(true);
     }
 
     setSpawning() {
         if (!this.scene.isAllHousesComplete()) {
             this.spawned = 0;
             this.counter.setActive(true);
-            this.cooldown.setActive(false);
+            this.cooldownCounter.setActive(false);
         }
     }
 
@@ -93,6 +94,11 @@ class PreySpawner {
 
     setFrequencyInMillis(millis) {
         this.counter.setMaxCount(millis);
+    }
+
+    multiplyDownTime(mul) {
+        let cooldown = this.downTime * mul;
+        this.cooldownCounter.setMaxCount(cooldown);
     }
 }
 export default PreySpawner;

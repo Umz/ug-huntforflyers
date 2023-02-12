@@ -804,7 +804,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
                 house.setCompletePercentAndCrop(building.complete);
                 
-                this.civSpawner.spawnCivilian(house); 
+                this.civSpawner.spawnCivilians(house); 
             }
         }
 

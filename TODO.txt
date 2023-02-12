@@ -1,7 +1,5 @@
 Build toward the game design document
 
-*** Models, houses need relative size and time to complete 
-*** Multiple citizens per house 
 *** Lifting carrying, set velocity 0 - independent action alongside other actions (not carry home etc.)
 *** Refactor wind, emitters, trees group,
 *** Game.AddBackground change to use includes : check array functions
@@ -10,6 +8,7 @@ Build toward the game design document
 *** Missing texture toads 
 *** Pause screen fix
 *** Kins and Civs hit by explosion
+*** Models, houses need relative size and time to complete 
 
 Tutorial 2, 3
 Fill in the game over screen-

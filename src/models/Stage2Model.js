@@ -36,7 +36,7 @@ const Stage2Model = {
 
         Building.New(Buildings.TENT1).setTileX(22).setDepth(Depths.BUILDINGS_BG).setComplete(1),
         Building.New(Buildings.TENT2).setTileX(23).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT3).setTileX(25).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(25).setDepth(Depths.BUILDINGS_BG).setCivs(2),
         Building.New(Decor.SIGN).setTileX(30).setDepth(Depths.BUILDINGS_BG).setSign(Signage.LV2_RIGHT),
     ],
     

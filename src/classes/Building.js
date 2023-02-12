@@ -8,6 +8,7 @@ class Building {
         this.type = type;
         this.alpha = 1;
         this.complete = Phaser.Math.Between(1, 10) *.01;
+        this.residents = 1;
         //this.complete = 1;
     }
 
@@ -17,6 +18,7 @@ class Building {
     setType(type) { this.type = type; return this }
     setDepth(depth) { this.depth = depth; return this }
     setComplete(percent) { this.complete = percent; return this }
+    setCivs(amt) { this.residents = amt; return this }
     setTileX(tile) { 
         this.tile = tile; 
         this.worldX = tile * WorldConsts.TILE_WIDTH;

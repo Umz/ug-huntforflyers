@@ -54,6 +54,10 @@ class House extends Phaser.GameObjects.Sprite {
         return this.config.type;
     }
 
+    getResidents() {
+        return this.config.residents;
+    }
+
     get completion() {
         return this.filled / this.capacity;
     }

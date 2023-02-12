@@ -17,7 +17,7 @@ class CtrStealCoin extends Action {
     subclassUpdate(time, delta) {
 
         let pos = (this.sprite.velocityX > 0) ? this.sprite.getRightCenter() : this.sprite.getLeftCenter();
-        this.coin.setPosition(pos.x, pos.y).setDepth(this.sprite.depth + 1);
+        this.coin.setPosition(pos.x, pos.y).setDepth(this.sprite.depth + 1).setVelocity(0);
 
         let dir = this.dropPoint > this.sprite.x ? 1 : -1;
         let speed = this.sprite.getSpeed() * dir;

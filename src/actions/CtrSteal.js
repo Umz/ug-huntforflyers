@@ -15,7 +15,7 @@ class CtrSteal extends Action {
 
         this.sprite.setVelocity(0, -40);
 
-        this.prey.setPosition(this.sprite.x, this.sprite.getBottomCenter().y)
+        this.prey.setPosition(this.sprite.x, this.sprite.getBottomCenter().y).setVelocity(0);
         this.prey.setState(States.STOLEN);
 
         if (this.prey.y < -32) {

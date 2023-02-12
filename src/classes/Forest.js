@@ -46,7 +46,7 @@ class Forest {
         return this.enemyType;
     }
 
-    hasEnemies() {
+    hasPrey() {
         return this.enemyType !== undefined;
     }
 

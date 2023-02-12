@@ -186,12 +186,15 @@ class Game extends Phaser.Scene {
         this.updateRunner.add(this.enemySpawner);
         
         this.addBackground();
+
+        let spawnerCount = this.levelData.FORESTS
+
         for (let forest of this.levelData.FORESTS) {
-            if (forest.hasEnemies()) {
-                let birdSpawner = new PreySpawner(this);
-                birdSpawner.setX(forest.getCenterX());
-                birdSpawner.setBirdType(forest.getEnemyType());
-                this.updateRunner.add(birdSpawner);
+            if (forest.hasPrey()) {
+                let preySpawner = new PreySpawner(this);
+                preySpawner.setX(forest.getCenterX());
+                preySpawner.setBirdType(forest.getEnemyType());
+                this.updateRunner.add(preySpawner);
             }
         }
 

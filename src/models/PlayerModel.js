@@ -3,6 +3,7 @@ import BaseModel from "consts/BaseModel";
 
 const PlayerModel = Object.assign({}, BaseModel);
 
+PlayerModel.hp = 3;
 PlayerModel.speed = 1;
 PlayerModel.relativeSpeed = 1.5;
 PlayerModel.atlas = 'sprites';

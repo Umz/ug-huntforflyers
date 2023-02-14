@@ -1,4 +1,5 @@
 import CtrNoActionListener from "actions/CtrNoActionListener";
+import ActionChain from "./ActionChain";
 
 class BaseController {
 
@@ -23,6 +24,12 @@ class BaseController {
     addAction(action) {
         this.sprite.addAction(action);
         this.allActionNames.add(action.name);
+    }
+
+    addActionChain() {
+        let chain = new ActionChain();
+        this.addAction(chain);
+        return chain;
     }
 
     addNoActionListener() {

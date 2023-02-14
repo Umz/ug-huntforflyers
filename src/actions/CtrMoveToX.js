@@ -1,7 +1,7 @@
 import Action from "../classes/Action";
 import Actions from "consts/Actions";
 
-class CtrMoveTox extends Action {
+class CtrMoveToX extends Action {
 
     constructor(sprite, toX) {
         super(Actions.ACT_MOVE_TO_X);
@@ -20,4 +20,4 @@ class CtrMoveTox extends Action {
             this.setComplete();
     }
 }
-export default CtrMoveTox;
+export default CtrMoveToX;

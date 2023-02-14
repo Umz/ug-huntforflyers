@@ -1,15 +1,8 @@
 import CtrEnemyFly from "actions/CtrEnemyFly";
-import CtrFollowSprite from "actions/CtrFollowSprite";
-import CtrListenFrozen from "actions/CtrListenFrozen";
 import CtrMoveToTargetX from "actions/CtrMoveToTargetX";
-import CtrSteal from "actions/CtrSteal";
-import CtrStealDive from "actions/CtrStealDive";
-import CtrBlank from "actions/CtrBlank";
+import CtrMoveToX from "actions/CtrMoveToX";
 import CtrWait from "actions/CtrWait";
 import BaseController from "classes/BaseController";
-import Depths from "consts/Depths";
-import States from "consts/States";
-import Actions from "consts/Actions";
 import CtrCarryRocket from "../../actions/CtrCarryRocket";
 import Sfx from "../../consts/Sfx";
 
@@ -17,36 +10,51 @@ class ThiefCtrl extends BaseController {
 
     constructor(sprite) {
         super(sprite);
-        this.scene = sprite.scene;
     }
     
     setDefaultActions() {
+
+        let player = this.scene.player;
+        if (player.isAlive()) {
+            this.addAction(new CtrWait(Phaser.Math.Between(4000, 7000)).addCallback(()=>{
+                this.dropRocketOnPlayer();
+            }));
+        }
+        else {
+            let playerBuilding = this.scene.getPlayerBuilding();
+            let randomDistance = Phaser.Math.Between(-96, 96);
+            let toX = playerBuilding.worldX + randomDistance;
+            this.addActionChain()
+                .chain(new CtrMoveToX(this.sprite, toX).addCallback(()=>{
+                    this.scene.showIcon(this.sprite, 1000, 'ic_hammer');
+                    this.sprite.setVelocityX(this.sprite.velocityX * .1);
+                }))
+                .chain(new CtrWait(Phaser.Math.Between(7000, 10000)).addCallback(()=>{
+                    this.clearAllActions();
+                }))
+        }
+
         this.addAction(new CtrEnemyFly(this.sprite));
-        this.addAction(new CtrWait(Phaser.Math.Between(4000, 7000)).addCallback(()=>{
-            this.loadRocket();
-            this.moveToPlayer();
-        }));
     }
 
-    loadRocket() {
+    dropRocketOnPlayer() {
+
+        let player = this.scene.player;
         let rocket = this.scene.addRocketToScene();
-        let act = new CtrCarryRocket(this.sprite, rocket);
-        this.addAction(act);
-        this.rocket = rocket;
+
+        this.addAction(new CtrCarryRocket(this.sprite, rocket));
+        this.addActionChain()
+            .chain(new CtrMoveToTargetX(this.sprite, player).addCallback(()=>{
+                this.dropRocket(rocket);
+            }));
     }
 
-    moveToPlayer() {
-        let act = new CtrMoveToTargetX(this.sprite, this.scene.player);
-        act.addCallback(()=>{
-            this.dropRocket();
-        });
-        this.addAction(act);
-    }
+    dropRocket(rocket) {
 
-    dropRocket() {
         this.clearAllActions();
+
         this.sprite.setVelocityX(this.sprite.velocityX * .2);
-        this.rocket.drop();
+        rocket.drop();
 
         let sndM = this.scene.soundManager;
         sndM.play(Sfx.BOMBER_DROP_MISSLE);

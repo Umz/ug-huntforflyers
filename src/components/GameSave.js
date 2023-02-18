@@ -1,13 +1,26 @@
 import Consts from "consts/Consts";
 import Levels from "consts/Levels";
 import Dom from "./Dom";
+import SaveData from "../classes/SaveData";
 
 class GameSave {
 
     static Init() {
-        sessionStorage.setItem(Consts.SAVE_NAME, "-");
+        sessionStorage.setItem(Consts.SAVE_NAME, "Replica #1");
         sessionStorage.setItem(Consts.SAVE_NAME_SCORE, 0);
-        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE1);
+        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE4);
+    }
+
+    static GetSaveData() {
+        let saveData = new SaveData();
+        return saveData;
+    }
+
+    static SaveDataToSession(data) {
+    }
+
+    static SaveDataToLocal(data) {
+        console.log(data);
     }
 
     static SetScore(val) {

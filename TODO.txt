@@ -3,7 +3,15 @@ Build toward the game design document
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
-*** Refactor chat to use new functions page-functions.js 
+*** Refactor chat to use new functions page-functions.js
+
+Die and respawn as clone (add tombstone permanent)
+- Die (Unhook controls / Enemies stop attacking / Player invisible / Camera Stop following / Show Death stats / Add tombstone to save data / Set Hunt mode / Set player to behind base come out, set depth )
+- HTML Create DOM Death display (Show X seconds and tween to player)
+
+Clones run around the base
+Tombstone graphic
+Death - Permanent effects going forward - Read tombstone
 
 Redo level 6 (Shopping district right | Residential crisis left)
 Add level 7 - Ranch + all (Food crisis)
@@ -15,6 +23,7 @@ Refactor Base and BaseController - update in controller not in Base
 Game controls full
 Press up uses box.contains instead of overlap
 Interact for next level
+Notifications
 
 Fill in the info screen button (Story)
 Fill in the question button (controls)
@@ -23,8 +32,6 @@ Unlock screen use for ITCN - name your CarryKins
 Split BGM and SFX
 
 Pale Kins for collection to citizen houses
-Clones run around the base
-Die and respawn as clone (add tombstone permanent)
 Solid for fighting
 Drunk visitors turn to Kins
 
@@ -51,7 +58,6 @@ Webpack split into vendor and bundle
 Convert all sound files
 Refactor Sfx names 
 
-Death - Permanent effects going forward - Read tombstone 
 - Consts update names
 
 Game needs to be super simple to learn the concept -

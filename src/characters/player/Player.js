@@ -25,6 +25,11 @@ class Player extends BaseSprite {
         return (this.isState(States.MODE_HUNT) || this.isState(States.MODE_CANNON)) && this.controller.isFireReady;
     }
 
+    respawn() {
+        this.hp = this.model.hp;
+        this.controller.respawnMove();
+    }
+
     setListeningForInteraction(b) {
         this.listenForSpeech = b;
     }

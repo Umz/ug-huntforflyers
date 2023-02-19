@@ -755,18 +755,21 @@ class Game extends Phaser.Scene {
     // enemyBomb - rename
     bombExplodeOnGround(posX) {
         
-        let players = this.collisionGroupPlayers.getChildren();
+        //let players = this.collisionGroupPlayers.getChildren();
         let kins = this.collisionGroupCollectors.getChildren();
         let civs = this.collisionGroupCivilians.getChildren();
 
-        let all = players.concat(kins, civs);
+        let all = kins.concat(kins, civs);
 
         for (let sprite of all)
             if (Math.abs(posX - sprite.x) < WorldConsts.WIDTH * .1 && sprite.isAlive())
                 sprite.hit();
         
-        if (this.player.isDead())
-            this.playerDie();
+        if (this.player.isAlive()) {
+            this.player.hit();
+            if (this.player.isDead())
+                this.playerDie();
+        }
 
         this.smokeEmitter.explode(8, posX, WorldConsts.GROUND_Y);
         this.showGroundExplosion(posX);

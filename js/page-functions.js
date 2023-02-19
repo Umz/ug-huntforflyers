@@ -123,7 +123,7 @@ function setGraveHTML(data) {
     let element = document.getElementById('grave-stats');
     element.innerHTML = "";
 
-    let deathPlace = `${data.time} [${data.stage}]`;
+    let deathPlace = `${msToTime(data.time)} [${data.stage}]`;
 
     element.appendChild(newPWithContent(data.name));
     element.appendChild(newPWithContent(deathPlace));
@@ -138,4 +138,18 @@ function newPWithContent(text) {
     let p = document.createElement('p');
     p.textContent = text;
     return p;
+}
+
+function msToTime(s) {
+
+    let ms = s % 1000;
+    s = (s - ms) / 1000;
+    let secs = s % 60;
+    s = (s - secs) / 60;
+    let mins = s % 60;
+    let hrs = (s - mins) / 60;
+
+    let hours = hrs > 0 ? hrs + ":" : "";
+
+    return hours + mins + ':' + secs;
 }

@@ -28,6 +28,9 @@ import CivilianSpawner from "spawner/CivilianSpawner";
 import EnemySpawner from "spawner/EnemySpawner";
 import Dialogue from "../consts/Dialogue";
 import Textures from "../consts/Textures";
+import Gravestone from "../classes/Gravestone";
+import Interaction from "../components/Interaction";
+import Interactions from "../consts/Interactions";
 
 class Game extends Phaser.Scene {
 
@@ -45,9 +48,10 @@ class Game extends Phaser.Scene {
         this.buildings = new Map();
         this.updateRunner = new UpdateRunner();
 
-        this.track = {
-            killCount: 0
-        }
+        this.saveData = GameSave.GetSaveData();
+
+        this.saveData.stage = CURRENT_STAGE;
+        this.isGraveShowing = false;
         
         const LEVEL_WIDTH = this.levelData.LENGTHS * WorldConsts.WIDTH;
         this.physics.world.setBounds(0, 0, LEVEL_WIDTH, WorldConsts.HEIGHT);
@@ -337,6 +341,8 @@ class Game extends Phaser.Scene {
 
         let count = this.collisionGroupCollectors.countActive();
         Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
+
+        this.saveData.addPlayTime(delta);
     }
 
     addWindParticle() {
@@ -446,7 +452,7 @@ class Game extends Phaser.Scene {
             this.smokeEmitter.explode(8, thief.x, thief.y);
             this.showSkyExplosion(thief.x, thief.y);
 
-            this.track.killCount ++;
+            this.saveData.addKills(1);
         }
         else
             this.showSpark(thief.x, thief.y);
@@ -475,6 +481,7 @@ class Game extends Phaser.Scene {
                     prey.kill();
                     prey.destroy();
                     this.addCoin(value);
+                    this.saveData.addMaterials(1);
                 }
             });
         }
@@ -484,6 +491,8 @@ class Game extends Phaser.Scene {
 
         if (player.isState(States.MODE_TANK)) {
             
+            this.saveData.addCollected(coin.coinValue);
+
             GameSave.IncScore(coin.coinValue);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
             
@@ -504,7 +513,7 @@ class Game extends Phaser.Scene {
             coiner.kill();
             coiner.destroy();
 
-            this.track.killCount ++;
+            this.saveData.addKills(1);
         }
     }
 
@@ -539,7 +548,93 @@ class Game extends Phaser.Scene {
             prey.setY(WorldConsts.GROUND_Y - prey.height * .7);
     }
 
-    swapPlayerMode() {
+    playerDie() {
+
+        let home = this.getBuilding(Buildings.PLAYER_HOUSE);
+        let camera = this.cameras.main;
+        camera.stopFollow();
+
+        this.controlpad.setActive(false);
+
+        let grave = this.saveAndAddGravestone();
+        this.showGravestoneStats(grave);
+
+        this.player.setDepth(Depths.BUILDINGS_BG - 1).setPosition(home.worldX, WorldConsts.GROUND_Y - 16);
+        this.player.setVelocity(0).setAcceleration(0);
+    }
+
+    playerRespawn() {
+
+        Dom.SetDomIdDisplay('grave-stats-container', false);
+        this.swapPlayerMode(States.MODE_HUNT);
+
+        let camera = this.cameras.main;
+        camera.pan(this.player.x, camera.y, 2000, Phaser.Math.Easing.Back.Out, false, (camera, progress)=>{
+            if (progress >= 1) {
+                this.player.respawn();
+                camera.startFollow(this.player);
+                Dom.AddChatMessage(this.saveData.playerName, "Ready to go!", 'speech-main');
+                Dom.SetDomText(Consts.HUD_PLAYER_NAME, this.saveData.playerName);
+            }
+        });
+    }
+
+    saveAndAddGravestone() {
+
+        let playerBuilding = this.getPlayerBuilding();
+        let offset = this.player.x - playerBuilding.worldX;
+
+        let graveData = this.saveData.getTrackDataForGrave(offset);
+        this.saveData.addGraveData(graveData);
+
+        this.saveData.resetTrackData();
+        this.saveData.updatePlayerData();
+
+        GameSave.SaveDataToLocal(this.saveData);
+
+        let grave = new Gravestone(this, this.player.x, WorldConsts.GROUND_Y + 1, 'background', 'gravestone');
+        grave.setStats(graveData);
+        this.add.existing(grave);
+
+        Interaction.AddInteraction(grave, Interactions.GRAVE, grave.getStats());
+        this.talkingGroup.add(grave);
+        this.physics.add.existing(grave);
+
+        return grave;
+    }
+
+    showGravestoneStats(grave) {
+
+        let data = grave.getStats();
+        setGraveHTML(data);
+        Dom.SetDomIdDisplay('grave-stats-container', true);
+        
+        let camera = this.cameras.main;
+        
+        let element = Dom.GetDomElementById('grave-stats');
+        let statBoxWidth = element.offsetWidth;
+        
+        let ratio = innerWidth / camera.width;
+        let graveRelativeX = grave.x - camera.scrollX;
+        let calcLeft = graveRelativeX * ratio - statBoxWidth * .5;
+        let styleLeft = Math.round(calcLeft);
+        
+        Dom.ShowGraveStats(styleLeft, data);
+    }
+
+    loadGraveStones() {
+    }
+
+    closeMenu() {
+        if (this.player.isDead())
+            this.playerRespawn();
+        else {
+            Dom.SetDomIdDisplay('grave-stats-container', false);
+            this.controlpad.setActive(true);
+        }
+    }
+
+    swapPlayerMode(mode) {
         
         let modes = [
             {state: States.MODE_HUNT, hud:Consts.HUD_WEP_HUNTING},
@@ -547,11 +642,15 @@ class Game extends Phaser.Scene {
             {state: States.MODE_TANK, hud:Consts.HUD_WEP_COLLECT}
         ];
 
-        this.player.nextState();
+        if (mode)
+            this.player.setState(mode);
+        else
+            this.player.nextState();
+
         this.player.updateCollision();
         this.player.updateAnimation();
 
-        let state = this.player.getState();
+        let state = mode || this.player.getState();
         let current = modes.find(m => m.state === state);
         let displayName = this.player.getStateName(current.state);
         
@@ -587,6 +686,7 @@ class Game extends Phaser.Scene {
         spark.anims.play(Animations.FX_GOLD_SPARK);
     }
 
+    //rename
     showCollect(coinX) {
 
         let pY = this.player.getBottomCenter().y;
@@ -607,6 +707,7 @@ class Game extends Phaser.Scene {
         });
     }
 
+    // rename
     showIcon(sprite, millis, frame) {
         let active = this.iconGroup.getMatching('target', sprite);
         let icon = active.shift() || this.iconGroup.get(sprite.x, sprite.y);
@@ -620,6 +721,7 @@ class Game extends Phaser.Scene {
         sprite.showingIcon = true;
     }
 
+    // rename
     addCoin(value) {
 
         let pump = this.buildings.get(Buildings.WATER_PUMP);
@@ -635,6 +737,7 @@ class Game extends Phaser.Scene {
         this.showPuff(pump.x, pump.getCenter().y);
     }
 
+    // rename
     dropCoin(coin, x) {
         let tween = this.tweens.add({
             targets: coin,
@@ -649,6 +752,7 @@ class Game extends Phaser.Scene {
         });
     }
 
+    // enemyBomb - rename
     bombExplodeOnGround(posX) {
         
         let players = this.collisionGroupPlayers.getChildren();
@@ -658,9 +762,12 @@ class Game extends Phaser.Scene {
         let all = players.concat(kins, civs);
 
         for (let sprite of all)
-            if (Math.abs(posX - sprite.x) < WorldConsts.WIDTH * .1)
+            if (Math.abs(posX - sprite.x) < WorldConsts.WIDTH * .1 && sprite.isAlive())
                 sprite.hit();
         
+        if (this.player.isDead())
+            this.playerDie();
+
         this.smokeEmitter.explode(8, posX, WorldConsts.GROUND_Y);
         this.showGroundExplosion(posX);
 
@@ -832,6 +939,10 @@ class Game extends Phaser.Scene {
         return found;
     }
 
+    getPlayerBuilding() {
+        return this.getBuilding(Buildings.PLAYER_HOUSE);
+    }
+
     isAllHousesComplete() {
         let civs = this.collisionGroupCivilians.getChildren();
         for (let c of civs)
@@ -842,6 +953,10 @@ class Game extends Phaser.Scene {
 
     getLevelWidth() {
         return this.levelData.LENGTHS * WorldConsts.WIDTH;
+    }
+
+    stopGameControls() {
+        this.controlpad.setActive(false);
     }
 }
 export default Game;

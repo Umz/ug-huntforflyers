@@ -15,6 +15,9 @@ class Interaction {
             case Interactions.POST:
                 AddMessageList(sprite, data);
             break;
+            case Interactions.GRAVE:
+                AddGraveDisplay(sprite);
+            break;
         }
     }
 }
@@ -34,5 +37,13 @@ function AddMessageList(sprite, chat) {
             Dom.AddChatMessage(chat.name, message, chat.className);
             sprite.interactIcon = 'ic_speech';
         }
+    }
+}
+
+function AddGraveDisplay(sprite, data) {
+    sprite.interact = function() {
+        sprite.scene.stopGameControls();
+        sprite.scene.showGravestoneStats(this);
+        sprite.interactIcon = 'ic_speech';
     }
 }

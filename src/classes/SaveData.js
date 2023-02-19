@@ -53,5 +53,11 @@ class SaveData {
             `Replica ${this.cloneIndex}`;
     }
 
+    addPlayTime(amt) { this.playTime += amt }
+    addCollected(amt) { this.collected += amt }
+    addMaterials(amt) { this.materials += amt }
+    addKills(amt) { this.kills += amt }
+    addBirth(amt) { this.births += amt }
+
 }
 export default SaveData;

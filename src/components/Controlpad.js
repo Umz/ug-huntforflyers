@@ -11,6 +11,7 @@ class Controlpad {
         this.scene = scene;
         this.LEFT = false;
         this.RIGHT = false;
+        this.active = true;
     }
 
     addControlTarget(IControllable) {
@@ -28,12 +29,12 @@ class Controlpad {
         let actionKeys = ['ENTER', 'Z', 'SPACE'];
 
         for (let key of rightKeys) {
-            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.RIGHT = true });
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.RIGHT = this.active });
             scene.input.keyboard.on(`keyup-${key}`, (event) => { this.RIGHT = false });
         }
 
         for (let key of leftKeys) {
-            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.LEFT = true });
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.LEFT = this.active });
             scene.input.keyboard.on(`keyup-${key}`, (event) => { this.LEFT = false });
         }
 
@@ -42,14 +43,21 @@ class Controlpad {
                 const target = this.controlTarget.target;
                 const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
                 //Dom.AddChatMessage('Professor', `Standing at tile ${tileX}`)
-                this.interact();
+                if (this.active)
+                    this.interact();
             });
 
         for (let key of downKeys)
-            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.weaponSwap() });
+            scene.input.keyboard.on(`keydown-${key}`, (event) => {
+                 if (this.active)
+                    this.weaponSwap()
+                //  HACK - hiding the grave view - terrible hack (please remove and improve)
+                else
+                    this.scene.closeMenu();
+            });
 
         for (let key of actionKeys) {
-            scene.input.keyboard.on(`keydown-${key}`, (event) => { this.action() });
+            scene.input.keyboard.on(`keydown-${key}`, (event) => { if (this.active) this.action() });
             scene.input.keyboard.on(`keyup-${key}`, (event) => {
                 this.scene.player.controller.isFireReady = true;    // HACK
             });
@@ -63,6 +71,11 @@ class Controlpad {
         scene.input.keyboard.on('keydown-L', (event) => {
             for (let i=0; i<10; i++)
                 this.scene.addCoin(3);
+        });
+
+        scene.input.keyboard.on('keydown-I', (event) => {
+            this.scene.player.hit(300);
+            this.scene.playerDie();
         });
 
         scene.input.keyboard.on('keydown-K', (event) => {
@@ -87,11 +100,13 @@ class Controlpad {
 
     update(time, delta) {
         const target = this.controlTarget;
-        if (target)
+        if (target && this.active)
             if (this.LEFT)
                 target.moveLeft();
             else if (this.RIGHT)
                 target.moveRight();
     }
+
+    setActive(b) { this.active = b; }
 }
 export default Controlpad;

@@ -1,0 +1,21 @@
+#grave-stats-container {
+    display: none;
+    position: absolute;
+}
+
+#grave-stats {
+
+    display: block;
+    position: absolute;
+    bottom: 40%;
+    padding: 20px;
+
+    border: 2px solid white;
+    border-radius: 11px;
+
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, .65);
+    color: #dddddd;
+
+    text-align: center;
+}

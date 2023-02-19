@@ -17,7 +17,7 @@ class Tutorial2 extends Tutorial {
         .addWait(1000)
         .addPrompt("Look, your enemies have come to steal 'material' from you. Use CANNON mode to destroy the Drones", Consts.CHATBOX_TUT_COMMAND)
         .addListener(()=>{
-            return scene.track.killCount >= 3 || scene.getThiefCount() === 0;
+            return scene.saveData.killCount >= 3 || scene.getThiefCount() === 0;
         })
         .addPrompt("Good. Competent", Consts.CHATBOX_TUT_SUCCESS)
         .addListener(()=>{
@@ -26,7 +26,7 @@ class Tutorial2 extends Tutorial {
         .addWait(1000)
         .addPrompt("Again! Use CANNON mode to destroy them", Consts.CHATBOX_TUT_COMMAND)
         .addListener(()=>{
-            return scene.track.killCount >= 3 || scene.getThiefCount() === 0;
+            return scene.saveData.killCount >= 3 || scene.getThiefCount() === 0;
         })
         .addPrompt("Good. Competent", Consts.CHATBOX_TUT_SUCCESS)
         .addWait(3000)

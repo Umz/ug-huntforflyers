@@ -6,6 +6,7 @@
 @import url('game-over-menu.css');
 @import url('game-ui-weapon.css');
 @import url('game-chatbox.css');
+@import url('game-grave.css');
 
 * {
     padding:0;

@@ -118,3 +118,24 @@ function moveMenuElement(className, dir = 1) {
     let nextElement = (dir > 0) ? right : left;
     nextElement.classList.add(className);
 }
+
+function setGraveHTML(data) {
+    let element = document.getElementById('grave-stats');
+    element.innerHTML = "";
+
+    let deathPlace = `${data.time} [${data.stage}]`;
+
+    element.appendChild(newPWithContent(data.name));
+    element.appendChild(newPWithContent(deathPlace));
+    element.appendChild(newPWithContent(`Currency Collected: ${data.collected}`));
+    element.appendChild(newPWithContent(`Material Collected: ${data.materials}`));
+    element.appendChild(newPWithContent(`New Buildings: ${data.built}`));
+    element.appendChild(newPWithContent(`CarryKins Birthed: ${data.births}`));
+    element.appendChild(newPWithContent(`Enemies Killed: ${data.kills}`));
+}
+
+function newPWithContent(text) {
+    let p = document.createElement('p');
+    p.textContent = text;
+    return p;
+}

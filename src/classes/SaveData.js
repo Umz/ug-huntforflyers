@@ -26,9 +26,9 @@ class SaveData {
 
     getTrackDataForGrave(offsetX) {
         let grave = {
-            offsetX: offsetX,
+            offsetX: Math.round(offsetX),
             name: this.playerName,
-            time: this.playTime,
+            time: Math.round(this.playTime),
             stage: this.stage,
             collected: this.collected,
             materials: this.materials,
@@ -58,6 +58,8 @@ class SaveData {
     addMaterials(amt) { this.materials += amt }
     addKills(amt) { this.kills += amt }
     addBirth(amt) { this.births += amt }
+
+    getGraves() { return this.graves }
 
 }
 export default SaveData;

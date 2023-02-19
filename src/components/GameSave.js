@@ -8,11 +8,18 @@ class GameSave {
     static Init() {
         sessionStorage.setItem(Consts.SAVE_NAME, "Replica #1");
         sessionStorage.setItem(Consts.SAVE_NAME_SCORE, 0);
-        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE4);
+        sessionStorage.setItem(Consts.SAVE_STAGE, Levels.STAGE1);
     }
 
     static GetSaveData() {
+        
+        let json = sessionStorage.getItem('save-data-test');
+        let loadData = JSON.parse(json);
+
         let saveData = new SaveData();
+        if (loadData)
+            Object.assign(saveData, loadData);
+            
         return saveData;
     }
 
@@ -20,7 +27,8 @@ class GameSave {
     }
 
     static SaveDataToLocal(data) {
-        console.log(data);
+        let json = JSON.stringify(data);
+        sessionStorage.setItem('save-data-test', json);
     }
 
     static SetScore(val) {

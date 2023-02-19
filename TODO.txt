@@ -4,19 +4,13 @@ Build toward the game design document
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
-
-Die and respawn as clone (add tombstone permanent)
-- Die (Unhook controls / Enemies stop attacking / Player invisible / Camera Stop following / Show Death stats / Add tombstone to save data / Set Hunt mode / Set player to behind base come out, set depth )
-- HTML Create DOM Death display (Show X seconds and tween to player)
-
-Clones run around the base
-Tombstone graphic
-Death - Permanent effects going forward - Read tombstone
+*** Don't attack while player is dead / Don't move ?
 
 Redo level 6 (Shopping district right | Residential crisis left)
 Add level 7 - Ranch + all (Food crisis)
 Add level 8 - Land restoration
 
+Clones run around the base
 Tutorial (4, 5, 5M, 6)
 Press up to name your CKs (menu)
 Refactor Base and BaseController - update in controller not in Base

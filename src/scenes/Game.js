@@ -318,6 +318,8 @@ class Game extends Phaser.Scene {
         this.windCounter = Counter.New().setRepeating(true).setMaxCount(61000);
 
         this.addWindParticle();
+
+        this.loadGraveStones();
     }
 
     update(time, delta) {
@@ -622,7 +624,25 @@ class Game extends Phaser.Scene {
         Dom.ShowGraveStats(styleLeft, data);
     }
 
+    addGravestone(data) {
+
+        let baseX = this.getPlayerBuilding().worldX;
+        let graveX = baseX + data.offsetX;
+
+        let grave = new Gravestone(this, graveX, WorldConsts.GROUND_Y + 1, 'background', 'gravestone');
+        grave.setStats(data);
+        this.add.existing(grave);
+        this.physics.add.existing(grave);
+
+        Interaction.AddInteraction(grave, Interactions.GRAVE, grave.getStats());
+        this.talkingGroup.add(grave);
+    }
+
     loadGraveStones() {
+
+        let savedGraves = this.saveData.graves;
+        for (let grave of savedGraves)
+            this.addGravestone(grave);
     }
 
     closeMenu() {
@@ -765,7 +785,7 @@ class Game extends Phaser.Scene {
             if (Math.abs(posX - sprite.x) < WorldConsts.WIDTH * .1 && sprite.isAlive())
                 sprite.hit();
         
-        if (this.player.isAlive()) {
+        if (Math.abs(posX - this.player.x) < WorldConsts.WIDTH * .1 && this.player.isAlive()) {
             this.player.hit();
             if (this.player.isDead())
                 this.playerDie();

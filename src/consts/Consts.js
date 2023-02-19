@@ -39,6 +39,7 @@ const Consts = {
     HUD_WEP_ATTACK: "wep-attack",
     HUD_WEP_COLLECT: "wep-collect",
 
+    HUD_PLAYER_NAME: "hud-replica-text",
     HUD_STAGE_TEXT: "hud-stage-text",
     HUD_CARRYKINS_TEXT: "hud-team-text",
 

@@ -61,5 +61,15 @@ class Dom {
     static ClearChatBox() {
         clearChat();
     }
+
+    static ShowGraveStats(left, data) {
+        this.SetDomIdDisplay('grave-stats-container', true);
+        let element = Dom.GetDomElementById('grave-stats');
+        element.style.setProperty('left', `${left}px`);
+    }
+
+    static GetDomElementById(id) {
+        return document.getElementById(id);
+    }
 }
 export default Dom;

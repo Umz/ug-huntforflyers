@@ -3,16 +3,12 @@
 Clones run around the base
 Redo level 6 (Shopping district right | Residential crisis left)
 
-Branches to create
-+ code refactor
-+ add sounds
-+ add enemy (etc.)
-
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
 *** Don't attack while player is dead / Don't move ?
+*** Death display fix
 
 Redo residents (4 + 5)
 Add level 7 - Ranch + all (Food crisis)

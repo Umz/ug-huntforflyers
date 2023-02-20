@@ -7,6 +7,8 @@ class Tutorial3 extends Tutorial {
     constructor(scene) {
         super();
 
+        //  CarryKins 
+
         this.addWait(3000)
         .addPrompt("The fertile land has been expanded once again.")
         .addWait(1000)

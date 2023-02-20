@@ -1,4 +1,7 @@
-Build toward the game design document
+Branches to create
++ code refactor
++ add sounds
++ add enemy (etc.)
 
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
@@ -6,12 +9,13 @@ Build toward the game design document
 *** Refactor chat to use new functions page-functions.js
 *** Don't attack while player is dead / Don't move ?
 
+Redo residents (4 + 5)
 Redo level 6 (Shopping district right | Residential crisis left)
 Add level 7 - Ranch + all (Food crisis)
 Add level 8 - Land restoration
 
 Clones run around the base
-Tutorial (4, 5, 5M, 6)
+Tutorial (5, 5M, 6)
 Press up to name your CKs (menu)
 Refactor Base and BaseController - update in controller not in Base
 Game controls full

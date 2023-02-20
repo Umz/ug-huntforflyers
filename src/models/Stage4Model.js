@@ -8,17 +8,21 @@ import BeeModel from "./BeeModel";
 import BlueBirdModel from "./BlueBirdModel";
 import Characters from "consts/Characters";
 import Signage from "../consts/Signage";
+import Tutorial4 from "../tutorials/Tutorial4";
 
 const Stage3Model = {
 
     LENGTHS: 4,
     CARRYKINS: 8,
+    TUTORIAL: Tutorial4,
+
     ENEMIES: [
         Characters.DRONE,
         Characters.BOMBER,
         Characters.PIP
     ],
-    
+
+    // S4
     //  80
     BUILDINGS: [
         

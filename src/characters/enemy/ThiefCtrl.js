@@ -39,7 +39,7 @@ class ThiefCtrl extends BaseController {
             this.dropToCollect(prey);
         }));
         
-        this.sprite.removeAction(Actions.ACT_FOLLOW_TARGET);
+        this.sprite.controller.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
 
     dropToCollect(prey) {
@@ -48,7 +48,7 @@ class ThiefCtrl extends BaseController {
             this.addAction(new CtrStealDive(this.sprite, prey).addCallback(()=>{
                 this.attemptToSteal(prey);
             }));
-            this.sprite.removeAction(Actions.ACT_ENEMY_FLY);
+            this.sprite.controller.removeAction(Actions.ACT_ENEMY_FLY);
         }
         else {
             this.clearAllActions();

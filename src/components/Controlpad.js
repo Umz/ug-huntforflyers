@@ -14,8 +14,8 @@ class Controlpad {
         this.active = true;
     }
 
-    addControlTarget(IControllable) {
-        this.controlTarget = IControllable;
+    addControlTarget(playerController) {
+        this.controlTarget = playerController;
     }
 
     addKeyboardControl() {
@@ -40,7 +40,7 @@ class Controlpad {
 
         for (let key of upKeys)
             scene.input.keyboard.on(`keydown-${key}`, (event) => {
-                const target = this.controlTarget.target;
+                const target = this.controlTarget.sprite;
                 const tileX = Math.floor(target.x / WorldConsts.TILE_WIDTH);
                 //Dom.AddChatMessage('Professor', `Standing at tile ${tileX}`)
                 if (this.active)

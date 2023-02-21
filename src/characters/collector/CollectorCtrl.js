@@ -32,7 +32,7 @@ class CollectorCtrl extends BaseController {
             this.carryPreyToCollectionPoint(prey);
         }));
 
-        this.sprite.removeAction(Actions.ACT_FOLLOW_TARGET);
+        this.sprite.controller.removeAction(Actions.ACT_FOLLOW_TARGET);
     }
     
     carryPreyToCollectionPoint(prey) {

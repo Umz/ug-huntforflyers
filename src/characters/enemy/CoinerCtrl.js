@@ -6,11 +6,10 @@ class CoinerCtrl extends BaseController {
 
     constructor(sprite) {
         super(sprite);
-        this.scene = sprite.scene;
     }
 
     setDefaultActions() {
-        this.addAction(new CtrFindCoin(this.target).addCallback(()=>{
+        this.addAction(new CtrFindCoin(this.sprite).addCallback(()=>{
             this.attemptStealCoin();
         }));
     }

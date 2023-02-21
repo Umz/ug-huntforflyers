@@ -26,7 +26,8 @@ class Prey extends BaseSprite {
         this.setFrozenCollision();
         SpritePhysics.AddGroundDrag(this);
 
-        this.clearActions();
+        this.controller.clearAllActions();
+        this.view.clearAllActions();
         this.view.addFlashing();
     }
 

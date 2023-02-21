@@ -5,42 +5,13 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y, atlas, frame) {
         super(scene, x, y, atlas, frame);
-
-        this.actionMap = new Map();
         this.state = States.NORMAL;
         this.hp = 1;
     }
 
     update(time, delta) {
-
-        let complete = [];
-
-        for (let action of this.actionMap.values()) {
-            action.update(time, delta);
-            if (action.isComplete()) {
-                complete.push(action.name);
-            }
-        }
-
-        for (let actionName of complete)
-            this.removeAction(actionName);
-    }
-
-    addAction(action) {
-        let actionName = action.name;
-        this.actionMap.set(actionName, action);
-    }
-
-    hasAction(actionName) {
-        return this.actionMap.has(actionName);
-    }
-
-    removeAction(actionName) {
-        this.actionMap.delete(actionName);
-    }
-
-    clearActions() {
-        this.actionMap.clear();
+        this.controller.update(time, delta);
+        this.view.update(time, delta);
     }
 
     flash(tint, time) {
@@ -76,7 +47,8 @@ class BaseSprite extends Phaser.Physics.Arcade.Sprite {
     }
 
     kill() {
-        this.actionMap.clear();
+        this.controller.clearAllActions();
+        this.view.clearAllActions();
         this.setState(States.DEAD);
         this.setVisible(false).setActive(false);
     }

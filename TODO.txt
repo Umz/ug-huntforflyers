@@ -20,7 +20,6 @@ Add level 8 - Land restoration
 
 Tutorial (5, 5M, 6)
 Press up to name your CKs (menu)
-Refactor Base and BaseController - update in controller not in Base
 Press up uses box.contains instead of overlap
 Interact for next level
 Notifications

@@ -68,5 +68,26 @@ class PlayerSpawner {
         for (let i=0;i<amt;i++)
             this.spawnClone();
     }
+
+    spawnPaleKin() {
+
+        let home = this.scene.getBuilding(Buildings.PLAYER_HOUSE);
+        let palekin = SpriteBuilder.GetPaleKinSprite();
+        palekin.setPosition(home.worldX + Phaser.Math.Between(-32, 32), WorldConsts.GROUND_Y - 18);
+
+        this.scene.addSpriteToSceneAndGroups(
+            palekin,
+            this.scene.spriteUpdateGroup,
+            this.scene.collisionGroupCollectors,
+        );
+        SpritePhysics.AddPhysics(palekin);
+
+        return palekin;
+    }
+
+    spawnPaleKins(amt) {
+        for (let i=0;i<amt;i++)
+            this.spawnPaleKin();
+    }
 }
 export default PlayerSpawner;

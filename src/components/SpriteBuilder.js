@@ -9,6 +9,8 @@ import CivilianModel from "models/CivilianModel";
 import PlayerModel from "models/PlayerModel";
 import Clone from "../characters/clone/Clone";
 import CloneModel from "../models/CloneModel";
+import PaleKin from "../characters/palekin/Palekin";
+import PaleKinModel from "../models/PaleKinModel";
 
 class SpriteBuilder {
 
@@ -26,6 +28,10 @@ class SpriteBuilder {
 
     static GetCloneSprite() {
         return GetSprite(Clone, CloneModel, Depths.CIVILIANS);
+    }
+
+    static GetPaleKinSprite() {
+        return GetSprite(PaleKin, PaleKinModel, Depths.CIVILIANS);
     }
 
     static GetPrey(model) {

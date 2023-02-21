@@ -1,7 +1,7 @@
 class ActionChain {
 
-    constructor() {
-        this.name = "chain_";
+    constructor(index = 0) {
+        this.name = "chain_" + index;
         this.actions = [];
     }
 
@@ -17,7 +17,6 @@ class ActionChain {
     
     chain(action) {
         this.actions.push(action);
-        this.name += action.name;
         return this;
     }
 

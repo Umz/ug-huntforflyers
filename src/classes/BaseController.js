@@ -7,6 +7,7 @@ class BaseController {
         this.sprite = target;
         this.scene = target.scene;
         this.stats = target.stats;
+        this.chainIndex = 1;
 
         this.activeActionMap = new Map();
         this.backgroundActionMap = new Map();
@@ -32,8 +33,9 @@ class BaseController {
     }
 
     addActionChain() {
-        let chain = new ActionChain();
+        let chain = new ActionChain(this.chainIndex);
         this.addAction(chain);
+        this.chainIndex ++;
         return chain;
     }
 

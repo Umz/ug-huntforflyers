@@ -3,7 +3,7 @@ import BaseModel from "../consts/BaseModel";
 
 const PaleKinModel = Object.assign({}, BaseModel);
 
-PaleKinModel.relativeSpeed = .45;
+PaleKinModel.relativeSpeed = .75;
 PaleKinModel.atlas = 'sprites';
 PaleKinModel.frame = 'spr_pk_idle1';
 

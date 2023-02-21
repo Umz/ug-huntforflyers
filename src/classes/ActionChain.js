@@ -6,12 +6,13 @@ class ActionChain {
     }
 
     update(time, delta) {
-
-        let current = this.actions[0];
-        current.update(time, delta);
-
-        if (current.isComplete())
-            this.actions.shift();
+        if (!this.isComplete()) {
+            let current = this.actions[0];
+            current.update(time, delta);
+    
+            if (current.isComplete())
+                this.actions.shift();
+        }
     }
     
     chain(action) {

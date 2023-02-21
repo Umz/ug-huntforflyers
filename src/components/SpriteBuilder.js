@@ -31,7 +31,7 @@ class SpriteBuilder {
     }
 
     static GetPaleKinSprite() {
-        return GetSprite(PaleKin, PaleKinModel, Depths.CIVILIANS);
+        return GetSprite(PaleKin, PaleKinModel, Depths.PLAYER_TEAM);
     }
 
     static GetPrey(model) {

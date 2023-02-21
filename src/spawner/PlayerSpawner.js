@@ -1,4 +1,5 @@
 import Buildings from "consts/Buildings";
+import Depths from "consts/Depths";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import SpriteBuilder from "components/SpriteBuilder";
@@ -78,7 +79,7 @@ class PlayerSpawner {
         this.scene.addSpriteToSceneAndGroups(
             palekin,
             this.scene.spriteUpdateGroup,
-            this.scene.collisionGroupCollectors,
+            this.scene.collisionGroupClones,
         );
         SpritePhysics.AddPhysics(palekin);
 

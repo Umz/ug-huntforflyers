@@ -31,7 +31,7 @@ const Signage = {
         "Professor! You're back! We were overjoyed to receive your message. All the residents are coming from the cactus grove. Make room for us.",
         "We have recieved your call. We will come to you.",
         "The dark seeds were fed to the small birds in the mountains. They have become red and large. They seek date palms to nest in.",
-        "These people know nothing but alcohol. There is an endless stream of Kins coming to you Professor, keep their cups full."
+        "These Kins know nothing but alcohol. There is an endless stream of Kins coming to you Professor, keep their cups full."
     ],
 
     LV5_LEFT: "Residential Land: Claim your plot",

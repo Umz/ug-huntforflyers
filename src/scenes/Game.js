@@ -188,6 +188,7 @@ class Game extends Phaser.Scene {
             this.playerSpawner.spawnCollector();
         
         this.playerSpawner.spawnClones(2);
+        this.playerSpawner.spawnPaleKins(2);
         
         let enemies = this.levelData.ENEMIES;
         this.enemySpawner = new EnemySpawner(this, enemies);
@@ -933,7 +934,7 @@ class Game extends Phaser.Scene {
                 house.setScaffold(scaffold);
                 house.setCompletePercentAndCrop(building.complete);
                 
-                this.civSpawner.spawnCivilians(house); 
+                this.civSpawner.spawnCivilians(house);
             }
         }
 
@@ -972,6 +973,16 @@ class Game extends Phaser.Scene {
             if (!c.isHomeComplete())
                 return false;
         return true;
+    }
+
+    getRandomUnfinishedHouse() {
+        let civs = this.collisionGroupCivilians.getChildren();
+        let houses = civs.map(civ => {
+            if (!civ.isHomeComplete())
+                return civ.getHome();
+        });
+        houses = houses.filter(ele => ele !== undefined);
+        return Phaser.Utils.Array.GetRandom(houses);
     }
 
     getLevelWidth() {

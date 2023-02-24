@@ -63,6 +63,11 @@ class Controlpad {
             });
         }
 
+        scene.input.keyboard.on('keydown-O', (event) => {
+            GameSave.SetScore(0);
+            Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());
+        });
+
         scene.input.keyboard.on('keydown-P', (event) => {
             GameSave.IncScore(101);
             Dom.SetDomText(Consts.UI_SCORE_TEXT, GameSave.GetScore());

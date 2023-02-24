@@ -19,6 +19,10 @@ class Civilian extends BaseSprite {
     setHome(sprite) {
         this.home = sprite;
     }
+
+    getHome() {
+        return this.home;
+    }
     
     getHomeX() {
         return this.home.x;

@@ -1,5 +1,6 @@
 import Interactions from "../consts/Interactions";
 import Dom from "components/Dom";
+import GameSave from "./GameSave";
 
 class Interaction {
 
@@ -53,7 +54,16 @@ function AddGraveDisplay(sprite, data) {
 
 function ConvertToPaleKin(sprite, data) {
     sprite.interact = function() {
-        sprite.setPaleKinSkin();
-        sprite.interactRemove = true;
+
+        let drinkCost = 10;
+        if (GameSave.GetScore() > drinkCost) {
+            
+            GameSave.UpdateScoreAndDom(-drinkCost);
+            sprite.setPaleKinSkin();
+            sprite.interactRemove = true;
+            Dom.AddChatMessage('Kin', 'CARRY!');
+        }
+        else
+            Dom.AddChatMessage('Kin', "Buy me a drink! It's only 10cC");
     }
 }

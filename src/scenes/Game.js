@@ -428,7 +428,11 @@ class Game extends Phaser.Scene {
             interactive.interact();
             if (interactive.interactIcon)
                 this.showIcon(interactive, 3000, interactive.interactIcon);
+
+            if (interactive.interactRemove)
+                this.talkingGroup.remove(interactive);
         }
+
     }
 
     overlapBulletPrey(bullet, prey) {

@@ -4,6 +4,11 @@ import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
+import Interaction from "../components/Interaction";
+import Interactions from "../consts/Interactions";
+import Chat from '../classes/Chat';
+import Dialogue from "../consts/Dialogue";
+import Buildings from "../consts/Buildings";
 
 class PlayerSpawner {
     
@@ -78,12 +83,14 @@ class PlayerSpawner {
 
         this.scene.addSpriteToSceneAndGroups(
             palekin,
+            this.scene.talkingGroup,
             this.scene.spriteUpdateGroup,
             this.scene.collisionGroupClones,
         );
         SpritePhysics.AddPhysics(palekin);
 
         palekin.setKinSkin();
+        Interaction.AddInteraction(palekin, Interactions.PALEKIN);
 
         return palekin;
     }

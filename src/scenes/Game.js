@@ -426,7 +426,8 @@ class Game extends Phaser.Scene {
             player.showingIcon = false;
 
             interactive.interact();
-            this.showIcon(interactive, 3000, interactive.interactIcon);
+            if (interactive.interactIcon)
+                this.showIcon(interactive, 3000, interactive.interactIcon);
         }
     }
 

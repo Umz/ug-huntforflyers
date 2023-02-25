@@ -18,6 +18,9 @@ class Interaction {
             case Interactions.GRAVE:
                 AddGraveDisplay(sprite);
             break;
+            case Interactions.PALEKIN:
+                ConvertToPaleKin(sprite);
+            break;
         }
     }
 }
@@ -45,5 +48,12 @@ function AddGraveDisplay(sprite, data) {
         sprite.scene.stopGameControls();
         sprite.scene.showGravestoneStats(this);
         sprite.interactIcon = 'ic_speech';
+    }
+}
+
+function ConvertToPaleKin(sprite, data) {
+    sprite.interact = function() {
+        sprite.setPaleKinSkin();
+        sprite.interactRemove = true;
     }
 }

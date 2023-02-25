@@ -19,6 +19,9 @@ const Animations = {
     MUSLIMA2_IDLE: 'muslima2_idle',
     MUSLIMA2_RUN: 'muslima2_run',
 
+    GREENCAP_IDLE: 'greencap_idle',
+    GREENCAP_RUN: 'greencap_run',
+
     TOLU_IDLE: "tolu_idle",
     TOLU_RUN: "tolu_run",
 

@@ -24,6 +24,7 @@ class PaleKin extends BaseSprite {
     }
 
     setPaleKinSkin() {
+        this.view.setSkin();
     }
 
     // VIEW does tint, update animation (tween shrink, change, grow), untint

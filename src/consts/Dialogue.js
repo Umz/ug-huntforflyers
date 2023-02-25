@@ -179,6 +179,26 @@ const Dialogue = {
                 "We will be better than all in the land.",
                 "We need no other filth coming here. This land is ours alone."
             ]
+        ],
+        KINS: [
+            "There is something about that drink...",
+            "It makes me feel so nice.",
+            "It makes everything sparkle and shine.",
+            "The air becomes so crisp after.",
+            "I just feel so refreshed.",
+            "I feel stronger than ever!",
+            "It makes me want to Carry things.",
+            "I can help out, just say the word.",
+            "It makes my hands a bit swollen, but I feel great!",
+            "That drink really invigorates you!",
+            "Give me that taste of power.",
+            "Just one sip and I'm ready to go!",
+            "I just feel like lifting!",
+            "I want to Carry something heavy.",
+            "We won't need machines, we can Carry things.",
+            "Please?",
+            "It's so cheap, you've got to.",
+            "I've been drinking Kin drink all day"
         ]
     }
 }

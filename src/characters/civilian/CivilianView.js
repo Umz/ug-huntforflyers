@@ -1,6 +1,7 @@
 import BaseController from "classes/BaseController";
 import ViewDirection from "actions/ViewDirection";
 import ViewRunIdle from "actions/ViewRunIdle";
+import CivilianModel from "models/CivilianModel";
 
 class CivilianView extends BaseController {
 
@@ -47,6 +48,14 @@ class CivilianView extends BaseController {
         let pick = Phaser.Utils.Array.GetRandom(options);
         let skin = pick[1];
         
+        this.setSkin(skin);
+    }
+
+    setKinSkin() {
+        let skins = CivilianModel.skins.kins;
+        let pick = Phaser.Utils.Array.GetRandom(Object.entries(skins));
+        let skin = pick[1];
+
         this.setSkin(skin);
     }
 }

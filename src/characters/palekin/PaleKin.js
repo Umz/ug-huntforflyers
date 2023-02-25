@@ -2,6 +2,7 @@ import BaseSprite from "classes/BaseSprite";
 import PaleKinModel from "models/PaleKinModel";
 import PaleKinCtrl from "./PaleKinCtrl";
 import PaleKinView from "./PaleKinView";
+import CivilianView from "../civilian/CivilianView";
 
 class PaleKin extends BaseSprite {
 
@@ -11,9 +12,20 @@ class PaleKin extends BaseSprite {
         this.setModel(PaleKinModel);
         this.setView(new PaleKinView(this));
         this.setController(new PaleKinCtrl(this));
+
+        //  Start as a civilian
+
+        this.civView = new CivilianView(this);
+        this.civView.clearAllActions();
     }
 
-    // ADD the first sprite
+    setKinSkin() {
+        this.civView.setKinSkin(this.model);
+    }
+
+    setPaleKinSkin() {
+    }
+
     // VIEW does tint, update animation (tween shrink, change, grow), untint
     // UPDATE collision size
 }

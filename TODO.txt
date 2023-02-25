@@ -1,8 +1,6 @@
 > Pale Kins for collection to citizen houses
-- (auto) - run to the base, up and down
-- listen for any currency
-- take it to the house (build)
-- citizen return to build (if excess, return currency to player)
+- Set interaction
+- Transform from normal to PaleKin 
 
 Clones run around the base
 Redo level 6 (Shopping district right | Residential crisis left)

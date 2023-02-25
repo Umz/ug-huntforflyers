@@ -83,6 +83,8 @@ class PlayerSpawner {
         );
         SpritePhysics.AddPhysics(palekin);
 
+        palekin.setKinSkin();
+
         return palekin;
     }
 

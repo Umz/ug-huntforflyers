@@ -3,6 +3,7 @@
 - Conversion method to Kin types
 - Init action for Kins coming out of pub 
 *** Abstract Kin to class that sets to Carry or Pale- (3 controllers for seperate behaviours / Views)
+*** CarryKin graphic - sizes to match
 
 Clones run around the base
 Redo level 6 (Shopping district right | Residential crisis left)

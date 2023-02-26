@@ -7,7 +7,7 @@ import States from "consts/States";
 import Depths from "consts/Depths";
 import CtrFollowSprite from "actions/CtrFollowSprite";
 
-class CollectorCtrl extends BaseController {
+class CarryKinCtrl extends BaseController {
 
     constructor(sprite) {
         super(sprite);
@@ -47,4 +47,4 @@ class CollectorCtrl extends BaseController {
         }
     }
 }
-export default CollectorCtrl;
+export default CarryKinCtrl;

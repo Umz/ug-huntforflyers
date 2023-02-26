@@ -1,13 +1,10 @@
 import Buildings from "consts/Buildings";
-import Depths from "consts/Depths";
 import States from "consts/States";
 import WorldConsts from "consts/WorldConsts";
 import SpriteBuilder from "components/SpriteBuilder";
 import SpritePhysics from "components/SpritePhysics";
 import Interaction from "../components/Interaction";
 import Interactions from "../consts/Interactions";
-import Chat from '../classes/Chat';
-import Dialogue from "../consts/Dialogue";
 import Buildings from "../consts/Buildings";
 
 class PlayerSpawner {
@@ -37,26 +34,28 @@ class PlayerSpawner {
         return player;
     }
 
-    spawnCollector() {
+    spawnCarryKin() {
 
         let player = this.scene.player;
 
-        let collector = SpriteBuilder.GetCollectorSprite();
-        collector.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
+        let carrykin = SpriteBuilder.GetCarryKinSprite();
+        carrykin.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
 
         this.scene.addSpriteToSceneAndGroups(
-            collector,
+            carrykin,
             this.scene.spriteUpdateGroup,
             this.scene.collisionGroupCollectors,
         );
-        SpritePhysics.AddPhysics(collector);
+        SpritePhysics.AddPhysics(carrykin);
 
-        return collector;
+        carrykin.setKinType(States.MODE_CARRYKIN);
+
+        return carrykin;
     }
 
-    spawnCollectors(amt) {
+    spawnCarryKins(amt) {
         for (let i=0;i<amt;i++)
-            this.spawnCollector();
+            this.spawnCarryKin();
     }
 
     spawnClone() {
@@ -95,7 +94,7 @@ class PlayerSpawner {
         SpritePhysics.AddPhysics(palekin);
 
         palekin.setKinSkin();
-        Interaction.AddInteraction(palekin, Interactions.PALEKIN);
+        Interaction.AddInteraction(palekin, Interactions.PALEKIN, States.MODE_PALEKIN);
 
         return palekin;
     }

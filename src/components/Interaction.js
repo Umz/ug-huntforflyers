@@ -20,7 +20,7 @@ class Interaction {
                 AddGraveDisplay(sprite);
             break;
             case Interactions.PALEKIN:
-                ConvertToPaleKin(sprite);
+                ConvertToPaleKin(sprite, data);
             break;
         }
     }
@@ -58,7 +58,7 @@ function ConvertToPaleKin(sprite, data) {
         const name = "Kin";
         if (GameSave.GetScore() > drinkCost) {
             GameSave.UpdateScoreAndDom(-drinkCost);
-            sprite.setPaleKin();
+            sprite.setKinType(data);
             sprite.interactRemove = true;
             Dom.AddChatMessage(name, 'CARRY!');
         }

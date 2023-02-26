@@ -184,7 +184,7 @@ class Game extends Phaser.Scene {
 
         this.player = this.playerSpawner.spawnPlayer();
         
-        this.playerSpawner.spawnCollectors(this.levelData.CARRYKINS);
+        this.playerSpawner.spawnCarryKins(this.levelData.CARRYKINS);
         this.playerSpawner.spawnClones(3);
         this.playerSpawner.spawnPaleKins(1);
         

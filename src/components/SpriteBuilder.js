@@ -1,15 +1,14 @@
 import Player from "characters/player/Player";
-import Collector from "characters/collector/Collector";
 import Civilian from "characters/civilian/Civilian";
 import Enemy from "characters/enemy/Enemy";
 import Prey from "characters/prey/Prey";
 import Depths from "consts/Depths";
-import CollectorModel from "models/CollectorModel";
 import CivilianModel from "models/CivilianModel";
 import PlayerModel from "models/PlayerModel";
 import Clone from "../characters/clone/Clone";
 import CloneModel from "../models/CloneModel";
-import PaleKin from "../characters/palekin/Palekin";
+import Kin from "../characters/kin/Kin";
+import CarryKinModel from "models/CarryKinModel";
 import PaleKinModel from "../models/PaleKinModel";
 
 class SpriteBuilder {
@@ -18,8 +17,8 @@ class SpriteBuilder {
         return GetSprite(Player, PlayerModel, Depths.PLAYERS);
     }
 
-    static GetCollectorSprite() {
-        return GetSprite(Collector, CollectorModel, Depths.PLAYER_TEAM);
+    static GetCarryKinSprite() {
+        return GetSprite(Kin, CarryKinModel, Depths.PLAYER_TEAM);
     }
 
     static GetCivilianSprite() {
@@ -31,7 +30,7 @@ class SpriteBuilder {
     }
 
     static GetPaleKinSprite() {
-        return GetSprite(PaleKin, PaleKinModel, Depths.PLAYER_TEAM);
+        return GetSprite(Kin, PaleKinModel, Depths.PLAYER_TEAM);
     }
 
     static GetPrey(model) {

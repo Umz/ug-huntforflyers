@@ -23,5 +23,8 @@ const States = {
     MODE_HUNT: 102,
     MODE_CANNON: 103,
     
+    MODE_KIN: 201,
+    MODE_CARRYKIN: 202,
+    MODE_PALEKIN: 203,
 }
 export default States;

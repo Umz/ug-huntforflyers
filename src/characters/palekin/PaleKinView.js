@@ -23,7 +23,7 @@ class PaleKinView extends BaseController {
 
         this.clearAllActions();
 
-        this.sprite.model = structuredClone(PaleKinModel);
+        this.sprite.model = Object.assign({}, PaleKinModel);
         this.sprite.flash(0xFFFFFF, 700);
 
         this.scene.add.tween({

@@ -9,7 +9,6 @@ const Actions = {
     ACT_STATE_CHANGE: "listenForChangeInState",
     ACT_CARRY_ROCKET: "carryRocket",
 
-    ACT_WAIT: "controlActionWait",
     ACT_BLANK: "controlActionBlankDoNothing",
     ACT_MOVE_TO_X: "controlActionMoveToXPoisition",
     ACT_MOVE_TO_TARGET_X: "controlActionMoveToTargetXPosition",
@@ -17,6 +16,8 @@ const Actions = {
     ACT_ENEMY_STEAL: "controlActionStealFrozenFlyAway",
     ACT_ENEMY_DIVE: "controlActionStealDive",
     ACT_FOLLOW_TARGET: "controlActionFollowTarget",
+    ACT_SPEAK: "controlShowIcon",
+    ACT_WAIT: "controlActionWait",
     
     ACT_LISTEN_FOR_FROZEN: "controlActionListenToFrozen",
     ACT_FIND_COINS: "coinerGoingToStealCoins",

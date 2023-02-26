@@ -54,6 +54,11 @@ class PlayerSpawner {
         return collector;
     }
 
+    spawnCollectors(amt) {
+        for (let i=0;i<amt;i++)
+            this.spawnCollector();
+    }
+
     spawnClone() {
 
         let home = this.scene.getBuilding(Buildings.PLAYER_HOUSE);

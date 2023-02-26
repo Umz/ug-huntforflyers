@@ -13,5 +13,7 @@ const Textures = {
     ICON_HAMMER: "ic_hammer",
     ICON_EMPTY: "ic_s",
     ICON_SPEECH: "ic_speech",
+    ICON_BEER: "ic_beer",
+    ICON_WINE: "ic_wine"
 }
 export default Textures;

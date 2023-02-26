@@ -11,20 +11,19 @@ class PaleKin extends BaseSprite {
         super(scene, x, y, atlas, frame);
 
         this.setModel(PaleKinModel);
-        this.setView(new PaleKinView(this));
+        this.setView(new CivilianView(this));
         this.setController(new KinCtrl(this));
-
-        //  Start as a civilian
-
-        this.civView = new CivilianView(this);
-        this.civView.clearAllActions();
     }
 
     setKinSkin() {
-        this.civView.setKinSkin(this.model);
+        this.view.setKinSkin(this.model);
     }
 
-    setPaleKinSkin() {
+    setPaleKin() {
+        this.view.clearAllActions();
+
+        this.setView(new PaleKinView(this));
+        this.setController(new PaleKinCtrl(this));
         this.view.setSkin();
     }
 }

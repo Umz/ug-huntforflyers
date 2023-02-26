@@ -1,12 +1,12 @@
 import Interactions from "../consts/Interactions";
 import Dom from "components/Dom";
 import GameSave from "./GameSave";
+import Dialogue from "../consts/Dialogue";
 
 class Interaction {
 
     // Swap level
     // Spawn enemy
-    // Turn to CarryKin
 
     static AddInteraction(sprite, type, data) {
         switch (type) {
@@ -54,16 +54,19 @@ function AddGraveDisplay(sprite, data) {
 
 function ConvertToPaleKin(sprite, data) {
     sprite.interact = function() {
-
         let drinkCost = 10;
+        const name = "Kin";
         if (GameSave.GetScore() > drinkCost) {
-            
             GameSave.UpdateScoreAndDom(-drinkCost);
-            sprite.setPaleKinSkin();
+            sprite.setPaleKin();
             sprite.interactRemove = true;
-            Dom.AddChatMessage('Kin', 'CARRY!');
+            Dom.AddChatMessage(name, 'CARRY!');
         }
-        else
-            Dom.AddChatMessage('Kin', "Buy me a drink! It's only 10cC");
+        else {
+            let command = "Buy me a drink for 10cC!";
+            let dialogue = Phaser.Utils.Array.GetRandom(Dialogue.NPC.KINS);
+            let msg = `${command} ${dialogue}`;
+            Dom.AddChatMessage(name, msg);
+        }
     }
 }

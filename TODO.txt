@@ -1,18 +1,16 @@
-> Pale Kins for collection to citizen houses
-- Default action- Transform delay - Set controller
-- Wait and sign to transform
-- Spawner for default Kins - conversion method for both 
+> Merge all Kins
+- Spawner for Kins
+- Conversion method to Kin types
+- Init action for Kins coming out of pub 
+*** Abstract Kin to class that sets to Carry or Pale- (3 controllers for seperate behaviours / Views)
 
 Clones run around the base
 Redo level 6 (Shopping district right | Residential crisis left)
 
-*** Abstract Kin to class that sets to Carry or Pale- (3 controllers for seperate behaviours / Views)
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
-*** Don't attack while player is dead / Don't move ?
-*** Death display fix
 *** SetVelocity (Steal bug)
 
 Redo residents (4 + 5)

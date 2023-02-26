@@ -29,7 +29,7 @@ class Action {
     }
 
     subclassUpdate(time, delta) {
-        throw Exception("Must be overriden");
+        throw new Error(this.constructor.name + " subClassUpdate() must be overriden");
     }
 
     addCallback(fn) {

@@ -11,11 +11,10 @@ class KinCtrl extends BaseController {
 
     setDefaultActions() {
 
-        let levelWidth = this.scene.getLevelWidth();
-        let randX = this.sprite.x + Phaser.Math.Between(-48, 48);
-        let toX = Phaser.Math.Wrap(randX, 32, levelWidth - 32);
-
         let labTable = this.scene.getBuilding(Buildings.LAB_TABLE);
+        let levelWidth = this.scene.getLevelWidth();
+        let randX = labTable.worldX + Phaser.Math.Between(-24, 24);
+        let toX = Phaser.Math.Wrap(randX, 32, levelWidth - 32);
 
         this.addActionChain()
             .chain(new CtrMoveToX(this.sprite, labTable.worldX))

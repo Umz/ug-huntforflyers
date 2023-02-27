@@ -34,6 +34,10 @@ CivilianModel.skins = {
         greencap: {
             idle: Animations.GREENCAP_IDLE,
             run: Animations.GREENCAP_RUN
+        },
+        blonde: {
+            idle: Animations.BLONDE_IDLE,
+            run: Animations.BLONDE_RUN
         }
     }
 }

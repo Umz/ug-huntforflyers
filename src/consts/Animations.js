@@ -21,6 +21,8 @@ const Animations = {
 
     GREENCAP_IDLE: 'greencap_idle',
     GREENCAP_RUN: 'greencap_run',
+    BLONDE_IDLE: 'blonde_idle',
+    BLONDE_RUN: 'blonde_run',
 
     TOLU_IDLE: "tolu_idle",
     TOLU_RUN: "tolu_run",

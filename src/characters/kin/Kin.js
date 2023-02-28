@@ -14,9 +14,15 @@ class Kin extends BaseSprite {
     constructor(scene, x, y, atlas, frame) {
         super(scene, x, y, atlas, frame);
 
+        this.kinType = States.MODE_KIN;
+
         this.setModel(PaleKinModel);
         this.setView(new CivilianView(this));
         this.setController(new KinCtrl(this));
+    }
+
+    init() {
+        this.controller.init();
     }
 
     setKinType(type) {
@@ -32,7 +38,12 @@ class Kin extends BaseSprite {
             break;
         }
 
+        this.kinType = type;
         this.view.setSkin();
+    }
+
+    getKinType() {
+        return this.kinType;
     }
 
     clearAll() {

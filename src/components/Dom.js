@@ -5,6 +5,12 @@ class Dom {
         let element = document.getElementById(id);
         element.style.visibility = visibility;
     }
+
+    static ToggleDomIdVisibility(id) {
+        let element = document.getElementById(id);
+        let visible = (element.style.visibility === 'visible');
+        element.style.visibility = (visible) ? 'hidden' : 'visible';
+    }
     
     static SetDomIdDisplay(id, visible) {
         const display = (visible) ? 'block' : 'none';

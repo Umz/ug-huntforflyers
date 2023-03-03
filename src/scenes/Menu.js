@@ -60,6 +60,10 @@ class Menu extends Phaser.Scene {
             this.sound.play(Sfx.MENU_PLAY_BUTTON, {volume: .5});
         });
 
+        Dom.AddClick(Consts.INFO_BUTTON, ()=>{
+            Dom.ToggleDomIdVisibility(Consts.INFO_BOX);
+        });
+
         this.events.on('shutdown', ()=>{
             this.music.stop();
             this.music.destroy();

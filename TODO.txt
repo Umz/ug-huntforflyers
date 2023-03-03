@@ -1,13 +1,12 @@
-Fill in the info screen button (Story)
-Clones run around the base
-
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
 *** SetVelocity (Steal bug)
 *** LOAD all Kins currently in party
+*** HIDE all menu boxes on move > add a class that will catch all
 
+Clones run around the base
 Redo residents (4 + 5)
 Add Signage
 Review completes and level times
@@ -16,6 +15,8 @@ Tutorial (5, 5M, 6)
 Press up to name your CKs (menu)
 Interact for next level
 Notifications
+Weapon select (only currently available show)
+Weapon select (Gun ship)
 
 Fill in the question button (controls)
 Fill in unlock screen (name characters)

@@ -31,6 +31,9 @@ const Consts = {
     UI_SCORE_TEXT: "hud-lifeforce-text",
     UI_WEAPON: "hud-weapon",
 
+    INFO_BUTTON: "info-button",
+    INFO_BOX: "info-container",
+
     HUD_WEAPON_TEXT: "wep-name",
     HUD_WEAPON_SELECT: "wep-select",
     HUD_WEAPON_ACTIVE: "wep-select-active",

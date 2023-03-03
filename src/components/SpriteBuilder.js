@@ -8,17 +8,12 @@ import PlayerModel from "models/PlayerModel";
 import Clone from "../characters/clone/Clone";
 import CloneModel from "../models/CloneModel";
 import Kin from "../characters/kin/Kin";
-import CarryKinModel from "models/CarryKinModel";
 import PaleKinModel from "../models/PaleKinModel";
 
 class SpriteBuilder {
 
     static GetPlayerSprite(scene, model) {
         return GetSprite(Player, PlayerModel, Depths.PLAYERS);
-    }
-
-    static GetCarryKinSprite() {
-        return GetSprite(Kin, CarryKinModel, Depths.PLAYER_TEAM);
     }
 
     static GetCivilianSprite() {
@@ -29,7 +24,7 @@ class SpriteBuilder {
         return GetSprite(Clone, CloneModel, Depths.CIVILIANS);
     }
 
-    static GetPaleKinSprite() {
+    static GetKinSprite() {
         return GetSprite(Kin, PaleKinModel, Depths.PLAYER_TEAM);
     }
 

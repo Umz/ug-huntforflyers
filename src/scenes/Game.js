@@ -162,7 +162,6 @@ class Game extends Phaser.Scene {
         this.physics.add.overlap(this.collisionGroupCoiners, this.collisionGroupPlayers, this.overlapCoinerPlayers, null, this);
         this.physics.add.overlap(this.collisionGroupWaterPump, this.collisionGroupPrey, this.overlapWaterPump, null, this);
         this.physics.add.overlap(this.coinGroup, this.collisionGroupPlayers, this.overlapCoinPlayers, null, this);
-        this.physics.add.overlap(this.collisionGroupPlayers, this.talkingGroup, this.overlapPlayerInteractive, null, this);
 
         this.controlpad = new Controlpad(this);
         this.controlpad.addKeyboardControl();
@@ -179,8 +178,8 @@ class Game extends Phaser.Scene {
             this.soundManager.play(Sfx.WEAPON_SELECT);
         }
         this.controlpad.interact = ()=>{
-            this.player.setListeningForInteraction(true);
-            this.showIcon(this.player, -1, 'ic_speech');
+            this.showIcon(this.player, 1000, 'ic_speech');
+            this.interactAction();
         }
 
         this.soundManager = new SoundManager(this);
@@ -421,22 +420,29 @@ class Game extends Phaser.Scene {
         windToNextTree();
     }
 
-    overlapPlayerInteractive(interactive, player) {
+    interactAction() {
         
-        if (player.isListeningForInteraction()) {
+        let allInteratives = this.talkingGroup.getChildren();
 
-            player.setListeningForInteraction(false);
-            player.setVelocityX(0);
-            player.showingIcon = false;
+        for (let interactive of allInteratives) {
 
-            interactive.interact();
-            if (interactive.interactIcon)
-                this.showIcon(interactive, 3000, interactive.interactIcon);
+            let pos = interactive.getCenter();
+            if (this.player.getBounds().contains(pos.x, pos.y)) {
+                
+                this.player.setListeningForInteraction(false);
+                this.player.setVelocityX(0);
+                this.player.showingIcon = false;
+        
+                interactive.interact();
+                if (interactive.interactIcon)
+                    this.showIcon(interactive, 3000, interactive.interactIcon);
+        
+                if (interactive.interactRemove)
+                    this.talkingGroup.remove(interactive);
 
-            if (interactive.interactRemove)
-                this.talkingGroup.remove(interactive);
+                break;
+            }
         }
-
     }
 
     overlapBulletPrey(bullet, prey) {

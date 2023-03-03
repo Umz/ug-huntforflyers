@@ -1,6 +1,5 @@
-Clones run around the base
-Redo level 6 (Shopping district right | Residential crisis left)
 Fill in the info screen button (Story)
+Clones run around the base
 
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
@@ -10,8 +9,8 @@ Fill in the info screen button (Story)
 *** LOAD all Kins currently in party
 
 Redo residents (4 + 5)
-Add level 7 - Ranch + all (Food crisis)
-Add level 8 - Land restoration
+Add Signage
+Review completes and level times
 
 Tutorial (5, 5M, 6)
 Press up to name your CKs (menu)

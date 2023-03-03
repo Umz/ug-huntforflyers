@@ -18,7 +18,7 @@ class LevelMapper {
         MAP.set(Levels.STAGE4, Stage4Model);
         MAP.set(Levels.STAGE5, Stage5Model);
         MAP.set(Levels.STAGE6, Stage5MasjidModel);
-        //MAP.set(Levels.STAGE6, Stage6Model);
+        MAP.set(Levels.STAGE7, Stage6Model);
 
         let model = MAP.get(levelID) ? MAP.get(levelID) : Stage1Model;
         return model;

@@ -100,7 +100,13 @@ class Preload extends Phaser.Scene {
             { key: Animations.TOLU_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_tolu_run', start:1, end: 6}), frameRate: 9, repeat: -1 },
 
             { key: Animations.GREENCAP_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_greencap_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
-            { key: Animations.GREENCAP_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_greencap_run', start:1, end: 6}), frameRate: 11, repeat: -1 }
+            { key: Animations.GREENCAP_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_greencap_run', start:1, end: 6}), frameRate: 11, repeat: -1 },
+            { key: Animations.BLONDE_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_blonde_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.BLONDE_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_blonde_run', start:1, end: 6}), frameRate: 11, repeat: -1 },
+            { key: Animations.SAVAGE_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_sav_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.SAVAGE_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_sav_run', start:1, end: 6}), frameRate: 11, repeat: -1 },
+            { key: Animations.SAVAGE_A_IDLE , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_sava_idle', start:1, end: 4}), frameRate: 8, repeat: -1 },
+            { key: Animations.SAVAGE_A_RUN , frames: this.anims.generateFrameNames('sprites', { prefix: 'spr_sava_run', start:1, end: 6}), frameRate: 11, repeat: -1 }
         ];
         for (let civ of civilians)
             this.anims.create(civ);

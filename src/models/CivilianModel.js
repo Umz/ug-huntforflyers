@@ -38,6 +38,14 @@ CivilianModel.skins = {
         blonde: {
             idle: Animations.BLONDE_IDLE,
             run: Animations.BLONDE_RUN
+        },
+        savage: {
+            idle: Animations.SAVAGE_IDLE,
+            run: Animations.SAVAGE_RUN
+        },
+        savage_a: {
+            idle: Animations.SAVAGE_A_IDLE,
+            run: Animations.SAVAGE_A_RUN
         }
     }
 }

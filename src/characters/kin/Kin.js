@@ -21,8 +21,8 @@ class Kin extends BaseSprite {
         this.setController(new KinCtrl(this));
     }
 
-    init() {
-        this.controller.init();
+    init(localBuilding) {
+        this.controller.init(localBuilding);
     }
 
     setKinType(type) {

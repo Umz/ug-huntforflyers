@@ -1,18 +1,13 @@
-> Merge all Kins
-- Spawner for Kins
-- Conversion method to Kin types
-- Init action for Kins coming out of pub 
-*** Abstract Kin to class that sets to Carry or Pale- (3 controllers for seperate behaviours / Views)
-*** CarryKin graphic - sizes to match
-
 Clones run around the base
 Redo level 6 (Shopping district right | Residential crisis left)
+Fill in the info screen button (Story)
 
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
 *** SetVelocity (Steal bug)
+*** LOAD all Kins currently in party
 
 Redo residents (4 + 5)
 Add level 7 - Ranch + all (Food crisis)
@@ -24,21 +19,18 @@ Press up uses box.contains instead of overlap
 Interact for next level
 Notifications
 
-Fill in the info screen button (Story)
 Fill in the question button (controls)
 Fill in unlock screen (name characters)
 Unlock screen use for ITCN - name your CarryKins
 Split BGM and SFX
 
 Solid for fighting
-Drunk visitors turn to Kins
 
 Zombie enemies (run into and kick back)
 Freezers (run into and stun)
 Bombers (run into and explode)
 Back-attack (run into and kill)
 Kin attack (kills your CarryKins)
-Clone attackers (kills clones)
 
 Lab workers - Work near the pub 
 

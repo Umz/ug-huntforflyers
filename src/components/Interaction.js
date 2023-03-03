@@ -2,6 +2,7 @@ import Interactions from "../consts/Interactions";
 import Dom from "components/Dom";
 import GameSave from "./GameSave";
 import Dialogue from "../consts/Dialogue";
+import Depths from "../consts/Depths";
 
 class Interaction {
 
@@ -19,8 +20,8 @@ class Interaction {
             case Interactions.GRAVE:
                 AddGraveDisplay(sprite);
             break;
-            case Interactions.PALEKIN:
-                ConvertToPaleKin(sprite, data);
+            case Interactions.TRANSFORM:
+                ConvertKin(sprite, data);
             break;
         }
     }
@@ -52,15 +53,26 @@ function AddGraveDisplay(sprite, data) {
     }
 }
 
-function ConvertToPaleKin(sprite, data) {
+function ConvertKin(sprite, data) {
+
+    const scene = sprite.scene;
+
     sprite.interact = function() {
+
         let drinkCost = 10;
         const name = "Kin";
-        if (GameSave.GetScore() > drinkCost) {
+        const message = "CARRY!";
+
+        if (GameSave.GetScore() >= drinkCost) {
+
             GameSave.UpdateScoreAndDom(-drinkCost);
-            sprite.setKinType(data);
+            data.group.add(sprite);
+
+            sprite.setDepth(Depths.PLAYER_TEAM);
+            sprite.setKinType(data.type);
             sprite.interactRemove = true;
-            Dom.AddChatMessage(name, 'CARRY!');
+
+            Dom.AddChatMessage(name, message);
         }
         else {
             let command = "Buy me a drink for 10cC!";

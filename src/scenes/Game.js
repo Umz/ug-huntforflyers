@@ -31,6 +31,7 @@ import Textures from "../consts/Textures";
 import Gravestone from "../classes/Gravestone";
 import Interaction from "../components/Interaction";
 import Interactions from "../consts/Interactions";
+import KinSpawner from "../spawner/KinSpawner";
 
 class Game extends Phaser.Scene {
 
@@ -61,6 +62,8 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.scene = this;
 
         this.platforms = this.physics.add.group({ immovable: true });
+        this.platformers = this.physics.add.group();
+
         this.liveBirdGroup = this.add.group();
         this.liveSkyEnemies = this.add.group();
         this.bgBirdGroup = this.add.group({runChildUpdate:true});
@@ -127,6 +130,9 @@ class Game extends Phaser.Scene {
             defaultFrame: 'coin',
             runChildUpdate: true
         });
+
+        this.groupCarryKins = this.add.group();
+        this.groupPaleKins = this.add.group();
         
         this.collisionGroupPlayers = this.physics.add.group();
         this.collisionGroupPrey = this.physics.add.group();
@@ -134,12 +140,11 @@ class Game extends Phaser.Scene {
         this.collisionGroupCoiners = this.physics.add.group();
         this.collisionGroupSkyBombers = this.physics.add.group();
         this.collisionGroupWaterPump = this.physics.add.group();
-        this.collisionGroupCollectors = this.physics.add.group();
         this.collisionGroupCivilians = this.physics.add.group();
         this.collisionGroupClones = this.physics.add.group();
 
+        this.physics.add.collider(this.platforms, this.platformers);
         this.physics.add.collider(this.platforms, this.collisionGroupPlayers);
-        this.physics.add.collider(this.platforms, this.collisionGroupCollectors);
         this.physics.add.collider(this.platforms, this.collisionGroupCivilians);
         this.physics.add.collider(this.platforms, this.collisionGroupClones);
         this.physics.add.collider(this.platforms, this.collisionGroupCoiners);
@@ -183,10 +188,11 @@ class Game extends Phaser.Scene {
         this.civSpawner = new CivilianSpawner(this);
 
         this.player = this.playerSpawner.spawnPlayer();
-        
-        this.playerSpawner.spawnCarryKins(this.levelData.CARRYKINS);
         this.playerSpawner.spawnClones(3);
-        this.playerSpawner.spawnPaleKins(1);
+        
+        this.kinSpawner = new KinSpawner(this);
+        this.updateRunner.add(this.kinSpawner);
+        //this.playerSpawner.spawnCarryKins(this.levelData.CARRYKINS);
         
         let enemies = this.levelData.ENEMIES;
         this.enemySpawner = new EnemySpawner(this, enemies);
@@ -340,7 +346,7 @@ class Game extends Phaser.Scene {
             this.showWindParticle();
         }
 
-        let count = this.collisionGroupCollectors.countActive();
+        let count = this.groupCarryKins.countActive();
         Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
 
         this.saveData.addPlayTime(delta);
@@ -780,7 +786,7 @@ class Game extends Phaser.Scene {
     bombExplodeOnGround(posX) {
         
         //let players = this.collisionGroupPlayers.getChildren();
-        let kins = this.collisionGroupCollectors.getChildren();
+        let kins = this.groupCarryKins.getChildren();
         let civs = this.collisionGroupCivilians.getChildren();
 
         let all = kins.concat(kins, civs);

@@ -2,3 +2,15 @@
     z-index: 14;
     visibility: hidden;
 }
+
+#instruction-container {
+    z-index: 14;
+    visibility: visible;
+}
+
+.instruction-line {
+    display: flex;
+}
+.instruction-line span {
+    flex: 1;
+}

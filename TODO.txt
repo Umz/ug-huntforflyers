@@ -6,7 +6,6 @@
 *** LOAD all Kins currently in party
 *** HIDE all menu boxes on move > add a class that will catch all
 
-Clones run around the base
 Redo residents (4 + 5)
 Add Signage
 Review completes and level times

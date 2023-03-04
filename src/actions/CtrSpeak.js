@@ -5,7 +5,7 @@ class CtrSpeak extends Action {
     
     constructor(sprite, icon, time) {
         super(Actions.ACT_SPEAK);
-        sprite.scene.showIcon(sprite, icon, icon);
+        sprite.scene.showIcon(sprite, time, icon);
         this.setComplete();
     }
 

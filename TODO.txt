@@ -2,7 +2,6 @@
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** Refactor chat to use new functions page-functions.js
-*** SetVelocity (Steal bug)
 *** LOAD all Kins currently in party
 *** HIDE all menu boxes on move > add a class that will catch all
 

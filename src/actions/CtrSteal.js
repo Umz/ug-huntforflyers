@@ -15,7 +15,8 @@ class CtrSteal extends Action {
 
         this.sprite.setVelocity(0, -40);
 
-        if (this.prey) {
+        if (this.prey && this.prey.active) {
+
             this.prey.setPosition(this.sprite.x, this.sprite.getBottomCenter().y).setVelocity(0);
             this.prey.setState(States.STOLEN);
     
@@ -26,7 +27,7 @@ class CtrSteal extends Action {
                 this.sprite.setY(-16)
                 this.setComplete();
             }
-            else if (!this.prey.isState(States.STOLEN))
+            else if (!this.prey || !this.prey.active || !this.prey.isState(States.STOLEN))
                 this.setComplete();
         }
         

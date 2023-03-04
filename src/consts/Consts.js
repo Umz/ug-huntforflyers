@@ -33,9 +33,10 @@ const Consts = {
 
     INFO_BUTTON: "info-button",
     INFO_BOX: "info-container",
-
     HOW_TO_BUTTON: "instruction-button",
     HOW_TO_BOX: "instruction-container",
+    CREDITS_BUTTON: "credit-button",
+    CREDITS_BOX: "credit-container",
 
     HUD_WEAPON_TEXT: "wep-name",
     HUD_WEAPON_SELECT: "wep-select",

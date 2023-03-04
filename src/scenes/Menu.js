@@ -68,6 +68,10 @@ class Menu extends Phaser.Scene {
             Dom.ToggleDomIdVisibility(Consts.HOW_TO_BOX);
         });
 
+        Dom.AddClick(Consts.CREDITS_BUTTON, ()=>{
+            Dom.ToggleDomIdVisibility(Consts.CREDITS_BOX);
+        });
+
         this.events.on('shutdown', ()=>{
             this.music.stop();
             this.music.destroy();

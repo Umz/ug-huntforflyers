@@ -108,7 +108,7 @@ function selectMenuElement(event) {
 }
 
 function hideMenuElements() {
-    let ids = ['info-container', 'instruction-container'];
+    let ids = ['info-container', 'instruction-container', 'credit-container'];
     for (let id of ids) {
         let el = document.getElementById(id);
         el.style.visibility = 'hidden';

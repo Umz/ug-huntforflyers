@@ -1,8 +1,6 @@
 *** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
-*** Refactor chat to use new functions page-functions.js
-*** HIDE all menu boxes on move > add a class that will catch all
 *** SPAWN Kins only when there is a Pub
 *** Stats adding to and counting
 
@@ -17,45 +15,26 @@ Notifications
 Weapon select (only currently available show)
 Weapon select (Gun ship)
 
-Fill in the question button (controls)
-Fill in unlock screen (name characters)
-Unlock screen use for ITCN - name your CarryKins
 Split BGM and SFX
 
 Solid for fighting
-
-Zombie enemies (run into and kick back)
-Freezers (run into and stun)
-Bombers (run into and explode)
-Back-attack (run into and kill)
-Kin attack (kills your CarryKins)
-
 Lab workers - Work near the pub 
+
+Pigeons (fly into and explode)
+Assassins (gun down)
 
 Add chicken sprite
 Add rabbit sprite
 Background animals
 - Run around the FG - player scene, fox? - Run away from player when gets close ( eventually off screen )
 
-create pools
-- Prey pool
-- Enemy Pool 
-- Collector pool
-
 Webpack split into vendor and bundle
 Convert all sound files
 Refactor Sfx names 
 
-- Consts update names
-
-Game needs to be super simple to learn the concept -
 And the development should be seen during the levels progressing
 Dying and retrying is an essential portion of the gameplay fun
 
-https://umzgames.com/demo/farb2/
-
-Add Credits:
+Explicit Credits:
 Gem Popper - BGM - Mopz - https://opengameart.org/content/gem-popper-piano-tune
-Pixabay -
-OpenGameArt 
-FreeSound 
+https://umzgames.com/demo/farb2/

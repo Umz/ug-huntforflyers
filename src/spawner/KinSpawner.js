@@ -17,7 +17,7 @@ class KinSpawner {
             locale: Buildings.LAB_TABLE,
             type: States.MODE_CARRYKIN,
             group: scene.groupCarryKins,
-            max: 5,
+            max: 15,
             current: null
         };
 
@@ -26,7 +26,7 @@ class KinSpawner {
             locale: Buildings.WATER_PUMP,
             type: States.MODE_PALEKIN,
             group: scene.groupPaleKins,
-            max: 5,
+            max: 7,
             current: null
         };
     }
@@ -37,6 +37,7 @@ class KinSpawner {
     }
 
     waitToSpawn(config) {
+
         let currentActive = this.scene.getGroupActiveCount(config.group);
         if (currentActive < config.max && !config.current) {
             config.current = this.spawnKin(config.spawn, config.locale, config.type, config.group);
@@ -70,31 +71,34 @@ class KinSpawner {
         return kin;
     }
 
-    spawnCarryKin() {
+    spawnKinType(kinType, group) {
 
         let player = this.scene.player;
 
-        let carrykin = SpriteBuilder.GetCarryKinSprite();
-        carrykin.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
+        let kin = SpriteBuilder.GetKinSprite();
+        kin.setPosition(player.x - Phaser.Math.Between(16, 32), WorldConsts.GROUND_Y - 16);
 
         this.scene.addSpriteToSceneAndGroups(
-            carrykin,
+            kin,
             this.scene.spriteUpdateGroup,
-            this.scene.collisionGroupCarryKins,
+            this.scene.platformers,
+            group
         );
-        SpritePhysics.AddPhysics(carrykin);
+        SpritePhysics.AddPhysics(kin);
 
-        carrykin.setKinType(States.MODE_CARRYKIN);
+        kin.setKinType(kinType);
 
-        return carrykin;
+        return kin;
     }
 
-    spawnCarryKins() {
-        // These are without the animation
-        // Loading in prebuilt
+    spawnCarryKins(amt) {
+        for (let i=0; i < amt; i++)
+            this.spawnKinType(States.MODE_CARRYKIN, this.scene.groupCarryKins);
     }
 
-    spawnPaleKins() {
+    spawnPaleKins(amt) {
+        for (let i=0; i < amt; i++)
+            this.spawnKinType(States.MODE_PALEKIN, this.scene.groupPaleKins);
     }
 }
 export default KinSpawner;

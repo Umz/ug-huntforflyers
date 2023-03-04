@@ -186,12 +186,20 @@ class Game extends Phaser.Scene {
         this.playerSpawner = new PlayerSpawner(this);
         this.civSpawner = new CivilianSpawner(this);
 
+        //  #   SPAWN Player and CarryKins
+
         this.player = this.playerSpawner.spawnPlayer();
         this.playerSpawner.spawnClones(3);
+
+        let cks = this.saveData.cks + (this.levelData.CARRYKINS || 0);
+        let pks = this.saveData.pks + (this.levelData.PALEKINS || 0);
         
         this.kinSpawner = new KinSpawner(this);
+        this.kinSpawner.spawnCarryKins(Math.min(15, cks));
+        this.kinSpawner.spawnPaleKins(Math.min(7, pks));
         this.updateRunner.add(this.kinSpawner);
-        //this.playerSpawner.spawnCarryKins(this.levelData.CARRYKINS);
+
+        //  SET UP enemies
         
         let enemies = this.levelData.ENEMIES;
         this.enemySpawner = new EnemySpawner(this, enemies);
@@ -334,6 +342,7 @@ class Game extends Phaser.Scene {
 
         this.counter.update(time, delta);
         if (this.counter.isComplete()) {
+            
             if (this.isAllHousesComplete()) {
                 let house = this.buildings.get(Buildings.PLAYER_HOUSE);
                 this.showIcon(house, -1, 'puff1');
@@ -343,10 +352,15 @@ class Game extends Phaser.Scene {
             }
 
             this.showWindParticle();
+            this.saveGameData();
         }
 
         let count = this.groupCarryKins.countActive();
+        let paleCount = this.groupPaleKins.countActive();
         Dom.SetDomText(Consts.HUD_CARRYKINS_TEXT, count);
+
+        this.saveData.cks = count;
+        this.saveData.pks = paleCount;
 
         this.saveData.addPlayTime(delta);
     }
@@ -619,6 +633,10 @@ class Game extends Phaser.Scene {
         this.physics.add.existing(grave);
 
         return grave;
+    }
+
+    saveGameData() {
+        GameSave.SaveDataToLocal(this.saveData);
     }
 
     showGravestoneStats(grave) {
@@ -927,7 +945,7 @@ class Game extends Phaser.Scene {
         BackgroundBuilder.addBackgroundScene(this, greenBG);
         BackgroundBuilder.addGround(this);
 
-        let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE, Buildings.PLAYER_HOUSE];
+        let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_TABLE, Buildings.PLAYER_HOUSE];
         let houseTypes = [Buildings.TENT1, Buildings.TENT2, Buildings.TENT3, Buildings.HUT, Buildings.HOUSE1];
         let signs = [Decor.SIGN];
 

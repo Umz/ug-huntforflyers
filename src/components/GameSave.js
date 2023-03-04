@@ -23,9 +23,6 @@ class GameSave {
         return saveData;
     }
 
-    static SaveDataToSession(data) {
-    }
-
     static SaveDataToLocal(data) {
         let json = JSON.stringify(data);
         sessionStorage.setItem('save-data-test', json);

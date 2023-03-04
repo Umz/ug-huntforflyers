@@ -13,6 +13,7 @@ class SaveData {
 
         this.playerName = "Prof. Replica";
         this.cks = 0;
+        this.pks = 0;
         this.currency = 0;
         this.cloneIndex = 0;
         this.names = [];

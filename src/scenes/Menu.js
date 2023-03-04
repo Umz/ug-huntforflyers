@@ -81,12 +81,20 @@ class Menu extends Phaser.Scene {
             elem.addEventListener('click', selectMenuElement, false);
 
         this.input.keyboard.on('keydown-LEFT', (event) => {
+            hideMenuElements();
             moveMenuElement(Consts.MENU_MAIN_SELECTED, -1);
         });
         this.input.keyboard.on('keydown-RIGHT', (event) => {
+            hideMenuElements();
             moveMenuElement(Consts.MENU_MAIN_SELECTED, 1);
         });
+        this.input.keyboard.on('keydown-DOWN', (event) => {
+            hideMenuElements();
+        });
 
+        this.input.keyboard.on('keydown-UP', (event) => {
+            selectedMenuElementAction(Consts.MENU_MAIN_SELECTED);
+        });
         this.input.keyboard.on('keydown-ENTER', (event) => {
             selectedMenuElementAction(Consts.MENU_MAIN_SELECTED);
         });

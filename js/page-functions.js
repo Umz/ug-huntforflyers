@@ -107,6 +107,14 @@ function selectMenuElement(event) {
     this.classList.add(className);
 }
 
+function hideMenuElements() {
+    let ids = ['info-container', 'instruction-container'];
+    for (let id of ids) {
+        let el = document.getElementById(id);
+        el.style.visibility = 'hidden';
+    }
+}
+
 function moveMenuElement(className, dir = 1) {
 
     let activeElement = document.getElementsByClassName(className)[0];

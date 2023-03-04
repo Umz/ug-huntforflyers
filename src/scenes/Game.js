@@ -923,7 +923,8 @@ class Game extends Phaser.Scene {
 
     addBackground() {
 
-        BackgroundBuilder.addBackgroundScene(this);
+        let greenBG = this.levelData.GREEN_BACKGROUND || false;
+        BackgroundBuilder.addBackgroundScene(this, greenBG);
         BackgroundBuilder.addGround(this);
 
         let mapTypes = [Buildings.WATER_PUMP, Buildings.LAB_tABLE, Buildings.PLAYER_HOUSE];

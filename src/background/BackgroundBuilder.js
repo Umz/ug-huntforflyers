@@ -9,11 +9,11 @@ import Interaction from "../components/Interaction";
 
 class BackgroundBuilder {
 
-    static addBackgroundScene(scene) {
+    static addBackgroundScene(scene, greenBG = false) {
 
         for (let i=0; i<6; i++) {
 
-            let name = i === 5 ? `bg${i}` : `bg${i}`;
+            let name = (i === 5 && greenBG) ? `bg${i}g1` : `bg${i}`;
             let bg = scene.add.tileSprite(0, 0, WorldConsts.WIDTH, WorldConsts.HEIGHT, 'background', name).setOrigin(0).setScrollFactor(0);
             bg.setDepth(Depths.BG_SCENE + i);
             bg.sf = (i * .15);

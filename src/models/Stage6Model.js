@@ -14,6 +14,8 @@ import Signage from "../consts/Signage";
 const Stage6Model = {
 
     LENGTHS: 7,
+    GREEN_BACKGROUND: true,
+    
     CARRYKINS: 10,
 
     ENEMIES: [],

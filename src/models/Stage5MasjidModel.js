@@ -12,6 +12,8 @@ import Signage from "../consts/Signage";
 const Stage5MasjidModel = {
 
     LENGTHS: 5,
+    GREEN_BACKGROUND: true,
+
     CARRYKINS: 11,
     ENEMIES: [
         Characters.DRONE,

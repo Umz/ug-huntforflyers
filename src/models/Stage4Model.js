@@ -9,6 +9,7 @@ import BlueBirdModel from "./BlueBirdModel";
 import Characters from "consts/Characters";
 import Signage from "../consts/Signage";
 import Tutorial4 from "../tutorials/Tutorial4";
+import Levels from "../consts/Levels";
 
 const Stage3Model = {
 
@@ -58,7 +59,7 @@ const Stage3Model = {
         Building.New(Decor.FENCE2).setTileX(35).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.5),
 
         Building.New(Buildings.LAB_TABLE).setTileX(29.5).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(32).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(32).setDepth(Depths.BUILDINGS_BG).setLevelEnd(Levels.STAGE5),
         Building.New(Decor.POST).setTileX(33.5).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV4),
         
         Building.New(Decor.FENCE).setTileX(35.5).setDepth(Depths.BUILDINGS_BG),

@@ -3,19 +3,20 @@
 *** Refactor wind, emitters, trees group,
 *** SPAWN Kins only when there is a Pub
 *** Stats adding to and counting
+*** Gravestone count uses 0 preceding
+*** Pause screen key controls
+*** Prey values
 
-Redo residents (4 + 5)
-Add Signage
 Review completes and level times
 
 Tutorial (5, 5M, 6)
 Press up to name your CKs (menu)
-Interact for next level
 Notifications
 Weapon select (only currently available show)
 Weapon select (Gun ship)
 
 Split BGM and SFX
+- Carry!
 
 Solid for fighting
 Lab workers - Work near the pub 

@@ -8,6 +8,7 @@ import Characters from "../consts/Characters";
 import BlueBirdModel from "./BlueBirdModel";
 import RedBirdModel from "./RedBirdModel";
 import Signage from "../consts/Signage";
+import Levels from "../consts/Levels";
 
 const Stage5MasjidModel = {
 
@@ -36,7 +37,7 @@ const Stage5MasjidModel = {
 
         Building.New(Buildings.TENT3).setTileX(13).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.TENT3).setTileX(15.5).setDepth(Depths.BUILDINGS_FG).setComplete(1),
-        Building.New(Decor.SIGN).setTileX(15).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.SIGN).setTileX(15).setDepth(Depths.DECOR_FG).setSign(Signage.LV5_LEFT),
 
         //  Houses with Park 20 - 40
 
@@ -70,7 +71,7 @@ const Stage5MasjidModel = {
         Building.New(Decor.BBQ).setTileX(32).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BENCH).setTileX(33).setDepth(Depths.DECOR_FG),
         
-        Building.New(Decor.HANGING_SIGN).setTileX(39).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.HANGING_SIGN).setTileX(39).setDepth(Depths.DECOR_FG).setSign(Signage.THE_PARK),
 
         //  Player area 40 - 60
         
@@ -87,7 +88,7 @@ const Stage5MasjidModel = {
         Building.New(Decor.FENCE2).setTileX(49).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.5),
         
         Building.New(Buildings.LAB_TABLE).setTileX(43.5).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(46).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(46).setDepth(Depths.BUILDINGS_BG).setLevelEnd(Levels.STAGE6),
         Building.New(Decor.POST).setTileX(47.5).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV5_M),
         
         Building.New(Decor.FENCE).setTileX(49.5).setDepth(Depths.BUILDINGS_BG),
@@ -105,13 +106,13 @@ const Stage5MasjidModel = {
         
         Building.New(Decor.POD).setTileX(61).setDepth(Depths.BUILDINGS_BEHIND),
         Building.New(Decor.POD).setTileX(62.5).setDepth(Depths.BUILDINGS_BEHIND),
-        Building.New(Buildings.PUB).setTileX(62).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PUB).setTileX(62).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_PUB),
         Building.New(Decor.PURPLE_CHEST).setTileX(62.5).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(63).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(63.5).setDepth(Depths.DECOR_FG),
         
         Building.New(Buildings.HOUSE1).setTileX(65.5).setDepth(Depths.BUILDINGS_BG).setComplete(1),
-        Building.New(Buildings.SHOP).setTileX(67).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.SHOP).setTileX(67).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_STORE),
 
         Building.New(Buildings.HOUSE1).setTileX(69).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HOUSE1).setTileX(71).setDepth(Depths.BUILDINGS_BG),
@@ -138,7 +139,7 @@ const Stage5MasjidModel = {
 
         //  Mosque Space 80 - 100
 
-        Building.New(Buildings.MOSQUE).setTileX(90).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.MOSQUE).setTileX(90).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_MASJID),
 
         Building.New(Decor.BARREL).setTileX(88).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(88.5).setDepth(Depths.DECOR_FG),

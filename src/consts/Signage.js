@@ -9,6 +9,15 @@ const Signage = {
     THE_MASJID_SIGN: "Special Thanks to our beloved Professor.",
     THE_MASJID_DEV: "Al Masjid Farborne Development Area",
 
+    THE_FARM: "Farmland",
+    STORE_2: "Clicker And Deliver",
+    GROCERY_STORE: "Fresh Foodstuffs",
+    MINI_MART: "Mini Market",
+    RESTAURANT: "",
+    GOODS_SERVICES: "Goods and Services",
+
+    RESEARCH_HUT: "Research Hut",
+
     LV1_LEFT: "Cut for Wood",
     LV1_RIGHT: "Wildflower Honey",
 
@@ -52,6 +61,10 @@ const Signage = {
         "The Farborne gather under a single flag, now as always. You have brought us together once more.",
         "The land is green, the forest can be seen stretching out from the mountain. We are inconspicuous no more.",
         "Professor, we reached the edge of the white sands. The resource is secured, we will return with more material."
+    ],
+
+    POST_LV6: [
+        "Good fortune Professor, one final push and the game is complete!"
     ]
 }
 export default Signage;

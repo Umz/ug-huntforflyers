@@ -93,6 +93,7 @@ class Controlpad {
         scene.input.keyboard.on('keydown-FOUR', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE4 }) });
         scene.input.keyboard.on('keydown-FIVE', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE5 }) });
         scene.input.keyboard.on('keydown-SIX', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE6 }) });
+        scene.input.keyboard.on('keydown-SEVEN', (event) => { scene.scene.launch(Consts.LOAD_SCENE, {stageData: Levels.STAGE7 }) });
     }
 
     action() {

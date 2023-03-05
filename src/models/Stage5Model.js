@@ -9,6 +9,7 @@ import BeeModel from "./BeeModel";
 import BlueBirdModel from "./BlueBirdModel";
 import RedBirdModel from "./RedBirdModel";
 import Signage from "../consts/Signage";
+import Levels from "../consts/Levels";
 
 const Stage5Model = {
 
@@ -86,7 +87,7 @@ const Stage5Model = {
         Building.New(Decor.FENCE2).setTileX(49).setDepth(Depths.BUILDINGS_BEHIND).setAlpha(.5),
         
         Building.New(Buildings.LAB_TABLE).setTileX(43.5).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(46).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(46).setDepth(Depths.BUILDINGS_BG).setLevelEnd(Levels.STAGE6),
         Building.New(Decor.POST).setTileX(47.5).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV5),
         
         Building.New(Decor.FENCE).setTileX(49.5).setDepth(Depths.BUILDINGS_BG),

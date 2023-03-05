@@ -5,7 +5,6 @@ import Depths from "consts/Depths";
 import Forest from "classes/Forest";
 import PlantType from "consts/PlantType";
 import BatModel from "./BatModel";
-import BeeModel from "./BeeModel";
 import Characters from "../consts/Characters";
 import BlueBirdModel from "./BlueBirdModel";
 import RedBirdModel from "./RedBirdModel";
@@ -23,7 +22,7 @@ const Stage6Model = {
     // (Shopping district right | Residential crisis left)
     
     BUILDINGS: [
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(80).setDepth(Depths.BUILDINGS_BG).setAlpha(.1),
+        //Building.New(Buildings.PLAYER_HOUSE).setTileX(80).setDepth(Depths.BUILDINGS_BG).setAlpha(.1),
 
         // 0 - 20 (Heavy Huts - Residential crisis)
 
@@ -58,20 +57,20 @@ const Stage6Model = {
         
         // 40 - 60 - Shopping and recreation
         
-        Building.New(Buildings.SHOP).setTileX(40).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_STORE),
-        Building.New(Buildings.SHOP).setTileX(42).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_STORE),
-        Building.New(Buildings.STORE).setTileX(46).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.STORE).setTileX(49).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.SHOP).setTileX(40).setDepth(Depths.BUILDINGS_BG).setSign(Signage.GOODS_SERVICES),
+        Building.New(Buildings.SHOP).setTileX(42).setDepth(Depths.BUILDINGS_BG).setSign(Signage.STORE_2),
+        Building.New(Buildings.STORE).setTileX(46).setDepth(Depths.BUILDINGS_BG).setSign(Signage.GROCERY_STORE),
+        Building.New(Buildings.STORE).setTileX(49).setDepth(Depths.BUILDINGS_BG).setSign(Signage.MINI_MART),
         Building.New(Buildings.SHOP).setTileX(51).setDepth(Depths.BUILDINGS_BG).setSign(Signage.THE_STORE),
 
         // 60 - 80 - Player among huts and Lab workers
 
-        Building.New(Buildings.TENT3).setTileX(60).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.TENT3).setTileX(61.5).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.TENT3).setTileX(60).setDepth(Depths.BUILDINGS_BG).setSign(Signage.RESEARCH_HUT),
+        Building.New(Buildings.TENT3).setTileX(61.5).setDepth(Depths.BUILDINGS_BG).setSign(Signage.RESEARCH_HUT),
         
         Building.New(Buildings.LAB_TABLE).setTileX(63).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.PLAYER_HOUSE).setTileX(65).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Decor.POST).setTileX(67).setDepth(Depths.DECOR_FG),
+        Building.New(Decor.POST).setTileX(67).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV6),
         Building.New(Buildings.WATER_PUMP).setTileX(70).setDepth(Depths.BUILDINGS_FG),
 
         Building.New(Buildings.TENT3).setTileX(74).setDepth(Depths.BUILDINGS_BG),
@@ -81,9 +80,9 @@ const Stage6Model = {
 
         // 80 - 100 - shopping and housing
 
-        Building.New(Buildings.SHOP).setTileX(80).setDepth(Depths.BUILDINGS_BG).setComplete(1),
-        Building.New(Buildings.SHOP).setTileX(82).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.STORE).setTileX(84).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.SHOP).setTileX(80).setDepth(Depths.BUILDINGS_BG).setComplete(1).setSign(Signage.THE_STORE),
+        Building.New(Buildings.SHOP).setTileX(82).setDepth(Depths.BUILDINGS_BG).setSign(Signage.STORE_2),
+        Building.New(Buildings.STORE).setTileX(84).setDepth(Depths.BUILDINGS_BG).setSign(Signage.GROCERY_STORE),
 
         Building.New(Buildings.HOUSE2).setTileX(90).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.HOUSE1).setTileX(91.5).setDepth(Depths.BUILDINGS_BG),
@@ -97,7 +96,7 @@ const Stage6Model = {
 
         // 100 - 120 - Masjid
 
-        Building.New(Buildings.MOSQUE).setTileX(110).setDepth(Depths.BUILDINGS_BG).setComplete(1),
+        Building.New(Buildings.MOSQUE).setTileX(110).setDepth(Depths.BUILDINGS_BG).setComplete(1).setSign(Signage.THE_MASJID),
 
         Building.New(Decor.BARREL).setTileX(108).setDepth(Depths.DECOR_FG),
         Building.New(Decor.BARREL).setTileX(108.5).setDepth(Depths.DECOR_FG),
@@ -110,7 +109,7 @@ const Stage6Model = {
         Building.New(Buildings.WINDMILL).setTileX(123).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.FARMHUT).setTileX(130).setDepth(Depths.BUILDINGS_BG),
 
-        Building.New(Decor.HANGING_SIGN).setTileX(124).setDepth(Depths.DECOR_FG).setSign("Farm"),
+        Building.New(Decor.HANGING_SIGN).setTileX(124).setDepth(Depths.DECOR_FG).setSign(Signage.THE_FARM),
     ],
 
     FORESTS: [

@@ -8,6 +8,7 @@ import Characters from "consts/Characters";
 import BugModel from "./BugModel";
 import Signage from "../consts/Signage";
 import Tutorial3 from "../tutorials/Tutorial3";
+import Levels from "../consts/Levels";
 
 const Stage3Model = {
 
@@ -40,7 +41,7 @@ const Stage3Model = {
         Building.New(Decor.HANGING_SIGN).setTileX(26).setDepth(Depths.DECOR_FG).setSign(Signage.LV3_H_POD),
         Building.New(Decor.POD).setTileX(25.5).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.LAB_TABLE).setTileX(25).setDepth(Depths.BUILDINGS_BG),
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(29).setDepth(Depths.BUILDINGS_BG).setLevelEnd(Levels.STAGE4),
         Building.New(Buildings.WATER_PUMP).setTileX(33).setDepth(Depths.BUILDINGS_FG),
         Building.New(Decor.POST).setTileX(30).setDepth(Depths.DECOR_FG).setPost(Signage.POST_LV3),
 

@@ -7,6 +7,7 @@ import Forest from "../classes/Forest";
 import BeeModel from "./BeeModel";
 import Tutorial1 from "../tutorials/Tutorial1";
 import Signage from "../consts/Signage";
+import Levels from "../consts/Levels";
 
 const Stage1Model = {
 
@@ -23,7 +24,7 @@ const Stage1Model = {
 
         Building.New(Buildings.TENT1).setTileX(3).setDepth(Depths.BUILDINGS_BG),
         
-        Building.New(Buildings.PLAYER_HOUSE).setTileX(7).setDepth(Depths.BUILDINGS_BG),
+        Building.New(Buildings.PLAYER_HOUSE).setTileX(7).setDepth(Depths.BUILDINGS_BG).setLevelEnd(Levels.STAGE2),
         Building.New(Buildings.LAB_TABLE).setTileX(6).setDepth(Depths.BUILDINGS_BG),
         Building.New(Buildings.WATER_PUMP).setTileX(9).setDepth(Depths.BUILDINGS_FG),
         

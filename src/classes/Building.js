@@ -37,6 +37,12 @@ class Building {
         return this;
     }
 
+    setLevelEnd(toLevel) {
+        this.interaction = Interactions.LEVEL_END;
+        this.interactionData = toLevel;
+        return this;
+    }
+
     isTypeEquals(type) { return this.type === type }
 }
 export default Building;

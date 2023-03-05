@@ -441,7 +441,7 @@ class Game extends Phaser.Scene {
         for (let interactive of allInteratives) {
 
             let pos = interactive.getCenter();
-            if (this.player.getBounds().contains(pos.x, pos.y)) {
+            if (this.player.getBounds().contains(pos.x, this.player.y)) {
                 
                 this.player.setListeningForInteraction(false);
                 this.player.setVelocityX(0);

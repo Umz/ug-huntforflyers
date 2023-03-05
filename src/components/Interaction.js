@@ -3,10 +3,10 @@ import Dom from "components/Dom";
 import GameSave from "./GameSave";
 import Dialogue from "../consts/Dialogue";
 import Depths from "../consts/Depths";
+import Consts from "../consts/Consts";
 
 class Interaction {
 
-    // Swap level
     // Spawn enemy
 
     static AddInteraction(sprite, type, data) {
@@ -22,6 +22,9 @@ class Interaction {
             break;
             case Interactions.TRANSFORM:
                 ConvertKin(sprite, data);
+            break;
+            case Interactions.LEVEL_END:
+                nextLevel(sprite, data);
             break;
         }
     }
@@ -79,6 +82,17 @@ function ConvertKin(sprite, data) {
             let dialogue = Phaser.Utils.Array.GetRandom(Dialogue.NPC.KINS);
             let msg = `${command} ${dialogue}`;
             Dom.AddChatMessage(name, msg);
+        }
+    }
+}
+
+function nextLevel(sprite, data) {
+    let scene = sprite.scene;
+    sprite.interact = function() {
+        if (scene.isAllHousesComplete()) {
+            sprite.interactRemove = true;
+            scene.saveGameData();
+            scene.scene.launch(Consts.LOAD_SCENE, {stageData: data });
         }
     }
 }

@@ -1,8 +1,8 @@
-*** Models, houses need relative size and time to complete 
 *** Kins and Civs hit by explosion
 *** Refactor wind, emitters, trees group,
 *** SPAWN Kins only when there is a Pub
-*** Stats adding to and counting
+*** Stats adding to and counting (Kills, Births)
+*** Should read new CarryKins not births
 *** Gravestone count uses 0 preceding
 *** Pause screen key controls
 *** Prey values
